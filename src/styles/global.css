@@ -1,8 +1,29 @@
+:root {
+	/* Colors */
+	--color-background: #1E2320;
+	--color-surface: #2A302C;
+
+	--color-text: #F3F3F1;
+	--color-text-muted: #B7BBB6;
+
+	--color-primary: #7F9D7A;
+	--color-secondary: #D6C38A;
+
+	--color-border: #3A423D;
+
+	--color-primary-hover: #92B18D;
+}
+
 html,
 body {
 	margin: 0;
 	width: 100%;
 	height: 100%;
+}
+
+body {
+	background: var(--color-background);
+	color: var(--color-text);
 }
 
 .hero {
@@ -12,4 +33,82 @@ body {
 .hero-actions {
 	display: flex;
 	gap: 1rem;
+}
+
+:root {
+	/* Colors */
+	--color-background: #1E2320;
+	--color-surface: #2A302C;
+
+	--color-text: #F3F3F1;
+	--color-text-muted: #B7BBB6;
+
+	--color-primary: #7F9D7A;
+	--color-secondary: #D6C38A;
+
+	--color-border: #3A423D;
+
+	--color-primary-hover: #92B18D;
+}
+
+html,
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background: var(--color-background);
+	color: var(--color-text);
+}
+
+.hero {
+	padding: 2rem;
+}
+
+.hero-actions {
+	display: flex;
+	gap: 1rem;
+}
+
+/* Buttons */
+
+.button {
+	display: inline-block;
+
+	padding: 0.75rem 1.5rem;
+
+	border-radius: 0.5rem;
+
+	text-decoration: none;
+
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease,
+		border-color 0.2s ease;
+
+	cursor: pointer;
+}
+
+.button-primary {
+	background-color: var(--color-primary);
+	color: var(--color-background);
+	border: 1px solid var(--color-primary);
+}
+
+.button-secondary {
+	background-color: transparent;
+	color: var(--color-primary);
+	border: 1px solid var(--color-primary);
+}
+
+.button-primary:hover {
+	background-color: var(--color-primary-hover);
+	border-color: var(--color-primary-hover);
+}
+
+.button-secondary:hover {
+	background-color: var(--color-primary);
+	color: var(--color-background);
 }
