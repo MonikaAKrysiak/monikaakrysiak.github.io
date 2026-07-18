@@ -73,3 +73,13 @@ The project currently includes:
 - Design Tokens (colors and typography)
 - Reusable button component
 - Custom local font system
+
+---
+
+### Responsive typography
+
+Typography is controlled through design tokens.
+
+Responsive font scaling is implemented by updating token values inside media queries instead of modifying individual components.
+
+This keeps components independent from viewport-specific styling.
