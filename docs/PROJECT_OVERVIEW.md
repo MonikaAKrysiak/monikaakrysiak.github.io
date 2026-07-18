@@ -72,9 +72,11 @@ The project currently includes:
 - Astro
 - Design Tokens (colors and typography)
 - Reusable button component
+- Reusable component architecture
+- Component-scoped styles for reusable components
 - Custom local font system
 - Reusable layout primitives (.container, .section) ensuring consistent spacing and scalable page structure
-- Reusable section typography (.section-heading, and .section-text)
+- Reusable section typography (.section-heading and .section-text)
 
 ---
 
@@ -85,3 +87,13 @@ Typography is controlled through design tokens.
 Responsive font scaling is implemented by updating token values inside media queries instead of modifying individual components.
 
 This keeps components independent from viewport-specific styling.
+
+---
+
+### Component architecture
+
+Reusable components encapsulate both their markup and their presentation.
+
+Shared design rules remain in the global stylesheet, while component-specific styles are kept close to the components that own them.
+
+This approach improves maintainability, portability and scalability as the project grows.

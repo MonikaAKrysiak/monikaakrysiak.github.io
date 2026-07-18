@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Projects from '../components/Projects.astro';
 ---
 
 <Layout>
@@ -31,7 +32,7 @@ import Layout from '../layouts/Layout.astro';
 
     <section id="about" class="about section" aria-labelledby="about-heading">
     <div class="container">
-      <div class="about-content">
+      <div class="content-width">
         <h2 id="about-heading" class="section-heading">
           About me
         </h2>
@@ -57,6 +58,8 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
+  <Projects />
   
   </main>
 
