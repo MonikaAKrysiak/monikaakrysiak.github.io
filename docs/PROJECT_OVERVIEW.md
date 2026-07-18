@@ -62,3 +62,14 @@ Future versions may include:
 - articles,
 - selected personal projects,
 - carefully chosen personal interests.
+
+---
+
+## Current architecture
+
+The project currently includes:
+
+- Astro
+- Design Tokens (colors and typography)
+- Reusable button component
+- Custom local font system

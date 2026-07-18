@@ -1,39 +1,5 @@
-:root {
-	/* Colors */
-	--color-background: #1E2320;
-	--color-surface: #2A302C;
+@import "./fonts.css";
 
-	--color-text: #F3F3F1;
-	--color-text-muted: #B7BBB6;
-
-	--color-primary: #7F9D7A;
-	--color-secondary: #D6C38A;
-
-	--color-border: #3A423D;
-
-	--color-primary-hover: #92B18D;
-}
-
-html,
-body {
-	margin: 0;
-	width: 100%;
-	height: 100%;
-}
-
-body {
-	background: var(--color-background);
-	color: var(--color-text);
-}
-
-.hero {
-	padding: 2rem;
-}
-
-.hero-actions {
-	display: flex;
-	gap: 1rem;
-}
 
 :root {
 	/* Colors */
@@ -49,7 +15,13 @@ body {
 	--color-border: #3A423D;
 
 	--color-primary-hover: #92B18D;
+
+
+	/* Typography */
+	--font-family-primary: "Manrope", system-ui, sans-serif;
 }
+
+
 
 html,
 body {
@@ -61,10 +33,34 @@ body {
 body {
 	background: var(--color-background);
 	color: var(--color-text);
+	font-family: var(--font-family-primary);
 }
 
 .hero {
 	padding: 2rem;
+}
+
+.hero-title {
+	margin: 0;
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 1.1;
+}
+
+.hero-role {
+	margin: 0.75rem 0 0;
+	font-size: 1.25rem;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--color-text-muted);
+}
+
+.hero-statement {
+	margin: 2rem 0 2rem;
+	max-width: 32rem;
+	font-size: 1.125rem;
+	font-weight: 400;
+	line-height: 1.5;
 }
 
 .hero-actions {
@@ -73,7 +69,6 @@ body {
 }
 
 /* Buttons */
-
 .button {
 	display: inline-block;
 
@@ -94,13 +89,13 @@ body {
 .button-primary {
 	background-color: var(--color-primary);
 	color: var(--color-background);
-	border: 1px solid var(--color-primary);
+	border: 2px solid var(--color-primary);
 }
 
 .button-secondary {
 	background-color: transparent;
 	color: var(--color-primary);
-	border: 1px solid var(--color-primary);
+	border: 2px solid var(--color-primary);
 }
 
 .button-primary:hover {
