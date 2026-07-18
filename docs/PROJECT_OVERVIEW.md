@@ -73,6 +73,7 @@ The project currently includes:
 - Design Tokens (colors and typography)
 - Reusable button component
 - Custom local font system
+-  Reusable layout primitives (.container, .section) ensuring consistent spacing and scalable page structure
 
 ---
 
