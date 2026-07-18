@@ -1,6 +1,5 @@
 @import "./fonts.css";
 
-
 :root {
 	/* Colors */
 	--color-background: #1E2320;
@@ -15,7 +14,6 @@
 	--color-border: #3A423D;
 
 	--color-primary-hover: #92B18D;
-
 
 	/* Typography */
 	--font-family-primary: "Manrope", system-ui, sans-serif;
@@ -37,8 +35,6 @@
 		--font-size-button: 1.125rem;
 	}
 }
-
-
 
 html,
 body {
@@ -90,6 +86,73 @@ body {
 	gap: 1rem;
 }
 
+/* Header */
+.site-header {
+	padding: 1.5rem 2rem;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.site-header-content {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+
+	max-width: 72rem;
+	margin-inline: auto;
+}
+
+.site-logo {
+	color: var(--color-text);
+	font-size: var(--font-size-heading);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.site-navigation {
+	margin-left: auto;
+}
+
+.site-navigation-list {
+	display: flex;
+	gap: 2rem;
+
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+}
+
+.site-navigation a {
+	color: var(--color-text-muted);
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.site-navigation a:hover {
+	color: var(--color-primary);
+}
+
+.site-logo:focus-visible,
+.site-navigation a:focus-visible {
+	outline: 2px solid var(--color-secondary);
+	outline-offset: 0.25rem;
+	border-radius: 0.25rem;
+}
+
+@media (max-width: 480px) {
+	.site-header {
+		padding-inline: 1rem;
+	}
+
+	.site-header-content {
+		gap: 1rem;
+	}
+
+	.site-navigation-list {
+		gap: 1rem;
+	}
+}
+
 /* Buttons */
 .button {
 	display: inline-block;
@@ -131,4 +194,9 @@ body {
 .button-secondary:hover {
 	background-color: var(--color-primary);
 	color: var(--color-background);
+}
+
+.button:focus-visible {
+	outline: 2px solid var(--color-secondary);
+	outline-offset: 0.25rem;
 }
