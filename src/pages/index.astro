@@ -1,6 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Projects from '../components/Projects.astro';
+import { Image } from "astro:assets";
+import portrait from "../assets/monika-krysiak-portrait.png";
+
+import Layout from "../layouts/Layout.astro";
+import Projects from "../components/Projects.astro";
 ---
 
 <Layout>
@@ -9,55 +12,67 @@ import Projects from '../components/Projects.astro';
 
     <section class="hero section">
       <div class="hero-content container">
+        <div class="hero-copy">
+          <h1 class="hero-title">Monika Krysiak</h1>
 
-      <h1 class="hero-title">Monika Krysiak</h1>
+          <p class="hero-role">
+            QA Engineer focused on Application Security.
+          </p>
 
-      <p class="hero-role">
-        QA Engineer focused on Application Security.
-      </p>
+          <p class="hero-statement">
+            For me, good software isn’t just functional.
+            <br />
+            It should also be secure.
+          </p>
+        </div>
 
-      <p class="hero-statement">
-       For me, good software isn’t just functional.
-       <br />
-       It should also be secure.
-      </p>
+        <Image
+          src={portrait}
+          alt="Portrait of Monika Krysiak"
+          class="hero-portrait"
+        />
 
-      <div class="hero-actions">
-       <a class="button button-primary" href="/cv">View CV</a>
-       <a class="button button-secondary" href="/contact">Contact</a>
-      </div>
-
+        <div class="hero-actions">
+          <a class="button button-primary" href="/cv">View CV</a>
+          <a class="button button-secondary" href="/contact">Contact</a>
+        </div>
       </div>
     </section>
 
     <section id="about" class="about section" aria-labelledby="about-heading">
-    <div class="container">
-      <div class="content-width">
-        <h2 id="about-heading" class="section-heading">
-          About me
-        </h2>
+      <div class="container">
+        <div class="content-width">
+          <h2 id="about-heading" class="section-heading">
+            About me
+          </h2>
 
-        <p class="section-text">
-          I've been working in Quality Assurance for over 10 years. Over
-          time, application security became a natural part of my work.
-          For me, security isn't something you add at the end. It's part
-          of building good software from the beginning.
-        </p>
+          <p class="section-text">
+            I've been working in Quality Assurance for over 10 years. Over
+            time, application security became a natural part of my work.
+            For me, security isn't something you add at the end. It's part
+            of building good software from the beginning.
+          </p>
 
-        <p class="section-text">
-          I like understanding how applications work, finding problems
-          and asking questions that help teams solve them before users
-          do. I enjoy working with developers, analysing issues and
-          writing documentation that makes everyday work a little easier.
-        </p>
+          <p class="section-text">
+            I like understanding how applications work, finding problems
+            and asking questions that help teams solve them before users
+            do. I enjoy working with developers, analysing issues and
+            writing documentation that makes everyday work a little easier.
+          </p>
 
-        <p class="section-text">
-          I believe good software should be functional, reliable and
-          secure. That's the way I try to approach every project.
-        </p>
-      </div>
-    </div>
-  </section>
+          <p class="section-text">
+            I believe good software should be functional, reliable and
+            secure. That's the way I try to approach every project.
+          </p>
+
+          <p class="section-text">
+            Outside of work I enjoy exploring new places, whether it's on a bike,
+            in a kayak or on a hiking trail. I also enjoy board games, DIY projects
+            and spending time with my family.
+          </p>
+         </div>
+       </div>
+    </section>
 
   <Projects />
   
