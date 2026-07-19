@@ -1,10 +1,17 @@
 ---
+interface Props {
+	title: string;
+	summary: string;
+	focusAreas: string[];
+	href: string;
+}
+
 const {
 	title,
 	summary,
 	focusAreas,
 	href
-} = Astro.props;
+}: Props = Astro.props;
 ---
 
 <article class="work-card">
@@ -15,13 +22,17 @@ const {
 	</p>
 
 	<div class="work-card-footer">
-		<ul class="work-card-focusAreas">
+		<ul class="work-card-focus-areas">
 			{focusAreas.map((focusArea) => (
 				<li>{focusArea}</li>
 			))}
 		</ul>
 
-		<a class="work-card-href" href={href}>
+		<a
+			class="work-card-link"
+			href={href}
+			aria-label={`Read case study: ${title}`}
+		>
 			Read case study
 		</a>
 	</div>
@@ -29,34 +40,34 @@ const {
 
 <style>
 	.work-card {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
 
-	padding: var(--space-lg);
-	border: 1px solid var(--color-border);
-	border-radius: 0.75rem;
-	background-color: var(--color-surface);
+		padding: var(--space-lg);
+		border: 1px solid var(--color-border);
+		border-radius: 0.75rem;
+		background-color: var(--color-surface);
 
-	transition:
-	    background-color 0.2s ease,
-	    border-color 0.2s ease,
-	    transform 0.2s ease;
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease,
+			transform 0.2s ease;
     }
 
     .work-card:hover {
-	background-color: #313733;
-	border-color: var(--color-primary);
-	transform: translateY(-0.25rem);
+		background-color: #313733;
+		border-color: var(--color-primary);
+		transform: translateY(-0.25rem);
     }
 
     .work-card:focus-within {
-	border-color: var(--color-secondary);
+		border-color: var(--color-secondary);
     }
 
 	.work-card-title,
 	.work-card-summary,
-	.work-card-focusAreas {
+	.work-card-focus-areas {
 		margin: 0;
 	}
 
@@ -79,7 +90,7 @@ const {
 		margin-top: var(--space-lg);
 	}
 
-	.work-card-focusAreas {
+	.work-card-focus-areas {
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--space-xs) var(--space-md);
@@ -88,13 +99,13 @@ const {
 		list-style: none;
 	}
 
-	.work-card-focusAreas li {
+	.work-card-focus-areas li {
 		color: var(--color-primary);
 		font-size: 0.9rem;
 		font-weight: 500;
 	}
 
-	.work-card-href {
+	.work-card-link {
 		align-self: flex-start;
 		color: var(--color-secondary);
 		font-weight: 500;
@@ -102,11 +113,11 @@ const {
 		text-underline-offset: 0.25rem;
 	}
 
-	.work-card-href:hover {
+	.work-card-link:hover {
 		color: var(--color-primary-hover);
 	}
 
-	.work-card-href:focus-visible {
+	.work-card-link:focus-visible {
 		outline: 2px solid var(--color-secondary);
 		outline-offset: 0.25rem;
 		border-radius: 0.25rem;
