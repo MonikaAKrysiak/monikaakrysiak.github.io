@@ -1,10 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import portrait from "../assets/monika-krysiak-portrait.png";
 
 import Layout from "../layouts/Layout.astro";
 import Projects from "../components/Projects.astro";
+
+import portrait from "../assets/monika-krysiak-portrait.png";
+import GitHubIcon from "../assets/icons/github.svg";
+import LinkedInIcon from "../assets/icons/linkedin.svg";
+import MailIcon from "../assets/icons/mail.svg";
 ---
+
 
 <Layout>
 
@@ -34,7 +39,7 @@ import Projects from "../components/Projects.astro";
 
         <div class="hero-actions">
           <a class="button button-primary" href="/cv">View CV</a>
-          <a class="button button-secondary" href="/contact">Contact</a>
+          <a class="button button-secondary" href="#contact">Contact</a>
         </div>
       </div>
     </section>
@@ -74,7 +79,55 @@ import Projects from "../components/Projects.astro";
        </div>
     </section>
 
-  <Projects />
+    <Projects />
+
+    <section id="contact" class="contact section" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="content-width">
+          <h2 id="contact-heading" class="section-heading">
+            Contact
+          </h2>
+
+          <p class="section-text">
+            Have a question, an idea or an opportunity to discuss?<br />
+            Feel free to get in touch.
+          </p>
+
+          <address class="contact-details">
+            <ul class="contact-list">
+              <li>
+                <a href="mailto:monika.a.krysiak@gmail.com">
+                  <MailIcon class="contact-icon" aria-hidden="true" />
+                  <span>monika.a.krysiak@gmail.com</span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/monika-krysiak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkedInIcon class="contact-icon" aria-hidden="true" />
+                  LinkedIn
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://github.com/MonikaAKrysiak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GitHubIcon class="contact-icon" aria-hidden="true" />
+                  GitHub
+                </a>
+              </li>
+            </ul>
+          </address>
+        </div>
+      </div>
+    </section>
   
   </main>
 
