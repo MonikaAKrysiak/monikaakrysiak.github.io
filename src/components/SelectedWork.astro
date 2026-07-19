@@ -1,0 +1,85 @@
+---
+import WorkCard from './WorkCard.astro';
+---
+
+<section id="work" class="section">
+	<div class="container">
+		<h2 class="section-heading">Selected Work</h2>
+
+		<ul class="work-list">
+			<li>
+				<WorkCard
+					title="Bringing Security into Everyday QA"
+					summary="Integrating application security into everyday testing instead of treating it as a separate activity."
+					focusAreas={[
+						"Application Security",
+						"OWASP ASVS",
+						"Secure SDLC"
+					]}
+					href="/"
+				/>
+			</li>
+
+			<li>
+				<WorkCard
+					title="Beyond Testing"
+					summary="Helping teams build better products through analysis, product thinking and collaboration."
+					focusAreas={[
+						"Quality Engineering",
+						"Business Analysis",
+						"Product Thinking"
+					]}
+					href="/"
+				/>
+			</li>
+
+			<li>
+				<WorkCard
+					title="Teaching & Knowledge Sharing"
+					summary="Helping people grow by sharing practical knowledge through documentation, training and public speaking."
+					focusAreas={[
+						"Training",
+						"Documentation",
+						"Mentoring"
+					]}
+					href="/"
+				/>
+			</li>
+
+			<li>
+				<WorkCard
+					title="Building This Portfolio"
+					summary="Learning modern frontend engineering through deliberate, iterative development."
+					focusAreas={[
+						"Astro",
+						"HTML",
+						"CSS"
+					]}
+					href="/"
+				/>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<style>
+	.work-list {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-lg);
+
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.work-list > li {
+		display: flex;
+	}
+
+	@media (min-width: 640px) {
+		.work-list {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

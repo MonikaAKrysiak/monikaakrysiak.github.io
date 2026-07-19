@@ -55,13 +55,13 @@ The website should become:
 - learning journal,
 - long-term project.
 
-Future versions may include:
+Future versions may also include:
 
+- detailed case studies,
 - conference talks,
 - publications,
 - articles,
-- selected personal projects,
-- carefully chosen personal interests.
+- selected community activities.
 
 ---
 
