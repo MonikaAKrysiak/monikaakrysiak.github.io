@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
+---
+
+<Layout>
+	<main>
+        <section class="case-study section">
+	        <div class="container">
+                <a class="case-study-back-link" href="/#work">
+                    ← Back to selected work
+                </a>
+                    <CaseStudyHeader
+                        title="OWASP ASVS Knowledge Base"
+                        summary="A practical knowledge base combining OWASP ASVS guidance, onboarding materials and security documentation to support QA engineers and development teams."
+                        focusAreas={[
+                            "OWASP ASVS",
+                            "Application Security",
+                            "Knowledge Sharing",
+                            "Documentation",
+                            "QA Enablement",
+                        ]}
+                />
+                <section class="case-study-section" aria-labelledby="overview-heading">
+                    <h2 id="overview-heading" class="section-heading">
+                        Overview
+                    </h2>
+                        <p class="case-study-text">
+                            Security standards such as OWASP ASVS provide valuable guidance, but they can be difficult to apply in everyday QA work. This project was created to bridge that gap by turning security requirements into practical resources that teams could use during testing, onboarding and daily development.
+                        </p>
+
+                        <p class="case-study-text">
+                            Over time, the knowledge base grew beyond ASVS guidance to include onboarding materials, internal documentation, quizzes and practical examples. The goal was not only to improve application security, but also to make security knowledge easier to understand, share and apply across the team.
+                        </p>
+                </section>
+            </div>
+        </section>
+    </main>
+</Layout>

@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
+---
+
+<Layout>
+	<main>
+        <section class="case-study section">
+	        <div class="container">
+                <a class="case-study-back-link" href="/#work">
+                    ← Back to selected work
+                </a>
+                    <CaseStudyHeader
+                    title="Portfolio Website"
+                    summary="A personal portfolio and long-term learning project exploring modern frontend development through quality, accessibility and security."
+                    focusAreas={[
+                        "Astro",
+                        "HTML",
+                        "CSS",
+                        "Accessibility",
+                        "Security",
+                    ]}
+                    source={{
+                        label: "View source on GitHub",
+                        href: "https://github.com/MonikaAKrysiak/monikakrysiak.github.io",
+                    }}
+                />
+                <section class="case-study-section" aria-labelledby="overview-heading">
+                    <h2 id="overview-heading" class="section-heading">
+                        Overview
+                    </h2>
+
+                    <p class="case-study-text">
+                        This portfolio is more than a place to showcase my work.
+                    </p>
+
+                    <p class="case-study-text">
+                        It is a long-term learning project where I explore modern frontend development while applying the same quality, accessibility and security mindset that guides my everyday QA work.
+                    </p>
+
+                    <p class="case-study-text">
+                        Throughout my career, I usually joined projects that were already in progress. This project gives me the opportunity to make architectural decisions myself and understand how those decisions shape software from its very first commit.
+                    </p>
+                </section>
+            </div>
+        </section>
+    </main>
+</Layout>

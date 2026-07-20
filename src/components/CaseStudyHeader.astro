@@ -1,0 +1,43 @@
+---
+interface Props {
+	title: string;
+	summary: string;
+	focusAreas: string[];
+	action?: {
+		label: string;
+		href: string;
+	};
+}
+
+const {
+	title,
+	summary,
+	focusAreas,
+	action,
+} = Astro.props;
+---
+
+<header class="case-study-header">
+	<h1 class="case-study-title">{title}</h1>
+
+	<p class="case-study-summary">{summary}</p>
+
+	<ul class="case-study-focus-areas">
+		{focusAreas.map((focusArea) => (
+			<li class="case-study-focus-area">
+				{focusArea}
+			</li>
+		))}
+	</ul>
+
+	{action && (
+		<a
+			class="case-study-source"
+			href={action.href}
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<span>{action.label}</span>
+		</a>
+	)}
+</header>

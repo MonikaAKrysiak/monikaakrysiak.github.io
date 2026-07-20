@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
+---
+
+<Layout>
+	<main>
+        <section class="case-study section">
+	        <div class="container">
+                <a class="case-study-back-link" href="/#work">
+                    ← Back to selected work
+                </a>
+                    <CaseStudyHeader
+                    title="Teaching & Knowledge Sharing"
+                    summary="Sharing practical knowledge through documentation, onboarding, workshops and conference talks to help others learn and grow."
+                    focusAreas={[
+                        "Knowledge Sharing",
+                        "Documentation",
+                        "Public Speaking",
+                        "Mentoring",
+                    ]}
+                    source={{
+                        label: "View my publications on Google Scholar →",
+                        href: "https://scholar.google.com/citations?hl=pl&user=iEJNt0YAAAAJ&view_op=list_works&sortby=pubdate",
+                    }}
+                />
+                <section class="case-study-section" aria-labelledby="overview-heading">
+                    <h2 id="overview-heading" class="section-heading">
+                        Overview
+                    </h2>
+
+                    <p class="case-study-text">
+                        Sharing knowledge has become an important part of my professional journey. I enjoy turning complex technical topics into practical materials that help others understand, apply and discuss software quality and application security.
+                    </p>
+
+                    <p class="case-study-text">
+                        This work includes onboarding sessions, internal documentation, conference talks, articles and practical learning resources. My goal is not only to share information, but to make it accessible, useful and immediately applicable in everyday work.
+                    </p>
+                </section>
+            </div>
+        </section>
+    </main>
+</Layout>

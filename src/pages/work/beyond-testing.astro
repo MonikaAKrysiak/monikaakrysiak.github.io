@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
+---
+
+<Layout>
+	<main>
+        <section class="case-study section">
+	        <div class="container">
+                <a class="case-study-back-link" href="/#work">
+                    ← Back to selected work
+                </a>
+                    <CaseStudyHeader
+                    title="Beyond Testing"
+                    summary="Exploring how quality engineering extends beyond testing through business analysis, product thinking and close collaboration with development teams."
+                    focusAreas={[
+                        "Quality Engineering",
+                        "Business Analysis",
+                        "Product Thinking",
+                        "Collaboration",
+                    ]}
+                />
+                <section class="case-study-section" aria-labelledby="overview-heading">
+                    <h2 id="overview-heading" class="section-heading">
+                        Overview
+                    </h2>
+
+                    <p class="case-study-text">
+                        Throughout my career, I have often worked beyond traditional QA responsibilities. While testing remained an important part of my role, many projects required business analysis, product thinking and close collaboration with developers, support teams and stakeholders.
+                    </p>
+
+                    <p class="case-study-text">
+                        This case study explores situations where improving software quality meant asking the right questions, analysing requirements, simplifying processes and helping teams make better decisions before implementation.
+                    </p>
+                </section>
+            </div>
+        </section>
+    </main>
+</Layout>
