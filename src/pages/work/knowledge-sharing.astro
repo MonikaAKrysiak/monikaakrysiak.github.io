@@ -2,15 +2,15 @@
 import Layout from '../../layouts/Layout.astro';
 import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
 import CaseStudySection from '../../components/CaseStudySection.astro';
+import BackLink from '../../components/BackLink.astro';
 ---
 
 <Layout>
 	<main>
         <section class="case-study section">
 	        <div class="container">
-                <a class="case-study-back-link" href="/#work">
-                    ← Back to selected work
-                </a>
+                <BackLink />
+                
                     <CaseStudyHeader
                     title="Teaching & Knowledge Sharing"
                     summary="Sharing practical knowledge through documentation, onboarding, workshops and conference talks to help others learn and grow."

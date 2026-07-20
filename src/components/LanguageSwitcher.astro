@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+
+import FlagEn from "../assets/icons/flag-en.svg";
+import FlagPl from "../assets/icons/flag-pl.svg";
+---
+
+<div class="language-switcher" aria-label="Language">
+	<button
+		class="language-option language-option-active"
+		type="button"
+		aria-pressed="true"
+	>
+		<Image
+			src={FlagEn}
+			alt=""
+			aria-hidden="true"
+			class="language-flag"
+		/>
+
+		<span>EN</span>
+	</button>
+
+	<span class="language-divider" aria-hidden="true">|</span>
+
+	<button
+		class="language-option"
+		type="button"
+		aria-pressed="false"
+	>
+		<Image
+			src={FlagPl}
+			alt=""
+			aria-hidden="true"
+			class="language-flag"
+		/>
+
+		<span>PL</span>
+	</button>
+</div>

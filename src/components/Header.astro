@@ -1,21 +1,21 @@
+---
+import Navigation from './Navigation.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import ThemeSwitcher from './ThemeSwitcher.astro';
+
+const isHomepage = Astro.url.pathname === '/';
+---
 <header class="site-header">
-	<div class="site-header-content container">
+	<div class="site-header-content">
 		<a class="site-logo" href="/" aria-label="Monika Krysiak – homepage">
 			Monika Krysiak
 		</a>
 
-		<nav class="site-navigation" aria-label="Primary navigation">
-			<ul class="site-navigation-list">
-				<li>
-					<a href="#about">About</a>
-				</li>
-				<li>
-					<a href="#work">Selected Work</a>
-				</li>
-				<li>
-					<a href="#contact">Contact</a>
-				</li>
-			</ul>
-		</nav>
+		<div class="site-controls">
+			{isHomepage && <Navigation />}
+
+			<LanguageSwitcher />
+			<ThemeSwitcher />
+		</div>
 	</div>
 </header>
