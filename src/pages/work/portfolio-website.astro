@@ -1,6 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
+import CaseStudySection from '../../components/CaseStudySection.astro';
+
+import githubIcon from '../../assets/icons/github.svg';
+import CaseStudyFigure from '../../components/CaseStudyFigure.astro';
+import portfolioHomepage from '../../assets/case-studies/portfolio-homepage.png';
 ---
 
 <Layout>
@@ -20,16 +25,16 @@ import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
                         "Accessibility",
                         "Security",
                     ]}
-                    source={{
-                        label: "View source on GitHub",
-                        href: "https://github.com/MonikaAKrysiak/monikakrysiak.github.io",
+                    action={{
+                        label: 'View source code',
+                        href: 'https://github.com/MonikaAKrysiak/monikakrysiak.github.io',
+                        icon: githubIcon,
                     }}
                 />
-                <section class="case-study-section" aria-labelledby="overview-heading">
-                    <h2 id="overview-heading" class="section-heading">
-                        Overview
-                    </h2>
-
+                <CaseStudySection
+                    title="Overview"
+                    id="overview"
+                >
                     <p class="case-study-text">
                         This portfolio is more than a place to showcase my work.
                     </p>
@@ -41,7 +46,12 @@ import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
                     <p class="case-study-text">
                         Throughout my career, I usually joined projects that were already in progress. This project gives me the opportunity to make architectural decisions myself and understand how those decisions shape software from its very first commit.
                     </p>
-                </section>
+                </CaseStudySection>
+                <CaseStudyFigure
+                    src={portfolioHomepage}
+                    alt="Homepage of the portfolio website showing the hero section, selected work and contact section"
+                    caption="Current version of the portfolio homepage."
+                />
             </div>
         </section>
     </main>

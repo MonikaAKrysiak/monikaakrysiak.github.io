@@ -97,3 +97,5 @@ Reusable components encapsulate both their markup and their presentation.
 Shared design rules remain in the global stylesheet, while component-specific styles are kept close to the components that own them.
 
 This approach improves maintainability, portability and scalability as the project grows.
+
+The project now includes reusable components for building consistent engineering case studies with structured content and visual documentation.

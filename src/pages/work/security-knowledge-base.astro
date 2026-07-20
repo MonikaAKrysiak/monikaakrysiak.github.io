@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
+import CaseStudySection from '../../components/CaseStudySection.astro';
 ---
 
 <Layout>
@@ -21,18 +22,18 @@ import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
                             "QA Enablement",
                         ]}
                 />
-                <section class="case-study-section" aria-labelledby="overview-heading">
-                    <h2 id="overview-heading" class="section-heading">
-                        Overview
-                    </h2>
-                        <p class="case-study-text">
+                <CaseStudySection
+                    id="overview"
+                    title="Overview"
+                >
+                    <p class="case-study-text">
                             Security standards such as OWASP ASVS provide valuable guidance, but they can be difficult to apply in everyday QA work. This project was created to bridge that gap by turning security requirements into practical resources that teams could use during testing, onboarding and daily development.
                         </p>
 
                         <p class="case-study-text">
                             Over time, the knowledge base grew beyond ASVS guidance to include onboarding materials, internal documentation, quizzes and practical examples. The goal was not only to improve application security, but also to make security knowledge easier to understand, share and apply across the team.
                         </p>
-                </section>
+                </CaseStudySection>
             </div>
         </section>
     </main>

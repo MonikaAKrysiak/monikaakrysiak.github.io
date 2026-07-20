@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
+import CaseStudySection from '../../components/CaseStudySection.astro';
 ---
 
 <Layout>
@@ -19,16 +20,15 @@ import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
                         "Public Speaking",
                         "Mentoring",
                     ]}
-                    source={{
-                        label: "View my publications on Google Scholar →",
+                    action={{
+                        label: "View my publications on Google Scholar",
                         href: "https://scholar.google.com/citations?hl=pl&user=iEJNt0YAAAAJ&view_op=list_works&sortby=pubdate",
                     }}
                 />
-                <section class="case-study-section" aria-labelledby="overview-heading">
-                    <h2 id="overview-heading" class="section-heading">
-                        Overview
-                    </h2>
-
+                <CaseStudySection
+                    id="overview"
+                    title="Overview"
+                >
                     <p class="case-study-text">
                         Sharing knowledge has become an important part of my professional journey. I enjoy turning complex technical topics into practical materials that help others understand, apply and discuss software quality and application security.
                     </p>
@@ -36,7 +36,7 @@ import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
                     <p class="case-study-text">
                         This work includes onboarding sessions, internal documentation, conference talks, articles and practical learning resources. My goal is not only to share information, but to make it accessible, useful and immediately applicable in everyday work.
                     </p>
-                </section>
+                </CaseStudySection>
             </div>
         </section>
     </main>

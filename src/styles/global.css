@@ -283,12 +283,6 @@ body {
 	max-width: 65ch;
 }
 
-@media (min-width: 1024px) {
-	.content-width {
-		max-width: 50ch;
-	}
-}
-
 /* Shared typography */
 .section-heading {
 	margin: 0 0 var(--space-md);
@@ -447,4 +441,26 @@ body {
 	.case-study-source {
 		margin-top: 0;
 	}
+}
+
+/* Figures */
+.case-study-figure {
+	margin: var(--space-xl) 0;
+}
+
+.case-study-figure-image {
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 1px solid var(--color-border);
+	border-radius: 0.75rem;
+}
+
+.case-study-figure-caption {
+	margin-top: var(--space-sm);
+
+	color: var(--color-text-muted);
+	font-size: 0.875rem;
+	line-height: var(--line-height-body);
+	text-align: center;
 }

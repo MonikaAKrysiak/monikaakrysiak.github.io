@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
+import CaseStudySection from '../../components/CaseStudySection.astro';
 ---
 
 <Layout>
@@ -20,11 +21,10 @@ import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
                         "Collaboration",
                     ]}
                 />
-                <section class="case-study-section" aria-labelledby="overview-heading">
-                    <h2 id="overview-heading" class="section-heading">
-                        Overview
-                    </h2>
-
+                <CaseStudySection
+                    id="overview"
+                    title="Overview"
+                >
                     <p class="case-study-text">
                         Throughout my career, I have often worked beyond traditional QA responsibilities. While testing remained an important part of my role, many projects required business analysis, product thinking and close collaboration with developers, support teams and stakeholders.
                     </p>
@@ -32,7 +32,7 @@ import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
                     <p class="case-study-text">
                         This case study explores situations where improving software quality meant asking the right questions, analysing requirements, simplifying processes and helping teams make better decisions before implementation.
                     </p>
-                </section>
+                </CaseStudySection>
             </div>
         </section>
     </main>

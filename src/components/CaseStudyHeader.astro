@@ -1,4 +1,6 @@
 ---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
 interface Props {
 	title: string;
 	summary: string;
@@ -6,6 +8,7 @@ interface Props {
 	action?: {
 		label: string;
 		href: string;
+		icon?: AstroComponentFactory;
 	};
 }
 
@@ -15,6 +18,8 @@ const {
 	focusAreas,
 	action,
 } = Astro.props;
+
+const ActionIcon = action?.icon;
 ---
 
 <header class="case-study-header">
@@ -31,13 +36,20 @@ const {
 	</ul>
 
 	{action && (
-		<a
-			class="case-study-source"
-			href={action.href}
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			<span>{action.label}</span>
-		</a>
-	)}
+	<a
+		class="case-study-source"
+		href={action.href}
+		target="_blank"
+		rel="noopener noreferrer"
+	>
+		{ActionIcon && (
+			<ActionIcon
+				class="case-study-source-icon"
+				aria-hidden="true"
+			/>
+		)}
+
+		<span>{action.label}</span>
+	</a>
+)}
 </header>
