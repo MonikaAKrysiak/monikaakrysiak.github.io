@@ -1,7 +1,7 @@
 @import "./fonts.css";
 
 :root {
-	/* Colors */
+	/* Colors — dark theme */
 	--color-background: #1E2320;
 	--color-surface: #2A302C;
 	--color-surface-hover: #343B37;
@@ -13,8 +13,8 @@
 	--color-secondary: #D6C38A;
 
 	--color-border: #3A423D;
-
 	--color-primary-hover: #92B18D;
+
 
 	/* Typography */
 	--font-family-primary: "Manrope", system-ui, sans-serif;
@@ -41,6 +41,42 @@
 	--header-height: 5.5rem;
 	--content-max-width: 76rem;
 	--hero-max-width: 68rem;
+}
+
+html[data-theme="light"] {
+	/* Colors — light theme */
+	--color-background: #F4F1E8;
+	--color-surface: #E8E3D8;
+	--color-surface-hover: #DDD6C8;
+
+	--color-text: #1E2320;
+	--color-text-muted: #5F675F;
+
+	--color-primary: #5F7F5A;
+	--color-secondary: #8A6F2E;
+
+	--color-border: #D8D0C2;
+
+	--color-primary-hover: #4F6E4B;
+}
+.theme-icon-dark {
+	display: none;
+}
+
+html[data-theme="dark"] .theme-icon-light {
+	display: block;
+}
+
+html[data-theme="dark"] .theme-icon-dark {
+	display: none;
+}
+
+html[data-theme="light"] .theme-icon-light {
+	display: none;
+}
+
+html[data-theme="light"] .theme-icon-dark {
+	display: block;
 }
 
 .section {	
@@ -450,11 +486,16 @@ body {
 }
 
 .case-study-back-link {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-xs);
+
 	margin-bottom: var(--space-xl);
 
 	color: var(--color-text-muted);
 	text-decoration: none;
+
+	transition: color 0.2s ease;
 }
 
 .case-study-header {

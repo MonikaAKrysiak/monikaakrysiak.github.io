@@ -1,5 +1,6 @@
 ---
 import ThemeLight from "../assets/icons/theme-light.svg";
+import ThemeDark from "../assets/icons/theme-dark.svg";
 ---
 
 <button
@@ -7,5 +8,55 @@ import ThemeLight from "../assets/icons/theme-light.svg";
 	type="button"
 	aria-label="Switch to light theme"
 >
-	<ThemeLight class="theme-icon" aria-hidden="true" />
+	<ThemeLight
+		class="theme-icon theme-icon-light"
+		aria-hidden="true"
+	/>
+
+	<ThemeDark
+		class="theme-icon theme-icon-dark"
+		aria-hidden="true"
+	/>
 </button>
+
+<script>
+	const themeSwitcher = document.querySelector(".theme-switcher");
+
+	const themeColorMeta = document.querySelector(
+		'meta[name="theme-color"]'
+	);
+
+	function updateThemeLabel(theme: string) {
+		themeSwitcher?.setAttribute(
+			"aria-label",
+			theme === "dark"
+				? "Switch to light theme"
+				: "Switch to dark theme"
+		);
+	}
+
+	function updateTheme(theme: string) {
+		document.documentElement.dataset.theme = theme;
+
+		const backgroundColor = getComputedStyle(document.documentElement)
+			.getPropertyValue("--color-background")
+			.trim();
+
+		themeColorMeta?.setAttribute("content", backgroundColor);
+
+		localStorage.setItem("theme", theme);
+
+		updateThemeLabel(theme);
+	}
+
+	const currentTheme = document.documentElement.dataset.theme ?? "dark";
+
+	updateThemeLabel(currentTheme);
+
+	themeSwitcher?.addEventListener("click", () => {
+		const activeTheme = document.documentElement.dataset.theme ?? "dark";
+		const nextTheme = activeTheme === "dark" ? "light" : "dark";
+
+		updateTheme(nextTheme);
+	});
+</script>

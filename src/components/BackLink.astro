@@ -7,7 +7,7 @@ interface Props {
 const {
 	href = "/#work",
 	label = "Back to selected work",
-} = Astro.props;
+}: Props = Astro.props;
 ---
 
 <a class="case-study-back-link" href={href}>

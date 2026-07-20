@@ -4,14 +4,27 @@ import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 	<head>
 		<meta charset="utf-8" />
+		<meta name="theme-color" content="#1E2320" />
+
+		<script is:inline>
+			const savedTheme = localStorage.getItem("theme");
+
+			const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches
+				? "light"
+				: "dark";
+
+			document.documentElement.dataset.theme = savedTheme ?? systemTheme;
+		</script>
+
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Monika Krysiak</title>
 	</head>
+
 	<body>
 		<Header />
 

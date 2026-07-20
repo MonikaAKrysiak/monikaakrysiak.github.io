@@ -40,9 +40,9 @@ The objective is to understand how and why everything works.
 
 ## Small iterations
 
-Each development session should focus on one small topic.
+Each development session focuses on one small, well-defined topic.
 
-The project should grow gradually.
+The project grows incrementally while keeping every change easy to understand, review and maintain.
 
 ---
 
@@ -65,22 +65,38 @@ Future versions may also include:
 
 ---
 
-## Current architecture
+# Current architecture
 
 The project currently includes:
 
 - Astro
-- Design Tokens (colors and typography)
+- Design Tokens (colors, spacing and typography)
+- Reusable layout system
 - Reusable button component
-- Reusable component architecture
-- Component-scoped styles for reusable components
+- Reusable navigation and header components
+- Reusable case study layout
+- Component-scoped styles
 - Custom local font system
-- Reusable layout primitives (.container, .section) ensuring consistent spacing and scalable page structure
-- Reusable section typography (.section-heading and .section-text)
+- Responsive typography based on design tokens
+- Light and dark theme support
+- Theme persistence using `localStorage`
+- Automatic system theme detection (`prefers-color-scheme`)
+- CSS variable-based theming using `data-theme`
+- Semantic HTML and accessibility-focused components
 
 ---
 
-### Responsive typography
+## Design system
+
+The website uses Design Tokens to define colors, typography and spacing.
+
+Components consume tokens instead of hardcoded values, allowing the entire visual system to evolve from a single source of truth.
+
+Theme switching is implemented by changing the `data-theme` attribute on the root `<html>` element. Individual components remain completely independent of the active theme.
+
+---
+
+## Responsive typography
 
 Typography is controlled through design tokens.
 
@@ -90,12 +106,28 @@ This keeps components independent from viewport-specific styling.
 
 ---
 
-### Component architecture
+## Component architecture
 
-Reusable components encapsulate both their markup and their presentation.
+Reusable components encapsulate both their markup and presentation.
 
-Shared design rules remain in the global stylesheet, while component-specific styles are kept close to the components that own them.
+Shared design rules remain in the global stylesheet, while component-specific styles stay close to the components that own them.
 
 This approach improves maintainability, portability and scalability as the project grows.
 
-The project now includes reusable components for building consistent engineering case studies with structured content and visual documentation.
+The project currently includes reusable components for navigation, buttons, language and theme switching, reusable layouts and structured engineering case studies.
+
+---
+
+## Accessibility
+
+Accessibility is considered throughout the project rather than being added afterwards.
+
+Current practices include:
+
+- semantic HTML,
+- keyboard-accessible navigation,
+- descriptive ARIA labels,
+- visible focus states,
+- decorative icons hidden from assistive technologies,
+- responsive layouts,
+- reusable accessible UI components.
