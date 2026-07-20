@@ -1,15 +1,27 @@
+---
+import { getTranslations, type Language } from "../i18n";
+
+interface Props {
+	lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const t = getTranslations(lang);
+---
+
 <nav class="site-navigation" aria-label="Primary navigation">
 	<ul class="site-navigation-list">
 		<li>
-			<a href="#about">About</a>
+			<a href="#about">{t.navigation.about}</a>
 		</li>
 
 		<li>
-			<a href="#work">Selected Work</a>
+			<a href="#work">{t.navigation.work}</a>
 		</li>
 
 		<li>
-			<a href="#contact">Contact</a>
+			<a href="#contact">{t.navigation.contact}</a>
 		</li>
 	</ul>
 </nav>

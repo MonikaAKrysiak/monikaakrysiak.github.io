@@ -131,3 +131,11 @@ Current practices include:
 - decorative icons hidden from assistive technologies,
 - responsive layouts,
 - reusable accessible UI components.
+
+## Internationalisation
+
+The project now includes the first stage of its internationalisation architecture.
+
+Language selection is URL-based (/en, /pl) and propagated through the component tree.
+
+User interface strings are stored separately from content, preparing the project for scalable multilingual support.

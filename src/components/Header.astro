@@ -1,18 +1,30 @@
 ---
-import Navigation from './Navigation.astro';
-import LanguageSwitcher from './LanguageSwitcher.astro';
-import ThemeSwitcher from './ThemeSwitcher.astro';
+import Navigation from "./Navigation.astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 
-const isHomepage = Astro.url.pathname === '/';
+import type { Language } from "../i18n";
+
+interface Props {
+	lang: Language;
+}
+
+const { lang } = Astro.props;
+
+
+const isHomepage =
+	Astro.url.pathname === `/${lang}` ||
+	Astro.url.pathname === `/${lang}/`;
 ---
+
 <header class="site-header">
 	<div class="site-header-content">
-		<a class="site-logo" href="/" aria-label="Monika Krysiak – homepage">
+		<a class="site-logo" href={`/${lang}/`} aria-label="Monika Krysiak – homepage">
 			Monika Krysiak
 		</a>
 
 		<div class="site-controls">
-			{isHomepage && <Navigation />}
+			{isHomepage && <Navigation lang={lang} />}
 
 			<LanguageSwitcher />
 			<ThemeSwitcher />

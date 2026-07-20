@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HomePage from "../../components/HomePage.astro";
+
+import type { Language } from "../../i18n";
+
+export function getStaticPaths() {
+	return [
+		{
+			params: { lang: "en" },
+			props: { lang: "en" },
+		},
+		{
+			params: { lang: "pl" },
+			props: { lang: "pl" },
+		},
+	];
+}
+
+interface Props {
+	lang: Language;
+}
+
+const { lang } = Astro.props;
+---
+
+<Layout lang={lang}>
+	<HomePage lang={lang} />
+</Layout>
