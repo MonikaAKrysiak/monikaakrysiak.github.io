@@ -79,8 +79,8 @@ html[data-theme="light"] .theme-icon-dark {
 	display: block;
 }
 
-.section {	
-	padding-block: var(--space-2xl);
+.section {
+	padding-block: var(--space-xl);
 	scroll-margin-top: var(--header-height);
 }
 
@@ -91,6 +91,10 @@ html[data-theme="light"] .theme-icon-dark {
 		--font-size-body-large: 1.25rem;
 		--font-size-button: 1.125rem;
 		--font-size-section-heading: 2.25rem;
+	}
+
+	.section {
+		padding-block: var(--space-2xl);
 	}
 }
 

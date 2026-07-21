@@ -61,18 +61,21 @@ const plHref = `/pl${pathWithoutLanguage}`;
 </nav>
 
 <script>
-	const sections = ["about", "work", "contact"];
-
 	function getCurrentSection() {
-		for (const id of sections) {
-			const section = document.getElementById(id);
+		const sections = document.querySelectorAll<HTMLElement>(
+			"[data-language-section]"
+		);
 
-			if (!section) continue;
+		const viewportMarker = window.innerHeight / 2;
 
+		for (const section of sections) {
 			const rect = section.getBoundingClientRect();
 
-			if (rect.top <= 120 && rect.bottom > 120) {
-				return id;
+			if (
+				rect.top <= viewportMarker &&
+				rect.bottom > viewportMarker
+			) {
+				return section.id;
 			}
 		}
 
@@ -80,16 +83,18 @@ const plHref = `/pl${pathWithoutLanguage}`;
 	}
 
 	document
-		.querySelectorAll("[data-language-link]")
+		.querySelectorAll<HTMLAnchorElement>("[data-language-link]")
 		.forEach((link) => {
-			link.addEventListener("click", (event) => {
+			link.addEventListener("click", () => {
 				const section = getCurrentSection();
 
 				if (!section) return;
 
-				event.preventDefault();
+				const href = link.getAttribute("href");
 
-				window.location.href = `${link.getAttribute("href")}#${section}`;
+				if (!href) return;
+
+				link.href = `${href}#${section}`;
 			});
 		});
 </script>
