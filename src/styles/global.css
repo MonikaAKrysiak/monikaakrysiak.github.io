@@ -97,6 +97,12 @@ html[data-theme="light"] .theme-icon-dark {
 	}
 }
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 html,
 body {
 	margin: 0;
