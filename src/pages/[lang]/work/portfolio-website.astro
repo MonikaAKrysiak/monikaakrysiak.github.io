@@ -5,12 +5,12 @@ import { getPortfolioWebsite } from '../../../data/case-studies/portfolio-websit
 
 
 import Layout from '../../../layouts/Layout.astro';
+
 import BackLink from '../../../components/BackLink.astro';
 import CaseStudyHeader from '../../../components/CaseStudyHeader.astro';
 import CaseStudySection from '../../../components/CaseStudySection.astro';
 import CaseStudyFigure from '../../../components/CaseStudyFigure.astro';
 
-import githubIcon from '../../../assets/icons/github.svg';
 import portfolioHomepage from '../../../assets/case-studies/portfolio-homepage.png';
 
 export const getStaticPaths = (() => {
@@ -21,15 +21,15 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 const { lang } = Astro.params;
-
-const portfolioWebsite = getPortfolioWebsite(lang as Language);
+const language = lang as Language;
+const portfolioWebsite = getPortfolioWebsite(language);
 ---
 
-<Layout>
+<Layout lang={language}>
 	<main>
 		<section class="case-study section">
 			<div class="container">
-				<BackLink />
+				<BackLink lang={language} />
 
 				<CaseStudyHeader
 					title={portfolioWebsite.header.title}
@@ -39,8 +39,8 @@ const portfolioWebsite = getPortfolioWebsite(lang as Language);
 				/>
 
 				<CaseStudySection
-					title={portfolioWebsite.overview.title}
 					id="overview"
+					title={securityKnowledgeBase.overview.title}
 				>
 					{portfolioWebsite.overview.paragraphs.map((paragraph) => (
 						<p class="case-study-text">

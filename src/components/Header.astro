@@ -13,6 +13,7 @@ const { lang } = Astro.props;
 
 
 const isHomepage =
+	Astro.url.pathname === "/" ||
 	Astro.url.pathname === `/${lang}` ||
 	Astro.url.pathname === `/${lang}/`;
 ---
@@ -26,7 +27,7 @@ const isHomepage =
 		<div class="site-controls">
 			{isHomepage && <Navigation lang={lang} />}
 
-			<LanguageSwitcher />
+			<LanguageSwitcher lang={lang} />
 			<ThemeSwitcher />
 		</div>
 	</div>

@@ -33,4 +33,7 @@ export const pl = {
 	selectedWork: {
 		readCaseStudy: "Czytaj case study",
 	},
+	backLink: {
+		toSelectedWork: "Powrót do wybranych projektów",
+	},
 };

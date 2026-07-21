@@ -1,0 +1,28 @@
+import githubIcon from "../../../assets/icons/github.svg";
+
+export const securityKnowledgeBase = {
+	header: {
+        title: "OWASP ASVS Knowledge Base",
+
+        summary:
+            "A practical knowledge base combining OWASP ASVS guidance, onboarding materials and security documentation to support QA engineers and development teams.",
+
+        focusAreas: [
+            "OWASP ASVS",
+            "Application Security",
+            "Knowledge Sharing",
+            "Documentation",
+            "QA Enablement",
+        ],
+    },
+    
+	overview: {
+        title: "Overview",
+
+        paragraphs: [
+            "Security standards such as OWASP ASVS provide valuable guidance, but they can be difficult to apply in everyday QA work. This project was created to bridge that gap by turning security requirements into practical resources that teams could use during testing, onboarding and daily development.",
+
+            "Over time, the knowledge base grew beyond ASVS guidance to include onboarding materials, internal documentation, quizzes and practical examples. The goal was not only to improve application security, but also to make security knowledge easier to understand, share and apply across the team.",
+        ],
+    },
+};

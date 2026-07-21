@@ -1,0 +1,50 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { Language } from "../../../i18n";
+import { getBeyondTesting } from "../../../data/case-studies/beyond-testing";
+
+import Layout from "../../../layouts/Layout.astro";
+import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
+import CaseStudySection from "../../../components/CaseStudySection.astro";
+import BackLink from "../../../components/BackLink.astro";
+
+export const getStaticPaths = (() => {
+	return [
+		{ params: { lang: "en" } },
+		{ params: { lang: "pl" } },
+	];
+}) satisfies GetStaticPaths;
+
+const { lang } = Astro.params;
+
+const language = lang as Language;
+
+const beyondTesting = getBeyondTesting(language);
+---
+
+<Layout lang={language}>
+	<main>
+		<section class="case-study section">
+			<div class="container">
+				<BackLink lang={language} />
+
+				<CaseStudyHeader
+					title={beyondTesting.header.title}
+					summary={beyondTesting.header.summary}
+					focusAreas={beyondTesting.header.focusAreas}
+				/>
+
+				<CaseStudySection
+					id="overview"
+					title={beyondTesting.overview.title}
+				>
+					{beyondTesting.overview.paragraphs.map((paragraph) => (
+						<p class="case-study-text">
+							{paragraph}
+						</p>
+					))}
+				</CaseStudySection>
+			</div>
+		</section>
+	</main>
+</Layout>

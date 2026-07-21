@@ -1,16 +1,23 @@
 ---
+import type { Language } from "../i18n";
+import { getTranslations } from "../i18n";
+
 interface Props {
+	lang: Language;
 	href?: string;
 	label?: string;
 }
 
 const {
-	href = "/#work",
-	label = "Back to selected work",
+	lang,
+	href = `/${lang}/#work`,
+	label,
 }: Props = Astro.props;
+
+const translations = getTranslations(lang);
 ---
 
 <a class="case-study-back-link" href={href}>
 	<span aria-hidden="true">←</span>
-	<span>{label}</span>
+	<span>{label ?? translations.backLink.toSelectedWork}</span>
 </a>

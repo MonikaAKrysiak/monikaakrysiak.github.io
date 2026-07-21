@@ -27,7 +27,7 @@ const work = getWork(lang);
 						title={workItem.title}
 						summary={workItem.summary}
 						focusAreas={workItem.focusAreas}
-						href={workItem.href}
+						href={`/${lang}${workItem.href}`}
 						linkLabel={t.selectedWork.readCaseStudy}
 						linkAriaLabel={`${t.selectedWork.readCaseStudy}: ${workItem.title}`}
 					/>

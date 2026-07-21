@@ -141,3 +141,7 @@ The project uses a structured localization approach.
 - Components remain presentation-only and receive localized content through typed data objects.
 
 This separation keeps presentation, content and translations independent while making future languages easy to add.
+
+## Page composition and routing.
+
+This architecture makes adding new languages and new case studies straightforward while keeping components reusable.

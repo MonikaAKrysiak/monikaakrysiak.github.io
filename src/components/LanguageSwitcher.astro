@@ -1,15 +1,32 @@
 ---
 import { Image } from "astro:assets";
+import type { Language } from "../i18n";
 
 import FlagEn from "../assets/icons/flag-en.svg";
 import FlagPl from "../assets/icons/flag-pl.svg";
+
+interface Props {
+	lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const pathWithoutLanguage = currentPath.replace(/^\/(en|pl)/, "");
+
+const enHref = `/en${pathWithoutLanguage}`;
+const plHref = `/pl${pathWithoutLanguage}`;
 ---
 
-<div class="language-switcher" aria-label="Language">
-	<button
-		class="language-option language-option-active"
-		type="button"
-		aria-pressed="true"
+<nav class="language-switcher" aria-label="Language">
+	<a
+		class:list={[
+			"language-option",
+			{ "language-option-active": lang === "en" },
+		]}
+		href={enHref}
+		aria-current={lang === "en" ? "page" : undefined}
+		data-language-link
 	>
 		<Image
 			src={FlagEn}
@@ -19,14 +36,18 @@ import FlagPl from "../assets/icons/flag-pl.svg";
 		/>
 
 		<span>EN</span>
-	</button>
+	</a>
 
 	<span class="language-divider" aria-hidden="true">|</span>
 
-	<button
-		class="language-option"
-		type="button"
-		aria-pressed="false"
+	<a
+		class:list={[
+			"language-option",
+			{ "language-option-active": lang === "pl" },
+		]}
+		href={plHref}
+		aria-current={lang === "pl" ? "page" : undefined}
+		data-language-link
 	>
 		<Image
 			src={FlagPl}
@@ -36,5 +57,39 @@ import FlagPl from "../assets/icons/flag-pl.svg";
 		/>
 
 		<span>PL</span>
-	</button>
-</div>
+	</a>
+</nav>
+
+<script>
+	const sections = ["about", "work", "contact"];
+
+	function getCurrentSection() {
+		for (const id of sections) {
+			const section = document.getElementById(id);
+
+			if (!section) continue;
+
+			const rect = section.getBoundingClientRect();
+
+			if (rect.top <= 120 && rect.bottom > 120) {
+				return id;
+			}
+		}
+
+		return "";
+	}
+
+	document
+		.querySelectorAll("[data-language-link]")
+		.forEach((link) => {
+			link.addEventListener("click", (event) => {
+				const section = getCurrentSection();
+
+				if (!section) return;
+
+				event.preventDefault();
+
+				window.location.href = `${link.getAttribute("href")}#${section}`;
+			});
+		});
+</script>

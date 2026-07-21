@@ -1,0 +1,50 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { Language } from "../../../i18n";
+import { getKnowledgeSharing } from "../../../data/case-studies/knowledge-sharing";
+
+import Layout from "../../../layouts/Layout.astro";
+import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
+import CaseStudySection from "../../../components/CaseStudySection.astro";
+import BackLink from "../../../components/BackLink.astro";
+
+export const getStaticPaths = (() => {
+    return [{ params: { lang: "en" } }, { params: { lang: "pl" } }];
+}) satisfies GetStaticPaths;
+
+const { lang } = Astro.params;
+
+const language = lang as Language;
+
+const knowledgeSharing = getKnowledgeSharing(language);
+---
+
+<Layout lang={language}>
+    <main>
+        <section class="case-study section">
+            <div class="container">
+                <BackLink lang={language} />
+
+                <CaseStudyHeader
+                    title={knowledgeSharing.header.title}
+                    summary={knowledgeSharing.header.summary}
+                    focusAreas={knowledgeSharing.header.focusAreas}
+                    action={knowledgeSharing.header.action}
+                />
+
+                <CaseStudySection
+                    id="overview"
+                    title={knowledgeSharing.overview.title}
+                >
+                    {
+                        knowledgeSharing.overview.paragraphs.map(
+                            (paragraph) => (
+                                <p class="case-study-text">{paragraph}</p>
+                            ),
+                        )
+                    }
+                </CaseStudySection>
+            </div>
+        </section>
+    </main>
+</Layout>

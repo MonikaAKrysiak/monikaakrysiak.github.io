@@ -36,20 +36,20 @@ const ActionIcon = action?.icon;
 	</ul>
 
 	{action && (
-	<a
-		class="case-study-source"
-		href={action.href}
-		target="_blank"
-		rel="noopener noreferrer"
-	>
-		{ActionIcon && (
-			<ActionIcon
-				class="case-study-source-icon"
-				aria-hidden="true"
-			/>
-		)}
+		<a
+			class="case-study-source"
+			href={action.href}
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			{ActionIcon && (
+				<ActionIcon
+					class="case-study-source-icon"
+					aria-hidden="true"
+				/>
+			)}
 
-		<span>{action.label}</span>
-	</a>
-)}
+			<span>{action.label}</span>
+		</a>
+	)}
 </header>
