@@ -4,13 +4,18 @@ interface Props {
 	summary: string;
 	focusAreas: string[];
 	href: string;
+
+	linkLabel: string;
+	linkAriaLabel: string;
 }
 
 const {
 	title,
 	summary,
 	focusAreas,
-	href
+	href,
+	linkLabel,
+	linkAriaLabel,
 }: Props = Astro.props;
 ---
 
@@ -31,9 +36,9 @@ const {
 		<a
 			class="work-card-link"
 			href={href}
-			aria-label={`Read case study: ${title}`}
+			aria-label={linkAriaLabel}
 		>
-			Read case study
+			{linkLabel}
 		</a>
 	</div>
 </article>

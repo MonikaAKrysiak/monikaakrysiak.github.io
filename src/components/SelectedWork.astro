@@ -2,14 +2,16 @@
 import WorkCard from "./WorkCard.astro";
 
 import { getTranslations, type Language } from "../i18n";
+import { getWork } from "../data/work";
 
 interface Props {
 	lang: Language;
 }
 
-const { lang } = Astro.props;
+const { lang }: Props = Astro.props;
 
 const t = getTranslations(lang);
+const work = getWork(lang);
 ---
 
 <section id="work" class="section">
@@ -19,59 +21,18 @@ const t = getTranslations(lang);
 		</h2>
 
 		<ul class="work-list">
-			<li>
-				<WorkCard
-					title="Bringing Security into Everyday QA"
-					summary="Integrating application security into everyday testing instead of treating it as a separate activity."
-					focusAreas={[
-						"Application Security",
-						"OWASP ASVS",
-						"Secure SDLC",
-					]}
-					href="/work/security-knowledge-base"
-				/>
-			</li>
-
-			<li>
-				<WorkCard
-					title="Beyond Testing"
-					summary="Helping teams build better products through analysis, product thinking and collaboration."
-					focusAreas={[
-						"Quality Engineering",
-						"Business Analysis",
-						"Product Thinking",
-					]}
-					href="/work/beyond-testing"
-				/>
-			</li>
-
-			<li>
-				<WorkCard
-					title="Teaching & Knowledge Sharing"
-					summary="Helping people grow by sharing practical knowledge through documentation, training and public speaking."
-					focusAreas={[
-						"Training",
-						"Documentation",
-						"Mentoring",
-					]}
-					href="/work/knowledge-sharing"
-				/>
-			</li>
-
-			<li>
-				<WorkCard
-					title="Building This Portfolio"
-					summary="Learning modern frontend engineering through deliberate, iterative development."
-					focusAreas={[
-						"Astro",
-						"HTML",
-						"CSS",
-						"Accessibility",
-						"Security",
-					]}
-					href="/work/portfolio-website"
-				/>
-			</li>
+			{work.map((workItem) => (
+				<li>
+					<WorkCard
+						title={workItem.title}
+						summary={workItem.summary}
+						focusAreas={workItem.focusAreas}
+						href={workItem.href}
+						linkLabel={t.selectedWork.readCaseStudy}
+						linkAriaLabel={`${t.selectedWork.readCaseStudy}: ${workItem.title}`}
+					/>
+				</li>
+			))}
 		</ul>
 	</div>
 </section>

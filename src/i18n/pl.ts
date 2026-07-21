@@ -30,4 +30,7 @@ export const pl = {
 		introFirstLine: "Masz pytanie, pomysł lub propozycję współpracy?",
 		introSecondLine: "Zapraszam do kontaktu.",
 	},
+	selectedWork: {
+		readCaseStudy: "Czytaj case study",
+	},
 };

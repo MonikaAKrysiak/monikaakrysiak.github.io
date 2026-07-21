@@ -16,6 +16,9 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
+
+console.log("lang:", lang);
+console.log("t:", t);
 ---
 <main>
 

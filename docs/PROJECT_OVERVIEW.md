@@ -132,10 +132,12 @@ Current practices include:
 - responsive layouts,
 - reusable accessible UI components.
 
-## Internationalisation
+## Internationalization
 
-The project now includes the first stage of its internationalisation architecture.
+The project uses a structured localization approach.
 
-Language selection is URL-based (/en, /pl) and propagated through the component tree.
+- User interface translations are stored in `src/i18n`.
+- Reusable content (for example work cards and case studies) is stored in `src/data`.
+- Components remain presentation-only and receive localized content through typed data objects.
 
-User interface strings are stored separately from content, preparing the project for scalable multilingual support.
+This separation keeps presentation, content and translations independent while making future languages easy to add.
