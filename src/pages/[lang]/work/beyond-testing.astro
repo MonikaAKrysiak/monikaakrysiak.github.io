@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import type { Language } from "../../../i18n";
 import { getBeyondTesting } from "../../../data/case-studies/beyond-testing";
+import { formatTypography } from "../../../utils/typography";
 
 import Layout from "../../../layouts/Layout.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
@@ -29,18 +30,18 @@ const beyondTesting = getBeyondTesting(language);
 				<BackLink lang={language} />
 
 				<CaseStudyHeader
-					title={beyondTesting.header.title}
-					summary={beyondTesting.header.summary}
+					title={formatTypography(beyondTesting.header.title, language)}
+					summary={formatTypography(beyondTesting.header.summary, language)}
 					focusAreas={beyondTesting.header.focusAreas}
 				/>
 
 				<CaseStudySection
 					id="overview"
-					title={beyondTesting.overview.title}
+					title={formatTypography(beyondTesting.overview.title, language)}
 				>
 					{beyondTesting.overview.paragraphs.map((paragraph) => (
 						<p class="case-study-text">
-							{paragraph}
+							{formatTypography(paragraph, language)}
 						</p>
 					))}
 				</CaseStudySection>

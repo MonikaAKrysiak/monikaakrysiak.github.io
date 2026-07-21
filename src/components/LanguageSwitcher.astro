@@ -61,40 +61,83 @@ const plHref = `/pl${pathWithoutLanguage}`;
 </nav>
 
 <script>
+	const focusStorageKey = "restore-language-switcher-focus";
+
 	function getCurrentSection() {
 		const sections = document.querySelectorAll<HTMLElement>(
 			"[data-language-section]"
 		);
 
-		const viewportMarker = window.innerHeight / 2;
+		const header = document.querySelector<HTMLElement>(".site-header");
+		const headerHeight = header?.getBoundingClientRect().height ?? 0;
+
+		let currentSection = "";
+		let smallestDistance = Number.POSITIVE_INFINITY;
 
 		for (const section of sections) {
 			const rect = section.getBoundingClientRect();
 
+			const distanceFromHeader = Math.abs(
+				rect.top - headerHeight
+			);
+
 			if (
-				rect.top <= viewportMarker &&
-				rect.bottom > viewportMarker
+				rect.bottom > headerHeight &&
+				distanceFromHeader < smallestDistance
 			) {
-				return section.id;
+				currentSection = section.id;
+				smallestDistance = distanceFromHeader;
 			}
 		}
 
-		return "";
+		return currentSection;
+	}
+
+	function restoreLanguageSwitcherFocus() {
+		const shouldRestoreFocus =
+			sessionStorage.getItem(focusStorageKey) === "true";
+
+		if (!shouldRestoreFocus) return;
+
+		sessionStorage.removeItem(focusStorageKey);
+
+		const activeLanguageLink =
+			document.querySelector<HTMLAnchorElement>(
+				"[data-language-link][aria-current='page']"
+			);
+
+		requestAnimationFrame(() => {
+			activeLanguageLink?.focus({ preventScroll: true });
+		});
 	}
 
 	document
 		.querySelectorAll<HTMLAnchorElement>("[data-language-link]")
 		.forEach((link) => {
-			link.addEventListener("click", () => {
+			link.addEventListener("click", (event) => {
+				if (
+					event.defaultPrevented ||
+					event.button !== 0 ||
+					event.metaKey ||
+					event.ctrlKey ||
+					event.shiftKey ||
+					event.altKey
+				) {
+					return;
+				}
+
+				sessionStorage.setItem(focusStorageKey, "true");
+
 				const section = getCurrentSection();
 
 				if (!section) return;
 
-				const href = link.getAttribute("href");
+				const url = new URL(link.href);
 
-				if (!href) return;
-
-				link.href = `${href}#${section}`;
+				url.hash = section;
+				link.href = url.toString();
 			});
 		});
+
+	restoreLanguageSwitcherFocus();
 </script>

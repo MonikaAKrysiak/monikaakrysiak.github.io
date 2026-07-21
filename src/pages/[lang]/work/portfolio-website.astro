@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import type { Language } from '../../../i18n';
 import { getPortfolioWebsite } from '../../../data/case-studies/portfolio-website';
+import { formatTypography } from "../../../utils/typography";
 
 
 import Layout from '../../../layouts/Layout.astro';
@@ -32,19 +33,19 @@ const portfolioWebsite = getPortfolioWebsite(language);
 				<BackLink lang={language} />
 
 				<CaseStudyHeader
-					title={portfolioWebsite.header.title}
-					summary={portfolioWebsite.header.summary}
+					title={formatTypography(portfolioWebsite.header.title, language)}
+					summary={formatTypography(portfolioWebsite.header.summary, language)}
 					focusAreas={portfolioWebsite.header.focusAreas}
 					action={portfolioWebsite.header.action}
 				/>
 
 				<CaseStudySection
 					id="overview"
-					title={portfolioWebsite.overview.title}
+					title={formatTypography(portfolioWebsite.overview.title, language)}
 				>
 					{portfolioWebsite.overview.paragraphs.map((paragraph) => (
 						<p class="case-study-text">
-							{paragraph}
+							{formatTypography(paragraph, language)}
 						</p>
 					))}
 				</CaseStudySection>

@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import type { Language } from "../../../i18n";
 import { getKnowledgeSharing } from "../../../data/case-studies/knowledge-sharing";
+import { formatTypography } from "../../../utils/typography";
 
 import Layout from "../../../layouts/Layout.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
@@ -26,23 +27,21 @@ const knowledgeSharing = getKnowledgeSharing(language);
                 <BackLink lang={language} />
 
                 <CaseStudyHeader
-                    title={knowledgeSharing.header.title}
-                    summary={knowledgeSharing.header.summary}
+                    title={formatTypography(knowledgeSharing.header.title, language)}
+                    summary={formatTypography(knowledgeSharing.header.summary, language)}
                     focusAreas={knowledgeSharing.header.focusAreas}
                     action={knowledgeSharing.header.action}
                 />
 
                 <CaseStudySection
                     id="overview"
-                    title={knowledgeSharing.overview.title}
+                    title={formatTypography(knowledgeSharing.overview.title, language)}
                 >
-                    {
-                        knowledgeSharing.overview.paragraphs.map(
-                            (paragraph) => (
-                                <p class="case-study-text">{paragraph}</p>
-                            ),
-                        )
-                    }
+                    {knowledgeSharing.overview.paragraphs.map((paragraph) => (
+                        <p class="case-study-text">
+                            {formatTypography(paragraph, language)}
+                        </p>
+                    ))}
                 </CaseStudySection>
             </div>
         </section>

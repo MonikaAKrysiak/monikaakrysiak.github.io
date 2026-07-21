@@ -15,7 +15,7 @@ export const work: WorkItem[] = [
 	{
 		title: "Więcej niż testowanie",
 		summary:
-			"Pomaganie zespołom w tworzeniu lepszych produktów poprzez analizę, myślenie produktowe i współpracę.",
+			"Pomaganie zespołom w tworzeniu lepszych produktów poprzez analizę, myślenie produktowe oraz współpracę.",
 		focusAreas: [
 			"Inżynieria jakości",
 			"Analiza biznesowa",
@@ -24,9 +24,9 @@ export const work: WorkItem[] = [
 		href: "/work/beyond-testing",
 	},
 	{
-		title: "Dzielenie się wiedzą i nauczanie",
+		title: "Dzielenie się wiedzą\ni nauczanie",
 		summary:
-			"Pomaganie innym w rozwoju poprzez praktyczną wiedzę przekazywaną w dokumentacji, szkoleniach i wystąpieniach publicznych.",
+			"Pomaganie innym w rozwoju poprzez dokumentację, szkolenia oraz wystąpienia publiczne.",
 		focusAreas: [
 			"Szkolenia",
 			"Dokumentacja",

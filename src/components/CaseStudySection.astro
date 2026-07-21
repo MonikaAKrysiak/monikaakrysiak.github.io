@@ -4,24 +4,23 @@ interface Props {
 	title: string;
 }
 
-const {
-	id,
-	title,
-} = Astro.props;
-
-const headingId = `${id}-heading`;
+const { id, title } = Astro.props;
 ---
 
 <section
+	id={id}
 	class="case-study-section"
-	aria-labelledby={headingId}
+	aria-labelledby={`${id}-heading`}
+	data-language-section
 >
 	<h2
-		id={headingId}
-		class="section-heading"
+		id={`${id}-heading`}
+		class="case-study-section-title"
 	>
 		{title}
 	</h2>
 
-	<slot />
+	<div class="case-study-section-content">
+		<slot />
+	</div>
 </section>

@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import type { Language } from "../../../i18n";
 import { getSecurityKnowledgeBase } from "../../../data/case-studies/security-knowledge-base";
+import { formatTypography } from "../../../utils/typography";
 
 import Layout from "../../../layouts/Layout.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
@@ -29,18 +30,18 @@ const securityKnowledgeBase = getSecurityKnowledgeBase(language);
 				<BackLink lang={language} />
 
 				<CaseStudyHeader
-					title={securityKnowledgeBase.header.title}
-					summary={securityKnowledgeBase.header.summary}
+					title={formatTypography(securityKnowledgeBase.header.title, language)}
+					summary={formatTypography(securityKnowledgeBase.header.summary, language)}
 					focusAreas={securityKnowledgeBase.header.focusAreas}
 				/>
 
 				<CaseStudySection
 					id="overview"
-					title={securityKnowledgeBase.overview.title}
+					title={formatTypography(securityKnowledgeBase.overview.title, language)}
 				>
 					{securityKnowledgeBase.overview.paragraphs.map((paragraph) => (
 						<p class="case-study-text">
-							{paragraph}
+							{formatTypography(paragraph, language)}
 						</p>
 					))}
 				</CaseStudySection>

@@ -15,7 +15,6 @@
 	--color-border: #3A423D;
 	--color-primary-hover: #92B18D;
 
-
 	/* Typography */
 	--font-family-primary: "Manrope", system-ui, sans-serif;
 
@@ -56,9 +55,9 @@ html[data-theme="light"] {
 	--color-secondary: #8A6F2E;
 
 	--color-border: #D8D0C2;
-
 	--color-primary-hover: #4F6E4B;
 }
+
 .theme-icon-dark {
 	display: none;
 }
@@ -182,18 +181,17 @@ body {
 	}
 
 	.hero-portrait {
-	width: min(13rem, 75vw);
-	height: auto;
-	aspect-ratio: 1;
-	justify-self: center;
-}
+		width: min(13rem, 75vw);
+		height: auto;
+		aspect-ratio: 1;
+		justify-self: center;
+	}
 
 	.hero-actions {
 		display: flex;
 		flex-wrap: wrap;
 	}
 }
-
 
 /* Header */
 .site-header {
@@ -219,7 +217,7 @@ body {
 	text-decoration: none;
 }
 
- .site-controls {
+.site-controls {
 	display: flex;
 	align-items: center;
 	gap: var(--space-xl);
@@ -281,7 +279,6 @@ body {
 	border-radius: 0.5rem;
 
 	background: none;
-
 	color: var(--color-text-muted);
 
 	cursor: pointer;
@@ -322,11 +319,11 @@ body {
 	border: none;
 
 	background: none;
-
 	color: var(--color-text-muted);
 
 	font: inherit;
 	font-weight: 500;
+	text-decoration: none;
 
 	cursor: pointer;
 
@@ -343,6 +340,11 @@ body {
 	font-weight: 600;
 }
 
+.language-option-active:hover {
+	background-color: transparent;
+	color: var(--color-text);
+}
+
 .language-divider {
 	color: var(--color-border);
 }
@@ -352,7 +354,7 @@ body {
 	height: 0.9rem;
 }
 
-.language-option:focus-visible {
+.language-option:focus {
 	outline: 2px solid var(--color-secondary);
 	outline-offset: 0.25rem;
 	border-radius: 0.25rem;
@@ -599,4 +601,9 @@ body {
 	font-size: 0.875rem;
 	line-height: var(--line-height-body);
 	text-align: center;
+}
+
+/* Work */
+.work-card-title {
+	white-space: pre-line;
 }

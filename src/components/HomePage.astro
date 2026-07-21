@@ -16,118 +16,131 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
-
-console.log("lang:", lang);
-console.log("t:", t);
 ---
+
 <main>
+	<section class="hero section">
+		<div class="hero-content container">
+			<div class="hero-copy">
+				<h1 class="hero-title">Monika Krysiak</h1>
 
-    <section class="hero section">
-      <div class="hero-content container">
-        <div class="hero-copy">
-          <h1 class="hero-title">Monika Krysiak</h1>
+				<p class="hero-role">
+					{t.hero.role}
+				</p>
 
-          <p class="hero-role">
-                {t.hero.role}
-            </p>
+				<p class="hero-statement">
+					{t.hero.statementFirstLine}
+					<br />
+					{t.hero.statementSecondLine}
+				</p>
+			</div>
 
-            <p class="hero-statement">
-                {t.hero.statementFirstLine}
-                <br />
-                {t.hero.statementSecondLine}
-            </p>
-        </div>
+			<Image
+				src={portrait}
+				alt="Portrait of Monika Krysiak"
+				class="hero-portrait"
+			/>
 
-        <Image
-          src={portrait}
-          alt="Portrait of Monika Krysiak"
-          class="hero-portrait"
-        />
+			<div class="hero-actions">
+				<a
+					class="button button-primary"
+					href="/cv/monika-krysiak-cv.pdf"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					{t.hero.viewCv}
+				</a>
 
-        <div class="hero-actions">
-          <a
-            class="button button-primary"
-            href="/cv/monika-krysiak-cv.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t.hero.viewCv}
-          </a>
+				<a class="button button-secondary" href="#contact">
+					{t.hero.contact}
+				</a>
+			</div>
+		</div>
+	</section>
 
-          <a class="button button-secondary" href="#contact">
-            {t.hero.contact}
-        </a>
-        </div>
-      </div>
-    </section>
+	<section
+		id="about"
+		class="about section"
+		aria-labelledby="about-heading"
+		data-language-section
+	>
+		<div class="container">
+			<div class="content-width">
+				<h2 id="about-heading" class="section-heading">
+					{t.about.title}
+				</h2>
 
-    <section id="about" class="about section" aria-labelledby="about-heading">
-      <div class="container">
-        <div class="content-width">
-          <h2 id="about-heading" class="section-heading">
-                {t.about.title}
-            </h2>
+				{t.about.paragraphs.map((paragraph) => (
+					<p class="section-text">
+						{paragraph}
+					</p>
+				))}
+			</div>
+		</div>
+	</section>
 
-          {
-	t.about.paragraphs.map((paragraph) => (
-		<p class="section-text">
-			{paragraph}
-		</p>
-	))
-}
-         </div>
-       </div>
-    </section>
+	<SelectedWork lang={lang} />
 
-        <SelectedWork lang={lang} />
+	<section
+		id="contact"
+		class="contact section"
+		aria-labelledby="contact-heading"
+		data-language-section
+	>
+		<div class="container">
+			<div class="content-width">
+				<h2 id="contact-heading" class="section-heading">
+					{t.contact.title}
+				</h2>
 
-    <section id="contact" class="contact section" aria-labelledby="contact-heading">
-      <div class="container">
-        <div class="content-width">
-          <h2 id="contact-heading" class="section-heading">
-            {t.contact.title}
-          </h2>
+				<p class="section-text">
+					{t.contact.introFirstLine}
+					<br />
+					{t.contact.introSecondLine}
+				</p>
 
-          <p class="section-text">
-            {t.contact.introFirstLine}
-            <br />
-            {t.contact.introSecondLine}
-          </p>
+				<address class="contact-details">
+					<ul class="contact-list">
+						<li>
+							<a href="mailto:monika.a.krysiak@gmail.com">
+								<MailIcon
+									class="contact-icon"
+									aria-hidden="true"
+								/>
+								<span>monika.a.krysiak@gmail.com</span>
+							</a>
+						</li>
 
-          <address class="contact-details">
-            <ul class="contact-list">
-              <li>
-                <a href="mailto:monika.a.krysiak@gmail.com">
-                  <MailIcon class="contact-icon" aria-hidden="true" />
-                  <span>monika.a.krysiak@gmail.com</span>
-                </a>
-              </li>
+						<li>
+							<a
+								href="https://www.linkedin.com/in/monika-krysiak"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<LinkedInIcon
+									class="contact-icon"
+									aria-hidden="true"
+								/>
+								LinkedIn
+							</a>
+						</li>
 
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/monika-krysiak"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <LinkedInIcon class="contact-icon" aria-hidden="true" />
-                  LinkedIn
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://github.com/MonikaAKrysiak"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <GitHubIcon class="contact-icon" aria-hidden="true" />
-                  GitHub
-                </a>
-              </li>
-            </ul>
-          </address>
-        </div>
-      </div>
-    </section>
-
-  </main>
+						<li>
+							<a
+								href="https://github.com/MonikaAKrysiak"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<GitHubIcon
+									class="contact-icon"
+									aria-hidden="true"
+								/>
+								GitHub
+							</a>
+						</li>
+					</ul>
+				</address>
+			</div>
+		</div>
+	</section>
+</main>

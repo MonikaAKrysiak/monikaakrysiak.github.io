@@ -16,13 +16,15 @@ export const pl = {
 		title: "O mnie",
 
 		paragraphs: [
-			"Od ponad 10 lat pracuję w Quality Assurance. Z czasem bezpieczeństwo aplikacji stało się naturalną częścią mojej pracy. Dla mnie bezpieczeństwo nie jest czymś, co dodaje się na końcu. To element tworzenia dobrego oprogramowania od samego początku.",
+			"Od ponad 10 lat pracuję w\u00A0Quality Assurance.",
 
-			"Lubię rozumieć, jak działają aplikacje, znajdować problemy i zadawać pytania, które pomagają zespołom rozwiązać je, zanim trafią do użytkowników. Lubię współpracować z programistami, analizować zgłoszenia i tworzyć dokumentację, która ułatwia codzienną pracę.",
+			"Z\u00A0czasem bezpieczeństwo aplikacji stało się naturalną częścią mojej pracy. Dla mnie bezpieczeństwo jest częścią dobrego oprogramowania od samego początku, a nie czymś dodawanym na końcu.",
 
-			"Wierzę, że dobre oprogramowanie powinno być funkcjonalne, niezawodne i bezpieczne. Tak właśnie staram się podchodzić do każdego projektu.",
+			"Lubię rozumieć, jak działają aplikacje, znajdować problemy i\u00A0zadawać pytania, które pomagają zespołom rozwiązać je, zanim trafią do\u00A0użytkowników. Lubię współpracować z\u00A0programistami, analizować zgłoszenia i\u00A0tworzyć dokumentację, która ułatwia codzienną pracę.",
 
-			"Po pracy lubię odkrywać nowe miejsca — na rowerze, w kajaku lub podczas pieszych wędrówek. Sprawiają mi też przyjemność gry planszowe, projekty DIY oraz spędzanie czasu z rodziną.",
+			"Wierzę, że dobre oprogramowanie powinno być funkcjonalne, niezawodne i\u00A0bezpieczne. Tak właśnie staram się podchodzić do\u00A0każdego projektu.",
+
+			"Po pracy lubię odkrywać nowe miejsca - podczas pieszych wędrówek, na\u00A0rowerze lub w\u00A0kajaku. Sprawiają mi też przyjemność gry planszowe, projekty DIY oraz spędzanie czasu z\u00A0rodziną.",
 		],
 	},
 	contact: {
