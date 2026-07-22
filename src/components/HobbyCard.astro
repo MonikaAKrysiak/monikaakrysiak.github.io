@@ -1,0 +1,138 @@
+---
+import type { AstroComponentFactory } from "astro/runtime/server";
+
+interface Props {
+	title: string;
+	summary: string;
+	href: string;
+	linkLabel: string;
+	linkAriaLabel: string;
+	icon?: AstroComponentFactory;
+	accent: string;
+}
+
+const {
+        title,
+        summary,
+        href,
+        linkLabel,
+        linkAriaLabel,
+        icon,
+        accent,
+    }: Props = Astro.props;
+
+const Icon = icon;
+---
+
+<article
+        class="hobby-card"
+        style={`--accent-color: ${accent}`}
+    >
+	<header class="hobby-card-header">
+        {Icon && <Icon class="hobby-card-icon" />}
+
+        <h3 class="hobby-card-title">
+            {title}
+        </h3>
+    </header>
+
+	<p class="hobby-card-summary">
+		{summary}
+	</p>
+
+	<a
+		class="hobby-card-link"
+		href={href}
+		aria-label={linkAriaLabel}
+	>
+		{linkLabel}
+	</a>
+</article>
+
+<style>
+	.hobby-card {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		padding: var(--space-lg);
+
+        border: none;
+        border-left: 6px solid var(--accent-color);
+        border-radius: 0.75rem;
+
+        background: var(--color-surface);
+        box-shadow: 0 0 0 1px var(--color-border);
+
+		transition:
+            background-color 0.2s ease,
+            box-shadow 0.2s ease,
+            transform 0.2s ease;
+	}
+
+	.hobby-card:hover {
+        background-color: var(--color-surface-hover);
+        box-shadow: 0 0 0 1px var(--accent-color);
+        transform: translateY(-0.25rem);
+    }
+
+	.hobby-card:focus-within {
+		border-color: var(--color-secondary);
+	}
+
+	.hobby-card-title,
+	.hobby-card-summary {
+		margin: 0;
+	}
+
+	.hobby-card-title {
+		font-size: var(--font-size-heading);
+		line-height: 1.2;
+	}
+
+	.hobby-card-summary {
+		margin-bottom: auto;
+		line-height: var(--line-height-body);
+	}
+
+	.hobby-card-link {
+		align-self: flex-start;
+		margin-top: var(--space-md);
+
+		color: var(--color-secondary);
+		font-weight: 500;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.25rem;
+	}
+
+	.hobby-card-link:hover {
+		color: var(--color-primary-hover);
+	}
+
+	.hobby-card-link:focus-visible {
+		outline: 2px solid var(--color-secondary);
+		outline-offset: 0.25rem;
+		border-radius: 0.25rem;
+	}
+
+    .hobby-card-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+
+        margin-bottom: var(--space-sm);
+    }
+
+    .hobby-card-icon {
+        color: var(--accent-color);
+        flex-shrink: 0;
+
+        transition:
+            color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .hobby-card:hover .hobby-card-icon {
+        transform: scale(1.08);
+    }
+</style>

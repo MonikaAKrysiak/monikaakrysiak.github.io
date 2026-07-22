@@ -2,6 +2,7 @@ export const pl = {
 	navigation: {
 		about: "O mnie",
 		work: "Wybrane projekty",
+		hobbies: "Zainteresowania",
 		contact: "Kontakt",
 	},
 
@@ -43,5 +44,8 @@ export const pl = {
 		"Tworzę rozwiązania, które\u00A0są\u00A0funkcjonalne, niezawodne\u00A0i\u00A0bezpieczne.",
 			builtWith: "Zbudowane przy użyciu:",
 		designedWith: "Zaprojektowane z myślą o:",
+	},
+	hobbies: {
+		readMore: "Czytaj więcej",
 	},
 };

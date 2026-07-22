@@ -4,6 +4,7 @@
 	/* Colors — dark theme */
 	--color-background: #1E2320;
 	--color-surface: #2A302C;
+	--color-surface-alt: #2D342F;
 	--color-surface-hover: #343B37;
 
 	--color-text: #F3F3F1;
@@ -11,6 +12,10 @@
 
 	--color-primary: #7F9D7A;
 	--color-secondary: #D6C38A;
+	--color-accent-travel: var(--color-primary);
+	--color-accent-diy: #C8AF69;
+	--color-accent-games: #9A8FC8;
+	--color-accent-photography: #7FA6B8;
 
 	--color-border: #3A423D;
 	--color-primary-hover: #92B18D;
@@ -53,6 +58,10 @@ html[data-theme="light"] {
 
 	--color-primary: #5F7F5A;
 	--color-secondary: #8A6F2E;
+	--color-accent-travel: var(--color-primary);
+	--color-accent-diy: #9A762F;
+	--color-accent-games: #8D7CD3;
+	--color-accent-photography: #5D96BE;
 
 	--color-border: #D8D0C2;
 	--color-primary-hover: #4F6E4B;

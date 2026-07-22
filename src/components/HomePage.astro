@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 
 import SelectedWork from "./SelectedWork.astro";
 import Contact from "./Contact.astro";
+import Hobbies from "./Hobbies.astro";
 
 import portrait from "../assets/monika-krysiak-portrait.png";
 
@@ -78,5 +79,8 @@ const t = getTranslations(lang);
 	</section>
 
 	<SelectedWork lang={lang} />
+
+	<Hobbies lang={lang} />
+
 	<Contact lang={lang} />
 </main>

@@ -2,6 +2,7 @@ export const en = {
 	navigation: {
 		about: "About",
 		work: "Selected Work",
+		hobbies: "Hobbies",
 		contact: "Contact",
 	},
 
@@ -44,5 +45,8 @@ export const en = {
 		statement: "Let’s build software that is functional, reliable and secure.",
 		builtWith: "Built with:",
 		designedWith: "Designed with:",
+	},
+	hobbies: {
+		readMore: "Read more",
 	},
 };
