@@ -199,7 +199,7 @@ body {
 	}
 }
 
-/* Header */
+/* Header and navigation */
 .site-header {
 	position: sticky;
 	top: 0;
@@ -216,17 +216,87 @@ body {
 	gap: var(--space-xl);
 }
 
+.site-header-top {
+	display: contents;
+}
+
 .site-logo {
+	flex-shrink: 0;
+
 	color: var(--color-text);
 	font-size: var(--font-size-heading);
 	font-weight: 700;
 	text-decoration: none;
+	white-space: nowrap;
 }
 
 .site-controls {
 	display: flex;
 	align-items: center;
 	gap: var(--space-xl);
+	margin-left: auto;
+}
+
+.navigation-toggle {
+	display: none;
+
+	width: 2.25rem;
+	height: 2.25rem;
+
+	padding: 0;
+	border: none;
+	border-radius: 0.5rem;
+
+	background: none;
+	color: var(--color-text-muted);
+
+	cursor: pointer;
+
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+}
+
+.navigation-toggle:hover {
+	color: var(--color-primary);
+}
+
+.navigation-toggle:focus-visible {
+	outline: 2px solid var(--color-secondary);
+	outline-offset: 0.25rem;
+}
+
+.navigation-toggle-icon {
+	width: 1.5rem;
+	height: 1.5rem;
+	flex-shrink: 0;
+}
+
+.navigation-toggle-icon-close {
+	display: none;
+}
+
+.site-header.navigation-open .navigation-toggle-icon-menu {
+	display: none;
+}
+
+.site-header.navigation-open .navigation-toggle-icon-close {
+	display: initial;
+}
+
+.site-header.navigation-open .line-top {
+	transform: translateY(6px) rotate(45deg);
+}
+
+.site-header.navigation-open .line-middle {
+	opacity: 0;
+}
+
+.site-header.navigation-open .line-bottom {
+	transform: translateY(-6px) rotate(-45deg);
+}
+
+.site-navigation {
 	margin-left: auto;
 }
 
@@ -257,17 +327,92 @@ body {
 	border-radius: 0.25rem;
 }
 
+@media (min-width: 768px) {
+	.site-header-content {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: var(--space-xl);
+	}
+
+	.site-logo {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.site-navigation {
+		grid-column: 2;
+		grid-row: 1;
+		justify-self: end;
+		margin-left: 0;
+	}
+
+	.site-controls {
+		grid-column: 3;
+		grid-row: 1;
+		margin-left: 0;
+	}
+}
+
+@media (max-width: 767px) {
+	.site-header {
+		position: sticky;
+	}
+
+	.site-header-content {
+		position: relative;
+	}
+
+	.site-header-top {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		gap: var(--space-md);
+	}
+
+	.site-controls {
+		gap: var(--space-md);
+		margin-left: auto;
+	}
+
+	.navigation-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.site-navigation {
+		display: none;
+		position: absolute;
+		top: calc(100% + var(--space-lg));
+		left: calc(-1 * var(--space-xl));
+		right: calc(-1 * var(--space-xl));
+
+		margin-left: 0;
+		padding: var(--space-md) var(--space-xl);
+		border-bottom: 1px solid var(--color-border);
+		background-color: var(--color-background);
+	}
+
+	.site-header.navigation-open .site-navigation {
+		display: block;
+	}
+
+	.site-navigation-list {
+		flex-direction: column;
+		gap: var(--space-md);
+	}
+}
+
 @media (max-width: 480px) {
 	.site-header {
 		padding-inline: var(--space-md);
 	}
 
-	.site-header-content {
-		gap: var(--space-md);
-	}
-
-	.site-navigation-list {
-		gap: var(--space-md);
+	.site-navigation {
+		left: calc(-1 * var(--space-md));
+		right: calc(-1 * var(--space-md));
+		padding-inline: var(--space-md);
 	}
 }
 
@@ -612,4 +757,80 @@ body {
 /* Work */
 .work-card-title {
 	white-space: pre-line;
+}
+
+/* Footer */
+.site-footer {
+	margin-top: var(--space-xl);
+	padding-block: var(--space-xl);
+	border-top: 1px solid var(--color-border);
+}
+
+.footer-statement {
+	margin: 0 0 var(--space-lg);
+	color: var(--color-text);
+}
+
+.site-footer dl {
+	display: grid;
+	gap: var(--space-sm);
+
+	margin: 0;
+}
+
+.site-footer dl > div {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: var(--space-xs);
+}
+
+.site-footer dt,
+.site-footer dd {
+	margin: 0;
+}
+
+.site-footer dt {
+	color: var(--color-text-muted);
+	font-weight: 600;
+}
+
+.site-footer dd {
+	color: var(--color-primary);
+}
+
+.contact-details-footer {
+	margin-top: var(--space-xl);
+}
+
+.contact-details-footer .contact-list {
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: var(--space-lg);
+}
+
+.contact-details-footer .contact-list a {
+	font-size: 0.875rem;
+}
+
+.contact-details-footer .contact-icon {
+	width: 1rem;
+	height: 1rem;
+}
+
+.footer-copyright {
+	margin-top: var(--space-lg);
+
+	font-size: 0.875rem;
+	color: var(--color-text-muted);
+}
+
+.footer-name {
+	margin-left: 0.4rem;
+}
+
+@media (max-width: 767px) {
+	.site-footer dl > div {
+		display: block;
+	}
 }

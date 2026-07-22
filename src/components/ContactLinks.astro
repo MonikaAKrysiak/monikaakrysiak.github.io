@@ -1,0 +1,58 @@
+---
+import GitHubIcon from "../assets/icons/github.svg";
+import LinkedInIcon from "../assets/icons/linkedin.svg";
+import MailIcon from "../assets/icons/mail.svg";
+
+interface Props {
+	variant?: "default" | "footer";
+}
+
+const { variant = "default" } = Astro.props;
+---
+
+<address
+	class:list={[
+		"contact-details",
+		{ "contact-details-footer": variant === "footer" },
+	]}
+>
+	<ul class="contact-list">
+		<li>
+			<a href="mailto:monika.a.krysiak@gmail.com">
+				<MailIcon
+					class="contact-icon"
+					aria-hidden="true"
+				/>
+				<span>monika.a.krysiak@gmail.com</span>
+			</a>
+		</li>
+
+		<li>
+			<a
+				href="https://www.linkedin.com/in/monika-krysiak"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<LinkedInIcon
+					class="contact-icon"
+					aria-hidden="true"
+				/>
+				<span>LinkedIn</span>
+			</a>
+		</li>
+
+		<li>
+			<a
+				href="https://github.com/MonikaAKrysiak"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<GitHubIcon
+					class="contact-icon"
+					aria-hidden="true"
+				/>
+				<span>GitHub</span>
+			</a>
+		</li>
+	</ul>
+</address>

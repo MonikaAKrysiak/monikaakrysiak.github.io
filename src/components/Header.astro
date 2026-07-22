@@ -3,6 +3,9 @@ import Navigation from "./Navigation.astro";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 
+import ToggleMenuIcon from "../assets/icons/toggle-menu.svg";
+import ToggleCloseIcon from "../assets/icons/toggle-close.svg";
+
 import type { Language } from "../i18n";
 
 interface Props {
@@ -10,7 +13,6 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-
 
 const isHomepage =
 	Astro.url.pathname === "/" ||
@@ -20,15 +22,172 @@ const isHomepage =
 
 <header class="site-header">
 	<div class="site-header-content">
-		<a class="site-logo" href={`/${lang}/`} aria-label="Monika Krysiak – homepage">
-			Monika Krysiak
-		</a>
+		<div class="site-header-top">
+			<a
+				class="site-logo"
+				href={`/${lang}/`}
+				aria-label="Monika Krysiak – homepage"
+			>
+				Monika Krysiak
+			</a>
 
-		<div class="site-controls">
-			{isHomepage && <Navigation lang={lang} />}
+			<div class="site-controls">
+				<LanguageSwitcher lang={lang} />
+				<ThemeSwitcher />
 
-			<LanguageSwitcher lang={lang} />
-			<ThemeSwitcher />
+				{
+					isHomepage && (
+						<button
+							class="navigation-toggle"
+							type="button"
+							aria-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
+							aria-expanded="false"
+							aria-controls="primary-navigation"
+							data-navigation-toggle
+							data-open-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
+							data-close-label={lang === "pl" ? "Zamknij menu" : "Close menu"}
+						>
+							<ToggleMenuIcon
+								class="navigation-toggle-icon navigation-toggle-icon-menu"
+								aria-hidden="true"
+							/>
+
+							<ToggleCloseIcon
+								class="navigation-toggle-icon navigation-toggle-icon-close"
+								aria-hidden="true"
+							/>
+						</button>
+					)
+				}
+			</div>
 		</div>
+
+		{
+			isHomepage && (
+				<Navigation
+					lang={lang}
+					id="primary-navigation"
+				/>
+			)
+		}
 	</div>
 </header>
+
+<script>
+	function updateNavigationToggle(
+		navigationToggle: HTMLButtonElement,
+		isOpen: boolean,
+	) {
+		navigationToggle.setAttribute(
+			"aria-expanded",
+			String(isOpen),
+		);
+
+		navigationToggle.setAttribute(
+			"aria-label",
+			isOpen
+				? navigationToggle.dataset.closeLabel ?? "Close menu"
+				: navigationToggle.dataset.openLabel ?? "Open menu",
+		);
+	}
+
+	const navigationToggle = document.querySelector(
+		"[data-navigation-toggle]",
+	);
+
+	if (navigationToggle instanceof HTMLButtonElement) {
+		navigationToggle.addEventListener("click", () => {
+			const header = navigationToggle.closest(".site-header");
+
+			if (!(header instanceof HTMLElement)) {
+				return;
+			}
+
+			const isOpen = header.classList.toggle("navigation-open");
+
+			updateNavigationToggle(navigationToggle, isOpen);
+		});
+	}
+
+	const navigationLinks = document.querySelectorAll(
+		"#primary-navigation a",
+	);
+
+	navigationLinks.forEach((navigationLink) => {
+		navigationLink.addEventListener("click", () => {
+			const header = navigationLink.closest(".site-header");
+			const navigationToggle = header?.querySelector(
+				"[data-navigation-toggle]",
+			);
+
+			if (
+				!(header instanceof HTMLElement) ||
+				!(navigationToggle instanceof HTMLButtonElement)
+			) {
+				return;
+			}
+
+			header.classList.remove("navigation-open");
+
+			updateNavigationToggle(navigationToggle, false);
+		});
+	});
+	document.addEventListener("keydown", (event) => {
+		if (event.key !== "Escape") {
+			return;
+		}
+
+		const header = document.querySelector(".site-header");
+		const navigationToggle = document.querySelector(
+			"[data-navigation-toggle]",
+		);
+
+		if (
+			!(header instanceof HTMLElement) ||
+			!(navigationToggle instanceof HTMLButtonElement)
+		) {
+			return;
+		}
+
+		if (!header.classList.contains("navigation-open")) {
+			return;
+		}
+
+		header.classList.remove("navigation-open");
+
+		updateNavigationToggle(navigationToggle, false);
+
+		navigationToggle.focus();
+	});
+	document.addEventListener("click", (event) => {
+		const target = event.target;
+
+		if (!(target instanceof Node)) {
+			return;
+		}
+
+		const header = document.querySelector(".site-header");
+		const navigationToggle = document.querySelector(
+			"[data-navigation-toggle]",
+		);
+
+		if (
+			!(header instanceof HTMLElement) ||
+			!(navigationToggle instanceof HTMLButtonElement)
+		) {
+			return;
+		}
+
+		if (!header.classList.contains("navigation-open")) {
+			return;
+		}
+
+		if (header.contains(target)) {
+			return;
+		}
+
+		header.classList.remove("navigation-open");
+
+		updateNavigationToggle(navigationToggle, false);
+	});
+</script>

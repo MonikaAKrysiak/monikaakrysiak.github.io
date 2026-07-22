@@ -3,14 +3,19 @@ import { getTranslations, type Language } from "../i18n";
 
 interface Props {
 	lang: Language;
+	id?: string;
 }
 
-const { lang } = Astro.props;
+const { lang, id } = Astro.props;
 
 const t = getTranslations(lang);
 ---
 
-<nav class="site-navigation" aria-label="Primary navigation">
+<nav
+	id={id}
+	class="site-navigation"
+	aria-label="Primary navigation"
+>
 	<ul class="site-navigation-list">
 		<li>
 			<a href="#about">{t.navigation.about}</a>

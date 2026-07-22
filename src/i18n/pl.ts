@@ -38,4 +38,10 @@ export const pl = {
 	backLink: {
 		toSelectedWork: "Powrót do wybranych projektów",
 	},
+	footer: {
+		statement:
+		"Tworzę rozwiązania, które\u00A0są\u00A0funkcjonalne, niezawodne\u00A0i\u00A0bezpieczne.",
+			builtWith: "Zbudowane przy użyciu:",
+		designedWith: "Zaprojektowane z myślą o:",
+	},
 };

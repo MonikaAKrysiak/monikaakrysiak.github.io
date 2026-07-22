@@ -15,7 +15,7 @@ export const work: WorkItem[] = [
 	{
 		title: "Więcej niż testowanie",
 		summary:
-			"Pomaganie zespołom w tworzeniu lepszych produktów poprzez analizę, myślenie produktowe oraz współpracę.",
+			"Pomaganie zespołom w\u00A0tworzeniu lepszych produktów poprzez analizę, myślenie produktowe oraz współpracę.",
 		focusAreas: [
 			"Inżynieria jakości",
 			"Analiza biznesowa",

@@ -1,0 +1,34 @@
+---
+import ContactLinks from "./ContactLinks.astro";
+
+import { getTranslations, type Language } from "../i18n";
+
+interface Props {
+	lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+---
+<section
+		id="contact"
+		class="contact section"
+		aria-labelledby="contact-heading"
+		data-language-section
+	>
+		<div class="container">
+			<div class="content-width">
+				<h2 id="contact-heading" class="section-heading">
+					{t.contact.title}
+				</h2>
+
+				<p class="section-text">
+					{t.contact.introFirstLine}
+					<br />
+					{t.contact.introSecondLine}
+				</p>
+
+				<ContactLinks />
+			</div>
+		</div>
+</section>

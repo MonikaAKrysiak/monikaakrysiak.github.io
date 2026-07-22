@@ -40,4 +40,9 @@ export const en = {
 	backLink: {
 		toSelectedWork: "Back to selected work",
 	},
+	footer: {
+		statement: "Let’s build software that is functional, reliable and secure.",
+		builtWith: "Built with:",
+		designedWith: "Designed with:",
+	},
 };

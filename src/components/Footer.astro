@@ -1,0 +1,40 @@
+---
+import ContactLinks from "./ContactLinks.astro";
+
+import { getTranslations, type Language } from "../i18n";
+
+interface Props {
+	lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="container">
+		<p class="footer-statement">
+            {t.footer.statement}
+        </p>
+
+        <dl>
+            <div>
+                <dt>{t.footer.builtWith}</dt>
+                <dd>Astro • TypeScript</dd>
+            </div>
+
+            <div>
+                <dt>{t.footer.designedWith}</dt>
+                <dd>Accessibility • Security by Default</dd>
+            </div>
+        </dl>
+		<ContactLinks variant="footer" />
+
+        <p class="footer-copyright">
+            &copy; {currentYear}
+            <span class="footer-name">Monika Krysiak</span>
+        </p>
+	</div>
+</footer>
