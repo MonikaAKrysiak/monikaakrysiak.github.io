@@ -37,4 +37,30 @@ export const portfolioWebsite = {
 			caption: "Aktualna wersja strony głównej portfolio.",
 		},
 	},
+
+	engineeringPrinciples: {
+		title: "Jak tworzę oprogramowanie",
+
+		introduction:
+			"To portfolio powstaje zgodnie z tymi samymi zasadami, które chciałabym widzieć w projektach komercyjnych. Pokazuje moje podejście do architektury oprogramowania, bezpieczeństwa, dostępności i długoterminowego utrzymania aplikacji.",
+
+		items: [
+			{
+				title: "Security by Default",
+				paragraphs: [
+					"Każda zależność staje się częścią powierzchni ataku aplikacji. Dlatego świadomie ograniczam liczbę zewnętrznych bibliotek i analizuję każdą z nich przed dodaniem do projektu.",
+
+					"Tam, gdzie jest to możliwe, zasoby takie jak fonty, ikony czy obrazy są przechowywane lokalnie. Bezpieczeństwo jest traktowane jako zasada projektowa od samego początku, a nie funkcja dodawana na końcu projektu.",
+				],
+			},
+			{
+				title: "Architecture Before Implementation",
+				paragraphs: [
+					"Większość zmian w tym projekcie zaczyna się od rozmowy o architekturze, a nie od pisania kodu. Zanim powstanie rozwiązanie, staram się zrozumieć problem, przeanalizować możliwe podejścia i wybrać takie, które pozostanie łatwe w utrzymaniu wraz z rozwojem projektu.",
+
+					"Takie podejście wpłynęło między innymi na architekturę wielojęzyczności, projektowanie komponentów wielokrotnego użytku, wykorzystanie design tokens, sposób organizacji routingu, a nawet kolejność implementacji nowych funkcjonalności. Celem nie jest napisanie kodu jak najszybciej, lecz zbudowanie solidnych fundamentów ułatwiających dalszy rozwój projektu.",
+				],
+			},
+		],
+	},
 };

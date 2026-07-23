@@ -55,6 +55,35 @@ const portfolioWebsite = getPortfolioWebsite(language);
 					alt={portfolioWebsite.figures.homepage.alt}
 					caption={portfolioWebsite.figures.homepage.caption}
 				/>
+
+				<CaseStudySection
+					id="engineering-principles"
+					title={formatTypography(
+						portfolioWebsite.engineeringPrinciples.title,
+						language
+					)}
+				>
+					<p class="case-study-text">
+						{formatTypography(
+							portfolioWebsite.engineeringPrinciples.introduction,
+							language
+						)}
+					</p>
+
+					{portfolioWebsite.engineeringPrinciples.items.map((item) => (
+						<article class="case-study-decision">
+							<h3 class="case-study-decision-title">
+								{formatTypography(item.title, language)}
+							</h3>
+
+							{item.paragraphs.map((paragraph) => (
+								<p class="case-study-text">
+									{formatTypography(paragraph, language)}
+								</p>
+							))}
+						</article>
+					))}
+				</CaseStudySection>
 			</div>
 		</section>
 	</main>

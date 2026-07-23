@@ -37,4 +37,29 @@ export const portfolioWebsite = {
 			caption: "Current version of the portfolio homepage.",
 		},
 	},
+
+	engineeringPrinciples: {
+		title: "How I Build Software",
+
+		introduction:
+			"This portfolio is built using the same engineering principles I would like to see in commercial software projects. It reflects the way I approach software architecture, security, accessibility and long-term maintainability.",
+
+		items: [
+			{
+				title: "Security by Default",
+				paragraphs: [
+					"Every dependency becomes part of the application's attack surface. For that reason, I intentionally keep external libraries to a minimum and evaluate each addition before introducing it into the project.",
+					"Whenever possible, assets such as fonts, icons and images are stored locally. Security is treated as a design principle from the very beginning rather than a feature added later.",
+				],
+			},
+			{
+				title: "Architecture Before Implementation",
+				paragraphs: [
+					"Most features in this project begin with an architectural discussion rather than writing code immediately. Before implementing a solution, I try to understand the problem, evaluate different approaches and choose the one that will remain maintainable as the project grows.",
+
+					"This approach has shaped decisions such as the multilingual architecture, reusable components, design tokens, routing strategy and even the order in which new features are implemented. The goal is not to write code quickly, but to build a solid foundation that makes future development easier.",
+				],
+			},
+		],
+	},
 };
