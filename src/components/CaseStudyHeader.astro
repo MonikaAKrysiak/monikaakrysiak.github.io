@@ -23,33 +23,55 @@ const ActionIcon = action?.icon;
 ---
 
 <header class="case-study-header">
-	<h1 class="case-study-title">{title}</h1>
+	<div class="case-study-header-content">
+		<h1 class="case-study-title">{title}</h1>
 
-	<p class="case-study-summary">{summary}</p>
+		<p class="case-study-summary">{summary}</p>
 
-	<ul class="case-study-focus-areas">
-		{focusAreas.map((focusArea) => (
-			<li class="case-study-focus-area">
-				{focusArea}
-			</li>
-		))}
-	</ul>
+		<ul class="case-study-focus-areas">
+			{focusAreas.map((focusArea) => (
+				<li class="case-study-focus-area">
+					{focusArea}
+				</li>
+			))}
+		</ul>
 
-	{action && (
-		<a
-			class="case-study-source"
-			href={action.href}
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			{ActionIcon && (
-				<ActionIcon
-					class="case-study-source-icon"
-					aria-hidden="true"
-				/>
-			)}
+		{action && (
+			<a
+				class="case-study-source"
+				href={action.href}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				{ActionIcon && (
+					<ActionIcon
+						class="case-study-source-icon"
+						aria-hidden="true"
+					/>
+				)}
 
-			<span>{action.label}</span>
-		</a>
-	)}
+				<span>{action.label}</span>
+			</a>
+		)}
+	</div>
 </header>
+<style>
+	.case-study-header {
+		display: grid;
+		gap: var(--space-xl);
+	}
+
+	.case-study-header-content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.case-study-focus-areas {
+		margin-top: var(--space-sm);
+	}
+
+	.case-study-source {
+		margin-top: var(--space-md);
+	}
+</style>

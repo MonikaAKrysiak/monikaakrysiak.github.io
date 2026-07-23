@@ -47,6 +47,7 @@ export const portfolioWebsite = {
 		items: [
 			{
 				title: "Security by Default",
+
 				paragraphs: [
 					"Każda zależność staje się częścią powierzchni ataku aplikacji. Dlatego świadomie ograniczam liczbę zewnętrznych bibliotek i analizuję każdą z nich przed dodaniem do projektu.",
 
@@ -59,6 +60,47 @@ export const portfolioWebsite = {
 					"Większość zmian w tym projekcie zaczyna się od rozmowy o architekturze, a nie od pisania kodu. Zanim powstanie rozwiązanie, staram się zrozumieć problem, przeanalizować możliwe podejścia i wybrać takie, które pozostanie łatwe w utrzymaniu wraz z rozwojem projektu.",
 
 					"Takie podejście wpłynęło między innymi na architekturę wielojęzyczności, projektowanie komponentów wielokrotnego użytku, wykorzystanie design tokens, sposób organizacji routingu, a nawet kolejność implementacji nowych funkcjonalności. Celem nie jest napisanie kodu jak najszybciej, lecz zbudowanie solidnych fundamentów ułatwiających dalszy rozwój projektu.",
+				],
+			},
+			{
+				title: "Accessibility by Design",
+				paragraphs: [
+					"Dostępność jest uwzględniana na każdym etapie rozwoju projektu, a nie traktowana jako lista zadań wykonywanych na końcu. Podstawą jest semantyczny HTML, który zapewnia właściwą strukturę zarówno użytkownikom, jak i technologiom wspomagającym.",
+
+					"Atrybuty ARIA są dodawane wyłącznie wtedy, gdy rozwiązują rzeczywisty problem, którego nie da się rozwiązać przy użyciu natywnego HTML. Celem jest poprawa dostępności bez wprowadzania zbędnej złożoności.",
+				],
+			},
+			{
+				title: "Documentation as Part of Development",
+				paragraphs: [
+					"Dokumentacja powstaje równolegle z kodem, a nie dopiero po zakończeniu prac. Decyzje architektoniczne, przebieg kolejnych sesji oraz najważniejsze zmiany są opisywane na bieżąco.",
+
+					"Dzięki temu po kilku miesiącach nie trzeba zgadywać, dlaczego wybrano konkretne rozwiązanie. Ułatwia to rozwój projektu, jego utrzymanie oraz zrozumienie historii podejmowanych decyzji.",
+				],
+			},
+		],
+	},
+	designDecisions: {
+		title: "Decyzje projektowe",
+
+		introduction:
+			"Poniższe przykłady pokazują, jak opisane wcześniej zasady inżynierskie zostały zastosowane w tym projekcie.",
+
+		items: [
+			{
+				title: "Bezpieczeństwo od początku",
+
+				paragraphs: [
+					"Projekt celowo ogranicza zbędne zależności zewnętrzne i zachowuje kontrolę nad zasobami używanymi przez stronę.",
+
+					"Decyzje związane z bezpieczeństwem są podejmowane już na etapie projektowania i implementacji, a nie dopiero podczas końcowego przeglądu.",
+				],
+
+				evidence: [
+					"Lokalne fonty zamiast zewnętrznych CDN-ów.",
+					"Lokalne ikony SVG.",
+					"Minimalna liczba zależności zewnętrznych.",
+					"Weryfikacja zależności przed instalacją.",
 				],
 			},
 		],

@@ -1,29 +1,29 @@
 ---
-import type { GetStaticPaths } from 'astro';
-import type { Language } from '../../../i18n';
-import { getPortfolioWebsite } from '../../../data/case-studies/portfolio-website';
+import type { GetStaticPaths } from "astro";
+import type { Language } from "../../../i18n";
+import { getPortfolioWebsite } from "../../../data/case-studies/portfolio-website";
 import { formatTypography } from "../../../utils/typography";
 
+import Layout from "../../../layouts/Layout.astro";
 
-import Layout from '../../../layouts/Layout.astro';
+import BackLink from "../../../components/BackLink.astro";
+import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
+import CaseStudySection from "../../../components/CaseStudySection.astro";
+import CaseStudyFigure from "../../../components/CaseStudyFigure.astro";
 
-import BackLink from '../../../components/BackLink.astro';
-import CaseStudyHeader from '../../../components/CaseStudyHeader.astro';
-import CaseStudySection from '../../../components/CaseStudySection.astro';
-import CaseStudyFigure from '../../../components/CaseStudyFigure.astro';
-
-import portfolioHomepage from '../../../assets/case-studies/portfolio-homepage.png';
+import portfolioHomepage from "../../../assets/case-studies/portfolio-homepage.png";
 
 export const getStaticPaths = (() => {
 	return [
-		{ params: { lang: 'en' } },
-		{ params: { lang: 'pl' } },
+		{ params: { lang: "en" } },
+		{ params: { lang: "pl" } },
 	];
 }) satisfies GetStaticPaths;
 
 const { lang } = Astro.params;
 const language = lang as Language;
 const portfolioWebsite = getPortfolioWebsite(language);
+const SourceIcon = portfolioWebsite.header.action?.icon;
 ---
 
 <Layout lang={language}>
@@ -32,29 +32,71 @@ const portfolioWebsite = getPortfolioWebsite(language);
 			<div class="container">
 				<BackLink lang={language} />
 
-				<CaseStudyHeader
-					title={formatTypography(portfolioWebsite.header.title, language)}
-					summary={formatTypography(portfolioWebsite.header.summary, language)}
-					focusAreas={portfolioWebsite.header.focusAreas}
-					action={portfolioWebsite.header.action}
-				/>
+				<div class="case-study-introduction">
+					<div class="case-study-introduction-main">
+						<CaseStudyHeader
+							title={formatTypography(
+								portfolioWebsite.header.title,
+								language
+							)}
+							summary={formatTypography(
+								portfolioWebsite.header.summary,
+								language
+							)}
+							focusAreas={[]}
+						/>
 
-				<CaseStudySection
-					id="overview"
-					title={formatTypography(portfolioWebsite.overview.title, language)}
-				>
-					{portfolioWebsite.overview.paragraphs.map((paragraph) => (
-						<p class="case-study-text">
-							{formatTypography(paragraph, language)}
-						</p>
-					))}
-				</CaseStudySection>
+						<CaseStudySection
+							id="overview"
+							title={formatTypography(
+								portfolioWebsite.overview.title,
+								language
+							)}
+						>
+							{portfolioWebsite.overview.paragraphs.map((paragraph) => (
+								<p class="case-study-text">
+									{formatTypography(paragraph, language)}
+								</p>
+							))}
+						</CaseStudySection>
+					</div>
 
-				<CaseStudyFigure
-					src={portfolioHomepage}
-					alt={portfolioWebsite.figures.homepage.alt}
-					caption={portfolioWebsite.figures.homepage.caption}
-				/>
+					<div class="case-study-introduction-aside">
+						<CaseStudyFigure
+							src={portfolioHomepage}
+							alt={portfolioWebsite.figures.homepage.alt}
+							caption={portfolioWebsite.figures.homepage.caption}
+						/>
+
+						<div class="case-study-project-meta">
+							<ul class="case-study-focus-areas">
+								{portfolioWebsite.header.focusAreas.map((focusArea) => (
+									<li class="case-study-focus-area">
+										{focusArea}
+									</li>
+								))}
+							</ul>
+
+							{portfolioWebsite.header.action && (
+								<a
+									class="case-study-source"
+									href={portfolioWebsite.header.action.href}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{SourceIcon && (
+										<SourceIcon
+											class="case-study-source-icon"
+											aria-hidden="true"
+										/>
+									)}
+
+									<span>{portfolioWebsite.header.action.label}</span>
+								</a>
+							)}
+						</div>
+					</div>
+				</div>
 
 				<CaseStudySection
 					id="engineering-principles"
@@ -71,8 +113,8 @@ const portfolioWebsite = getPortfolioWebsite(language);
 					</p>
 
 					{portfolioWebsite.engineeringPrinciples.items.map((item) => (
-						<article class="case-study-decision">
-							<h3 class="case-study-decision-title">
+						<article class="case-study-principle">
+							<h3 class="case-study-principle-title">
 								{formatTypography(item.title, language)}
 							</h3>
 
@@ -84,7 +126,69 @@ const portfolioWebsite = getPortfolioWebsite(language);
 						</article>
 					))}
 				</CaseStudySection>
+				<CaseStudySection
+					id="design-decisions"
+					title={formatTypography(
+						portfolioWebsite.designDecisions.title,
+						language
+					)}
+				>
+					<p class="case-study-text">
+						{formatTypography(
+							portfolioWebsite.designDecisions.introduction,
+							language
+						)}
+					</p>
+
+					{portfolioWebsite.designDecisions.items.map((item) => (
+						<article class="case-study-design-decision">
+							<h3 class="case-study-principle-title">
+								{formatTypography(item.title, language)}
+							</h3>
+
+							{item.paragraphs.map((paragraph) => (
+								<p class="case-study-text">
+									{formatTypography(paragraph, language)}
+								</p>
+							))}
+
+							<ul class="case-study-evidence">
+								{item.evidence.map((evidence) => (
+									<li>{formatTypography(evidence, language)}</li>
+								))}
+							</ul>
+						</article>
+					))}
+				</CaseStudySection>
 			</div>
 		</section>
-	</main>
+		</main>
 </Layout>
+
+<style>
+	.case-study-introduction-main .case-study-section {
+		margin-top: calc(var(--space-sm) * -1);
+	}
+
+	.case-study-project-meta {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-md);
+		margin-top: var(--space-lg);
+	}
+
+	.case-study-project-meta .case-study-focus-areas {
+		justify-content: center;
+		width: 100%;
+	}
+
+	.case-study-project-meta .case-study-source {
+		margin-top: 0;
+		color: var(--color-secondary);
+	}
+
+	.case-study-project-meta .case-study-source:hover {
+		color: var(--color-primary-hover);
+	}
+</style>

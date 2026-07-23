@@ -1,0 +1,22 @@
+<div class="case-study-content">
+	<div class="case-study-content-main">
+		<slot />
+	</div>
+
+	<div class="case-study-content-aside">
+		<slot name="aside" />
+	</div>
+</div>
+<style>
+	.case-study-content {
+		display: grid;
+		gap: var(--space-xl);
+	}
+
+	@media (min-width: 768px) {
+		.case-study-content {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			align-items: start;
+		}
+	}
+</style>
