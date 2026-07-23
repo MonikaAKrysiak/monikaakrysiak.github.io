@@ -7,6 +7,7 @@ import { formatTypography } from "../../../utils/typography";
 import Layout from "../../../layouts/Layout.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
 import CaseStudySection from "../../../components/CaseStudySection.astro";
+import CaseStudyContent from "../../../components/CaseStudyContent.astro";
 import BackLink from "../../../components/BackLink.astro";
 
 export const getStaticPaths = (() => {
@@ -29,22 +30,44 @@ const beyondTesting = getBeyondTesting(language);
 			<div class="container">
 				<BackLink lang={language} />
 
-				<CaseStudyHeader
-					title={formatTypography(beyondTesting.header.title, language)}
-					summary={formatTypography(beyondTesting.header.summary, language)}
-					focusAreas={beyondTesting.header.focusAreas}
-				/>
+				<CaseStudyContent>
+	<div>
+		<CaseStudyHeader
+			title={formatTypography(
+				beyondTesting.header.title,
+				language
+			)}
+			summary={formatTypography(
+				beyondTesting.header.summary,
+				language
+			)}
+		/>
 
-				<CaseStudySection
-					id="overview"
-					title={formatTypography(beyondTesting.overview.title, language)}
-				>
-					{beyondTesting.overview.paragraphs.map((paragraph) => (
-						<p class="case-study-text">
-							{formatTypography(paragraph, language)}
-						</p>
-					))}
-				</CaseStudySection>
+		<CaseStudySection
+			id="overview"
+			title={formatTypography(
+				beyondTesting.overview.title,
+				language
+			)}
+		>
+			{beyondTesting.overview.paragraphs.map((paragraph) => (
+				<p class="case-study-text">
+					{formatTypography(paragraph, language)}
+				</p>
+			))}
+		</CaseStudySection>
+	</div>
+
+	<div slot="aside">
+		<ul class="case-study-focus-areas">
+			{beyondTesting.header.focusAreas.map((focusArea) => (
+				<li class="case-study-focus-area">
+					{focusArea}
+				</li>
+			))}
+		</ul>
+	</div>
+</CaseStudyContent>
 			</div>
 		</section>
 	</main>

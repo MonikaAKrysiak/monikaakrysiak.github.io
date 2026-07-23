@@ -31,6 +31,7 @@ export const portfolioWebsite = {
 			"W swojej karierze zazwyczaj dołączałam do projektów, które już trwały. Ten projekt daje mi możliwość samodzielnego podejmowania decyzji architektonicznych i obserwowania, jak wpływają one na oprogramowanie od jego pierwszego commita.",
 		],
 	},
+
 	figures: {
 		homepage: {
 			alt: "Strona główna portfolio prezentująca sekcję Hero, wybrane projekty i sekcję kontaktową.",
@@ -49,37 +50,33 @@ export const portfolioWebsite = {
 				title: "Security by Default",
 
 				paragraphs: [
-					"Każda zależność staje się częścią powierzchni ataku aplikacji. Dlatego świadomie ograniczam liczbę zewnętrznych bibliotek i analizuję każdą z nich przed dodaniem do projektu.",
-
-					"Tam, gdzie jest to możliwe, zasoby takie jak fonty, ikony czy obrazy są przechowywane lokalnie. Bezpieczeństwo jest traktowane jako zasada projektowa od samego początku, a nie funkcja dodawana na końcu projektu.",
+					"Bezpieczeństwo traktuję jako zasadę projektową od samego początku. Ograniczam zewnętrzne zależności, a tam, gdzie to możliwe, fonty, ikony i obrazy przechowuję lokalnie.",
 				],
 			},
 			{
 				title: "Architecture Before Implementation",
-				paragraphs: [
-					"Większość zmian w tym projekcie zaczyna się od rozmowy o architekturze, a nie od pisania kodu. Zanim powstanie rozwiązanie, staram się zrozumieć problem, przeanalizować możliwe podejścia i wybrać takie, które pozostanie łatwe w utrzymaniu wraz z rozwojem projektu.",
 
-					"Takie podejście wpłynęło między innymi na architekturę wielojęzyczności, projektowanie komponentów wielokrotnego użytku, wykorzystanie design tokens, sposób organizacji routingu, a nawet kolejność implementacji nowych funkcjonalności. Celem nie jest napisanie kodu jak najszybciej, lecz zbudowanie solidnych fundamentów ułatwiających dalszy rozwój projektu.",
+				paragraphs: [
+					"Przed rozpoczęciem implementacji staram się zrozumieć problem, przeanalizować możliwe podejścia i wybrać strukturę, która pozostanie czytelna i łatwa w utrzymaniu wraz z rozwojem projektu.",
 				],
 			},
 			{
 				title: "Accessibility by Design",
-				paragraphs: [
-					"Dostępność jest uwzględniana na każdym etapie rozwoju projektu, a nie traktowana jako lista zadań wykonywanych na końcu. Podstawą jest semantyczny HTML, który zapewnia właściwą strukturę zarówno użytkownikom, jak i technologiom wspomagającym.",
 
-					"Atrybuty ARIA są dodawane wyłącznie wtedy, gdy rozwiązują rzeczywisty problem, którego nie da się rozwiązać przy użyciu natywnego HTML. Celem jest poprawa dostępności bez wprowadzania zbędnej złożoności.",
+				paragraphs: [
+					"Dostępność uwzględniam już podczas projektowania komponentów, nawigacji i treści. Fundamentem jest semantyczny HTML, a ARIA stosuję wyłącznie tam, gdzie natywne elementy nie wystarczają.",
 				],
 			},
 			{
 				title: "Documentation as Part of Development",
-				paragraphs: [
-					"Dokumentacja powstaje równolegle z kodem, a nie dopiero po zakończeniu prac. Decyzje architektoniczne, przebieg kolejnych sesji oraz najważniejsze zmiany są opisywane na bieżąco.",
 
-					"Dzięki temu po kilku miesiącach nie trzeba zgadywać, dlaczego wybrano konkretne rozwiązanie. Ułatwia to rozwój projektu, jego utrzymanie oraz zrozumienie historii podejmowanych decyzji.",
+				paragraphs: [
+					"Dokumentacja powstaje równolegle z kodem, dzięki czemu decyzje architektoniczne, przebieg kolejnych sesji i uzasadnienie ważnych zmian pozostają czytelne również po dłuższym czasie.",
 				],
 			},
 		],
 	},
+
 	designDecisions: {
 		title: "Decyzje projektowe",
 

@@ -1,25 +1,13 @@
 ---
-import type { AstroComponentFactory } from "astro/runtime/server/index.js";
-
 interface Props {
 	title: string;
 	summary: string;
-	focusAreas: string[];
-	action?: {
-		label: string;
-		href: string;
-		icon?: AstroComponentFactory;
-	};
 }
 
 const {
 	title,
 	summary,
-	focusAreas,
-	action,
 } = Astro.props;
-
-const ActionIcon = action?.icon;
 ---
 
 <header class="case-study-header">
@@ -27,34 +15,9 @@ const ActionIcon = action?.icon;
 		<h1 class="case-study-title">{title}</h1>
 
 		<p class="case-study-summary">{summary}</p>
-
-		<ul class="case-study-focus-areas">
-			{focusAreas.map((focusArea) => (
-				<li class="case-study-focus-area">
-					{focusArea}
-				</li>
-			))}
-		</ul>
-
-		{action && (
-			<a
-				class="case-study-source"
-				href={action.href}
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				{ActionIcon && (
-					<ActionIcon
-						class="case-study-source-icon"
-						aria-hidden="true"
-					/>
-				)}
-
-				<span>{action.label}</span>
-			</a>
-		)}
 	</div>
 </header>
+
 <style>
 	.case-study-header {
 		display: grid;
@@ -65,13 +28,5 @@ const ActionIcon = action?.icon;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-	}
-
-	.case-study-focus-areas {
-		margin-top: var(--space-sm);
-	}
-
-	.case-study-source {
-		margin-top: var(--space-md);
 	}
 </style>

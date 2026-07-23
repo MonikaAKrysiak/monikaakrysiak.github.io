@@ -10,8 +10,13 @@ import BackLink from "../../../components/BackLink.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
 import CaseStudySection from "../../../components/CaseStudySection.astro";
 import CaseStudyFigure from "../../../components/CaseStudyFigure.astro";
+import EngineeringPrincipleCard from "../../../components/EngineeringPrincipleCard.astro";
 
 import portfolioHomepage from "../../../assets/case-studies/portfolio-homepage.png";
+import PortfolioShieldLock from "../../../assets/icons/portfolio-shield-lock.svg";
+import PortfolioBinaryTree from "../../../assets/icons/portfolio-binary-tree.svg";
+import PortfolioAccessible from "../../../assets/icons/portfolio-accessible.svg";
+import PortfolioFileDescription from "../../../assets/icons/portfolio-file-description.svg";
 
 export const getStaticPaths = (() => {
 	return [
@@ -24,6 +29,12 @@ const { lang } = Astro.params;
 const language = lang as Language;
 const portfolioWebsite = getPortfolioWebsite(language);
 const SourceIcon = portfolioWebsite.header.action?.icon;
+const engineeringPrincipleIcons = [
+	PortfolioShieldLock,
+	PortfolioBinaryTree,
+	PortfolioAccessible,
+	PortfolioFileDescription,
+];
 ---
 
 <Layout lang={language}>
@@ -97,7 +108,7 @@ const SourceIcon = portfolioWebsite.header.action?.icon;
 						</div>
 					</div>
 				</div>
-
+				<hr class="case-study-divider" />
 				<CaseStudySection
 					id="engineering-principles"
 					title={formatTypography(
@@ -112,20 +123,24 @@ const SourceIcon = portfolioWebsite.header.action?.icon;
 						)}
 					</p>
 
-					{portfolioWebsite.engineeringPrinciples.items.map((item) => (
-						<article class="case-study-principle">
-							<h3 class="case-study-principle-title">
-								{formatTypography(item.title, language)}
-							</h3>
-
-							{item.paragraphs.map((paragraph) => (
-								<p class="case-study-text">
-									{formatTypography(paragraph, language)}
-								</p>
-							))}
-						</article>
-					))}
+					<div class="engineering-principles-grid">
+						{portfolioWebsite.engineeringPrinciples.items.map((item, index) => (
+							<EngineeringPrincipleCard
+								title={formatTypography(item.title, language)}
+								icon={engineeringPrincipleIcons[index]}
+							>
+								{item.paragraphs.map((paragraph) => (
+									<p class="case-study-text">
+										{formatTypography(paragraph, language)}
+									</p>
+								))}
+							</EngineeringPrincipleCard>
+						))}
+					</div>
 				</CaseStudySection>
+				
+				<hr class="case-study-divider" />
+
 				<CaseStudySection
 					id="design-decisions"
 					title={formatTypography(
@@ -162,7 +177,7 @@ const SourceIcon = portfolioWebsite.header.action?.icon;
 				</CaseStudySection>
 			</div>
 		</section>
-		</main>
+	</main>
 </Layout>
 
 <style>
@@ -190,5 +205,24 @@ const SourceIcon = portfolioWebsite.header.action?.icon;
 
 	.case-study-project-meta .case-study-source:hover {
 		color: var(--color-primary-hover);
+	}
+
+	.engineering-principles-grid {
+		display: grid;
+		column-gap: var(--space-xl);
+		row-gap: var(--space-sm);
+	}
+
+	.case-study-divider {
+		margin: var(--space-3xl) var(--space-sm);
+
+		border: 0;
+		border-top: 1px solid var(--color-border);
+	}
+
+	@media (min-width: 48rem) {
+		.engineering-principles-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
 	}
 </style>
