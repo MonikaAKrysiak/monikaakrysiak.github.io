@@ -732,6 +732,7 @@ body {
 
 .case-study-section {
 	margin-top: var(--space-3xl);
+	scroll-margin-top: calc(var(--header-height) + var(--space-md));
 }
 
 /* Pierwsza sekcja w lewej kolumnie nie potrzebuje odstępu 4rem */

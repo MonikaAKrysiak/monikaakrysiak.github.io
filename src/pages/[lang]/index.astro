@@ -2,7 +2,8 @@
 import Layout from "../../layouts/Layout.astro";
 import HomePage from "../../components/HomePage.astro";
 
-import type { Language } from "../../i18n";
+import { getTranslations, type Language } from "../../i18n";
+import type { NavigationItem } from "../../types/navigation";
 
 export function getStaticPaths() {
 	return [
@@ -22,8 +23,26 @@ interface Props {
 }
 
 const { lang } = Astro.props;
----
+const t = getTranslations(lang);
 
-<Layout lang={lang}>
+const navigationItems: NavigationItem[] = [
+	{
+		label: t.navigation.about,
+		href: "#about",
+	},
+	{
+		label: t.navigation.work,
+		href: "#work",
+	},
+	{
+		label: t.navigation.contact,
+		href: "#contact",
+	},
+];
+---
+<Layout
+	lang={lang}
+	navigationItems={navigationItems}
+>
 	<HomePage lang={lang} />
 </Layout>

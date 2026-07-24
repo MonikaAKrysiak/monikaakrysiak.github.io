@@ -4,6 +4,7 @@ import type { Language } from "../../../i18n";
 import { getPortfolioWebsite } from "../../../data/case-studies/portfolio-website";
 import { getAdjacentWork } from "../../../data/work";
 import { formatTypography } from "../../../utils/typography";
+import type { NavigationItem } from "../../../types/navigation";
 
 import Layout from "../../../layouts/Layout.astro";
 
@@ -72,9 +73,27 @@ const designDecisionEvidenceImages = {
 		portfolioSecuritySessionLog,
 	],
 };
+
+const portfolioNavigationItems: NavigationItem[] = [
+	{
+		label: portfolioWebsite.overview.title,
+		href: "#overview",
+	},
+	{
+		label: portfolioWebsite.engineeringPrinciples.title,
+		href: "#engineering-principles",
+	},
+	{
+		label: portfolioWebsite.designDecisions.title,
+		href: "#design-decisions",
+	},
+];
 ---
 
-<Layout lang={language}>
+<Layout
+	lang={language}
+	navigationItems={portfolioNavigationItems}
+>
 	<main>
 		<section class="case-study case-study-page section">
 			<div class="container">

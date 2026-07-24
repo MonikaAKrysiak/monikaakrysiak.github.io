@@ -7,17 +7,24 @@ import ToggleMenuIcon from "../assets/icons/toggle-menu.svg";
 import ToggleCloseIcon from "../assets/icons/toggle-close.svg";
 
 import type { Language } from "../i18n";
+import type { NavigationItem } from "../types/navigation";
 
 interface Props {
 	lang: Language;
+	navigationItems?: NavigationItem[];
 }
 
-const { lang } = Astro.props;
+const {
+	lang,
+	navigationItems = [],
+} = Astro.props;
 
-const isHomepage =
-	Astro.url.pathname === "/" ||
-	Astro.url.pathname === `/${lang}` ||
-	Astro.url.pathname === `/${lang}/`;
+const hasNavigation = navigationItems.length > 0;
+
+const navigationLabel =
+	lang === "pl"
+		? "Nawigacja strony"
+		: "Page navigation";
 ---
 
 <header class="site-header">
@@ -36,7 +43,7 @@ const isHomepage =
 				<ThemeSwitcher />
 
 				{
-					isHomepage && (
+					hasNavigation && (
 						<button
 							class="navigation-toggle"
 							type="button"
@@ -63,16 +70,16 @@ const isHomepage =
 		</div>
 
 		{
-			isHomepage && (
+			hasNavigation && (
 				<Navigation
-					lang={lang}
+					items={navigationItems}
 					id="primary-navigation"
+					ariaLabel={navigationLabel}
 				/>
 			)
 		}
 	</div>
 </header>
-
 <script>
 	function updateNavigationToggle(
 		navigationToggle: HTMLButtonElement,
@@ -132,33 +139,7 @@ const isHomepage =
 			updateNavigationToggle(navigationToggle, false);
 		});
 	});
-	document.addEventListener("keydown", (event) => {
-		if (event.key !== "Escape") {
-			return;
-		}
 
-		const header = document.querySelector(".site-header");
-		const navigationToggle = document.querySelector(
-			"[data-navigation-toggle]",
-		);
-
-		if (
-			!(header instanceof HTMLElement) ||
-			!(navigationToggle instanceof HTMLButtonElement)
-		) {
-			return;
-		}
-
-		if (!header.classList.contains("navigation-open")) {
-			return;
-		}
-
-		header.classList.remove("navigation-open");
-
-		updateNavigationToggle(navigationToggle, false);
-
-		navigationToggle.focus();
-	});
 	document.addEventListener("click", (event) => {
 		const target = event.target;
 
@@ -189,5 +170,32 @@ const isHomepage =
 		header.classList.remove("navigation-open");
 
 		updateNavigationToggle(navigationToggle, false);
+	});
+	document.addEventListener("keydown", (event) => {
+		if (event.key !== "Escape") {
+			return;
+		}
+
+		const header = document.querySelector(".site-header");
+		const navigationToggle = document.querySelector(
+			"[data-navigation-toggle]",
+		);
+
+		if (
+			!(header instanceof HTMLElement) ||
+			!(navigationToggle instanceof HTMLButtonElement)
+		) {
+			return;
+		}
+
+		if (!header.classList.contains("navigation-open")) {
+			return;
+		}
+
+		header.classList.remove("navigation-open");
+
+		updateNavigationToggle(navigationToggle, false);
+
+		navigationToggle.focus();
 	});
 </script>
