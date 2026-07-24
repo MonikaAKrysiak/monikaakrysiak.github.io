@@ -19,7 +19,12 @@ const {
 	class="site-navigation"
 	aria-label={ariaLabel}
 >
-	<ul class="site-navigation-list">
+	<ul
+		class:list={[
+			"site-navigation-list",
+			{ "site-navigation-list-multicolumn": items.length > 3 },
+		]}
+	>
 		{items.map((item) => (
 			<li>
 				<a href={item.href}>

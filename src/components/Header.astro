@@ -26,60 +26,62 @@ const navigationLabel =
 		? "Nawigacja strony"
 		: "Page navigation";
 ---
-
 <header class="site-header">
-	<div class="site-header-content">
-		<div class="site-header-top">
-			<a
-				class="site-logo"
-				href={`/${lang}/`}
-				aria-label="Monika Krysiak – homepage"
-			>
-				Monika Krysiak
-			</a>
+	<div class="container">
+		<div class="site-header-content">
+			<div class="site-header-top">
+				<a
+					class="site-logo"
+					href={`/${lang}/`}
+					aria-label="Monika Krysiak – homepage"
+				>
+					Monika Krysiak
+				</a>
 
-			<div class="site-controls">
-				<LanguageSwitcher lang={lang} />
-				<ThemeSwitcher />
+				<div class="site-controls">
+					<LanguageSwitcher lang={lang} />
+					<ThemeSwitcher />
 
-				{
-					hasNavigation && (
-						<button
-							class="navigation-toggle"
-							type="button"
-							aria-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
-							aria-expanded="false"
-							aria-controls="primary-navigation"
-							data-navigation-toggle
-							data-open-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
-							data-close-label={lang === "pl" ? "Zamknij menu" : "Close menu"}
-						>
-							<ToggleMenuIcon
-								class="navigation-toggle-icon navigation-toggle-icon-menu"
-								aria-hidden="true"
-							/>
+					{
+						hasNavigation && (
+							<button
+								class="navigation-toggle"
+								type="button"
+								aria-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
+								aria-expanded="false"
+								aria-controls="primary-navigation"
+								data-navigation-toggle
+								data-open-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
+								data-close-label={lang === "pl" ? "Zamknij menu" : "Close menu"}
+							>
+								<ToggleMenuIcon
+									class="navigation-toggle-icon navigation-toggle-icon-menu"
+									aria-hidden="true"
+								/>
 
-							<ToggleCloseIcon
-								class="navigation-toggle-icon navigation-toggle-icon-close"
-								aria-hidden="true"
-							/>
-						</button>
-					)
-				}
+								<ToggleCloseIcon
+									class="navigation-toggle-icon navigation-toggle-icon-close"
+									aria-hidden="true"
+								/>
+							</button>
+						)
+					}
+				</div>
 			</div>
-		</div>
 
-		{
-			hasNavigation && (
-				<Navigation
-					items={navigationItems}
-					id="primary-navigation"
-					ariaLabel={navigationLabel}
-				/>
-			)
-		}
+			{
+				hasNavigation && (
+					<Navigation
+						items={navigationItems}
+						id="primary-navigation"
+						ariaLabel={navigationLabel}
+					/>
+				)
+			}
+		</div>
 	</div>
 </header>
+
 <script>
 	function updateNavigationToggle(
 		navigationToggle: HTMLButtonElement,
@@ -198,4 +200,82 @@ const navigationLabel =
 
 		navigationToggle.focus();
 	});
+	const navigationItems = document.querySelectorAll(
+		'#primary-navigation a[href^="#"]',
+	);
+
+	const sections = [...navigationItems]
+		.map((navigationItem) => {
+			const href = navigationItem.getAttribute("href");
+
+			return href ? document.querySelector(href) : null;
+		})
+		.filter(
+			(section): section is HTMLElement =>
+				section instanceof HTMLElement,
+		);
+
+	console.log(navigationItems);
+	console.log(sections);
+
+	const sectionLinks = document.querySelectorAll<HTMLAnchorElement>(
+	'#primary-navigation a[href^="#"]',
+);
+
+const observedSections = [...sectionLinks]
+	.map((link) => {
+		const href = link.getAttribute("href");
+
+		if (!href) {
+			return null;
+		}
+
+		const section = document.querySelector(href);
+
+		return section instanceof HTMLElement
+			? { link, section }
+			: null;
+	})
+	.filter(
+		(
+			item,
+		): item is {
+			link: HTMLAnchorElement;
+			section: HTMLElement;
+		} => item !== null,
+	);
+
+function setActiveNavigationLink(activeSectionId: string) {
+	sectionLinks.forEach((link) => {
+		const isActive = link.getAttribute("href") === `#${activeSectionId}`;
+
+		if (isActive) {
+			link.setAttribute("aria-current", "location");
+		} else {
+			link.removeAttribute("aria-current");
+		}
+	});
+}
+
+const sectionObserver = new IntersectionObserver(
+	(entries) => {
+		const visibleEntry = entries
+			.filter((entry) => entry.isIntersecting)
+			.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+		if (!(visibleEntry?.target instanceof HTMLElement)) {
+			return;
+		}
+
+		setActiveNavigationLink(visibleEntry.target.id);
+	},
+	{
+		rootMargin: "-25% 0px -60% 0px",
+		threshold: [0, 0.25, 0.5, 0.75, 1],
+	},
+);
+
+observedSections.forEach(({ section }) => {
+	sectionObserver.observe(section);
+});
 </script>
