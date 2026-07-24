@@ -12,6 +12,7 @@ export const pl = {
 		viewCv: "Zobacz CV",
 		contact: "Kontakt",
 	},
+	
 	about: {
 		title: "O mnie",
 
@@ -27,17 +28,25 @@ export const pl = {
 			"Po pracy lubię odkrywać nowe miejsca - podczas pieszych wędrówek, na\u00A0rowerze lub w\u00A0kajaku. Sprawiają mi też przyjemność gry planszowe, projekty DIY oraz spędzanie czasu z\u00A0rodziną.",
 		],
 	},
+
 	contact: {
 		title: "Kontakt",
 		introFirstLine: "Masz pytanie, pomysł lub propozycję współpracy?",
 		introSecondLine: "Zapraszam do kontaktu.",
 	},
+
 	selectedWork: {
 		readCaseStudy: "Czytaj case study",
 	},
+
 	backLink: {
-		toSelectedWork: "Powrót do wybranych projektów",
+		toSelectedWork: "Wróć do projektów",
 	},
+
+	caseStudyNavigation: {
+		allWork: "Zobacz wszystkie projekty",
+	},
+
 	footer: {
 		statement:
 		"Tworzę rozwiązania, które\u00A0są\u00A0funkcjonalne, niezawodne\u00A0i\u00A0bezpieczne.",

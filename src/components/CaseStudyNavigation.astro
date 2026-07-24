@@ -1,0 +1,106 @@
+---
+interface NavigationLink {
+	href: string;
+	label: string;
+}
+
+interface Props {
+	previous?: NavigationLink;
+	next?: NavigationLink;
+	allWork: NavigationLink;
+}
+
+const {
+	previous,
+	next,
+	allWork,
+} = Astro.props;
+
+const hasBothDirections = previous && next;
+---
+<nav class="case-study-navigation" aria-label="Case study navigation">
+	<div class="case-study-navigation-links">
+		{previous && (
+			<a
+				class="case-study-navigation-link"
+				href={previous.href}
+				aria-label={`Go to previous case study: ${previous.label}`}
+			>
+				← {previous.label}
+			</a>
+		)}
+
+		{next && (
+			<a
+				class="case-study-navigation-link case-study-navigation-next"
+				href={next.href}
+				aria-label={`Go to next case study: ${next.label}`}
+			>
+				{next.label} →
+			</a>
+		)}
+	</div>
+
+	<a
+		class:list={[
+			"case-study-navigation-all-work",
+			{
+				"case-study-navigation-all-work-centered": hasBothDirections,
+			},
+		]}
+		href={allWork.href}
+	>
+		{allWork.label}
+	</a>
+</nav>
+
+<style>
+	.case-study-navigation {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-md);
+		margin-top: var(--space-xl);
+	}
+
+	.case-study-navigation-links {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-sm);
+	}
+
+	.case-study-navigation-link,
+	.case-study-navigation-all-work {
+		color: var(--color-secondary);
+		text-decoration: none;
+	}
+
+    .case-study-navigation-all-work {
+        align-self: flex-start;
+    }
+
+	.case-study-navigation-link:hover,
+	.case-study-navigation-all-work:hover {
+		color: var(--color-primary-hover);
+	}
+
+	.case-study-navigation-all-work-centered {
+		align-self: center;
+	}
+
+	@media (min-width: 48rem) {
+		.case-study-navigation {
+			gap: var(--space-lg);
+		}
+
+		.case-study-navigation-links {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+
+		.case-study-navigation-next {
+			margin-left: auto;
+			text-align: right;
+		}
+	}
+</style>

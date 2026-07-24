@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import type { Language } from "../../../i18n";
 import { getPortfolioWebsite } from "../../../data/case-studies/portfolio-website";
+import { getAdjacentWork } from "../../../data/work";
 import { formatTypography } from "../../../utils/typography";
 
 import Layout from "../../../layouts/Layout.astro";
@@ -14,6 +15,7 @@ import EngineeringPrincipleCard from "../../../components/EngineeringPrincipleCa
 import DesignDecisionCard from "../../../components/DesignDecisionCard.astro";
 import CaseStudyEvidence from "../../../components/CaseStudyEvidence.astro";
 import EvidenceFigure from "../../../components/EvidenceFigure.astro";
+import CaseStudyNavigation from "../../../components/CaseStudyNavigation.astro";
 
 import portfolioHomepage from "../../../assets/case-studies/portfolio-homepage.png";
 import PortfolioShieldLock from "../../../assets/icons/portfolio-shield-lock.svg";
@@ -39,6 +41,10 @@ export const getStaticPaths = (() => {
 const { lang } = Astro.params;
 const language = lang as Language;
 const portfolioWebsite = getPortfolioWebsite(language);
+const { previous, next } = getAdjacentWork(
+	language,
+	"/work/portfolio-website",
+);
 const SourceIcon = portfolioWebsite.header.action?.icon;
 const engineeringPrincipleIcons = [
 	PortfolioShieldLock,
@@ -70,7 +76,7 @@ const designDecisionEvidenceImages = {
 
 <Layout lang={language}>
 	<main>
-		<section class="case-study section">
+		<section class="case-study case-study-page section">
 			<div class="container">
 				<BackLink lang={language} />
 
@@ -222,12 +228,41 @@ const designDecisionEvidenceImages = {
 						</DesignDecisionCard>
 					))}
 				</CaseStudySection>
+				<CaseStudyNavigation
+					previous={
+						previous
+							? {
+									href: `/${language}${previous.href}`,
+									label: previous.title,
+								}
+							: undefined
+					}
+					next={
+						next
+							? {
+									href: `/${language}${next.href}`,
+									label: next.title,
+								}
+							: undefined
+					}
+					allWork={{
+						href: `/${language}/#work`,
+						label:
+							language === "pl"
+								? "Zobacz wszystkie projekty"
+								: "View all selected work",
+					}}
+				/>
 			</div>
 		</section>
 	</main>
 </Layout>
 
 <style>
+	.case-study-page {
+		padding-bottom: 0;
+	}
+
 	.case-study-introduction-main .case-study-section {
 		margin-top: calc(var(--space-sm) * -1);
 	}
