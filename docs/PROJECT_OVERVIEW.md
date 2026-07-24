@@ -83,6 +83,7 @@ The project currently includes:
 - Automatic system theme detection (`prefers-color-scheme`)
 - CSS variable-based theming using `data-theme`
 - Semantic HTML and accessibility-focused components
+- Reusable interactive image component with native lightbox
 
 ---
 
@@ -114,7 +115,9 @@ Shared design rules remain in the global stylesheet, while component-specific st
 
 This approach improves maintainability, portability and scalability as the project grows.
 
-The project currently includes reusable components for navigation, buttons, language and theme switching, reusable layouts and structured engineering case studies.
+The project currently includes reusable components for navigation, buttons, language and theme switching, reusable layouts, structured engineering case studies and interactive media presentation.
+
+Each component exposes a small, focused public API while encapsulating its own markup, styling and behaviour.
 
 ---
 
@@ -151,3 +154,18 @@ This architecture makes adding new languages and new case studies straightforwar
 The Portfolio Website case study now includes four engineering decision cards supported by localized technical evidence and screenshots.
 
 The implementation keeps content, presentation and assets clearly separated while allowing additional evidence to be added without changing the page structure.
+
+
+## Reusable UI components
+
+The project includes reusable UI components designed to remain independent from specific pages.
+
+Current examples include:
+
+- WorkCard
+- HobbyCard
+- InteractiveFigure
+- LanguageSwitcher
+- ThemeSwitcher
+
+Each component exposes a focused public API and can be reused across different sections of the website while remaining independent from page-specific implementations.

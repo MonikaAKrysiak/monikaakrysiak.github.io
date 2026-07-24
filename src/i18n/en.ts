@@ -45,4 +45,10 @@ export const en = {
 		builtWith: "Built with:",
 		designedWith: "Designed with:",
 	},
+
+	interactiveFigure: {
+		openLargerView: "Open larger view",
+		largerView: "Larger view",
+		closePreview: "Close image preview",
+	},
 };

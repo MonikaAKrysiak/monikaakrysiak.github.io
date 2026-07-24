@@ -13,6 +13,7 @@
 	--color-secondary: #D6C38A;
 
 	--color-border: #3A423D;
+	--color-border-hover: #5A625D;
 	--color-primary-hover: #92B18D;
 
 	/* Typography */
@@ -842,26 +843,127 @@ body {
 	}
 }
 
-/* Figures */
-.case-study-figure {
+/* Interactive figures */
+.interactive-figure {
 	margin: var(--space-xl) 0;
 }
 
-.case-study-figure-image {
+.interactive-figure-image {
 	display: block;
 	width: 100%;
 	height: auto;
 	border: 1px solid var(--color-border);
 	border-radius: 0.75rem;
+	transition:
+		border-color 150ms ease,
+		transform 150ms ease;
 }
 
-.case-study-figure-caption {
+.interactive-figure-caption {
 	margin-top: var(--space-sm);
 
 	color: var(--color-text-muted);
 	font-size: 0.875rem;
 	line-height: var(--line-height-body);
 	text-align: center;
+}
+
+.interactive-figure-button {
+	display: block;
+
+	padding: 0;
+	border: none;
+	background: none;
+
+	cursor: zoom-in;
+}
+
+.interactive-figure-button:focus-visible {
+	outline: none;
+}
+
+.interactive-figure-button:focus-visible .interactive-figure-image {
+	border-color: var(--color-primary-hover);
+	box-shadow: 0 0 0 1px var(--color-primary-hover);
+}
+
+.interactive-figure-button:hover .interactive-figure-image {
+	border-color: var(--color-text-muted);
+	transform: scale(1.005);
+}
+
+.interactive-figure-dialog {
+	max-width: min(90vw, 90rem);
+	max-height: 90vh;
+
+	padding: 0;
+	border: none;
+	background: transparent;
+}
+
+.interactive-figure-dialog::backdrop {
+	background: rgb(0 0 0 / 80%);
+}
+
+.interactive-figure-dialog-content {
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.interactive-figure-dialog-image {
+	display: block;
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	max-height: 80vh;
+
+	border-radius: 0.75rem;
+}
+
+.interactive-figure-dialog-caption {
+	margin: 0;
+
+	color: var(--color-text);
+	font-size: 0.875rem;
+	text-align: center;
+}
+
+.interactive-figure-dialog-close {
+	position: absolute;
+	top: var(--space-sm);
+	right: var(--space-sm);
+	z-index: 1;
+
+	display: grid;
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0;
+	border: 1px solid var(--color-border);
+	border-radius: 50%;
+
+	background: var(--color-background);
+	color: var(--color-text);
+
+	font: inherit;
+	font-size: 1.5rem;
+	line-height: 1;
+
+	cursor: pointer;
+	place-items: center;
+}
+
+.interactive-figure-dialog-close:hover {
+	border-color: var(--color-text-muted);
+}
+
+.interactive-figure-dialog-close:focus-visible {
+	outline: none;
+	border-color: var(--color-primary-hover);
+	box-shadow: 0 0 0 1px var(--color-primary-hover);
 }
 
 /* Work */

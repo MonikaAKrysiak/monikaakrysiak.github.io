@@ -1,5 +1,4 @@
 ---
-import type { ImageMetadata } from "astro";
 import type { GetStaticPaths } from "astro";
 import type { Language } from "../../../i18n";
 import { getPortfolioWebsite } from "../../../data/case-studies/portfolio-website";
@@ -10,7 +9,7 @@ import Layout from "../../../layouts/Layout.astro";
 import BackLink from "../../../components/BackLink.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
 import CaseStudySection from "../../../components/CaseStudySection.astro";
-import CaseStudyFigure from "../../../components/CaseStudyFigure.astro";
+import InteractiveFigure from "../../../components/InteractiveFigure.astro";
 import EngineeringPrincipleCard from "../../../components/EngineeringPrincipleCard.astro";
 import DesignDecisionCard from "../../../components/DesignDecisionCard.astro";
 import CaseStudyEvidence from "../../../components/CaseStudyEvidence.astro";
@@ -21,14 +20,14 @@ import PortfolioShieldLock from "../../../assets/icons/portfolio-shield-lock.svg
 import PortfolioBinaryTree from "../../../assets/icons/portfolio-binary-tree.svg";
 import PortfolioAccessible from "../../../assets/icons/portfolio-accessible.svg";
 import PortfolioFileDescription from "../../../assets/icons/portfolio-file-description.svg";
-import portfolioSecurityPackageJson from "../../../assets/case-studies/portfolio-security-package-json.png";
-import portfolioSecurityLocalAssets from "../../../assets/case-studies/portfolio-security-local-assets.png";
-import portfolioArchitectureSrc from "../../../assets/case-studies/portfolio-security-architecture-src.png";
-import portfolioArchitectureComponents from "../../../assets/case-studies/portfolio-security-architecture-components.png";
-import portfolioSecuritySemanticHtmlStructure from "../../../assets/case-studies/portfolio-security-semantic-html-structure.png";
-import portfolioSecurityAccessibleNavigationControls from "../../../assets/case-studies/portfolio-security-accessible-navigation-controls.png";
-import portfolioSecurityArchitectureDecisionRecord from "../../../assets/case-studies/portfolio-security-architecture-decision-record.png";
-import portfolioSecuritySessionLog from "../../../assets/case-studies/portfolio-security-session-log.png";
+import portfolioSecurityPackageJson from "../../../assets/case-studies/portfolio-website-package-json.png";
+import portfolioSecurityLocalAssets from "../../../assets/case-studies/portfolio-website-local-assets.png";
+import portfolioArchitectureSrc from "../../../assets/case-studies/portfolio-website-architecture-src.png";
+import portfolioArchitectureComponents from "../../../assets/case-studies/portfolio-website-architecture-components.png";
+import portfolioSecuritySemanticHtmlStructure from "../../../assets/case-studies/portfolio-website-semantic-html-structure.png";
+import portfolioSecurityAccessibleNavigationControls from "../../../assets/case-studies/portfolio-website-accessible-navigation-controls.png";
+import portfolioSecurityArchitectureDecisionRecord from "../../../assets/case-studies/portfolio-website-architecture-decision-record.png";
+import portfolioSecuritySessionLog from "../../../assets/case-studies/portfolio-website-session-log.png";
 
 export const getStaticPaths = (() => {
 	return [
@@ -105,7 +104,8 @@ const designDecisionEvidenceImages = {
 					</div>
 
 					<div class="case-study-introduction-aside">
-						<CaseStudyFigure
+						<InteractiveFigure
+							lang={language}
 							src={portfolioHomepage}
 							alt={portfolioWebsite.figures.homepage.alt}
 							caption={portfolioWebsite.figures.homepage.caption}
@@ -211,6 +211,7 @@ const designDecisionEvidenceImages = {
 								<div class="case-study-evidence-gallery">
 									{item.evidence.map((evidence, index) => (
 										<EvidenceFigure
+											lang={language}
 											src={designDecisionEvidenceImages[item.id][index]}
 											alt={formatTypography(evidence.alt, language)}
 											caption={formatTypography(evidence.caption, language)}

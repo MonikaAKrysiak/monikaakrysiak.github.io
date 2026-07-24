@@ -44,4 +44,10 @@ export const pl = {
 			builtWith: "Zbudowane przy użyciu:",
 		designedWith: "Zaprojektowane z myślą o:",
 	},
+
+	interactiveFigure: {
+		openLargerView: "Otwórz powiększony obraz",
+		largerView: "Powiększony obraz",
+		closePreview: "Zamknij podgląd obrazu",
+	},
 };
