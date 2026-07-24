@@ -81,21 +81,120 @@ export const portfolioWebsite = {
 		introduction:
 			"The following examples show how the engineering principles presented above were applied throughout this project.",
 
+		evidenceTitle: "Evidence",
+
 		items: [
 			{
+				id: "security-by-default",
+
 				title: "Security by Default",
 
 				paragraphs: [
 					"This project intentionally minimizes unnecessary external dependencies and keeps control over the assets used by the website.",
-
 					"Security-related choices are made during design and implementation rather than treated as a separate review at the end.",
 				],
 
-				evidence: [
+				implementedItems: [
 					"Local fonts instead of external CDNs.",
 					"Local SVG icons.",
 					"Minimal third-party dependencies.",
 					"Dependencies reviewed before installation.",
+				],
+
+				evidence: [
+					{
+						alt: "Excerpt of package.json showing the Astro dependency and explicitly allowed esbuild install script.",
+						caption: "package.json",
+					},
+					{
+						alt: "Project assets directory showing locally stored Manrope fonts and SVG icons.",
+						caption: "Project assets stored locally",
+					},
+				],
+			},
+			{
+				id: "architecture-before-implementation",
+
+				title: "Architecture Before Implementation",
+
+				paragraphs: [
+					"Before implementing features, the overall structure of the application was designed first. The project evolved through reusable components, data-driven content and small iterative refactorings instead of one-off solutions.",
+					"This approach made it possible to introduce new sections, multilingual support and reusable layouts without rewriting existing code.",
+				],
+
+				implementedItems: [
+					"Reusable Astro components.",
+					"Data-driven content.",
+					"URL-based localization.",
+					"Small architectural iterations.",
+				],
+
+				evidence: [
+					{
+						alt: "Source directory showing the main architectural areas of the portfolio project.",
+						caption: "Project source structure",
+					},
+					{
+						alt: "Components directory showing reusable Astro components used throughout the portfolio.",
+						caption: "Reusable Astro components",
+					},
+				],
+			},
+			{
+				id: "accessibility-by-design",
+
+				title: "Accessibility by Design",
+
+				paragraphs: [
+					"Accessibility is considered while designing components, navigation and content rather than added after implementation.",
+
+					"Semantic HTML provides the foundation, while ARIA is used only where native elements do not provide enough context.",
+				],
+
+				implementedItems: [
+					"Semantic HTML structure.",
+					"Keyboard-accessible navigation.",
+					"Visible focus states.",
+					"Descriptive alternative text.",
+				],
+				evidence: [
+					{
+						alt: "Semantic HTML structure used in an Astro component.",
+						caption: "Semantic document structure",
+					},
+					{
+						alt: "Accessibility audit result showing the portfolio accessibility score.",
+						caption: "Accessible mobile navigation",
+					},
+				],
+			},
+			{
+			id: "documentation-as-part-of-engineering",
+
+				title: "Documentation as Part of Engineering",
+
+				paragraphs: [
+					"Documentation is treated as part of the implementation process rather than as a separate task completed at the end.",
+
+				"Architectural decisions, development sessions and project principles are documented so that the reasoning behind the code remains visible over time.",
+				],
+
+				implementedItems: [
+					"Architecture Decision Records.",
+					"Development session logs.",
+					"Project overview and engineering principles.",
+					"Documented commit scope and implementation context.",
+				],
+
+				evidence: [
+					{
+						alt: "Architecture Decision Record describing a technical decision in the portfolio project.",
+						caption: "Architecture Decision Record",
+					},
+					{
+						alt: "Development session log documenting the goal, implementation details and design decisions.",
+						caption: "Development session log",
+					},
 				],
 			},
 		],

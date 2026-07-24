@@ -1,0 +1,61 @@
+---
+interface Props {
+	title: string;
+	evidenceTitle: string;
+}
+
+const {
+	title,
+	evidenceTitle,
+} = Astro.props;
+---
+
+<article class="design-decision-card">
+	<div class="design-decision-card-body">
+		<div class="design-decision-card-content">
+			<h3 class="design-decision-card-title">
+				{title}
+			</h3>
+
+			<slot />
+		</div>
+
+		<div class="design-decision-card-evidence">
+			<h4 class="design-decision-card-evidence-title">
+                {evidenceTitle}
+            </h4>
+
+			<slot name="evidence" />
+		</div>
+	</div>
+</article>
+<style>
+	.design-decision-card-body {
+        display: grid;
+        gap: var(--space-xl);
+        align-items: start;
+    }
+
+    .design-decision-card {
+        padding: var(--space-xl);
+        margin-top: var(--space-lg);
+
+        background-color: var(--color-surface-hover);
+        border: 1px solid var(--color-border);
+        border-radius: var(--space-sm);
+    }
+
+    .design-decision-card-title {
+        margin: 0 0 var(--space-md);
+    }
+
+    .design-decision-card-evidence-title {
+        margin: 0 0 var(--space-md);
+    }
+
+    @media (min-width: 1024px) {
+        .design-decision-card-body {
+            grid-template-columns: 1fr 1.2fr;
+        }
+    }
+</style>

@@ -145,3 +145,9 @@ This separation keeps presentation, content and translations independent while m
 ## Page composition and routing.
 
 This architecture makes adding new languages and new case studies straightforward while keeping components reusable.
+
+### Design Decisions completed
+
+The Portfolio Website case study now includes four engineering decision cards supported by localized technical evidence and screenshots.
+
+The implementation keeps content, presentation and assets clearly separated while allowing additional evidence to be added without changing the page structure.

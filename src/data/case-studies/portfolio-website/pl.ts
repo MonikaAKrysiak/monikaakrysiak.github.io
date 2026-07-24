@@ -83,8 +83,12 @@ export const portfolioWebsite = {
 		introduction:
 			"Poniższe przykłady pokazują, jak opisane wcześniej zasady inżynierskie zostały zastosowane w tym projekcie.",
 
+		evidenceTitle: "Przykłady",
+
 		items: [
 			{
+				id: "security-by-default",
+
 				title: "Bezpieczeństwo od początku",
 
 				paragraphs: [
@@ -93,11 +97,109 @@ export const portfolioWebsite = {
 					"Decyzje związane z bezpieczeństwem są podejmowane już na etapie projektowania i implementacji, a nie dopiero podczas końcowego przeglądu.",
 				],
 
-				evidence: [
+				implementedItems: [
 					"Lokalne fonty zamiast zewnętrznych CDN-ów.",
 					"Lokalne ikony SVG.",
 					"Minimalna liczba zależności zewnętrznych.",
 					"Weryfikacja zależności przed instalacją.",
+				],
+
+				evidence: [
+					{
+						alt: "Fragment pliku package.json pokazujący zależność Astro oraz jawnie zatwierdzony skrypt instalacyjny esbuild.",
+						caption: "package.json",
+					},
+					{
+						alt: "Katalog assets projektu pokazujący lokalnie przechowywane fonty Manrope oraz ikony SVG.",
+						caption: "Zasoby projektu przechowywane lokalnie",
+					},
+				],
+			},
+			{
+				id: "architecture-before-implementation",
+
+				title: "Architektura przed implementacją",
+
+				paragraphs: [
+					"Przed rozpoczęciem implementacji funkcjonalności najpierw została zaprojektowana ogólna struktura aplikacji. Projekt rozwijał się poprzez wielokrotnego użytku komponenty, dane oddzielone od prezentacji oraz niewielkie, stopniowe refaktoryzacje zamiast jednorazowych rozwiązań.",
+
+					"Dzięki temu możliwe było dodawanie nowych sekcji, obsługi wielu języków oraz ponownie wykorzystywanych layoutów bez konieczności przebudowy istniejącego kodu.",
+				],
+
+				implementedItems: [
+					"Wielokrotnego użytku komponenty Astro.",
+					"Architektura oparta na danych.",
+					"Lokalizacja oparta o adresy URL.",
+					"Małe, iteracyjne zmiany architektoniczne.",
+				],
+
+				evidence: [
+					{
+						alt: "Struktura katalogu src przedstawiająca główne obszary architektury projektu portfolio.",
+						caption: "Struktura katalogu src",
+					},
+					{
+						alt: "Katalog components przedstawiający wielokrotnego użytku komponenty Astro wykorzystywane w całym portfolio.",
+						caption: "Komponenty wielokrotnego użytku",
+					},
+				],
+			},
+			{
+				id: "accessibility-by-design",
+
+				title: "Dostępność od etapu projektowania",
+
+				paragraphs: [
+					"Dostępność uwzględniam podczas projektowania komponentów, nawigacji i treści, zamiast dodawać ją dopiero po zakończeniu implementacji.",
+
+					"Fundamentem jest semantyczny HTML, a ARIA stosuję wyłącznie tam, gdzie natywne elementy nie zapewniają wystarczającego kontekstu.",
+				],
+
+				implementedItems: [
+					"Semantyczna struktura HTML.",
+					"Nawigacja dostępna z klawiatury.",
+					"Widoczne style focus.",
+					"Opisowe teksty alternatywne.",
+				],
+
+				evidence: [
+					{
+						alt: "Semantyczna struktura HTML zastosowana w komponencie Astro.",
+						caption: "Semantyczna struktura komponentu",
+					},
+					{
+						alt: "Wynik audytu dostępności pokazujący ocenę dostępności portfolio.",
+						caption: "Dostępna nawigacja mobilna",
+					},
+				],
+			},
+			{
+				id: "documentation-as-part-of-engineering",
+
+				title: "Dokumentacja jako część pracy inżynierskiej",
+
+				paragraphs: [
+					"Dokumentację traktuję jako część procesu implementacji, a nie osobne zadanie wykonywane dopiero na końcu.",
+
+					"Decyzje architektoniczne, sesje rozwojowe i zasady projektu dokumentuję tak, aby uzasadnienie zmian pozostawało czytelne również po czasie.",
+				],
+
+				implementedItems: [
+					"Architecture Decision Records.",
+					"Logi sesji rozwojowych.",
+					"Opis projektu i jego zasad inżynierskich.",
+					"Udokumentowany zakres commitów i kontekst implementacji.",
+				],
+
+				evidence: [
+					{
+						alt: "Architecture Decision Record opisujący decyzję techniczną w projekcie portfolio.",
+						caption: "Architecture Decision Record",
+					},
+					{
+						alt: "Log sesji rozwojowej dokumentujący cel, przebieg implementacji i decyzje projektowe.",
+						caption: "Log sesji rozwojowej",
+					},
 				],
 			},
 		],

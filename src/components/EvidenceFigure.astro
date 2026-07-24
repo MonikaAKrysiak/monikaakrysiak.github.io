@@ -1,0 +1,46 @@
+---
+import { Image, type ImageMetadata } from "astro:assets";
+interface Props {
+	src: ImageMetadata;
+	alt: string;
+	caption: string;
+}
+
+const {
+	src,
+	alt,
+	caption,
+} = Astro.props;
+---
+
+<figure class="evidence-figure">
+	<Image
+		src={src}
+		alt={alt}
+		class="evidence-figure-image"
+	/>
+
+	<figcaption class="evidence-figure-caption">
+		{caption}
+	</figcaption>
+</figure>
+<style>
+	.evidence-figure {
+		margin: 0;
+	}
+
+	.evidence-figure-image {
+		display: block;
+		width: 100%;
+		height: auto;
+
+		border-radius: var(--space-xs);
+	}
+
+	.evidence-figure-caption {
+		margin-top: var(--space-xs);
+
+		color: var(--color-text-muted);
+		text-align: center;
+	}
+</style>
