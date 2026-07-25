@@ -1,0 +1,25 @@
+---
+interface Props {
+	title: string;
+	items: string[];
+}
+
+const {
+	title,
+	items,
+} = Astro.props;
+---
+
+<section class="case-study-meta">
+	<h2 class="case-study-meta-title">
+		{title}
+	</h2>
+
+	<ul class="case-study-meta-list">
+		{items.map((item) => (
+			<li class="case-study-meta-item">
+				{item}
+			</li>
+		))}
+	</ul>
+</section>

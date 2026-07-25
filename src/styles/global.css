@@ -700,6 +700,137 @@ body {
 	font-weight: 600;
 }
 
+.impact-stories {
+	display: grid;
+	gap: 0;
+}
+
+.impact-story {
+	display: grid;
+	gap: var(--space-sm);
+
+	padding-block: var(--space-lg);
+
+	border-bottom: 1px solid var(--color-border);
+}
+
+.impact-story-number {
+	margin: 0;
+
+	color: var(--color-primary);
+
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 0.9;
+}
+
+.impact-story-content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xs);
+
+	max-width: 65ch;
+}
+
+.impact-story-title,
+.impact-story-description,
+.impact-story-outcome {
+	margin: 0;
+}
+
+.impact-story-outcome {
+	color: var(--color-text-muted);
+}
+
+.impact-story-meta {
+	margin-top: var(--space-md);
+}
+
+.impact-story-meta-title {
+	margin: 0 0 var(--space-sm);
+
+	color: var(--color-text-muted);
+
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.impact-story-focus-areas {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-xs);
+
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+}
+
+.impact-story-focus-area {
+	padding: 0.35rem 0.65rem;
+
+	border: 1px solid var(--color-border);
+	border-radius: 999px;
+
+	background-color: var(--color-surface);
+	color: var(--color-secondary);
+
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+	.impact-story {
+		grid-template-columns: 6rem minmax(0, 1fr) 13rem;
+		column-gap: var(--space-3xl);
+		align-items: start;
+
+		padding-block: var(--space-xl);
+	}
+
+	.impact-story-number {
+		font-size: 5rem;
+	}
+
+	.impact-story-meta {
+		margin-top: 0;
+		padding-left: var(--space-md);
+		border-left: 1px solid var(--color-border);
+	}
+
+	.impact-story-meta-title {
+		margin-bottom: var(--space-md);
+
+		color: var(--color-text-muted);
+
+		font-size: 0.8rem;
+		line-height: 1.3;
+	}
+
+	.impact-story-focus-areas {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-xs);
+	}
+
+	.impact-story-focus-area {
+		padding: 0;
+		border: none;
+		border-radius: 0;
+
+		background: none;
+		color: var(--color-secondary);
+
+		font-size: 0.95rem;
+		font-weight: 600;
+		line-height: 1.5;
+		letter-spacing: 0.01em;
+	}
+}
+
 .case-study-source {
 	display: inline-flex;
 	align-items: center;
@@ -745,7 +876,6 @@ body {
 	scroll-margin-top: calc(var(--header-height) + var(--space-md));
 }
 
-/* Pierwsza sekcja w lewej kolumnie nie potrzebuje odstępu 4rem */
 .case-study-introduction-main > .case-study-section {
 	margin-top: var(--space-md);
 }
@@ -786,8 +916,166 @@ body {
 	color: var(--color-primary-hover);
 }
 
-/* Engineering principles */
+/* Documentation showcase */
+.documentation-showcase {
+	display: grid;
+	gap: var(--space-xl);
 
+	margin-top: var(--space-3xl);
+}
+
+.documentation-showcase-introduction {
+	display: grid;
+	gap: var(--space-lg);
+}
+
+.documentation-showcase-introduction-main {
+	display: grid;
+	gap: var(--space-lg);
+}
+
+.documentation-showcase-title {
+	margin: 0;
+}
+
+.documentation-showcase-content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-md);
+}
+
+/* Key areas */
+.documentation-showcase-meta {
+	margin-top: var(--space-md);
+}
+
+.documentation-showcase-meta-title {
+	margin: 0 0 var(--space-sm);
+
+	color: var(--color-text-muted);
+
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.documentation-showcase-focus-areas {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-xs);
+
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+}
+
+.documentation-showcase-focus-area {
+	padding: 0.35rem 0.65rem;
+
+	border: 1px solid var(--color-border);
+	border-radius: 999px;
+
+	background-color: var(--color-surface);
+	color: var(--color-secondary);
+
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+/* Content below the figure */
+.documentation-showcase-details {
+	display: grid;
+	gap: var(--space-xl);
+
+	padding-bottom: var(--space-2xl);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.documentation-showcase-subtitle {
+	margin: 0 0 var(--space-md);
+}
+
+.documentation-showcase-includes-list {
+	margin: 0;
+	padding-left: 1.25rem;
+}
+
+.documentation-showcase-includes-item + .documentation-showcase-includes-item {
+	margin-top: var(--space-xs);
+}
+
+/*
+ * Mobile:
+ * Impact belongs to the same content group as the documentation list,
+ * so there is no separator between them.
+ */
+.documentation-showcase-outcome {
+	margin-top: var(--space-md);
+}
+
+@media (min-width: 768px) {
+	.documentation-showcase-introduction {
+		grid-template-columns: minmax(0, 1fr) 13rem;
+		column-gap: var(--space-3xl);
+		align-items: start;
+	}
+
+	.documentation-showcase-introduction-main {
+		max-width: 65ch;
+	}
+
+	.documentation-showcase-meta {
+		margin-top: 0;
+		padding-left: var(--space-md);
+		border-left: 1px solid var(--color-border);
+	}
+
+	.documentation-showcase-meta-title {
+		margin-bottom: var(--space-md);
+
+		font-size: 0.8rem;
+		line-height: 1.3;
+	}
+
+	.documentation-showcase-focus-areas {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-xs);
+	}
+
+	.documentation-showcase-focus-area {
+		padding: 0;
+		border: none;
+		border-radius: 0;
+
+		background: none;
+		color: var(--color-secondary);
+
+		font-size: 0.95rem;
+		font-weight: 600;
+		line-height: 1.5;
+		letter-spacing: 0.01em;
+	}
+
+	.documentation-showcase-details {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		column-gap: var(--space-3xl);
+		align-items: start;
+
+		padding-bottom: var(--space-2xl);
+	}
+
+	.documentation-showcase-outcome {
+		margin-top: 0;
+		padding-left: var(--space-xl);
+		border-left: 1px solid var(--color-border);
+	}
+}
+
+/* Engineering principles */
 .case-study-principle {
 	margin-top: var(--space-2xl);
 }
@@ -844,8 +1132,17 @@ body {
 	.case-study-project-meta .case-study-source {
 		margin-top: 0;
 	}
+	
 	.case-study-introduction + .case-study-section {
 		margin-top: var(--space-2xl);
+	}
+
+	.documentation-showcase-outcome {
+		padding-top: 0;
+		padding-left: var(--space-xl);
+
+		border-top: none;
+		border-left: 1px solid var(--color-border);
 	}
 }
 

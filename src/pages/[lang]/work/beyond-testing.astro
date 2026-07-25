@@ -4,13 +4,17 @@ import type { Language } from "../../../i18n";
 import { getBeyondTesting } from "../../../data/case-studies/beyond-testing";
 import { getAdjacentWork } from "../../../data/work";
 import { formatTypography } from "../../../utils/typography";
+import type { NavigationItem } from "../../../types/navigation";
 
 import Layout from "../../../layouts/Layout.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
 import CaseStudySection from "../../../components/CaseStudySection.astro";
-import CaseStudyContent from "../../../components/CaseStudyContent.astro";
+import ImpactStoryCard from "../../../components/ImpactStoryCard.astro";
 import BackLink from "../../../components/BackLink.astro";
 import CaseStudyNavigation from "../../../components/CaseStudyNavigation.astro";
+import DocumentationShowcase from "../../../components/DocumentationShowcase.astro";
+
+import portfolioHomepage from "../../../assets/case-studies/portfolio-homepage.png";
 
 export const getStaticPaths = (() => {
 	return [
@@ -20,7 +24,6 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 const { lang } = Astro.params;
-
 const language = lang as Language;
 const beyondTesting = getBeyondTesting(language);
 
@@ -28,77 +31,172 @@ const { previous, next } = getAdjacentWork(
 	language,
 	"/work/beyond-testing",
 );
+
+const beyondTestingNavigationItems: NavigationItem[] = [
+	{
+		label:
+			language === "pl"
+				? "Moje podejście"
+				: "My Approach",
+		href: "#overview",
+	},
+	{
+		label:
+			language === "pl"
+				? "Historie z praktyki"
+				: "Stories from Practice",
+		href: "#impact-stories",
+	},
+	{
+		label:
+			language === "pl"
+				? "Dokumentacja wizualna"
+				: "Visual Documentation",
+		href: "#visual-documentation",
+	},
+];
+
 ---
 
-<Layout lang={language}>
+<Layout
+	lang={language}
+	navigationItems={beyondTestingNavigationItems}
+>
 	<main>
 		<section id="case-study-start" class="case-study section">
 			<div class="container">
 				<BackLink lang={language} />
 
-				<CaseStudyContent>
-	<div>
-		<CaseStudyHeader
-			title={formatTypography(
-				beyondTesting.header.title,
-				language
-			)}
-			summary={formatTypography(
-				beyondTesting.header.summary,
-				language
-			)}
-		/>
+				<div class="case-study-main-content">
+					<CaseStudyHeader
+						title={formatTypography(
+							beyondTesting.header.title,
+							language,
+						)}
+						summary={formatTypography(
+							beyondTesting.header.summary,
+							language,
+						)}
+					/>
 
-		<CaseStudySection
-			id="overview"
-			title={formatTypography(
-				beyondTesting.overview.title,
-				language
-			)}
-		>
-			{beyondTesting.overview.paragraphs.map((paragraph) => (
-				<p class="case-study-text">
-					{formatTypography(paragraph, language)}
-				</p>
-			))}
-		</CaseStudySection>
-	</div>
+					<ul class="case-study-focus-areas">
+						{beyondTesting.header.focusAreas.map((focusArea) => (
+							<li class="case-study-focus-area">
+								{focusArea}
+							</li>
+						))}
+					</ul>
 
-	<div slot="aside">
-		<ul class="case-study-focus-areas">
-			{beyondTesting.header.focusAreas.map((focusArea) => (
-				<li class="case-study-focus-area">
-					{focusArea}
-				</li>
-			))}
-		</ul>
-	</div>
-</CaseStudyContent>
-<CaseStudyNavigation
-	previous={
-		previous
-			? {
-					href: `/${language}${previous.href}`,
-					label: previous.title,
-				}
-			: undefined
-	}
-	next={
-		next
-			? {
-					href: `/${language}${next.href}`,
-					label: next.title,
-				}
-			: undefined
-	}
-	allWork={{
-		href: `/${language}/#work`,
-		label:
-			language === "pl"
-				? "Zobacz wszystkie projekty"
-				: "View all selected work",
-	}}
-/>
+					<CaseStudySection
+						id="overview"
+						title={formatTypography(
+							beyondTesting.overview.title,
+							language,
+						)}
+					>
+						{beyondTesting.overview.paragraphs.map((paragraph) => (
+							<p class="case-study-text">
+								{formatTypography(paragraph, language)}
+							</p>
+						))}
+					</CaseStudySection>
+
+					<CaseStudySection
+						id="impact-stories"
+						title={formatTypography(
+							beyondTesting.impactStories.title,
+							language,
+						)}
+					>
+						<div class="impact-stories">
+							{beyondTesting.impactStories.items.map((story, index) => (
+								<ImpactStoryCard
+									number={String(index + 1).padStart(2, "0")}
+									title={formatTypography(
+										story.title,
+										language,
+									)}
+									description={formatTypography(
+										story.description,
+										language,
+									)}
+									outcome={formatTypography(
+										story.outcome,
+										language,
+									)}
+									focusAreasTitle={
+										language === "pl"
+											? "Kluczowe obszary"
+											: "Key Areas"
+									}
+									focusAreas={story.focusAreas}
+								/>
+							))}
+						</div>
+					</CaseStudySection>
+				</div>
+
+				<DocumentationShowcase
+					id="visual-documentation"
+					lang={language}
+					title={formatTypography(
+						beyondTesting.visualDocumentation.title,
+						language,
+					)}
+					paragraphs={beyondTesting.visualDocumentation.paragraphs.map(
+						(paragraph) =>
+							formatTypography(paragraph, language),
+					)}
+					includesTitle={
+						beyondTesting.visualDocumentation.includesTitle
+					}
+					includes={
+						beyondTesting.visualDocumentation.includes
+					}
+					focusAreasTitle={
+						language === "pl"
+							? "Kluczowe obszary"
+							: "Focus Areas"
+					}
+					focusAreas={
+						beyondTesting.visualDocumentation.focusAreas
+					}
+					impactTitle={
+						beyondTesting.visualDocumentation.impactTitle
+					}
+					outcome={formatTypography(
+						beyondTesting.visualDocumentation.outcome,
+						language,
+					)}
+					image={portfolioHomepage}
+					imageAlt="Portfolio homepage used as a temporary documentation diagram placeholder"
+				/>
+
+				<CaseStudyNavigation
+					previous={
+						previous
+							? {
+									href: `/${language}${previous.href}`,
+									label: previous.title,
+								}
+							: undefined
+					}
+					next={
+						next
+							? {
+									href: `/${language}${next.href}`,
+									label: next.title,
+								}
+							: undefined
+					}
+					allWork={{
+						href: `/${language}/#work`,
+						label:
+							language === "pl"
+								? "Zobacz wszystkie projekty"
+								: "View all selected work",
+					}}
+				/>
 			</div>
 		</section>
 	</main>
