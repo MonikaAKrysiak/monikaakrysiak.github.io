@@ -9,13 +9,15 @@ interface Props {
 	src: ImageMetadata;
 	alt: string;
 	caption?: string;
+	className?: string;
 }
 
 const {
-	lang,
 	src,
 	alt,
 	caption,
+	lang,
+	className,
 } = Astro.props;
 
 const labels = getTranslations(lang).interactiveFigure;
@@ -26,7 +28,12 @@ const dialogId = `figure-dialog-${src.src
 
 const captionId = `${dialogId}-caption`;
 ---
-<figure class="interactive-figure">
+<figure
+	class:list={[
+		"interactive-figure",
+		className,
+	]}
+>
 	<button
 		type="button"
 		class="interactive-figure-button"
@@ -34,6 +41,7 @@ const captionId = `${dialogId}-caption`;
 		aria-haspopup="dialog"
 		data-dialog-open={dialogId}
 	>
+
 		<Image
 			src={src}
 			alt={alt}

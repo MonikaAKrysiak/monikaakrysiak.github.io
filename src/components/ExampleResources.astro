@@ -1,0 +1,148 @@
+---
+import type { Language } from "../i18n";
+import { formatTypography } from "../utils/typography";
+
+import placeholderImage from "../assets/case-studies/portfolio-homepage.png";
+import InteractiveFigure from "./InteractiveFigure.astro";
+
+interface Resource {
+	title: string;
+	description: string;
+}
+
+interface Props {
+	title: string;
+	introduction: string;
+	resources: Resource[];
+	lang: Language;
+}
+
+const {
+	title,
+	introduction,
+	resources,
+	lang,
+} = Astro.props;
+---
+
+<section
+	id="example-resources"
+	class="example-resources"
+>
+	<header class="example-resources-header">
+		<h2 class="section-heading">
+			{formatTypography(title, lang)}
+		</h2>
+
+		<p class="case-study-text">
+			{formatTypography(introduction, lang)}
+		</p>
+	</header>
+
+	<div class="example-resources-grid">
+        {resources.map((resource) => (
+            <article class="example-resource">
+                <InteractiveFigure
+                    src={placeholderImage}
+                    alt={resource.title}
+                    caption={resource.title}
+                    lang={lang}
+                    className="example-resource-figure"
+                />
+
+                <h3 class="example-resource-title">
+                    {formatTypography(resource.title, lang)}
+                </h3>
+
+                <p class="case-study-text example-resource-description">
+                    {formatTypography(resource.description, lang)}
+                </p>
+            </article>
+        ))}
+    </div>
+
+</section>
+
+<style>
+	.example-resources {
+		margin-top: var(--space-3xl);
+	}
+
+	.example-resources-header {
+        max-width: 52rem;
+        margin: 0 auto var(--space-xl);
+    }       
+
+	.example-resources-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-xl);
+
+        margin-top: var(--space-2xl);
+	}
+
+	.example-resource {
+		min-width: 0;
+        display: flex;
+	    flex-direction: column;
+	}
+
+	.example-resource-title {
+        margin: var(--space-md) 0 var(--space-xs);
+
+        font-size: var(--font-size-heading);
+    }
+
+    .example-resource-figure {
+        aspect-ratio: 4 / 3;
+    }
+
+    .example-resource-figure :global(.interactive-figure-button) {
+        width: 100%;
+        height: 100%;
+    }
+
+    .example-resource-figure :global(.interactive-figure-image) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media (min-width: 48rem) {
+        .example-resources-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .example-resource-title {
+                order: 1;
+            }
+
+            .case-study-text {
+                order: 2;
+            }
+
+            .example-resource-figure {
+                order: 3;
+            }
+
+    }
+        @media (max-width: 47.99rem) {
+            .example-resource {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .example-resource-title {
+                order: 1;
+                margin-top: 0;
+            }
+
+            .example-resource-description {
+                order: 2;
+                margin-bottom: var(--space-md);
+            }
+
+            .example-resource :global(.example-resource-figure) {
+                order: 3;
+            }
+        }
+</style>

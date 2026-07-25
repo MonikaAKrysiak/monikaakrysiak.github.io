@@ -1,0 +1,75 @@
+---
+import type { Language } from "../i18n";
+import { formatTypography } from "../utils/typography";
+
+import KnowledgePracticeCard from "./KnowledgePracticeCard.astro";
+
+interface Item {
+	title: string;
+	description: string;
+}
+
+interface Props {
+	title: string;
+	introduction: string;
+	items: Item[];
+	lang: Language;
+}
+
+const {
+	title,
+	introduction,
+	items,
+	lang,
+}: Props = Astro.props;
+---
+
+<section
+	id="knowledge-in-practice"
+	class="knowledge-in-practice"
+>
+	<header class="knowledge-in-practice-header">
+		<h2 class="section-heading">
+			{formatTypography(title, lang)}
+		</h2>
+
+		<p class="case-study-text">
+			{formatTypography(introduction, lang)}
+		</p>
+	</header>
+
+	<div class="knowledge-in-practice-grid">
+		{items.map((item) => (
+			<KnowledgePracticeCard
+				title={formatTypography(item.title, lang)}
+			>
+				<p class="case-study-text">
+					{formatTypography(item.description, lang)}
+				</p>
+			</KnowledgePracticeCard>
+		))}
+	</div>
+</section>
+
+<style>
+	.knowledge-in-practice {
+		margin-top: var(--space-3xl);
+	}
+
+	.knowledge-in-practice-header {
+		max-width: 52rem;
+		margin: 0 auto var(--space-xl);
+	}
+
+	.knowledge-in-practice-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-xl);
+	}
+
+	@media (min-width: 48rem) {
+		.knowledge-in-practice-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+</style>

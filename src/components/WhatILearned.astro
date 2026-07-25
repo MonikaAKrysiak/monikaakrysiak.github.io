@@ -1,0 +1,51 @@
+---
+import type { Language } from "../i18n";
+import { formatTypography } from "../utils/typography";
+
+interface Props {
+	title: string;
+	paragraphs: string[];
+	lang: Language;
+}
+
+const {
+	title,
+	paragraphs,
+	lang,
+}: Props = Astro.props;
+---
+
+<section
+	id="what-i-learned"
+	class="what-i-learned"
+>
+	<header class="what-i-learned-header">
+		<h2 class="section-heading">
+			{formatTypography(title, lang)}
+		</h2>
+	</header>
+
+	<div class="what-i-learned-content">
+		{paragraphs.map((paragraph) => (
+			<p class="case-study-text">
+				{formatTypography(paragraph, lang)}
+			</p>
+		))}
+	</div>
+</section>
+
+<style>
+	.what-i-learned {
+		margin-top: var(--space-3xl);
+	}
+
+	.what-i-learned-header {
+		margin-bottom: var(--space-2xl);
+	}
+
+	.what-i-learned-header,
+	.what-i-learned-content {
+		max-width: 52rem;
+		margin-inline: auto;
+	}
+</style>
