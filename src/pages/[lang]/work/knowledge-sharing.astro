@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
 import type { Language } from "../../../i18n";
-
+import type { NavigationItem } from "../../../types/navigation";
 import { getKnowledgeSharing } from "../../../data/case-studies/knowledge-sharing";
 import { getAdjacentWork } from "../../../data/work";
 import { formatTypography } from "../../../utils/typography";
@@ -11,6 +11,7 @@ import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
 import CaseStudySection from "../../../components/CaseStudySection.astro";
 import BackLink from "../../../components/BackLink.astro";
 import CaseStudyNavigation from "../../../components/CaseStudyNavigation.astro";
+import SectionDivider from "../../../components/SectionDivider.astro";
 
 export const getStaticPaths = (() => {
 	return [
@@ -28,9 +29,51 @@ const { previous, next } = getAdjacentWork(
 	language,
 	"/work/knowledge-sharing",
 );
+
+const knowledgeSharingNavigationItems: NavigationItem[] = [
+	{
+		label:
+			language === "pl"
+				? "Wprowadzenie"
+				: "Overview",
+		href: "#overview",
+	},
+	{
+		label:
+			language === "pl"
+				? "Odbiorcy"
+				: "Audiences",
+		href: "#audiences",
+	},
+	{
+		label:
+			language === "pl"
+				? "Przykłady"
+				: "Examples",
+		href: "#practical-examples",
+	},
+	{
+		label:
+			language === "pl"
+				? "Wpływ"
+				: "Impact",
+		href: "#impact",
+	},
+	{
+		label:
+			language === "pl"
+				? "Wnioski"
+				: "Learnings",
+		href: "#reflection",
+	},
+];
 ---
 
-<Layout lang={language}>
+<Layout
+	lang={language}
+	navigationItems={knowledgeSharingNavigationItems}
+>
+
     <main>
         <section id="case-study-start" class="case-study section">
             <div class="container">
@@ -53,6 +96,169 @@ const { previous, next } = getAdjacentWork(
                         </p>
                     ))}
                 </CaseStudySection>
+
+                <CaseStudySection
+                    id="audiences"
+                    title={formatTypography(
+                        knowledgeSharing.audiences.title,
+                        language,
+                    )}
+                >
+                    <p class="case-study-text">
+                        {formatTypography(
+                            knowledgeSharing.audiences.introduction,
+                            language,
+                        )}
+                    </p>
+
+                    <div class="knowledge-sharing-audiences">
+                        {knowledgeSharing.audiences.items.map((audience) => (
+                            <article class="content-card">
+                                <h3 class="content-card-title">
+                                    {formatTypography(audience.title, language)}
+                                </h3>
+
+                                <p class="case-study-text">
+                                    {formatTypography(audience.description, language)}
+                                </p>
+                            </article>
+                        ))}
+                    </div>
+                </CaseStudySection>
+
+                <SectionDivider />
+
+                <CaseStudySection
+                    id="practical-examples"
+                    title={formatTypography(
+                        knowledgeSharing.practicalExamples.title,
+                        language,
+                    )}
+                >
+                    <p class="case-study-text">
+                        {formatTypography(
+                            knowledgeSharing.practicalExamples.introduction,
+                            language,
+                        )}
+                    </p>
+
+                     <div class="knowledge-sharing-examples">
+                        {knowledgeSharing.practicalExamples.items.map((example) => (
+                            <article class="content-card knowledge-sharing-example">
+                                <div class="knowledge-sharing-example-main">
+                                    <h3 class="content-card-title">
+                                        {formatTypography(example.title, language)}
+                                    </h3>
+
+                                    <div class="knowledge-sharing-example-part">
+                                        <p class="knowledge-sharing-example-label">
+                                            {language === "pl" ? "Dlaczego?" : "Why it was needed"}
+                                        </p>
+
+                                        <p class="case-study-text">
+                                            {formatTypography(example.context, language)}
+                                        </p>
+                                    </div>
+
+                                    <div class="knowledge-sharing-example-part">
+                                        <p class="knowledge-sharing-example-label">
+                                            {language === "pl" ? "Jak?" : "What I created"}
+                                        </p>
+
+                                        <p class="case-study-text">
+                                            {formatTypography(example.approach, language)}
+                                        </p>
+                                    </div>
+
+                                    <div class="knowledge-sharing-example-part">
+                                        <p class="knowledge-sharing-example-label">
+                                            {language === "pl" ? "Efekt" : "How it helped"}
+                                        </p>
+
+                                        <p class="case-study-text">
+                                            {formatTypography(example.outcome, language)}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <aside class="knowledge-sharing-example-meta">
+                                    <dl class="knowledge-sharing-example-meta-list">
+                                        {example.meta.map((item) => (
+                                            <div class="knowledge-sharing-example-meta-item">
+                                                <dt class="knowledge-sharing-example-meta-label">
+                                                    {formatTypography(item.label, language)}
+                                                </dt>
+
+                                                <dd class="knowledge-sharing-example-meta-value">
+                                                    {formatTypography(item.value, language)}
+                                                </dd>
+                                            </div>
+                                        ))}
+                                    </dl>
+                                </aside>
+                            </article>
+                        ))}
+                    </div>
+                </CaseStudySection>
+
+                <SectionDivider />
+
+                <CaseStudySection
+                    id="impact"
+                    title={formatTypography(knowledgeSharing.impact.title, language)}
+                >
+                    <p class="case-study-text">
+                        {formatTypography(
+                            knowledgeSharing.impact.introduction,
+                            language,
+                        )}
+                    </p>
+
+                    <div class="knowledge-sharing-impact">
+                        {knowledgeSharing.impact.items.map((item) => (
+                            <article class="knowledge-sharing-impact-item">
+                                <div
+                                    class="knowledge-sharing-impact-marker"
+                                    aria-hidden="true"
+                                >
+                                    <div class="knowledge-sharing-impact-head">
+                                        <span class="knowledge-sharing-impact-dot"></span>
+                                        <span class="knowledge-sharing-impact-horizontal"></span>
+                                    </div>
+
+                                    <span class="knowledge-sharing-impact-line"></span>
+                                </div>
+
+                                <div class="knowledge-sharing-impact-content">
+                                    <h3 class="knowledge-sharing-impact-title">
+                                        {formatTypography(item.title, language)}
+                                    </h3>
+
+                                    <p class="case-study-text">
+                                        {formatTypography(item.description, language)}
+                                    </p>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </CaseStudySection>
+
+                <CaseStudySection
+                    id="reflection"
+                    title={formatTypography(
+                        knowledgeSharing.reflection.title,
+                        language,
+                    )}
+                >
+                    {knowledgeSharing.reflection.paragraphs.map((paragraph) => (
+                        <p class="case-study-text">
+                            {formatTypography(paragraph, language)}
+                        </p>
+                    ))}
+                </CaseStudySection>
+
+                <SectionDivider />
+
                 <CaseStudyNavigation
                     previous={
                         previous
