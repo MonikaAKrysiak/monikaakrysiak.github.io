@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import type { NavigationItem } from "../../../types/navigation";
 import { getSecurityKnowledgeBase } from "../../../data/case-studies/security-knowledge-base";
+import { getSecurityKnowledgeBaseSeo } from "../../../data/seo";
 import { getAdjacentWork } from "../../../data/work";
 import { formatTypography } from "../../../utils/typography";
 import {
@@ -64,11 +65,14 @@ const navigationItems: NavigationItem[] = [
 		href: "#what-i-learned",
 	},
 ];
+
+const seo = getSecurityKnowledgeBaseSeo(language);
 ---
 
 <Layout
 	lang={language}
 	navigationItems={navigationItems}
+	seo={seo}
 >
 	<main id="main-content" tabindex="-1">
 		<section class="case-study section">

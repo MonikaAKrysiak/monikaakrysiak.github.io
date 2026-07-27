@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import type { NavigationItem } from "../../../types/navigation";
 import { getBeyondTesting } from "../../../data/case-studies/beyond-testing";
 import { getAdjacentWork } from "../../../data/work";
+import { getBeyondTestingSeo } from "../../../data/seo";
 import { formatTypography } from "../../../utils/typography";
 import {
 	getTranslations,
@@ -66,11 +67,13 @@ const beyondTestingNavigationItems: NavigationItem[] = [
 	},
 ];
 
+const seo = getBeyondTestingSeo(language);
 ---
 
 <Layout
 	lang={language}
 	navigationItems={beyondTestingNavigationItems}
+	seo={seo}
 >
 	<main id="main-content" tabindex="-1">
 <section class="case-study section">

@@ -9,17 +9,52 @@ import type { NavigationItem } from "../types/navigation";
 
 import "../styles/global.css";
 
+interface SeoMetadata {
+	title?: string;
+	description?: string;
+	canonical?: string;
+	image?: string;
+	robots?: string;
+}
+
 interface Props {
 	lang: Language;
 	navigationItems?: NavigationItem[];
+	seo?: SeoMetadata;
 }
 
 const {
 	lang,
 	navigationItems = [],
+	seo = {},
 } = Astro.props;
 
 const t = getTranslations(lang);
+
+const site = {
+	name: "Monika Krysiak",
+	url: "https://monikaakrysiak.github.io",
+	author: "Monika Krysiak",
+};
+
+const defaultSeo: Required<Omit<SeoMetadata, "canonical">> = {
+	title: "Monika Krysiak | QA Engineer focused on Application Security",
+	description:
+		"Portfolio of Monika Krysiak, QA Engineer focused on Application Security, quality engineering, accessibility and modern frontend development.",
+	robots: "index, follow",
+	image: "/og-image.png",
+};
+
+const metadata = {
+	...defaultSeo,
+	...seo,
+};
+
+const canonical =
+	seo.canonical ??
+	new URL(Astro.url.pathname, site.url).toString();
+
+const socialImage = new URL(metadata.image, site.url).toString();
 ---
 
 <!doctype html>
@@ -41,7 +76,36 @@ const t = getTranslations(lang);
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Monika Krysiak</title>
+		<title>{metadata.title}</title>
+		<meta
+			name="description"
+			content={metadata.description}
+		/>
+
+		<meta
+			name="author"
+			content={site.author}
+		/>
+
+		<meta
+			name="robots"
+			content={metadata.robots}
+		/>
+		<link
+			rel="canonical"
+			href={canonical}
+		/>
+		<meta property="og:title" content={metadata.title} />
+		<meta property="og:description" content={metadata.description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={socialImage} />
+		<meta property="og:site_name" content={site.name} />
+		<meta property="og:locale" content={lang === "pl" ? "pl_PL" : "en_US"} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={metadata.title} />
+		<meta name="twitter:description" content={metadata.description} />
+		<meta name="twitter:image" content={socialImage} />
 	</head>
 
 	<body>

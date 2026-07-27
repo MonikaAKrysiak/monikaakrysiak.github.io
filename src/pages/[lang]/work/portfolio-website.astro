@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import type { NavigationItem } from "../../../types/navigation";
 import { getPortfolioWebsite } from "../../../data/case-studies/portfolio-website";
 import { getAdjacentWork } from "../../../data/work";
+import { getPortfolioWebsiteSeo } from "../../../data/seo";
 import { formatTypography } from "../../../utils/typography";
 import {
 	getTranslations,
@@ -97,11 +98,14 @@ const portfolioNavigationItems: NavigationItem[] = [
 		href: "#design-decisions",
 	},
 ];
+
+const seo = getPortfolioWebsiteSeo(language);
 ---
 
 <Layout
 	lang={language}
 	navigationItems={portfolioNavigationItems}
+	seo={seo}
 >
 	<main id="main-content" tabindex="-1">
 		<section
