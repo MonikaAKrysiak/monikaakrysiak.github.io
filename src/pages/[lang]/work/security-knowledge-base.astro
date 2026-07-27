@@ -1,10 +1,13 @@
 ---
 import type { GetStaticPaths } from "astro";
-import type { Language } from "../../../i18n";
 import type { NavigationItem } from "../../../types/navigation";
 import { getSecurityKnowledgeBase } from "../../../data/case-studies/security-knowledge-base";
 import { getAdjacentWork } from "../../../data/work";
 import { formatTypography } from "../../../utils/typography";
+import {
+	getTranslations,
+	type Language,
+} from "../../../i18n";
 
 import Layout from "../../../layouts/Layout.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
@@ -27,6 +30,7 @@ export const getStaticPaths = (() => {
 const { lang } = Astro.params;
 
 const language = lang as Language;
+const translations = getTranslations(language);
 const securityKnowledgeBase = getSecurityKnowledgeBase(language);
 
 const { previous, next } = getAdjacentWork(
@@ -164,10 +168,7 @@ const navigationItems: NavigationItem[] = [
 					}
 					allWork={{
 						href: `/${language}/#work`,
-						label:
-							language === "pl"
-								? "Zobacz wszystkie projekty"
-								: "View all selected work",
+						label: translations.caseStudyNavigation.allWork,
 					}}
 				/>
 			</div>

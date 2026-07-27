@@ -17,14 +17,14 @@ export const beyondTesting = {
 		title: "Moje podejście",
 
 		paragraphs: [
-			"Przez całą moją karierę wielokrotnie wychodziłam poza tradycyjny zakres obowiązków QA. Testowanie zawsze pozostawało ważnym elementem mojej pracy, jednak dostarczanie jakości często wymagało zrozumienia celów biznesowych, analizy wymagań oraz wspierania zespołu w podejmowaniu lepszych decyzji jeszcze przed rozpoczęciem implementacji.",
+			"W swojej karierze wielokrotnie wychodziłam poza tradycyjny zakres obowiązków QA. Testowanie zawsze pozostawało ważnym elementem mojej pracy, jednak dostarczanie jakości często wymagało zrozumienia celów biznesowych, analizy wymagań oraz wspierania zespołu w podejmowaniu lepszych decyzji jeszcze przed rozpoczęciem implementacji.",
 
-			"Postrzegam Quality Engineering jako łączenie ludzi, produktu i technologii. Czasami oznacza to wykrycie ryzyka już na etapie analizy wymagań, czasami uproszczenie złożonego procesu, a czasami zakwestionowanie założeń przed rozpoczęciem prac. Poniższe przykłady pokazują, jak takie podejście wpływało zarówno na decyzje produktowe, jak i na współpracę w zespole.",
+			"Postrzegam Quality Engineering jako łączenie ludzi, produktu i technologii. Może to oznaczać wykrycie ryzyka już na etapie analizy wymagań, uproszczenie złożonego procesu lub zakwestionowanie założeń przed rozpoczęciem prac.",
 		],
 	},
 
 	impactStories: {
-		title: "Mój wpływ wykraczający poza testowanie",
+		title: "Wpływ wykraczający poza testowanie",
 
 		items: [
 			{
@@ -50,7 +50,7 @@ export const beyondTesting = {
 					"Projekt zakładał generowanie około 300 stron tabel. Zakwestionowałam takie rozwiązanie, argumentując, że klient potrzebuje przede wszystkim szybkiego dostępu do najważniejszych informacji, a nie setek stron danych.",
 
 					outcome:
-						"Po zmianie Business Analityka i Product Ownera pomysł został ponownie przeanalizowany i wdrożony w postaci znacznie bardziej przejrzystej wizualizacji.",
+						"Po zmianie Analityka Biznesowego i Product Ownera pomysł został ponownie przeanalizowany i wdrożony w postaci znacznie bardziej przejrzystej wizualizacji.",
 
 					focusAreas: [
 						"Myślenie produktowe",
@@ -66,7 +66,7 @@ export const beyondTesting = {
 						"Dwie niezależne funkcjonalności były rozwijane w osobnych repozytoriach, jednak obie wprowadzały zmiany do wspólnego repozytorium frontendowego stanowiącego warstwę integracyjną. W trakcie prac okazało się, że zmiany są ze sobą na tyle powiązane, że nie można ich było przetestować ani wdrożyć niezależnie.",
 
 					outcome:
-						"Zamiast poświęcać dodatkowy czas na rozdzielanie zmian, przedstawiłam klientowi sytuację, zaproponowałam zmianę strategii testów oraz przeprowadzenie szerszej regresji. Ostatecznie obie funkcjonalności zostały wydane jednocześnie, zapewniając większą pewność jakości całego rozwiązania.",
+						"Zamiast poświęcać dodatkowy czas na rozdzielanie zmian, przedstawiłam klientowi sytuację, zaproponowałam zmianę strategii testów oraz przeprowadzenie szerszej regresji. Ostatecznie obie funkcjonalności zostały wydane jednocześnie, co zwiększyło pewność co do jakości całego rozwiązania",
 
 					focusAreas: [
 						"Zarządzanie ryzykiem",
@@ -98,7 +98,7 @@ export const beyondTesting = {
 						"Klienci często przedstawiają jedynie ogólną wizję rozwiązania. Moim zadaniem jest zadawanie pytań, analizowanie możliwości obecnej aplikacji oraz proponowanie kierunku, zanim zespół rozpocznie implementację.",
 
 					outcome:
-						"Klient i zespół osiągają wspólne zrozumienie rozwiązania jeszcze przed rozpoczęciem prac programistycznych.",
+						"Klient i zespół osiągnęli wspólne zrozumienie rozwiązania jeszcze przed rozpoczęciem prac programistycznych.",
 
 					focusAreas: [
 						"Analiza biznesowa",
@@ -114,9 +114,9 @@ export const beyondTesting = {
 			title: "Przekładanie złożonych systemów na zrozumiałe procesy",
 
 			paragraphs: [
-				"W okresie częstych zmian personalnych przygotowałam wizualną dokumentację procesów, aby złożone procesy biznesowe były zrozumiałe również dla osób, które dopiero dołączały do projektu.",
+				"W okresie częstych zmian w składzie zespołu przygotowałam wizualną dokumentację, aby złożone procesy biznesowe były zrozumiałe również dla osób, które dopiero dołączały do projektu.",
 
-				"Zamiast opierać się wyłącznie na opisie tekstowym, połączyłam zrzuty ekranu, diagramy przepływów oraz opisy integracji z zewnętrznymi systemami.",
+				"Zamiast opierać się wyłącznie na opisie tekstowym, połączyłam zrzuty ekranu, diagramy przepływów i opisy integracji z zewnętrznymi systemami.",
 			],
 
 			includesTitle: "Co zawierała dokumentacja",
@@ -139,6 +139,6 @@ export const beyondTesting = {
 			impactTitle: "Wpływ",
 
 			outcome:
-				"Dokumentacja przyspieszyła onboarding, usprawniła komunikację w zespole i zachowała swoją wartość mimo późniejszych zmian w aplikacji.",
+				"Dokumentacja przyspieszyła onboarding, usprawniła komunikację w zespole i pozostała przydatna mimo późniejszych zmian w aplikacji.",
 		},
 };

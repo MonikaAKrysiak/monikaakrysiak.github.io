@@ -1,10 +1,13 @@
 ---
 import type { GetStaticPaths } from "astro";
-import type { Language } from "../../../i18n";
 import type { NavigationItem } from "../../../types/navigation";
 import { getBeyondTesting } from "../../../data/case-studies/beyond-testing";
 import { getAdjacentWork } from "../../../data/work";
 import { formatTypography } from "../../../utils/typography";
+import {
+	getTranslations,
+	type Language,
+} from "../../../i18n";
 
 
 import Layout from "../../../layouts/Layout.astro";
@@ -16,7 +19,7 @@ import CaseStudyNavigation from "../../../components/CaseStudyNavigation.astro";
 import DocumentationShowcase from "../../../components/DocumentationShowcase.astro";
 import SectionDivider from "../../../components/SectionDivider.astro";
 
-import portfolioHomepage from "../../../assets/case-studies/portfolio-homepage.png";
+import beyondTestingProcessDiagram from "../../../assets/case-studies/beyond-testing-process-diagram.png";
 
 export const getStaticPaths = (() => {
 	return [
@@ -27,6 +30,7 @@ export const getStaticPaths = (() => {
 
 const { lang } = Astro.params;
 const language = lang as Language;
+const translations = getTranslations(language);
 const beyondTesting = getBeyondTesting(language);
 
 const { previous, next } = getAdjacentWork(
@@ -172,8 +176,12 @@ const beyondTestingNavigationItems: NavigationItem[] = [
 						beyondTesting.visualDocumentation.outcome,
 						language,
 					)}
-					image={portfolioHomepage}
-					imageAlt="Portfolio homepage used as a temporary documentation diagram placeholder"
+					image={beyondTestingProcessDiagram}
+					imageAlt={
+						language === "pl"
+							? "Zanonimizowany diagram przedstawiający złożony proces biznesowy, jego wyjątki oraz integracje z zewnętrznymi systemami."
+							: "An anonymised diagram showing a complex business process, its exceptions and integrations with external systems."
+					}
 				/>
 
 				<CaseStudyNavigation
@@ -194,12 +202,9 @@ const beyondTestingNavigationItems: NavigationItem[] = [
 							: undefined
 					}
 					allWork={{
-						href: `/${language}/#work`,
-						label:
-							language === "pl"
-								? "Zobacz wszystkie projekty"
-								: "View all selected work",
-					}}
+                        href: `/${language}/#work`,
+                        label: translations.caseStudyNavigation.allWork,
+                    }}
 				/>
 			</div>
 		</section>

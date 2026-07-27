@@ -1,11 +1,9 @@
-import githubIcon from "../../../assets/icons/github.svg";
-
 export const securityKnowledgeBase = {
 	header: {
-		title: "Building Security Knowledge",
+		title: "Building a Security Knowledge Ecosystem",
 
 		summary:
-			"Building a practical security knowledge ecosystem that helped QA engineers and other team members understand, apply and share application security knowledge.",
+			"Building a practical security knowledge ecosystem that helped QA engineers and other team members learn, apply and share application security practices.",
 
 		focusAreas: [
 			"Application Security",
@@ -20,11 +18,11 @@ export const securityKnowledgeBase = {
 		title: "Overview",
 
 		paragraphs: [
-			"Application security knowledge was spread across complex standards, external learning platforms, internal documentation and individual experience. For people who were only beginning to explore security, it was often difficult to know where to start or how to translate that knowledge into everyday testing.",
+			"Application security knowledge was spread across complex standards, external learning platforms, internal documentation and individual experience. For people just beginning to explore security, it was often difficult to know where to start or how to apply what they learned in everyday testing.",
 
-			"My goal was not simply to create more documentation. I wanted to build a practical knowledge ecosystem that made security easier to understand, learn and apply across different levels of experience.",
+			"My goal was not simply to create more documentation. I wanted to build a practical knowledge ecosystem that made security easier to learn, understand and apply for people with different levels of experience.",
 
-			"Over time, the ecosystem grew to include a simplified OWASP ASVS review process, step-by-step testing guides, guided PortSwigger Academy write-ups, onboarding materials, internal quizzes and security guidance for the wider company.",
+			"Over time, the ecosystem grew to include a simplified OWASP ASVS review process, step-by-step testing guides, detailed PortSwigger Academy lab write-ups, onboarding materials, internal quizzes and security guidance for the wider company.",
 		],
 	},
 
@@ -32,12 +30,12 @@ export const securityKnowledgeBase = {
 		title: "Building the Knowledge Ecosystem",
 
 		introduction:
-			"Rather than creating isolated documents, I focused on building a connected ecosystem where practical guidance, learning resources and reusable templates supported different stages of the security learning journey.",
+			"Rather than creating isolated documents, I focused on connecting practical guidance, learning resources and reusable templates that supported different stages of the security learning journey.",
 
 		areas: [
 			{
 				title: "Making ASVS Practical",
-                summary: "Turning a complex standard into a process useful in everyday QA work.",
+                summary: "Making a complex standard practical and accessible for QA teams.",
 
 				description:
 					"Together with teammates, we transformed OWASP ASVS into a lightweight review process that QA engineers could realistically use during everyday testing.",
@@ -52,26 +50,26 @@ export const securityKnowledgeBase = {
 
 			{
 				title: "Everyday Security Testing",
-                summary: "Step-by-step guides supporting practical testing of common security mechanisms.",
+                summary: "Step-by-step guides for testing common security mechanisms.",
 
 				description:
-					"Practical testing guides explained how to verify common security mechanisms step by step and highlighted good testing practices for everyday QA work.",
+					"The guides explained how to verify common security mechanisms step by step and highlighted useful practices for incorporating security into everyday QA work.",
 
 				highlights: [
 					"Authentication",
 					"Security headers",
 					"Forms",
 					"File upload",
-					"Testing good practices",
+					"Security testing practices",
 				],
 			},
 
 			{
 				title: "Learning by Doing",
-                summary: "Learning through labs, notes and explanations of how the solution was reached.",
+                summary: "Learning through hands-on labs, notes and explanations of the reasoning behind each solution.",
 
 				description:
-					"A dedicated Confluence space documented selected PortSwigger Academy labs, explaining both the vulnerability and the reasoning behind each solution rather than simply presenting the answer.",
+					"A dedicated Confluence space documented selected PortSwigger Academy labs, covering both the vulnerability and the reasoning behind each solution rather than simply presenting the answer.",
 
 				highlights: [
 					"Vulnerability overview",
@@ -83,10 +81,10 @@ export const securityKnowledgeBase = {
 
 			{
 				title: "Security Beyond Development",
-                summary: "Practical resources building security awareness across the company.",
+                summary: "Practical resources designed to build security awareness across the company.",
 
 				description:
-					"Security awareness resources extended beyond software development to help everyone build safer everyday habits.",
+					"The resources extended beyond software development, helping people across the company build safer everyday habits.",
 
 				highlights: [
 					"Password management",
@@ -100,7 +98,7 @@ export const securityKnowledgeBase = {
 			title: "Security Knowledge Lifecycle",
 
 			description:
-				"A continuous cycle that improves security knowledge across teams and over time.",
+				"A continuous cycle of learning, applying and sharing knowledge across teams.",
 
 			steps: [
 				"Learn",
@@ -114,26 +112,26 @@ export const securityKnowledgeBase = {
 		title: "Example Resources",
 
 		introduction:
-			"A few examples of practical resources created to make security knowledge easier to use in everyday work.",
+			"A selection of resources created to help teams apply security concepts in their daily work.",
 
 		resources: [
 			{
 				title: "Simplified ASVS checklist",
 
 				description:
-					"A practical checklist with review status, notes and a reusable security report template.",
+					"A simplified checklist for tracking review progress, recording notes and preparing reusable security reports.",
 			},
 			{
 				title: "PortSwigger lab write-up",
 
 				description:
-					"A vulnerability overview with learning notes and a step-by-step solution for selected labs.",
+					"Selected lab write-ups combining vulnerability overviews, learning notes and step-by-step walkthroughs.",
 			},
 			{
 				title: "Internal security quiz",
 
 				description:
-					"Example questions used to reinforce security knowledge and encourage regular learning.",
+					"Questions designed to reinforce security knowledge and encourage continuous learning.",
 			},
 		],
 	},
@@ -141,13 +139,13 @@ export const securityKnowledgeBase = {
 		title: "Knowledge in Practice",
 
 		introduction:
-			"The value of the knowledge base was not measured by the number of documents created. It was measured by how often it helped people make better security decisions in everyday work.",
+			"The value of the knowledge base was not measured by the number of documents created, but by how often it helped people make better security decisions in their everyday work.",
 
 		items: [
 			{
 				title: "Daily QA Work",
 				description:
-					"Security knowledge supported story reviews, test scenario preparation and earlier identification of missing or risky requirements.",
+					"The resources supported story reviews, test scenario preparation and earlier identification of missing or risky requirements.",
 			},
 			{
 				title: "Onboarding",
@@ -165,7 +163,7 @@ export const securityKnowledgeBase = {
 		title: "What I Learned",
 
 		paragraphs: [
-			"Building a security knowledge base was never about creating documentation for its own sake. The real challenge was making security knowledge easy to find, understand and apply in everyday work.",
+			"Building the knowledge base was never about creating documentation for its own sake. The real challenge was turning complex security concepts into resources that people could easily find, understand and use.",
 
 			"I learned that sustainable knowledge sharing depends as much on clear structure, collaboration and continuous improvement as it does on technical expertise.",
 		],

@@ -6,9 +6,8 @@ export const pl = {
 	},
 
 	hero: {
-		role: "QA Engineer skupiona na bezpieczeństwie aplikacji.",
-		statementFirstLine: "Dla mnie dobre oprogramowanie nie powinno być tylko funkcjonalne.",
-		statementSecondLine: "Powinno być również bezpieczne.",
+		role: "QA Engineer specjalizująca się bezpieczeństwem aplikacji",
+		statementFirstLine: "Dobre oprogramowanie powinno być nie tylko funkcjonalne, ale także bezpieczne.",
 		viewCv: "Zobacz CV",
 		contact: "Kontakt",
 	},
@@ -17,15 +16,15 @@ export const pl = {
 		title: "O mnie",
 
 		paragraphs: [
-			"Od ponad 10 lat pracuję w\u00A0Quality Assurance.",
+			"Od ponad 10 lat pracuję jako Quality Assurance Engineer, specjalizując się w bezpieczeństwie aplikacji.",
 
-			"Z\u00A0czasem bezpieczeństwo aplikacji stało się naturalną częścią mojej pracy. Dla mnie bezpieczeństwo jest częścią dobrego oprogramowania od samego początku, a nie czymś dodawanym na końcu.",
+			"Wierzę, że bezpieczeństwo powinno być uwzględniane od samego początku procesu tworzenia oprogramowania, a nie dodawane dopiero na końcu.",
 
-			"Lubię rozumieć, jak działają aplikacje, znajdować problemy i\u00A0zadawać pytania, które pomagają zespołom rozwiązać je, zanim trafią do\u00A0użytkowników. Lubię współpracować z\u00A0programistami, analizować zgłoszenia i\u00A0tworzyć dokumentację, która ułatwia codzienną pracę.",
+			"Lubię rozumieć, jak działają aplikacje, znajdować potencjalne problemy i zadawać pytania, które pomagają zespołom rozwiązywać je, zanim trafią do użytkowników. Chętnie współpracuję z\u00A0programistami, analizuję wymagania i zgłoszenia oraz tworzę dokumentację, która ułatwia codzienną pracę całego zespołu.",
 
-			"Wierzę, że dobre oprogramowanie powinno być funkcjonalne, niezawodne i\u00A0bezpieczne. Tak właśnie staram się podchodzić do\u00A0każdego projektu.",
+			"Wierzę, że dobre oprogramowanie powinno być funkcjonalne, niezawodne i bezpieczne. To podejście staram się wnosić do każdego projektu, nad którym pracuję.",
 
-			"Po pracy lubię odkrywać nowe miejsca - podczas pieszych wędrówek, na\u00A0rowerze lub w\u00A0kajaku. Sprawiają mi też przyjemność gry planszowe, projekty DIY oraz spędzanie czasu z\u00A0rodziną.",
+			"Po pracy lubię odkrywać nowe miejsca - podczas pieszych wędrówek, na rowerze lub w kajaku. Cenię również gry planszowe, projekty DIY oraz czas spędzany z rodziną.",
 		],
 	},
 

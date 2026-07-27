@@ -3,7 +3,7 @@ export const knowledgeSharing = {
 		title: "Knowledge Sharing",
 
 		summary:
-			"Helping people understand complex topics by adapting knowledge to different audiences, contexts and ways of learning.",
+			"Helping people understand complex topics by adapting knowledge to different audiences, contexts and learning styles.",
 
 		focusAreas: [
 			"Knowledge Sharing",
@@ -22,7 +22,7 @@ export const knowledgeSharing = {
 		title: "Overview",
 
 		paragraphs: [
-			"Throughout my career, I have treated knowledge sharing as an essential part of software quality. Well-written documentation, practical workshops and clear onboarding materials help teams work more effectively, make better decisions and build secure applications with greater confidence.",
+			"Throughout my career, I have treated knowledge sharing as an essential part of software quality. Well-written documentation, practical workshops and clear onboarding materials help teams work more effectively, make better decisions and build secure software with greater confidence.",
 		],
 	},
 
@@ -30,32 +30,32 @@ export const knowledgeSharing = {
 		title: "Different Audiences",
 
 		introduction:
-			"The same topic may require a completely different approach depending on the audience, its experience and the context in which the knowledge will be used.",
+			"The same topic may require a completely different approach depending on the audience, their experience and the context in which the knowledge will be used.",
 
 		items: [
 			{
 				title: "Project teams",
 
 				description:
-					"In project work, knowledge needed to support quick decisions, so I focused on documentation, discussions and examples that made the context easier to understand and apply.",
+					"In project work, teams often needed information that supported quick decisions, so I focused on documentation, discussions and examples that made the context easier to understand and apply.",
 			},
 			{
 				title: "New team members",
 
 				description:
-					"During team changes, I created onboarding materials that helped new people understand systems, processes and exceptions without depending on a single source of knowledge.",
+					"During team changes, I created onboarding materials that helped new people understand systems, processes and exceptions without relying on the knowledge of a single team member.",
 			},
 			{
 				title: "Students",
 
 				description:
-					"Because students had limited project experience, I translated technical and security topics into structured explanations, practical exercises and examples grounded in real situations.",
+					"Because students had limited project experience, I translated technical and security topics into structured explanations, practical exercises and examples based on real situations.",
 			},
 			{
 				title: "Professional community",
 
 				description:
-					"Conference and community audiences often had different levels of experience, so I used practical examples that could be adapted and applied in everyday work.",
+					"Conference and community audiences often included people with different levels of experience, so I used practical examples that could be adapted to their everyday work.",
 			},
 		],
 	},
@@ -64,14 +64,14 @@ export const knowledgeSharing = {
 		title: "Making Complex Things Understandable",
 
 		introduction:
-			"Knowledge sharing is most valuable when it helps people solve real problems. These examples show different ways I translated complex topics into practical resources.",
+			"Knowledge sharing is most valuable when it helps people solve real problems. These examples show how I translated complex topics into practical resources for different audiences.",
 
 		items: [
 			{
 				title: "SQL and JQL for QA",
 
 				context:
-					"As part of a broader training programme for future QA engineers, I was responsible for designing the SQL and JQL module focused on practical skills used in everyday testing.",
+					"As part of a broader training programme for future QA engineers, I was responsible for designing the SQL and JQL module, focusing on skills testers use in their daily work.",
 
 				approach:
 					"Instead of teaching databases and query languages in isolation, I selected the concepts, queries and exercises that testers are most likely to use while investigating defects, preparing test data and verifying application behaviour.",
@@ -95,16 +95,16 @@ export const knowledgeSharing = {
 				],
 			},
 			{
-				title: "Workshop Materials",
+				title: "Workshop materials",
 
 				context:
-					"Technical workshops needed to support participants with different levels of experience while keeping the sessions practical and engaging.",
+					"Technical workshops needed to support participants with different levels of experience while remaining practical and engaging.",
 
 				approach:
 					"I prepared slide decks, exercises, checklists and supporting examples that guided participants through the topic and encouraged active discussion rather than passive listening.",
 
 				outcome:
-					"The materials gave participants a clear structure for learning and resources they could return to after the session.",
+					"The materials gave participants a clear learning structure and resources they could return to after the session.",
 
 				meta: [
 					{
@@ -122,16 +122,16 @@ export const knowledgeSharing = {
 				],
 			},
 			{
-				title: "Technical Articles",
+				title: "Technical articles",
 
 				context:
 					"Security and quality topics are often described in a way that feels abstract or difficult to connect with everyday engineering work.",
 
 				approach:
-					"I wrote articles that translated complex concepts into practical guidance, using clear explanations and examples grounded in real QA and security scenarios.",
+					"I wrote articles that translated complex concepts into accessible guidance, using examples grounded in real QA and security scenarios.",
 
 				outcome:
-					"The articles made the topics easier to explore independently and provided reusable reference material for people working in software quality.",
+					"The articles made these topics easier to explore independently and provided reusable reference material for people working in software quality.",
 
 				meta: [
 					{
@@ -149,13 +149,13 @@ export const knowledgeSharing = {
 				],
 			},
 			{
-				title: "Academic Teaching",
+				title: "Academic teaching",
 
 				context:
-					"I worked with students both through regular classes in Project Management and through a guest lecture focused on practical topics from software quality and application security.",
+					"I worked with students through regular Project Management classes and a guest lecture focused on practical topics from software quality and application security.",
 
 				approach:
-					"During the classes, I helped students translate project management theory into decisions, problems and situations they may encounter in team-based work. The guest lecture was built around practical examples from QA and application security.",
+					"During the classes, I helped students translate project management theory into decisions, problems and situations they might encounter in team-based work. The guest lecture was built around examples from QA and application security.",
 
 				outcome:
 					"Both formats helped students connect academic knowledge with the realities of software projects and understand how different roles collaborate when building software.",
@@ -167,7 +167,7 @@ export const knowledgeSharing = {
 					},
 					{
 						label: "Audience",
-						value: "Students",
+						value: "Students of Computer Science and Computer Science & Econometrics",
 					},
 					{
 						label: "Topics",
@@ -176,7 +176,7 @@ export const knowledgeSharing = {
 				],
 			},
 			{
-				title: "Community Talks",
+				title: "Community talks",
 
 				context:
 					"Security and quality communities bring together people with very different levels of experience, roles and expectations.",
@@ -185,7 +185,7 @@ export const knowledgeSharing = {
 					"I prepared practical talks for events and communities such as OWASP Poland Day, OWASP Kraków and Uszanowanko Programowanko, adapting the examples and level of detail to each audience.",
 
 				outcome:
-					"The talks helped participants connect security concepts with everyday QA and engineering work, while creating space for questions and further discussion.",
+					"The talks helped participants connect security concepts with everyday QA and engineering work and created space for questions and further discussion.",
 
 				meta: [
 					{
@@ -209,7 +209,7 @@ export const knowledgeSharing = {
 		title: "Knowledge in Practice",
 
 		introduction:
-			"Knowledge sharing created value beyond individual sessions and materials. It supported everyday work, helped people become more independent and encouraged better technical conversations.",
+			"Knowledge sharing created value beyond individual sessions or materials. It supported everyday work, helped people become more independent and encouraged better technical conversations.",
 
 		items: [
 			{
@@ -222,7 +222,7 @@ export const knowledgeSharing = {
 				title: "Greater independence",
 
 				description:
-					"People could return to structured resources when solving problems instead of relying only on knowledge held by individual team members.",
+					"People could return to structured resources when solving problems instead of relying solely on knowledge held by individual team members.",
 			},
 			{
 				title: "Better questions",

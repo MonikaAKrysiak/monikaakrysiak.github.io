@@ -2,11 +2,18 @@
 interface Props {
 	title: string;
 	summary: string;
+	focusAreas?: string[];
+	action?: {
+		label: string;
+		href: string;
+	};
 }
 
 const {
 	title,
 	summary,
+	focusAreas,
+	action,
 } = Astro.props;
 ---
 
@@ -15,6 +22,27 @@ const {
 		<h1 class="case-study-title">{title}</h1>
 
 		<p class="case-study-summary">{summary}</p>
+
+		{focusAreas && focusAreas.length > 0 && (
+			<ul class="case-study-focus-areas">
+				{focusAreas.map((focusArea) => (
+					<li class="case-study-focus-area">
+						{focusArea}
+					</li>
+				))}
+			</ul>
+		)}
+
+		{action && (
+			<a
+				class="case-study-action"
+				href={action.href}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				{action.label}
+			</a>
+		)}
 	</div>
 </header>
 
@@ -28,5 +56,41 @@ const {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
+		gap: var(--space-lg);
 	}
+	.case-study-action {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-xs);
+		margin-top: var(--space-xs);
+		color: var(--color-secondary);
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.case-study-action::after {
+		content: "↗";
+		font-size: 0.9em;
+	}
+
+	.case-study-action:hover {
+		color: var(--color-primary-hover);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.case-study-focus-areas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-sm) var(--space-xl);
+		width: 100%;
+		max-width: 48rem;
+	}
+
+	@media (min-width: 48rem) {
+		.case-study-focus-areas {
+			display: grid;
+			grid-template-columns: repeat(3, max-content);
+		}
+}
 </style>

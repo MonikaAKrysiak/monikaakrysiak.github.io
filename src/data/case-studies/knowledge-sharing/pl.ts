@@ -7,9 +7,9 @@ export const knowledgeSharing = {
 
 		focusAreas: [
 			"Dzielenie się wiedzą",
-			"Projektowanie nauki",
 			"Dokumentacja",
 			"Komunikacja",
+			"Projektowanie materiałów edukacyjnych",
 		],
 
 		action: {
@@ -19,10 +19,10 @@ export const knowledgeSharing = {
 	},
 
 	overview: {
-		title: "Overview",
+		title: "Przegląd",
 
 		paragraphs: [
-			"Przez całą swoją karierę traktowałam dzielenie się wiedzą jako ważny element budowania jakości oprogramowania. Dobra dokumentacja, praktyczne warsztaty oraz przemyślane materiały onboardingowe pomagają zespołom pracować skuteczniej, podejmować lepsze decyzje i z większą pewnością tworzyć bezpieczne aplikacje.",
+			"W swojej karierze zawsze traktowałam dzielenie się wiedzą jako ważny element budowania jakości oprogramowania. Dobra dokumentacja, praktyczne warsztaty i przemyślane materiały onboardingowe pomagają zespołom pracować skuteczniej, podejmować lepsze decyzje i z większą pewnością tworzyć bezpieczne aplikacje.",
 		],
 	},
 
@@ -43,19 +43,19 @@ export const knowledgeSharing = {
 				title: "Nowe osoby w zespole",
 
 				description:
-					"Podczas zmian w zespole tworzyłam materiały onboardingowe, które pomagały zrozumieć systemy, procesy i wyjątki bez uzależniania się od wiedzy jednej osoby.",
+				"Podczas zmian w zespole tworzyłam materiały onboardingowe, które pomagały zrozumieć systemy, procesy i wyjątki bez konieczności polegania na wiedzy jednej osoby.",
 			},
 			{
 				title: "Studenci",
 
 				description:
-					"Ponieważ studenci dopiero zdobywali doświadczenie, tłumaczyłam zagadnienia techniczne i związane z bezpieczeństwem poprzez praktyczne ćwiczenia oraz przykłady z rzeczywistych projektów.",
+					"Pracując ze studentami, tłumaczyłam zagadnienia techniczne, bezpieczeństwo i zarządzanie projektami za pomocą praktycznych ćwiczeń oraz przykładów z rzeczywistych projektów.",
 			},
 			{
 				title: "Społeczność branżowa",
 
 				description:
-					"Podczas konferencji i spotkań społeczności dostosowywałam przekaz do poziomu doświadczenia uczestników, opierając go na praktycznych przykładach możliwych do wykorzystania w codziennej pracy.",
+					"Podczas konferencji i spotkań społeczności dostosowywałam przekaz do poziomu doświadczenia uczestników, opierając go na praktycznych przykładach przydatnych w codziennej pracy.",
 			},
 		],
 	},
@@ -71,7 +71,7 @@ export const knowledgeSharing = {
 				title: "SQL i JQL dla QA",
 
 				context:
-					"W ramach większego programu szkoleniowego dla przyszłych QA odpowiadałam za przygotowanie modułu dotyczącego SQL i JQL, skupionego na praktycznych umiejętnościach wykorzystywanych w codziennej pracy testera.",
+					"W ramach większego programu szkoleniowego dla osób rozpoczynających pracę w QA odpowiadałam za przygotowanie modułu dotyczącego SQL i JQL, skupionego na praktycznych umiejętnościach wykorzystywanych w codziennej pracy testera.",
 
 				approach:
 					"Zamiast omawiać bazy danych i języki zapytań w oderwaniu od praktyki, wybrałam zagadnienia, zapytania i ćwiczenia przydatne podczas analizy błędów, przygotowywania danych testowych oraz weryfikacji działania aplikacji.",
@@ -86,7 +86,7 @@ export const knowledgeSharing = {
 					},
 					{
 						label: "Odbiorcy",
-						value: "Przyszli QA",
+						value: "Osoby rozpoczynające pracę w QA",
 					},
 					{
 						label: "Tematy",
@@ -104,7 +104,7 @@ export const knowledgeSharing = {
 					"Przygotowywałam prezentacje, ćwiczenia, checklisty i przykłady, które prowadziły uczestników przez temat oraz zachęcały do aktywnej dyskusji zamiast biernego słuchania.",
 
 				outcome:
-					"Materiały nadawały nauce czytelną strukturę i pozostawały użytecznym źródłem, do którego uczestnicy mogli wrócić po zakończeniu spotkania.",
+					"Materiały porządkowały proces nauki i pozostawały użytecznym źródłem, do którego uczestnicy mogli wracać po zakończeniu spotkania.",
 
 				meta: [
 					{
@@ -140,7 +140,7 @@ export const knowledgeSharing = {
 					},
 					{
 						label: "Odbiorcy",
-						value: "Osoby z QA i branży IT",
+						value: "Specjaliści QA i osoby z branży IT",
 					},
 					{
 						label: "Tematy",
@@ -152,13 +152,13 @@ export const knowledgeSharing = {
 				title: "Zajęcia akademickie",
 
 				context:
-					"Pracowałam ze studentami zarówno podczas regularnych ćwiczeń z przedmiotu Zarządzanie projektami, jak i w ramach gościnnego wystąpienia poświęconego praktycznym zagadnieniom z obszaru jakości i bezpieczeństwa.",
+					"Pracowałam ze studentami zarówno podczas regularnych ćwiczeń z zarządzania projektami, jak i w ramach gościnnego wystąpienia poświęconego praktycznym zagadnieniom z obszaru jakości i bezpieczeństwa.",
 
 				approach:
 					"Podczas ćwiczeń pomagałam studentom przekładać teorię zarządzania projektami na decyzje, problemy i sytuacje spotykane w pracy zespołowej. Wystąpienie gościnne opierałam natomiast na praktycznych przykładach z pracy w QA i bezpieczeństwie aplikacji.",
 
 				outcome:
-					"Obie formy pozwalały studentom lepiej połączyć wiedzę akademicką z realiami pracy przy projektach informatycznych oraz zobaczyć, jak różne role współpracują przy tworzeniu oprogramowania.",
+					"Obie formy pozwalały studentom lepiej połączyć wiedzę akademicką z realiami pracy przy projektach informatycznych i zobaczyć, jak różne role współpracują przy tworzeniu oprogramowania.",
 
 				meta: [
 					{
@@ -167,7 +167,7 @@ export const knowledgeSharing = {
 					},
 					{
 						label: "Odbiorcy",
-						value: "Studenci",
+						value: "Studenci kierunków Informatyka i Ekonometria oraz Informatyka",
 					},
 					{
 						label: "Tematy",
@@ -180,13 +180,13 @@ export const knowledgeSharing = {
 				title: "Wystąpienia dla społeczności",
 
 				context:
-					"Społeczności związane z bezpieczeństwem i jakością skupiają osoby o bardzo różnym poziomie doświadczenia, rolach i oczekiwaniach.",
+					"Społeczności związane z bezpieczeństwem i wytwarzaniem oprogramowania skupiają osoby o różnym doświadczeniu, rolach i oczekiwaniach.",
 
 				approach:
 					"Przygotowywałam praktyczne wystąpienia dla wydarzeń i społeczności takich jak OWASP Poland Day, OWASP Kraków czy Uszanowanko Programowanko, dopasowując przykłady i poziom szczegółowości do odbiorców.",
 
 				outcome:
-					"Wystąpienia pomagały uczestnikom łączyć zagadnienia bezpieczeństwa z codzienną pracą w QA i inżynierii oraz tworzyły przestrzeń do pytań i dalszej dyskusji.",
+					"Wystąpienia pomagały uczestnikom łączyć zagadnienia bezpieczeństwa z codzienną pracą w QA i tworzeniu oprogramowania, a także tworzyły przestrzeń do pytań i dalszej dyskusji.",
 
 				meta: [
 					{
@@ -208,10 +208,10 @@ export const knowledgeSharing = {
 		],
 	},
 		impact: {
-		title: "Wiedza w praktyce",
+		title: "Materiały, do których można wracać",
 
 		introduction:
-			"Dzielenie się wiedzą przynosiło wartość także po zakończeniu pojedynczych spotkań i szkoleń. Wspierało codzienną pracę, zwiększało samodzielność i pomagało prowadzić lepsze rozmowy techniczne.",
+			"Dzielenie się wiedzą przynosiło wartość również po zakończeniu spotkań i szkoleń. Wspierało codzienną pracę, zwiększało samodzielność i pomagało prowadzić lepsze rozmowy techniczne.",
 
 		items: [
 			{
@@ -236,7 +236,7 @@ export const knowledgeSharing = {
 				title: "Szersza świadomość bezpieczeństwa",
 
 				description:
-					"Zagadnienia bezpieczeństwa stawały się częścią codziennych rozmów w QA i zespołach inżynierskich, a nie wyłącznie domeną specjalistycznych działań.",
+					"Zagadnienia bezpieczeństwa stawały się częścią codziennych rozmów w QA i zespołach inżynierskich, a nie tematem podejmowanym wyłącznie przez specjalistów.",
 			},
 			{
 				title: "Wiedza wielokrotnego użytku",
@@ -254,7 +254,7 @@ export const knowledgeSharing = {
 
 			"Z czasem zrozumiałam, że dobra komunikacja techniczna nie polega na pokazywaniu swojej wiedzy. Jej celem jest zrozumienie odbiorców, usuwanie niepotrzebnej złożoności i pomaganie innym w podejmowaniu lepszych decyzji.",
 
-			"To podejście wykorzystuję również w codziennej pracy - podczas analizy wymagań, rozmów o bezpieczeństwie, tworzenia dokumentacji oraz współpracy z zespołami projektowymi.",
+			"To podejście wykorzystuję również w codziennej pracy — podczas analizy wymagań, rozmów o bezpieczeństwie, tworzenia dokumentacji i współpracy z zespołami projektowymi.",
 		],
 	},
 };

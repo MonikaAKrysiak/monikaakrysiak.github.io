@@ -1,7 +1,11 @@
 ---
 import type { GetStaticPaths } from "astro";
-import type { Language } from "../../../i18n";
 import type { NavigationItem } from "../../../types/navigation";
+import {
+	getTranslations,
+	type Language,
+} from "../../../i18n";
+
 import { getKnowledgeSharing } from "../../../data/case-studies/knowledge-sharing";
 import { getAdjacentWork } from "../../../data/work";
 import { formatTypography } from "../../../utils/typography";
@@ -23,6 +27,8 @@ export const getStaticPaths = (() => {
 const { lang } = Astro.params;
 
 const language = lang as Language;
+const translations = getTranslations(language);
+
 const knowledgeSharing = getKnowledgeSharing(language);
 
 const { previous, next } = getAdjacentWork(
@@ -278,10 +284,7 @@ const knowledgeSharingNavigationItems: NavigationItem[] = [
                     }
                     allWork={{
                         href: `/${language}/#work`,
-                        label:
-                            language === "pl"
-                                ? "Zobacz wszystkie projekty"
-                                : "View all selected work",
+                        label: translations.caseStudyNavigation.allWork,
                     }}
                 />
             </div>

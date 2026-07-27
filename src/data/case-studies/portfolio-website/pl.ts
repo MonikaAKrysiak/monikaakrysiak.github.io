@@ -28,7 +28,7 @@ export const portfolioWebsite = {
 		paragraphs: [
 			"To portfolio jest czymś więcej niż miejscem do prezentowania mojej pracy.",
 			"To długoterminowy projekt edukacyjny, w którym poznaję nowoczesny frontend, wykorzystując przy tym takie samo podejście do jakości, dostępności i bezpieczeństwa, jakie stosuję na co dzień w pracy QA.",
-			"W swojej karierze zazwyczaj dołączałam do projektów, które już trwały. Ten projekt daje mi możliwość samodzielnego podejmowania decyzji architektonicznych i obserwowania, jak wpływają one na oprogramowanie od jego pierwszego commita.",
+			"W swojej karierze zazwyczaj dołączałam do projektów, które już trwały. Ten projekt daje mi możliwość samodzielnego podejmowania decyzji architektonicznych i obserwowania, jak wpływają one na oprogramowanie od pierwszego commita.",
 		],
 	},
 
@@ -47,28 +47,28 @@ export const portfolioWebsite = {
 
 		items: [
 			{
-				title: "Security by Default",
+				title: "Bezpieczeństwo od początku",
 
 				paragraphs: [
 					"Bezpieczeństwo traktuję jako zasadę projektową od samego początku. Ograniczam zewnętrzne zależności, a tam, gdzie to możliwe, fonty, ikony i obrazy przechowuję lokalnie.",
 				],
 			},
 			{
-				title: "Architecture Before Implementation",
+				title: "Architektura przed implementacją",
 
 				paragraphs: [
 					"Przed rozpoczęciem implementacji staram się zrozumieć problem, przeanalizować możliwe podejścia i wybrać strukturę, która pozostanie czytelna i łatwa w utrzymaniu wraz z rozwojem projektu.",
 				],
 			},
 			{
-				title: "Accessibility by Design",
+				title: "Dostępność od etapu projektowania",
 
 				paragraphs: [
 					"Dostępność uwzględniam już podczas projektowania komponentów, nawigacji i treści. Fundamentem jest semantyczny HTML, a ARIA stosuję wyłącznie tam, gdzie natywne elementy nie wystarczają.",
 				],
 			},
 			{
-				title: "Documentation as Part of Development",
+				title: "Dokumentacja jako część procesu",
 
 				paragraphs: [
 					"Dokumentacja powstaje równolegle z kodem, dzięki czemu decyzje architektoniczne, przebieg kolejnych sesji i uzasadnienie ważnych zmian pozostają czytelne również po dłuższym czasie.",
@@ -121,15 +121,15 @@ export const portfolioWebsite = {
 				title: "Architektura przed implementacją",
 
 				paragraphs: [
-					"Przed rozpoczęciem implementacji funkcjonalności najpierw została zaprojektowana ogólna struktura aplikacji. Projekt rozwijał się poprzez wielokrotnego użytku komponenty, dane oddzielone od prezentacji oraz niewielkie, stopniowe refaktoryzacje zamiast jednorazowych rozwiązań.",
+					"Przed rozpoczęciem implementacji funkcjonalności najpierw została zaprojektowana ogólna struktura aplikacji. Projekt rozwijał się dzięki komponentom wielokrotnego użytku, danym oddzielonym od warstwy prezentacji oraz niewielkim, stopniowym refaktoryzacjom zamiast jednorazowych rozwiązań.",
 
-					"Dzięki temu możliwe było dodawanie nowych sekcji, obsługi wielu języków oraz ponownie wykorzystywanych layoutów bez konieczności przebudowy istniejącego kodu.",
+					"Dzięki temu możliwe było dodawanie nowych sekcji i obsługi wielu języków oraz wielokrotne wykorzystywanie wspólnych układów bez konieczności przebudowy istniejącego kodu.",
 				],
 
 				implementedItems: [
 					"Wielokrotnego użytku komponenty Astro.",
 					"Architektura oparta na danych.",
-					"Lokalizacja oparta o adresy URL.",
+					"Obsługa języków oparta na adresach URL.",
 					"Małe, iteracyjne zmiany architektoniczne.",
 				],
 
@@ -158,7 +158,7 @@ export const portfolioWebsite = {
 				implementedItems: [
 					"Semantyczna struktura HTML.",
 					"Nawigacja dostępna z klawiatury.",
-					"Widoczne style focus.",
+					"Widoczne style focusu.",
 					"Opisowe teksty alternatywne.",
 				],
 
@@ -168,15 +168,15 @@ export const portfolioWebsite = {
 						caption: "Semantyczna struktura komponentu",
 					},
 					{
-						alt: "Wynik audytu dostępności pokazujący ocenę dostępności portfolio.",
-						caption: "Dostępna nawigacja mobilna",
+						alt: "Fragment komponentu nagłówka pokazujący przełącznik języka, przełącznik motywu oraz przycisk mobilnego menu z opisowymi atrybutami dostępności.",
+						caption: "Dostępne kontrolki nawigacji",
 					},
 				],
 			},
 			{
 				id: "documentation-as-part-of-engineering",
 
-				title: "Dokumentacja jako część pracy inżynierskiej",
+				title: "Dokumentacja jako część procesu",
 
 				paragraphs: [
 					"Dokumentację traktuję jako część procesu implementacji, a nie osobne zadanie wykonywane dopiero na końcu.",
@@ -186,7 +186,7 @@ export const portfolioWebsite = {
 
 				implementedItems: [
 					"Architecture Decision Records.",
-					"Logi sesji rozwojowych.",
+					"Notatki z sesji rozwojowych.",
 					"Opis projektu i jego zasad inżynierskich.",
 					"Udokumentowany zakres commitów i kontekst implementacji.",
 				],
@@ -197,8 +197,8 @@ export const portfolioWebsite = {
 						caption: "Architecture Decision Record",
 					},
 					{
-						alt: "Log sesji rozwojowej dokumentujący cel, przebieg implementacji i decyzje projektowe.",
-						caption: "Log sesji rozwojowej",
+						alt: "Notatka z sesji rozwojowej dokumentujący cel, przebieg implementacji i decyzje projektowe.",
+						caption: "Notatka z sesji rozwojowej",
 					},
 				],
 			},

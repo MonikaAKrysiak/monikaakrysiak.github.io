@@ -2,7 +2,9 @@
 import type { Language } from "../i18n";
 import { formatTypography } from "../utils/typography";
 
-import placeholderImage from "../assets/case-studies/portfolio-homepage.png";
+import knowledgeBaseAsvsChecklist from "../assets/case-studies/knowledge-base-asvs-checklist.png";
+import knowledgeBasePortswiggerLab from "../assets/case-studies/knowledge-base-portswigger-lab.png";
+import knowledgeBaseQuiz from "../assets/case-studies/knowledge-base-quiz.png";
 import InteractiveFigure from "./InteractiveFigure.astro";
 
 interface Resource {
@@ -16,6 +18,12 @@ interface Props {
 	resources: Resource[];
 	lang: Language;
 }
+
+const resourceImages = [
+	knowledgeBaseAsvsChecklist,
+	knowledgeBasePortswiggerLab,
+	knowledgeBaseQuiz,
+];
 
 const {
 	title,
@@ -40,26 +48,32 @@ const {
 	</header>
 
 	<div class="example-resources-grid">
-        {resources.map((resource) => (
-            <article class="example-resource">
-                <InteractiveFigure
-                    src={placeholderImage}
-                    alt={resource.title}
-                    caption={resource.title}
-                    lang={lang}
-                    className="example-resource-figure"
-                />
+        {resources.map((resource, index) => {
+            const image = resourceImages[index];
 
-                <h3 class="example-resource-title">
-                    {formatTypography(resource.title, lang)}
-                </h3>
+            return (
+                <article class="example-resource">
+                    {image && (
+                        <InteractiveFigure
+                            src={image}
+                            alt={resource.title}
+                            caption={resource.title}
+                            lang={lang}
+                            className="example-resource-figure"
+                        />
+                    )}
 
-                <p class="case-study-text example-resource-description">
-                    {formatTypography(resource.description, lang)}
-                </p>
-            </article>
-        ))}
-    </div>
+                    <h3 class="example-resource-title">
+                        {formatTypography(resource.title, lang)}
+                    </h3>
+
+                    <p class="case-study-text example-resource-description">
+                        {formatTypography(resource.description, lang)}
+                    </p>
+                </article>
+            );
+        })}
+</div>
 
 </section>
 

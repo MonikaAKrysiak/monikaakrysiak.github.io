@@ -5,7 +5,7 @@ export const securityKnowledgeBase = {
 		title: "Budowanie wiedzy o bezpieczeństwie",
 
 		summary:
-			"Tworzenie praktycznego ekosystemu wiedzy o bezpieczeństwie, który pomagał QA oraz innym członkom zespołu lepiej rozumieć, wykorzystywać i rozwijać wiedzę z zakresu Application Security.",
+			"Tworzenie praktycznego ekosystemu wiedzy o bezpieczeństwie, który pomaga zespołom lepiej rozumieć, wykorzystywać i rozwijać wiedzę z zakresu Application Security.",
 
 		focusAreas: [
 			"Application Security",
@@ -22,7 +22,7 @@ export const securityKnowledgeBase = {
 		paragraphs: [
 			"Wiedza z zakresu bezpieczeństwa aplikacji była rozproszona pomiędzy standardami, zewnętrznymi materiałami edukacyjnymi, wewnętrzną dokumentacją oraz doświadczeniem poszczególnych osób. Dla osób rozpoczynających naukę Application Security trudno było określić, od czego zacząć i jak wykorzystać tę wiedzę podczas codziennego testowania.",
 
-			"Moim celem nie było tworzenie kolejnych stron dokumentacji. Chciałam zbudować praktyczny ekosystem wiedzy, który ułatwiałby naukę, codzienną pracę oraz dzielenie się doświadczeniem na różnych poziomach zaawansowania.",
+			"Moim celem nie było tworzenie kolejnych dokumentów. Chciałam zbudować praktyczny ekosystem wiedzy, który ułatwiałby naukę, codzienną pracę oraz dzielenie się doświadczeniem na różnych poziomach zaawansowania.",
 
 			"Z czasem ekosystem rozrósł się o uproszczony proces przeglądu oparty na OWASP ASVS, praktyczne przewodniki testowe, opracowania laboratoriów PortSwigger Academy, materiały onboardingowe, quizy oraz wskazówki dotyczące bezpieczeństwa dla całej firmy.",
 		],
@@ -32,7 +32,7 @@ export const securityKnowledgeBase = {
 		title: "Budowanie ekosystemu wiedzy",
 
 		introduction:
-			"Zamiast tworzyć pojedyncze dokumenty, skupiłam się na budowie spójnego ekosystemu, w którym praktyczne przewodniki, materiały edukacyjne i gotowe szablony wspierały kolejne etapy nauki bezpieczeństwa.",
+			"Zamiast tworzyć pojedyncze dokumenty, skupiłam się na budowie spójnego ekosystemu, w którym praktyczne przewodniki, materiały edukacyjne i gotowe szablony wspierają kolejne etapy nauki bezpieczeństwa aplikacji.",
 
 		areas: [
 			{
@@ -40,7 +40,7 @@ export const securityKnowledgeBase = {
 				summary: "Przekształcenie złożonego standardu w proces przydatny w codziennej pracy QA.",
 
 				description:
-					"Wspólnie z zespołem uprościliśmy OWASP ASVS do procesu, który QA mogli realnie wykorzystywać podczas codziennych testów bezpieczeństwa.",
+					"Wspólnie z zespołem uprościliśmy OWASP ASVS do\u00A0procesu, który zespół QA mógł wykorzystywać podczas codziennych testów bezpieczeństwa.",
 
 				highlights: [
 					"Uproszczona checklista ASVS",
@@ -121,7 +121,7 @@ export const securityKnowledgeBase = {
 				title: "Uproszczona checklista ASVS",
 
 				description:
-					"Praktyczna checklista ze statusem przeglądu, notatkami i wielokrotnego użytku szablonem raportu bezpieczeństwa.",
+					"Praktyczna checklista ze statusem przeglądu, notatkami i szablon raportu do wielokrotnego wykorzystania",
 			},
 			{
 				title: "Opracowanie laboratorium PortSwigger",
