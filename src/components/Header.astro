@@ -26,48 +26,17 @@ const navigationLabel =
 		? "Nawigacja strony"
 		: "Page navigation";
 ---
+
 <header class="site-header">
 	<div class="container">
 		<div class="site-header-content">
-			<div class="site-header-top">
-				<a
-					class="site-logo"
-					href={`/${lang}/`}
-					aria-label="Monika Krysiak – homepage"
-				>
-					Monika Krysiak
-				</a>
-
-				<div class="site-controls">
-					<LanguageSwitcher lang={lang} />
-					<ThemeSwitcher lang={lang} />
-
-					{
-						hasNavigation && (
-							<button
-								class="navigation-toggle"
-								type="button"
-								aria-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
-								aria-expanded="false"
-								aria-controls="primary-navigation"
-								data-navigation-toggle
-								data-open-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
-								data-close-label={lang === "pl" ? "Zamknij menu" : "Close menu"}
-							>
-								<ToggleMenuIcon
-									class="navigation-toggle-icon navigation-toggle-icon-menu"
-									aria-hidden="true"
-								/>
-
-								<ToggleCloseIcon
-									class="navigation-toggle-icon navigation-toggle-icon-close"
-									aria-hidden="true"
-								/>
-							</button>
-						)
-					}
-				</div>
-			</div>
+			<a
+				class="site-logo"
+				href={`/${lang}/`}
+				aria-label="Monika Krysiak – homepage"
+			>
+				Monika Krysiak
+			</a>
 
 			{
 				hasNavigation && (
@@ -78,6 +47,36 @@ const navigationLabel =
 					/>
 				)
 			}
+
+			<div class="site-controls">
+				<LanguageSwitcher lang={lang} />
+				<ThemeSwitcher lang={lang} />
+
+				{
+					hasNavigation && (
+						<button
+							class="navigation-toggle"
+							type="button"
+							aria-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
+							aria-expanded="false"
+							aria-controls="primary-navigation"
+							data-navigation-toggle
+							data-open-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
+							data-close-label={lang === "pl" ? "Zamknij menu" : "Close menu"}
+						>
+							<ToggleMenuIcon
+								class="navigation-toggle-icon navigation-toggle-icon-menu"
+								aria-hidden="true"
+							/>
+
+							<ToggleCloseIcon
+								class="navigation-toggle-icon navigation-toggle-icon-close"
+								aria-hidden="true"
+							/>
+						</button>
+					)
+				}
+			</div>
 		</div>
 	</div>
 </header>
@@ -100,21 +99,44 @@ const navigationLabel =
 		);
 	}
 
+	const header = document.querySelector(".site-header");
 	const navigationToggle = document.querySelector(
 		"[data-navigation-toggle]",
 	);
 
-	if (navigationToggle instanceof HTMLButtonElement) {
+	function closeNavigation({
+		restoreFocus = false,
+	}: {
+		restoreFocus?: boolean;
+	} = {}) {
+		if (
+			!(header instanceof HTMLElement) ||
+			!(navigationToggle instanceof HTMLButtonElement)
+		) {
+			return;
+		}
+
+		header.classList.remove("navigation-open");
+		updateNavigationToggle(navigationToggle, false);
+
+		if (restoreFocus) {
+			navigationToggle.focus();
+		}
+	}
+
+	if (
+		header instanceof HTMLElement &&
+		navigationToggle instanceof HTMLButtonElement
+	) {
 		navigationToggle.addEventListener("click", () => {
-			const header = navigationToggle.closest(".site-header");
+			const isOpen = header.classList.toggle(
+				"navigation-open",
+			);
 
-			if (!(header instanceof HTMLElement)) {
-				return;
-			}
-
-			const isOpen = header.classList.toggle("navigation-open");
-
-			updateNavigationToggle(navigationToggle, isOpen);
+			updateNavigationToggle(
+				navigationToggle,
+				isOpen,
+			);
 		});
 	}
 
@@ -124,155 +146,141 @@ const navigationLabel =
 
 	navigationLinks.forEach((navigationLink) => {
 		navigationLink.addEventListener("click", () => {
-			const header = navigationLink.closest(".site-header");
-			const navigationToggle = header?.querySelector(
-				"[data-navigation-toggle]",
-			);
-
-			if (
-				!(header instanceof HTMLElement) ||
-				!(navigationToggle instanceof HTMLButtonElement)
-			) {
-				return;
-			}
-
-			header.classList.remove("navigation-open");
-
-			updateNavigationToggle(navigationToggle, false);
+			closeNavigation();
 		});
 	});
 
 	document.addEventListener("click", (event) => {
 		const target = event.target;
 
-		if (!(target instanceof Node)) {
-			return;
-		}
-
-		const header = document.querySelector(".site-header");
-		const navigationToggle = document.querySelector(
-			"[data-navigation-toggle]",
-		);
-
 		if (
+			!(target instanceof Node) ||
 			!(header instanceof HTMLElement) ||
-			!(navigationToggle instanceof HTMLButtonElement)
+			!header.classList.contains("navigation-open") ||
+			header.contains(target)
 		) {
 			return;
 		}
 
-		if (!header.classList.contains("navigation-open")) {
-			return;
-		}
-
-		if (header.contains(target)) {
-			return;
-		}
-
-		header.classList.remove("navigation-open");
-
-		updateNavigationToggle(navigationToggle, false);
+		closeNavigation();
 	});
+
 	document.addEventListener("keydown", (event) => {
-		if (event.key !== "Escape") {
-			return;
-		}
-
-		const header = document.querySelector(".site-header");
-		const navigationToggle = document.querySelector(
-			"[data-navigation-toggle]",
-		);
-
 		if (
+			event.key !== "Escape" ||
 			!(header instanceof HTMLElement) ||
-			!(navigationToggle instanceof HTMLButtonElement)
+			!header.classList.contains("navigation-open")
 		) {
 			return;
 		}
 
-		if (!header.classList.contains("navigation-open")) {
-			return;
-		}
-
-		header.classList.remove("navigation-open");
-
-		updateNavigationToggle(navigationToggle, false);
-
-		navigationToggle.focus();
+		closeNavigation({
+			restoreFocus: true,
+		});
 	});
-	const navigationItems = document.querySelectorAll(
-		'#primary-navigation a[href^="#"]',
-	);
 
-	const sections = [...navigationItems]
-		.map((navigationItem) => {
-			const href = navigationItem.getAttribute("href");
+	const sectionLinks =
+		document.querySelectorAll<HTMLAnchorElement>(
+			'#primary-navigation a[href^="#"]',
+		);
 
-			return href ? document.querySelector(href) : null;
+	const observedSections = [...sectionLinks]
+		.map((link) => {
+			const href = link.getAttribute("href");
+
+			if (!href) {
+				return null;
+			}
+
+			const section = document.querySelector(href);
+
+			return section instanceof HTMLElement
+				? { link, section }
+				: null;
 		})
 		.filter(
-			(section): section is HTMLElement =>
-				section instanceof HTMLElement,
+			(
+				item,
+			): item is {
+				link: HTMLAnchorElement;
+				section: HTMLElement;
+			} => item !== null,
 		);
 
-	const sectionLinks = document.querySelectorAll<HTMLAnchorElement>(
-	'#primary-navigation a[href^="#"]',
-);
+	function setActiveNavigationLink(
+		activeSectionId: string,
+	) {
+		sectionLinks.forEach((link) => {
+			const isActive =
+				link.getAttribute("href") ===
+				`#${activeSectionId}`;
 
-const observedSections = [...sectionLinks]
-	.map((link) => {
-		const href = link.getAttribute("href");
+			if (isActive) {
+				link.setAttribute(
+					"aria-current",
+					"location",
+				);
+			} else {
+				link.removeAttribute("aria-current");
+			}
+		});
+	}
 
-		if (!href) {
-			return null;
-		}
-
-		const section = document.querySelector(href);
-
-		return section instanceof HTMLElement
-			? { link, section }
-			: null;
-	})
-	.filter(
-		(
-			item,
-		): item is {
-			link: HTMLAnchorElement;
-			section: HTMLElement;
-		} => item !== null,
-	);
-
-function setActiveNavigationLink(activeSectionId: string) {
-	sectionLinks.forEach((link) => {
-		const isActive = link.getAttribute("href") === `#${activeSectionId}`;
-
-		if (isActive) {
-			link.setAttribute("aria-current", "location");
-		} else {
-			link.removeAttribute("aria-current");
-		}
-	});
-}
-
-const sectionObserver = new IntersectionObserver(
-	(entries) => {
-		const visibleEntry = entries
-			.filter((entry) => entry.isIntersecting)
-			.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-		if (!(visibleEntry?.target instanceof HTMLElement)) {
+	function updateActiveSection() {
+		if (
+			observedSections.length === 0 ||
+			!(header instanceof HTMLElement)
+		) {
 			return;
 		}
 
-		setActiveNavigationLink(visibleEntry.target.id);
-	},
-	{
-		rootMargin: "-25% 0px -60% 0px",
-		threshold: [0, 0.25, 0.5, 0.75, 1],
-	},
-);
+		const activationOffset =
+			header.offsetHeight + 24;
 
-observedSections.forEach(({ section }) => {
-	sectionObserver.observe(section);
-});
+		let activeSection =
+			observedSections[0].section;
+
+		for (const { section } of observedSections) {
+			if (
+				section.getBoundingClientRect().top <=
+				activationOffset
+			) {
+				activeSection = section;
+			} else {
+				break;
+			}
+		}
+
+		setActiveNavigationLink(
+			activeSection.id,
+		);
+	}
+
+	let isScrollUpdatePending = false;
+
+	function requestActiveSectionUpdate() {
+		if (isScrollUpdatePending) {
+			return;
+		}
+
+		isScrollUpdatePending = true;
+
+		requestAnimationFrame(() => {
+			updateActiveSection();
+			isScrollUpdatePending = false;
+		});
+	}
+
+	window.addEventListener(
+		"scroll",
+		requestActiveSectionUpdate,
+		{ passive: true },
+	);
+
+	window.addEventListener(
+		"resize",
+		requestActiveSectionUpdate,
+	);
+
+	updateActiveSection();
 </script>

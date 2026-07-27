@@ -37,6 +37,10 @@ const { previous, next } = getAdjacentWork(
 );
 
 const knowledgeSharingNavigationItems: NavigationItem[] = [
+    {
+        label: language === "pl" ? "Start" : "Home",
+        href: "#case-study-start",
+    },
 	{
 		label:
 			language === "pl"
@@ -81,7 +85,7 @@ const knowledgeSharingNavigationItems: NavigationItem[] = [
 >
 
     <main id="main-content" tabindex="-1">
-        <section id="case-study-start" class="case-study section">
+        <section class="case-study section">
             <div class="container">
                 <BackLink lang={language} />
 

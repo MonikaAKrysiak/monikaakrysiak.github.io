@@ -27,6 +27,10 @@ const t = getTranslations(lang);
 
 const navigationItems: NavigationItem[] = [
 	{
+		label: lang === "pl" ? "Start" : "Home",
+		href: "#hero",
+	},
+	{
 		label: t.navigation.about,
 		href: "#about",
 	},

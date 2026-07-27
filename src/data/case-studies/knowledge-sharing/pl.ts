@@ -7,9 +7,10 @@ export const knowledgeSharing = {
 
 		focusAreas: [
 			"Dzielenie się wiedzą",
+			"Projektowanie materiałów edukacyjnych",
 			"Dokumentacja",
 			"Komunikacja",
-			"Projektowanie materiałów edukacyjnych",
+			
 		],
 
 		action: {

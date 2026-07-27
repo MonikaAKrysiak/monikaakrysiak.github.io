@@ -5,14 +5,13 @@ export const securityKnowledgeBase = {
 		title: "Budowanie wiedzy o bezpieczeństwie",
 
 		summary:
-			"Tworzenie praktycznego ekosystemu wiedzy o bezpieczeństwie, który pomaga zespołom lepiej rozumieć, wykorzystywać i rozwijać wiedzę z zakresu Application Security.",
+			"Tworzenie praktycznego ekosystemu wiedzy o bezpieczeństwie, który pomaga zespołom lepiej rozumieć, wykorzystywać i rozwijać wiedzę z zakresu bezpieczeństwa aplikacji.",
 
 		focusAreas: [
-			"Application Security",
+			"Bezpieczeństwo aplikacji",
 			"OWASP ASVS",
 			"Edukacja",
-			"Knowledge Sharing",
-			"QA Enablement",
+			"Dzielenie się wiedzą",
 		],
 	},
 

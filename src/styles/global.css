@@ -214,10 +214,6 @@ body {
 	gap: var(--space-xl);
 }
 
-.site-header-top {
-	display: contents;
-}
-
 .site-logo {
 	flex-shrink: 0;
 

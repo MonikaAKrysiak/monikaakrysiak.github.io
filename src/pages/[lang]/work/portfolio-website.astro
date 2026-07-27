@@ -81,6 +81,10 @@ const designDecisionEvidenceImages = {
 
 const portfolioNavigationItems: NavigationItem[] = [
 	{
+		label: language === "pl" ? "Start" : "Home",
+		href: "#case-study-start",
+	},
+	{
 		label: portfolioWebsite.overview.title,
 		href: "#overview",
 	},
@@ -100,7 +104,9 @@ const portfolioNavigationItems: NavigationItem[] = [
 	navigationItems={portfolioNavigationItems}
 >
 	<main id="main-content" tabindex="-1">
-		<section class="case-study case-study-page section">
+		<section
+			class="case-study case-study-page section"
+		>
 			<div class="container">
 				<BackLink lang={language} />
 

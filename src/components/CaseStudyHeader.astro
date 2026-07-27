@@ -1,5 +1,6 @@
 ---
 interface Props {
+	id?: string;
 	title: string;
 	summary: string;
 	focusAreas?: string[];
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const {
+	id = "case-study-start",
 	title,
 	summary,
 	focusAreas,
@@ -19,7 +21,12 @@ const {
 
 <header class="case-study-header">
 	<div class="case-study-header-content">
-		<h1 class="case-study-title">{title}</h1>
+		<h1
+			id={id}
+			class="case-study-title"
+		>
+			{title}
+		</h1>
 
 		<p class="case-study-summary">{summary}</p>
 
@@ -58,6 +65,11 @@ const {
 		align-items: flex-start;
 		gap: var(--space-lg);
 	}
+
+	.case-study-summary {
+		margin-top: calc(-1 * var(--space-sm));
+	}
+
 	.case-study-action {
 		display: inline-flex;
 		align-items: center;
@@ -87,10 +99,14 @@ const {
 		max-width: 48rem;
 	}
 
+	.case-study-title {
+		scroll-margin-top: 8rem;
+	}
+
 	@media (min-width: 48rem) {
 		.case-study-focus-areas {
 			display: grid;
 			grid-template-columns: repeat(3, max-content);
 		}
-}
+	}
 </style>
