@@ -602,6 +602,32 @@ body {
 	border: 0;
 }
 
+.skip-link {
+	position: absolute;
+	top: var(--space-md);
+	left: var(--space-md);
+
+	padding: var(--space-sm) var(--space-md);
+
+	background-color: var(--color-primary);
+	color: var(--color-background);
+
+	font-weight: 600;
+	text-decoration: none;
+
+	border-radius: 0.5rem;
+
+	transform: translateY(-150%);
+	transition: transform 0.2s ease;
+
+	z-index: 1000;
+}
+
+.skip-link:focus {
+	transform: translateY(0);
+}
+
+
 /* Shared typography */
 .section-heading {
 	margin: 0 0 var(--space-md);

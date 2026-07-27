@@ -65,4 +65,7 @@ export const pl = {
 	externalLink: {
 		opensInNewTab: " — otwiera się w nowej karcie",
 	},
+	skipLink: {
+		skipToMainContent: "Przejdź do głównej treści",
+	},
 };

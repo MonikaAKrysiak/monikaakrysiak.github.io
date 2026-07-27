@@ -16,7 +16,7 @@ const { lang } = Astro.props;
 const t = getTranslations(lang);
 ---
 
-<main>
+<main id="main-content" tabindex="-1">
 	<section class="hero section">
 		<div class="hero-content container">
 			<div class="hero-copy">
@@ -28,8 +28,13 @@ const t = getTranslations(lang);
 
 				<p class="hero-statement">
 					{t.hero.statementFirstLine}
-					<br />
-					{t.hero.statementSecondLine}
+
+					{"statementSecondLine" in t.hero && (
+						<>
+							<br />
+							{t.hero.statementSecondLine}
+						</>
+					)}
 				</p>
 			</div>
 

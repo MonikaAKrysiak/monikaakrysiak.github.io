@@ -1,8 +1,10 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-
-import type { Language } from "../i18n";
+import {
+	getTranslations,
+	type Language,
+} from "../i18n";
 import type { NavigationItem } from "../types/navigation";
 
 import "../styles/global.css";
@@ -16,6 +18,8 @@ const {
 	lang,
 	navigationItems = [],
 } = Astro.props;
+
+const t = getTranslations(lang);
 ---
 
 <!doctype html>
@@ -41,6 +45,13 @@ const {
 	</head>
 
 	<body>
+		<a
+			class="skip-link"
+			href="#main-content"
+		>
+			{t.skipLink.skipToMainContent}
+		</a>
+
 		<Header
 			lang={lang}
 			navigationItems={navigationItems}
