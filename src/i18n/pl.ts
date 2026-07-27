@@ -58,4 +58,11 @@ export const pl = {
 		largerView: "Powiększony obraz",
 		closePreview: "Zamknij podgląd obrazu",
 	},
+	themeSwitcher: {
+		switchToLight: "Przełącz na jasny motyw",
+		switchToDark: "Przełącz na ciemny motyw",
+	},
+	externalLink: {
+		opensInNewTab: " — otwiera się w nowej karcie",
+	},
 };

@@ -51,9 +51,17 @@ export const en = {
 		designedWith: "Designed with:",
 	},
 
-	interactiveFigure: {
+		interactiveFigure: {
 		openLargerView: "Open larger view",
 		largerView: "Larger view",
 		closePreview: "Close image preview",
+	},
+
+	themeSwitcher: {
+		switchToLight: "Switch to light theme",
+		switchToDark: "Switch to dark theme",
+	},
+	externalLink: {
+		opensInNewTab: " — opens in a new tab",
 	},
 };

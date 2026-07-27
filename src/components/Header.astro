@@ -40,7 +40,7 @@ const navigationLabel =
 
 				<div class="site-controls">
 					<LanguageSwitcher lang={lang} />
-					<ThemeSwitcher />
+					<ThemeSwitcher lang={lang} />
 
 					{
 						hasNavigation && (
@@ -214,9 +214,6 @@ const navigationLabel =
 			(section): section is HTMLElement =>
 				section instanceof HTMLElement,
 		);
-
-	console.log(navigationItems);
-	console.log(sections);
 
 	const sectionLinks = document.querySelectorAll<HTMLAnchorElement>(
 	'#primary-navigation a[href^="#"]',
