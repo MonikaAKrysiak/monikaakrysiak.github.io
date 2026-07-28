@@ -86,6 +86,10 @@ const seo = getKnowledgeSharingSeo(language);
 	lang={language}
 	navigationItems={knowledgeSharingNavigationItems}
     seo={seo}
+    articleStructuredData={{
+	type: "TechArticle",
+	keywords: knowledgeSharing.header.focusAreas,
+}}
 >
 
     <main id="main-content" tabindex="-1">

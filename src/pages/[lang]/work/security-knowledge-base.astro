@@ -73,6 +73,10 @@ const seo = getSecurityKnowledgeBaseSeo(language);
 	lang={language}
 	navigationItems={navigationItems}
 	seo={seo}
+	articleStructuredData={{
+	type: "TechArticle",
+	keywords: securityKnowledgeBase.header.focusAreas,
+}}
 >
 	<main id="main-content" tabindex="-1">
 		<section class="case-study section">
