@@ -9,7 +9,7 @@ export const en = {
 		role: "QA Engineer focused on Application Security.",
 		statementFirstLine: "For me, good software isn’t just functional.",
 		statementSecondLine: "It should also be secure.",
-		viewCv: "View CV",
+		viewCv: "View CV (PDF)",
 		contact: "Contact",
 	},
 
@@ -74,7 +74,6 @@ export const en = {
 			`${label} (opens in a new tab)`,
 
 		closeDialog: "Close dialog",
-		skipToMainContent: "Skip to main content",
 
 		openLargerImage: (alt: string) =>
 			`Open larger view: ${alt}`,

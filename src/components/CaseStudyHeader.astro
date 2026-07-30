@@ -57,7 +57,9 @@ const t = getTranslations(lang);
 				rel="noopener noreferrer"
 				aria-label={t.accessibility.externalLink(action.label)}
 			>
-				{action.label}
+				<span class="case-study-action-label">
+					{action.label}
+				</span>
 			</a>
 		)}
 	</div>
@@ -97,6 +99,9 @@ const t = getTranslations(lang);
 
 	.case-study-action:hover {
 		color: var(--color-primary-hover);
+	}
+
+	.case-study-action:hover .case-study-action-label {
 		text-decoration: underline;
 		text-underline-offset: 0.2em;
 	}

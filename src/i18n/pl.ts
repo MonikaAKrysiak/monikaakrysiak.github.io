@@ -8,7 +8,7 @@ export const pl = {
 	hero: {
 		role: "QA Engineer specjalizująca się bezpieczeństwem aplikacji",
 		statementFirstLine: "Dobre oprogramowanie powinno być nie tylko funkcjonalne, ale także bezpieczne.",
-		viewCv: "Zobacz CV",
+		viewCv: "Zobacz CV (PDF)",
 		contact: "Kontakt",
 	},
 	
@@ -76,7 +76,6 @@ export const pl = {
 			`${label} (otwiera się w nowej karcie)`,
 
 		closeDialog: "Zamknij okno dialogowe",
-		skipToMainContent: "Przejdź do głównej treści",
 
 		openLargerImage: (alt: string) =>
 			`Powiększ obraz: ${alt}`,

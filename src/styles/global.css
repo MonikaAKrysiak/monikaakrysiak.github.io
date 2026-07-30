@@ -527,7 +527,7 @@ body {
 }
 
 .language-divider {
-	color: var(--color-border);
+	color: var(--color-text-muted);
 }
 
 .language-flag {
@@ -1572,5 +1572,22 @@ body {
 @media (max-width: 767px) {
 	.site-footer dl > div {
 		display: block;
+	}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	.case-study-source:hover,
+	.interactive-figure-button:hover .interactive-figure-image {
+		transform: none;
 	}
 }
