@@ -1,13 +1,26 @@
 ---
 import type { GetStaticPaths } from "astro";
-import type { Language } from "../../../i18n";
+import type { NavigationItem } from "../../../types/navigation";
 import { getBeyondTesting } from "../../../data/case-studies/beyond-testing";
+import { getAdjacentWork } from "../../../data/work";
+import { getBeyondTestingSeo } from "../../../data/seo";
 import { formatTypography } from "../../../utils/typography";
+import {
+	getTranslations,
+	type Language,
+} from "../../../i18n";
+
 
 import Layout from "../../../layouts/Layout.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
 import CaseStudySection from "../../../components/CaseStudySection.astro";
+import ImpactStoryCard from "../../../components/ImpactStoryCard.astro";
 import BackLink from "../../../components/BackLink.astro";
+import CaseStudyNavigation from "../../../components/CaseStudyNavigation.astro";
+import DocumentationShowcase from "../../../components/DocumentationShowcase.astro";
+import SectionDivider from "../../../components/SectionDivider.astro";
+
+import beyondTestingProcessDiagram from "../../../assets/case-studies/beyond-testing-process-diagram.png";
 
 export const getStaticPaths = (() => {
 	return [
@@ -17,27 +30,88 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 const { lang } = Astro.params;
-
 const language = lang as Language;
-
+const translations = getTranslations(language);
 const beyondTesting = getBeyondTesting(language);
+
+const { previous, next } = getAdjacentWork(
+	language,
+	"/work/beyond-testing",
+);
+
+const beyondTestingNavigationItems: NavigationItem[] = [
+	{
+		label: language === "pl" ? "Start" : "Home",
+		href: "#case-study-start",
+	},
+	{
+		label:
+			language === "pl"
+				? "Moje podejście"
+				: "My Approach",
+		href: "#overview",
+	},
+	{
+		label:
+			language === "pl"
+				? "Historie z praktyki"
+				: "Stories from Practice",
+		href: "#impact-stories",
+	},
+	{
+		label:
+			language === "pl"
+				? "Dokumentacja wizualna"
+				: "Visual Documentation",
+		href: "#visual-documentation",
+	},
+];
+
+const seo = getBeyondTestingSeo(language);
 ---
 
-<Layout lang={language}>
-	<main>
-		<section class="case-study section">
-			<div class="container">
-				<BackLink lang={language} />
+<Layout
+	lang={language}
+	navigationItems={beyondTestingNavigationItems}
+	seo={seo}
+	articleStructuredData={{
+	type: "TechArticle",
+	keywords: beyondTesting.header.focusAreas,
+}}
+>
+	<main id="main-content" tabindex="-1">
+<section class="case-study section">
+	<div class="container">
+		<BackLink lang={language} />
 
-				<CaseStudyHeader
-					title={formatTypography(beyondTesting.header.title, language)}
-					summary={formatTypography(beyondTesting.header.summary, language)}
-					focusAreas={beyondTesting.header.focusAreas}
-				/>
+		<div class="case-study-main-content">
+			<CaseStudyHeader
+				lang={language}
+				title={formatTypography(
+					beyondTesting.header.title,
+					language,
+				)}
+				summary={formatTypography(
+					beyondTesting.header.summary,
+					language,
+				)}
+			/>
 
-				<CaseStudySection
-					id="overview"
-					title={formatTypography(beyondTesting.overview.title, language)}
+			<ul class="case-study-focus-areas">
+				{beyondTesting.header.focusAreas.map((focusArea) => (
+					<li class="case-study-focus-area">
+						{focusArea}
+					</li>
+				))}
+			</ul>
+		</div>
+
+		<CaseStudySection
+			id="overview"
+					title={formatTypography(
+						beyondTesting.overview.title,
+						language,
+					)}
 				>
 					{beyondTesting.overview.paragraphs.map((paragraph) => (
 						<p class="case-study-text">
@@ -45,6 +119,106 @@ const beyondTesting = getBeyondTesting(language);
 						</p>
 					))}
 				</CaseStudySection>
+
+				<SectionDivider />
+
+				<CaseStudySection
+					id="impact-stories"
+					title={formatTypography(
+						beyondTesting.impactStories.title,
+						language,
+					)}
+				>
+					<div class="impact-stories">
+						{beyondTesting.impactStories.items.map((story, index) => (
+							<ImpactStoryCard
+								number={String(index + 1).padStart(2, "0")}
+								title={formatTypography(
+									story.title,
+									language,
+								)}
+								description={formatTypography(
+									story.description,
+									language,
+								)}
+								outcome={formatTypography(
+									story.outcome,
+									language,
+								)}
+								focusAreasTitle={
+									language === "pl"
+										? "Kluczowe obszary"
+										: "Key Areas"
+								}
+								focusAreas={story.focusAreas}
+							/>
+						))}
+					</div>
+				</CaseStudySection>
+
+				<DocumentationShowcase
+					id="visual-documentation"
+					lang={language}
+					title={formatTypography(
+						beyondTesting.visualDocumentation.title,
+						language,
+					)}
+					paragraphs={beyondTesting.visualDocumentation.paragraphs.map(
+						(paragraph) =>
+							formatTypography(paragraph, language),
+					)}
+					includesTitle={
+						beyondTesting.visualDocumentation.includesTitle
+					}
+					includes={
+						beyondTesting.visualDocumentation.includes
+					}
+					focusAreasTitle={
+						language === "pl"
+							? "Kluczowe obszary"
+							: "Focus Areas"
+					}
+					focusAreas={
+						beyondTesting.visualDocumentation.focusAreas
+					}
+					impactTitle={
+						beyondTesting.visualDocumentation.impactTitle
+					}
+					outcome={formatTypography(
+						beyondTesting.visualDocumentation.outcome,
+						language,
+					)}
+					image={beyondTestingProcessDiagram}
+					imageAlt={
+						language === "pl"
+							? "Zanonimizowany diagram przedstawiający złożony proces biznesowy, jego wyjątki oraz integracje z zewnętrznymi systemami."
+							: "An anonymised diagram showing a complex business process, its exceptions and integrations with external systems."
+					}
+				/>
+
+				<CaseStudyNavigation
+					lang={language}
+					previous={
+						previous
+							? {
+									href: `/${language}${previous.href}`,
+									label: previous.title,
+								}
+							: undefined
+					}
+					next={
+						next
+							? {
+									href: `/${language}${next.href}`,
+									label: next.title,
+								}
+							: undefined
+					}
+					allWork={{
+                        href: `/${language}/#work`,
+                        label: translations.caseStudyNavigation.allWork,
+                    }}
+				/>
 			</div>
 		</section>
 	</main>

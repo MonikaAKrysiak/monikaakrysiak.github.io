@@ -2,12 +2,22 @@
 import GitHubIcon from "../assets/icons/github.svg";
 import LinkedInIcon from "../assets/icons/linkedin.svg";
 import MailIcon from "../assets/icons/mail.svg";
+import {
+	getTranslations,
+	type Language,
+} from "../i18n";
 
 interface Props {
+	lang: Language;
 	variant?: "default" | "footer";
 }
 
-const { variant = "default" } = Astro.props;
+const {
+	lang,
+	variant = "default",
+} = Astro.props;
+
+const t = getTranslations(lang);
 ---
 
 <address
@@ -32,6 +42,7 @@ const { variant = "default" } = Astro.props;
 				href="https://www.linkedin.com/in/monika-krysiak"
 				target="_blank"
 				rel="noopener noreferrer"
+				aria-label={t.accessibility.externalProfile("LinkedIn")}
 			>
 				<LinkedInIcon
 					class="contact-icon"
@@ -46,6 +57,7 @@ const { variant = "default" } = Astro.props;
 				href="https://github.com/MonikaAKrysiak"
 				target="_blank"
 				rel="noopener noreferrer"
+				aria-label={t.accessibility.externalProfile("GitHub")}
 			>
 				<GitHubIcon
 					class="contact-icon"

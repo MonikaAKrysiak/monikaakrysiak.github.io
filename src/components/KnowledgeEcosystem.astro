@@ -1,0 +1,600 @@
+---
+import type { Language } from "../i18n";
+import { formatTypography } from "../utils/typography";
+
+import ShieldIcon from "../assets/case-studies/security-asvs.svg";
+import SearchIcon from "../assets/case-studies/security-testing.svg";
+import GraduationCapIcon from "../assets/case-studies/security-learning.svg";
+import UsersIcon from "../assets/case-studies/security-awareness.svg";
+import BookIcon from "../assets/case-studies/security-knowledge.svg";
+import ApplyIcon from "../assets/case-studies/security-apply.svg";
+import ShareIcon from "../assets/case-studies/security-share.svg";
+import GrowIcon from "../assets/case-studies/security-grow.svg";
+import InfinityIcon from "../assets/case-studies/security-infinity.svg";
+
+interface Area {
+	title: string;
+	summary: string;
+	description: string;
+	highlights: string[];
+}
+
+interface Props {
+	title: string;
+	introduction: string;
+	areas: Area[];
+
+	cycle: {
+		title: string;
+		description: string;
+		steps: string[];
+	};
+
+	lang: Language;
+}
+
+const {
+	title,
+	introduction,
+	areas,
+	cycle,
+	lang,
+} = Astro.props;
+
+const icons = [
+	ShieldIcon,
+	SearchIcon,
+	GraduationCapIcon,
+	UsersIcon,
+];
+
+const cycleIcons = [
+	GraduationCapIcon,
+	ApplyIcon,
+	ShareIcon,
+	GrowIcon,
+];
+---
+
+<section
+	id="knowledge-ecosystem"
+	class="knowledge-ecosystem"
+	data-language-section
+>
+	<header class="knowledge-ecosystem-header">
+		<h2 class="section-heading">
+			{formatTypography(title, lang)}
+		</h2>
+
+		<p class="case-study-text">
+			{formatTypography(introduction, lang)}
+		</p>
+	</header>
+
+	<div class="knowledge-ecosystem-diagram">
+		<div class="knowledge-center">
+			<BookIcon
+				class="knowledge-center-icon"
+				aria-hidden="true"
+			/>
+
+			<span class="knowledge-center-label">
+				{lang === "pl"
+					? "Wiedza o bezpieczeństwie"
+					: "Security Knowledge"}
+			</span>
+
+			<span
+				class="knowledge-center-arrow"
+				aria-hidden="true"
+			>
+				↓
+			</span>
+		</div>
+
+		<div
+			class="knowledge-connections"
+			aria-hidden="true"
+		>
+			<span class="knowledge-connection knowledge-connection-first"></span>
+			<span class="knowledge-connection knowledge-connection-second"></span>
+			<span class="knowledge-connection knowledge-connection-third"></span>
+			<span class="knowledge-connection knowledge-connection-fourth"></span>
+		</div>
+
+		<div class="knowledge-nodes">
+			{areas.map((area, index) => {
+				const Icon = icons[index];
+
+				return (
+					<div class="knowledge-node">
+						<Icon
+							class="knowledge-node-icon"
+							aria-hidden="true"
+						/>
+
+						<h3 class="knowledge-node-title">
+							{formatTypography(area.title, lang)}
+						</h3>
+
+						<p class="knowledge-node-summary">
+							{formatTypography(area.summary, lang)}
+						</p>
+
+						<span
+							class="knowledge-node-arrow"
+							aria-hidden="true"
+						>
+							↓
+						</span>
+					</div>
+				);
+			})}
+		</div>
+	</div>
+
+	<div class="knowledge-cards">
+		{areas.map((area, index) => {
+			const Icon = icons[index];
+
+			return (
+				<article class="knowledge-card">
+					<header class="knowledge-card-header">
+						<Icon
+							class="knowledge-card-icon"
+							aria-hidden="true"
+						/>
+
+						<h3 class="knowledge-card-title">
+							{formatTypography(area.title, lang)}
+						</h3>
+					</header>
+
+					<p class="case-study-text">
+						{formatTypography(area.description, lang)}
+					</p>
+
+					<ul class="knowledge-card-list">
+						{area.highlights.map((highlight) => (
+							<li>
+								{formatTypography(highlight, lang)}
+							</li>
+						))}
+					</ul>
+				</article>
+			);
+		})}
+	</div>
+    
+    <div class="knowledge-cycle">
+        <h3 class="knowledge-cycle-title">
+            {formatTypography(cycle.title, lang)}
+        </h3>
+
+        <p class="knowledge-cycle-description">
+            {formatTypography(cycle.description, lang)}
+        </p>
+
+        <div class="knowledge-cycle-visual">
+            <InfinityIcon
+                class="knowledge-cycle-infinity"
+                aria-hidden="true"
+            />
+
+            <div class="knowledge-cycle-steps">
+                {cycle.steps.map((step, index) => {
+                    const Icon = cycleIcons[index];
+
+                    return (
+                        <div class="knowledge-cycle-step">
+                            <Icon
+                                class="knowledge-cycle-icon"
+                                aria-hidden="true"
+                            />
+
+                            <span class="knowledge-cycle-label">
+                                {formatTypography(step, lang)}
+                            </span>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+	.knowledge-ecosystem {
+        margin-top: var(--space-3xl);
+        margin-bottom: var(--space-3xl);
+    }
+
+	.knowledge-ecosystem-header {
+		max-width: 52rem;
+		margin: 0 auto var(--space-3xl);
+
+		text-align: center;
+	}
+
+	.knowledge-ecosystem-header .case-study-text {
+		margin-inline: auto;
+	}
+
+	.knowledge-ecosystem-diagram {
+		margin-bottom: var(--space-2xl);
+	}
+
+	.knowledge-center {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-sm);
+
+		margin-bottom: var(--space-xl);
+
+		text-align: center;
+	}
+
+	.knowledge-center-icon {
+		width: 3rem;
+		height: 3rem;
+
+		color: var(--color-secondary);
+	}
+
+	.knowledge-center-label {
+		font-weight: 700;
+	}
+
+	.knowledge-center-arrow {
+		color: var(--color-secondary);
+
+		font-size: 1.5rem;
+		line-height: 1;
+	}
+
+	.knowledge-connections {
+		display: none;
+	}
+
+	.knowledge-nodes {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-xl);
+	}
+
+	.knowledge-node {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-xs);
+
+		text-align: center;
+	}
+
+	.knowledge-node-icon {
+		width: 2rem;
+		height: 2rem;
+
+		color: var(--color-secondary);
+	}
+
+	.knowledge-node-title {
+		margin: 0;
+
+		font-size: var(--font-size-heading);
+	}
+
+	.knowledge-node-summary {
+		max-width: 17rem;
+		margin: 0;
+
+		color: var(--color-text-muted);
+
+		font-size: 0.95rem;
+		line-height: var(--line-height-body);
+	}
+
+	.knowledge-node-arrow {
+		color: var(--color-secondary);
+
+		font-size: 1.5rem;
+		line-height: 1;
+	}
+
+	.knowledge-cards {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-lg);
+	}
+
+	.knowledge-card {
+		padding: var(--space-lg);
+
+		border: 1px solid var(--color-border);
+		border-radius: 0.75rem;
+
+		background-color: var(--color-surface);
+	}
+
+	.knowledge-card-header {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--space-md);
+
+		margin-bottom: var(--space-md);
+	}
+
+	.knowledge-card-icon {
+		flex-shrink: 0;
+
+		width: 2.25rem;
+		height: 2.25rem;
+
+		color: var(--color-secondary);
+	}
+
+	.knowledge-card-title {
+		margin: 0;
+
+		font-size: var(--font-size-heading);
+	}
+
+	.knowledge-card-list {
+		margin: var(--space-lg) 0 0;
+		padding-top: var(--space-md);
+		padding-left: var(--space-lg);
+
+		border-top: 1px solid var(--color-border);
+	}
+
+    .knowledge-cycle {
+        max-width: 52rem;
+        margin: var(--space-md) auto 0;
+        padding: var(--space-xl) 0;
+        padding-top: var(--space-3xl);
+
+        text-align: center;
+    }
+
+    .knowledge-cycle-title {
+        margin: 0;
+
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+
+    .knowledge-cycle-description {
+        max-width: 34rem;
+        margin: var(--space-sm) auto 0;
+
+        color: var(--color-text-muted);
+
+        font-size: 0.95rem;
+        line-height: var(--line-height-body);
+    }
+
+   .knowledge-cycle-visual {
+        position: relative;
+
+        margin-top: var(--space-xl);
+        padding-top: var(--space-lg);
+        padding-bottom: var(--space-3xl);
+    }
+
+    .knowledge-cycle-infinity {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+
+        width: min(110%, 40rem);
+        height: auto;
+
+        color: var(--color-secondary);
+
+        opacity: 0.12;
+
+        transform: translate(-50%, -50%) scaleY(0.75);
+        transform-origin: center;
+    }
+
+    .knowledge-cycle-steps {
+        position: relative;
+        z-index: 1;
+
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        align-items: center;
+        gap: var(--space-xs);
+    }
+
+    .knowledge-cycle-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-xs);
+
+        min-width: 0;
+    }
+
+   .knowledge-cycle-icon {
+        width: 2rem;
+        height: 2rem;
+
+        color: var(--color-secondary);
+    }
+
+    .knowledge-cycle-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+    }
+
+	@media (min-width: 48rem) {
+        .knowledge-cycle {
+            margin-top: var(--space-2xl);
+        }
+
+		.knowledge-nodes,
+		.knowledge-cards {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+        
+        .knowledge-cycle-visual {
+            padding-top: var(--space-lg);
+            padding-bottom: var(--space-3xl);
+        }
+
+        .knowledge-cycle-steps {
+            transform: translateY(-2.25rem);
+        }
+
+        .knowledge-cycle-infinity {
+            top: 0;
+
+            width: 115%;
+            max-width: none;
+
+            opacity: 0.09;
+
+            transform: translate(-50%, -50%) scaleY(0.82);
+        }
+
+        .knowledge-cycle-steps {
+            gap: var(--space-lg);
+        }
+
+        .knowledge-cycle-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .knowledge-cycle-label {
+            font-size: 1rem;
+        }
+
+	@media (min-width: 64rem) {
+		.knowledge-center {
+			margin-bottom: var(--space-md);
+		}
+
+		.knowledge-center-arrow {
+			display: none;
+		}
+
+		.knowledge-connections {
+			position: relative;
+
+			display: block;
+
+			width: 100%;
+			height: 4.5rem;
+
+			margin-inline: auto;
+		}
+
+		.knowledge-connections::before {
+			content: "";
+
+			position: absolute;
+			top: 0;
+			left: 50%;
+
+			width: 2px;
+			height: 2rem;
+
+			border-radius: 999px;
+
+			background-color: var(--color-secondary);
+
+			transform: translateX(-50%);
+		}
+
+		.knowledge-connections::after {
+			content: "";
+
+			position: absolute;
+			top: 2rem;
+			left: calc(12.5% - 0.75rem);
+			right: calc(12.5% - 0.75rem);
+
+			height: 2px;
+
+			border-radius: 999px;
+
+			background-color: var(--color-secondary);
+		}
+
+		.knowledge-connection {
+			position: absolute;
+			top: 2rem;
+
+			width: 2px;
+			height: 1.5rem;
+
+			border-radius: 999px;
+
+			background-color: var(--color-secondary);
+
+			transform: translateX(-50%);
+		}
+
+		.knowledge-connection::after {
+			content: "";
+
+			position: absolute;
+			left: 50%;
+			bottom: -0.2rem;
+
+			width: 0.5rem;
+			height: 0.5rem;
+
+			border: 2px solid var(--color-secondary);
+			border-radius: 50%;
+
+			background-color: var(--color-background);
+
+			transform: translateX(-50%);
+		}
+
+		.knowledge-connection-first {
+			left: calc(12.5% - 0.75rem);
+		}
+
+		.knowledge-connection-second {
+			left: calc(37.5% - 0.25rem);
+		}
+
+		.knowledge-connection-third {
+			left: calc(62.5% + 0.25rem);
+		}
+
+		.knowledge-connection-fourth {
+			left: calc(87.5% + 0.75rem);
+		}
+
+		.knowledge-nodes,
+		.knowledge-cards {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		.knowledge-node {
+			height: 100%;
+		}
+
+		.knowledge-node-summary {
+			min-height: 4.5rem;
+		}
+
+		.knowledge-node-arrow {
+			margin-top: auto;
+		}
+
+		.knowledge-card {
+			height: 100%;
+		}
+
+		.knowledge-card-header {
+			min-height: 6.25rem;
+		}
+	}
+</style>

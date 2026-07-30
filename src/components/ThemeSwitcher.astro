@@ -1,12 +1,23 @@
 ---
+import type { Language } from "../i18n";
+import { getTranslations } from "../i18n";
 import ThemeLight from "../assets/icons/theme-light.svg";
 import ThemeDark from "../assets/icons/theme-dark.svg";
+
+interface Props {
+	lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
 ---
 
 <button
 	class="theme-switcher"
 	type="button"
-	aria-label="Switch to light theme"
+	aria-label={t.accessibility.switchToLightTheme}
+	data-switch-to-light={t.accessibility.switchToLightTheme}
+	data-switch-to-dark={t.accessibility.switchToDarkTheme}
 >
 	<ThemeLight
 		class="theme-icon theme-icon-light"
@@ -27,12 +38,14 @@ import ThemeDark from "../assets/icons/theme-dark.svg";
 	);
 
 	function updateThemeLabel(theme: string) {
-		themeSwitcher?.setAttribute(
-			"aria-label",
+		const label =
 			theme === "dark"
-				? "Switch to light theme"
-				: "Switch to dark theme"
-		);
+				? themeSwitcher?.getAttribute("data-switch-to-light")
+				: themeSwitcher?.getAttribute("data-switch-to-dark");
+
+		if (label) {
+			themeSwitcher?.setAttribute("aria-label", label);
+		}
 	}
 
 	function updateTheme(theme: string) {

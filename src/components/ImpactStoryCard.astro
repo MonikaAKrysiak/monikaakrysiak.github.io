@@ -1,0 +1,53 @@
+---
+interface Props {
+	number: string;
+	title: string;
+	description: string;
+	outcome: string;
+	focusAreasTitle: string;
+	focusAreas: string[];
+}
+
+const {
+	number,
+	title,
+	description,
+	outcome,
+	focusAreasTitle,
+	focusAreas,
+} = Astro.props;
+---
+
+<article class="impact-story">
+	<p class="impact-story-number" aria-hidden="true">
+		{number}.
+	</p>
+
+	<div class="impact-story-content">
+		<h3 class="impact-story-title">
+			{title}
+		</h3>
+
+		<p class="impact-story-description">
+			{description}
+		</p>
+
+		<p class="impact-story-outcome">
+			{outcome}
+		</p>
+	</div>
+
+	<div class="impact-story-meta">
+		<p class="impact-story-meta-title">
+			{focusAreasTitle}
+		</p>
+
+		<ul class="impact-story-focus-areas">
+			{focusAreas.map((focusArea) => (
+				<li class="impact-story-focus-area">
+					{focusArea}
+				</li>
+			))}
+		</ul>
+	</div>
+</article>

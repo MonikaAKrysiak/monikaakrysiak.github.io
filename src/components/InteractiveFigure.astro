@@ -1,0 +1,94 @@
+---
+import { Image, type ImageMetadata } from "astro:assets";
+
+import type { Language } from "../i18n";
+import { getTranslations } from "../i18n";
+
+interface Props {
+	lang: Language;
+	src: ImageMetadata;
+	alt: string;
+	caption?: string;
+	className?: string;
+}
+
+const {
+	src,
+	alt,
+	caption,
+	lang,
+	className,
+} = Astro.props;
+
+const t = getTranslations(lang);
+
+const dialogId = `figure-dialog-${src.src
+	.replace(/[^a-zA-Z0-9]/g, "-")
+	.replace(/-+/g, "-")}`;
+
+const captionId = `${dialogId}-caption`;
+---
+<figure
+	class:list={[
+		"interactive-figure",
+		className,
+	]}
+>
+	<button
+		type="button"
+		class="interactive-figure-button"
+		aria-label={t.accessibility.openLargerImage(alt)}
+		aria-haspopup="dialog"
+		data-dialog-open={dialogId}
+	>
+
+		<Image
+			src={src}
+			alt={alt}
+			class="interactive-figure-image"
+		/>
+	</button>
+
+	{caption && (
+		<figcaption class="interactive-figure-caption">
+			{caption}
+		</figcaption>
+	)}
+</figure>
+
+<dialog
+	id={dialogId}
+	class="interactive-figure-dialog"
+	aria-label={t.accessibility.largerImageView(alt)}
+	aria-describedby={caption ? captionId : undefined}
+>
+	<div class="interactive-figure-dialog-content">
+		<button
+			type="button"
+			class="interactive-figure-dialog-close"
+			aria-label={t.accessibility.closeImagePreview}
+			data-dialog-close
+		>
+			×
+		</button>
+
+		<Image
+			src={src}
+			alt={alt}
+			class="interactive-figure-dialog-image"
+		/>
+
+		{caption && (
+			<p
+				id={captionId}
+				class="interactive-figure-dialog-caption"
+			>
+				{caption}
+			</p>
+		)}
+	</div>
+</dialog>
+
+<script>
+	import "../scripts/image-lightbox";
+</script>

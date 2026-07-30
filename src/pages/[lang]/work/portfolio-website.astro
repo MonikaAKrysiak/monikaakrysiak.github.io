@@ -1,61 +1,361 @@
 ---
-import type { GetStaticPaths } from 'astro';
-import type { Language } from '../../../i18n';
-import { getPortfolioWebsite } from '../../../data/case-studies/portfolio-website';
+import type { GetStaticPaths } from "astro";
+import type { NavigationItem } from "../../../types/navigation";
+import { getPortfolioWebsite } from "../../../data/case-studies/portfolio-website";
+import { getAdjacentWork } from "../../../data/work";
+import { getPortfolioWebsiteSeo } from "../../../data/seo";
 import { formatTypography } from "../../../utils/typography";
+import {
+	getTranslations,
+	type Language,
+} from "../../../i18n";
 
+import Layout from "../../../layouts/Layout.astro";
 
-import Layout from '../../../layouts/Layout.astro';
+import BackLink from "../../../components/BackLink.astro";
+import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
+import CaseStudySection from "../../../components/CaseStudySection.astro";
+import InteractiveFigure from "../../../components/InteractiveFigure.astro";
+import EngineeringPrincipleCard from "../../../components/EngineeringPrincipleCard.astro";
+import DesignDecisionCard from "../../../components/DesignDecisionCard.astro";
+import CaseStudyEvidence from "../../../components/CaseStudyEvidence.astro";
+import EvidenceFigure from "../../../components/EvidenceFigure.astro";
+import CaseStudyNavigation from "../../../components/CaseStudyNavigation.astro";
 
-import BackLink from '../../../components/BackLink.astro';
-import CaseStudyHeader from '../../../components/CaseStudyHeader.astro';
-import CaseStudySection from '../../../components/CaseStudySection.astro';
-import CaseStudyFigure from '../../../components/CaseStudyFigure.astro';
-
-import portfolioHomepage from '../../../assets/case-studies/portfolio-homepage.png';
+import portfolioHomepage from "../../../assets/case-studies/portfolio-homepage.png";
+import PortfolioShieldLock from "../../../assets/icons/portfolio-shield-lock.svg";
+import PortfolioBinaryTree from "../../../assets/icons/portfolio-binary-tree.svg";
+import PortfolioAccessible from "../../../assets/icons/portfolio-accessible.svg";
+import PortfolioFileDescription from "../../../assets/icons/portfolio-file-description.svg";
+import portfolioSecurityPackageJson from "../../../assets/case-studies/portfolio-website-package-json.png";
+import portfolioSecurityLocalAssets from "../../../assets/case-studies/portfolio-website-local-assets.png";
+import portfolioArchitectureSrc from "../../../assets/case-studies/portfolio-website-architecture-src.png";
+import portfolioArchitectureComponents from "../../../assets/case-studies/portfolio-website-architecture-components.png";
+import portfolioSecuritySemanticHtmlStructure from "../../../assets/case-studies/portfolio-website-semantic-html-structure.png";
+import portfolioSecurityAccessibleNavigationControls from "../../../assets/case-studies/portfolio-website-accessible-navigation-controls.png";
+import portfolioSecurityArchitectureDecisionRecord from "../../../assets/case-studies/portfolio-website-architecture-decision-record.png";
+import portfolioSecuritySessionLog from "../../../assets/case-studies/portfolio-website-session-log.png";
 
 export const getStaticPaths = (() => {
 	return [
-		{ params: { lang: 'en' } },
-		{ params: { lang: 'pl' } },
+		{ params: { lang: "en" } },
+		{ params: { lang: "pl" } },
 	];
 }) satisfies GetStaticPaths;
 
 const { lang } = Astro.params;
 const language = lang as Language;
+const translations = getTranslations(language);
+
 const portfolioWebsite = getPortfolioWebsite(language);
+const { previous, next } = getAdjacentWork(
+	language,
+	"/work/portfolio-website",
+);
+const SourceIcon = portfolioWebsite.header.action?.icon;
+const engineeringPrincipleIcons = [
+	PortfolioShieldLock,
+	PortfolioBinaryTree,
+	PortfolioAccessible,
+	PortfolioFileDescription,
+];
+const designDecisionEvidenceImages = {
+	"security-by-default": [
+		portfolioSecurityPackageJson,
+		portfolioSecurityLocalAssets,
+	],
+
+	"architecture-before-implementation": [
+		portfolioArchitectureSrc,
+		portfolioArchitectureComponents,
+	],
+
+	"accessibility-by-design": [
+		portfolioSecuritySemanticHtmlStructure,
+		portfolioSecurityAccessibleNavigationControls,
+	],
+	"documentation-as-part-of-engineering": [
+		portfolioSecurityArchitectureDecisionRecord,
+		portfolioSecuritySessionLog,
+	],
+};
+
+const portfolioNavigationItems: NavigationItem[] = [
+	{
+		label: language === "pl" ? "Start" : "Home",
+		href: "#case-study-start",
+	},
+	{
+		label: portfolioWebsite.overview.title,
+		href: "#overview",
+	},
+	{
+		label: portfolioWebsite.engineeringPrinciples.title,
+		href: "#engineering-principles",
+	},
+	{
+		label: portfolioWebsite.designDecisions.title,
+		href: "#design-decisions",
+	},
+];
+
+const seo = getPortfolioWebsiteSeo(language);
 ---
 
-<Layout lang={language}>
-	<main>
-		<section class="case-study section">
+<Layout
+	lang={language}
+	navigationItems={portfolioNavigationItems}
+	seo={seo}
+	articleStructuredData={{
+		type: "TechArticle",
+		keywords: portfolioWebsite.header.focusAreas,
+	}}
+>
+	<main id="main-content" tabindex="-1">
+		<section
+			class="case-study case-study-page section"
+		>
 			<div class="container">
 				<BackLink lang={language} />
 
-				<CaseStudyHeader
-					title={formatTypography(portfolioWebsite.header.title, language)}
-					summary={formatTypography(portfolioWebsite.header.summary, language)}
-					focusAreas={portfolioWebsite.header.focusAreas}
-					action={portfolioWebsite.header.action}
-				/>
+				<div class="case-study-introduction">
+					<div class="case-study-introduction-main">
+						<CaseStudyHeader
+							lang={language}
+							title={formatTypography(
+								portfolioWebsite.header.title,
+								language
+							)}
+							summary={formatTypography(
+								portfolioWebsite.header.summary,
+								language
+							)}
+							focusAreas={[]}
+						/>
+
+						<CaseStudySection
+							id="overview"
+							title={formatTypography(
+								portfolioWebsite.overview.title,
+								language
+							)}
+						>
+							{portfolioWebsite.overview.paragraphs.map((paragraph) => (
+								<p class="case-study-text">
+									{formatTypography(paragraph, language)}
+								</p>
+							))}
+						</CaseStudySection>
+					</div>
+
+					<div class="case-study-introduction-aside">
+						<InteractiveFigure
+							lang={language}
+							src={portfolioHomepage}
+							alt={portfolioWebsite.figures.homepage.alt}
+							caption={portfolioWebsite.figures.homepage.caption}
+						/>
+
+						<div class="case-study-project-meta">
+							<ul class="case-study-focus-areas">
+								{portfolioWebsite.header.focusAreas.map((focusArea) => (
+									<li class="case-study-focus-area">
+										{focusArea}
+									</li>
+								))}
+							</ul>
+
+							{portfolioWebsite.header.action && (
+								<a
+									class="case-study-source"
+									href={portfolioWebsite.header.action.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={translations.accessibility.externalLink(
+										portfolioWebsite.header.action.label,
+									)}
+								>
+									{SourceIcon && (
+										<SourceIcon
+											class="case-study-source-icon"
+											aria-hidden="true"
+										/>
+									)}
+
+									{portfolioWebsite.header.action.label}
+								</a>
+							)}
+						</div>
+					</div>
+				</div>
+				<hr class="case-study-divider" />
+				<CaseStudySection
+					id="engineering-principles"
+					title={formatTypography(
+						portfolioWebsite.engineeringPrinciples.title,
+						language
+					)}
+				>
+					<p class="case-study-text">
+						{formatTypography(
+							portfolioWebsite.engineeringPrinciples.introduction,
+							language
+						)}
+					</p>
+
+					<div class="engineering-principles-grid">
+						{portfolioWebsite.engineeringPrinciples.items.map((item, index) => (
+							<EngineeringPrincipleCard
+								title={formatTypography(item.title, language)}
+								icon={engineeringPrincipleIcons[index]}
+							>
+								{item.paragraphs.map((paragraph) => (
+									<p class="case-study-text">
+										{formatTypography(paragraph, language)}
+									</p>
+								))}
+							</EngineeringPrincipleCard>
+						))}
+					</div>
+				</CaseStudySection>
+				
+				<hr class="case-study-divider" />
 
 				<CaseStudySection
-					id="overview"
-					title={formatTypography(portfolioWebsite.overview.title, language)}
+					id="design-decisions"
+					title={formatTypography(
+						portfolioWebsite.designDecisions.title,
+						language
+					)}
 				>
-					{portfolioWebsite.overview.paragraphs.map((paragraph) => (
-						<p class="case-study-text">
-							{formatTypography(paragraph, language)}
-						</p>
+					<p class="case-study-text">
+						{formatTypography(
+							portfolioWebsite.designDecisions.introduction,
+							language
+						)}
+					</p>
+
+					{portfolioWebsite.designDecisions.items.map((item) => (
+						<DesignDecisionCard
+							title={formatTypography(item.title, language)}
+							evidenceTitle={formatTypography(
+								portfolioWebsite.designDecisions.evidenceTitle,
+								language
+							)}
+						>
+							{item.paragraphs.map((paragraph) => (
+								<p class="case-study-text">
+									{formatTypography(paragraph, language)}
+								</p>
+							))}
+
+							<ul class="case-study-implemented-items">
+								{item.implementedItems.map((implementedItem) => (
+									<li>{formatTypography(implementedItem, language)}</li>
+								))}
+							</ul>
+
+							<CaseStudyEvidence slot="evidence">
+								<div class="case-study-evidence-gallery">
+									{item.evidence.map((evidence, index) => (
+										<EvidenceFigure
+											lang={language}
+											src={designDecisionEvidenceImages[item.id][index]}
+											alt={formatTypography(evidence.alt, language)}
+											caption={formatTypography(evidence.caption, language)}
+										/>
+									))}
+								</div>
+							</CaseStudyEvidence>
+						</DesignDecisionCard>
 					))}
 				</CaseStudySection>
-
-				<CaseStudyFigure
-					src={portfolioHomepage}
-					alt={portfolioWebsite.figures.homepage.alt}
-					caption={portfolioWebsite.figures.homepage.caption}
+				<CaseStudyNavigation
+					lang={language}
+					previous={
+						previous
+							? {
+									href: `/${language}${previous.href}`,
+									label: previous.title,
+								}
+							: undefined
+					}
+					next={
+						next
+							? {
+									href: `/${language}${next.href}`,
+									label: next.title,
+								}
+							: undefined
+					}
+					allWork={{
+						href: `/${language}/#work`,
+						label: translations.caseStudyNavigation.allWork,
+					}}
 				/>
 			</div>
 		</section>
 	</main>
 </Layout>
+
+<style>
+	.case-study-page {
+		padding-bottom: 0;
+	}
+
+	.case-study-introduction-main .case-study-section {
+		margin-top: calc(var(--space-sm) * -1);
+	}
+
+	.case-study-project-meta {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-md);
+		margin-top: var(--space-lg);
+	}
+
+	.case-study-project-meta .case-study-focus-areas {
+		justify-content: center;
+		width: 100%;
+	}
+
+	.case-study-project-meta .case-study-source {
+		margin-top: 0;
+		color: var(--color-secondary);
+	}
+
+	.case-study-project-meta .case-study-source:hover {
+		color: var(--color-primary-hover);
+	}
+
+	.engineering-principles-grid {
+		display: grid;
+		column-gap: var(--space-xl);
+		row-gap: var(--space-sm);
+	}
+
+	.case-study-divider {
+		margin: var(--space-3xl) var(--space-sm);
+
+		border: 0;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.case-study-evidence-gallery {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	@media (min-width: 64rem) {
+		.case-study-evidence-gallery {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 48rem) {
+		.engineering-principles-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+</style>

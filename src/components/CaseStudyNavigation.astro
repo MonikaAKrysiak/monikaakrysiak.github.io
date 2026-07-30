@@ -1,0 +1,122 @@
+---
+import {
+	getTranslations,
+	type Language,
+} from "../i18n";
+
+interface NavigationLink {
+	href: string;
+	label: string;
+}
+
+interface Props {
+	lang: Language;
+	previous?: NavigationLink;
+	next?: NavigationLink;
+	allWork: NavigationLink;
+}
+
+const {
+	lang,
+	previous,
+	next,
+	allWork,
+} = Astro.props;
+
+const t = getTranslations(lang);
+
+const hasBothDirections = Boolean(previous && next);
+---
+<nav
+	class="case-study-navigation"
+	aria-label={t.accessibility.caseStudyNavigation}
+>
+	<div class="case-study-navigation-links">
+		{previous && (
+			<a
+				class="case-study-navigation-link"
+				href={previous.href}
+				aria-label={t.accessibility.previousCaseStudy(previous.label)}
+			>
+				<span aria-hidden="true">←</span>
+				{" "}
+				{previous.label}
+			</a>
+		)}
+
+		{next && (
+			<a
+				class="case-study-navigation-link case-study-navigation-next"
+				href={next.href}
+				aria-label={t.accessibility.nextCaseStudy(next.label)}
+			>
+				{next.label}
+				{" "}
+				<span aria-hidden="true">→</span>
+			</a>
+		)}
+	</div>
+
+	<a
+		class:list={[
+			"case-study-navigation-all-work",
+			{
+				"case-study-navigation-all-work-centered": hasBothDirections,
+			},
+		]}
+		href={allWork.href}
+	>
+		{allWork.label}
+	</a>
+</nav>
+
+<style>
+	.case-study-navigation {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-md);
+		margin-top: var(--space-xl);
+	}
+
+	.case-study-navigation-links {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-sm);
+	}
+
+	.case-study-navigation-link,
+	.case-study-navigation-all-work {
+		color: var(--color-secondary);
+		text-decoration: none;
+	}
+
+    .case-study-navigation-all-work {
+        align-self: flex-start;
+    }
+
+	.case-study-navigation-link:hover,
+	.case-study-navigation-all-work:hover {
+		color: var(--color-primary-hover);
+	}
+
+	.case-study-navigation-all-work-centered {
+		align-self: center;
+	}
+
+	@media (min-width: 48rem) {
+		.case-study-navigation {
+			gap: var(--space-lg);
+		}
+
+		.case-study-navigation-links {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+
+		.case-study-navigation-next {
+			margin-left: auto;
+			text-align: right;
+		}
+	}
+</style>

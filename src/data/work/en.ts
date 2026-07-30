@@ -4,7 +4,7 @@ export const work: WorkItem[] = [
 	{
 		title: "Bringing Security into Everyday QA",
 		summary:
-			"Integrating application security into everyday testing instead of treating it as a separate activity.",
+			"Integrating application security into everyday testing rather than treating it as a separate discipline.",
 		focusAreas: [
 			"Application Security",
 			"OWASP ASVS",
@@ -15,7 +15,7 @@ export const work: WorkItem[] = [
 	{
 		title: "Beyond Testing",
 		summary:
-			"Helping teams build better products through analysis, product thinking and collaboration.",
+			"Helping others grow through documentation, training, mentoring and knowledge sharing.",
 		focusAreas: [
 			"Quality Engineering",
 			"Business Analysis",
@@ -26,18 +26,18 @@ export const work: WorkItem[] = [
 	{
 		title: "Teaching & Knowledge Sharing",
 		summary:
-			"Helping people grow by sharing practical knowledge through documentation, training and public speaking.",
+			"Helping teams grow by creating documentation, delivering training and sharing practical knowledge.",
 		focusAreas: [
-			"Training",
+			"Knowledge Sharing",
 			"Documentation",
 			"Mentoring",
-		],
+			],
 		href: "/work/knowledge-sharing",
 	},
 	{
 		title: "Building This Portfolio",
 		summary:
-			"Learning modern frontend engineering through deliberate, iterative development.",
+			"Exploring modern frontend development through deliberate, iterative learning.",
 		focusAreas: [
 			"Astro",
 			"HTML",

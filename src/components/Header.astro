@@ -6,46 +6,107 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
 import ToggleMenuIcon from "../assets/icons/toggle-menu.svg";
 import ToggleCloseIcon from "../assets/icons/toggle-close.svg";
 
-import type { Language } from "../i18n";
+import {
+	getTranslations,
+	type Language,
+} from "../i18n";
+import type { NavigationItem } from "../types/navigation";
 
 interface Props {
 	lang: Language;
+	navigationItems?: NavigationItem[];
 }
 
-const { lang } = Astro.props;
+const {
+	lang,
+	navigationItems = [],
+} = Astro.props;
 
-const isHomepage =
-	Astro.url.pathname === "/" ||
-	Astro.url.pathname === `/${lang}` ||
-	Astro.url.pathname === `/${lang}/`;
+const hasNavigation = navigationItems.length > 0;
+const t = getTranslations(lang);
+
+const navigationLabel =
+	lang === "pl"
+		? "Nawigacja strony"
+		: "Page navigation";
 ---
 
 <header class="site-header">
-	<div class="site-header-content">
-		<div class="site-header-top">
+	<div class="container">
+		<div class="site-header-content">
 			<a
 				class="site-logo"
 				href={`/${lang}/`}
-				aria-label="Monika Krysiak – homepage"
+				aria-label={`Monika Krysiak – ${t.accessibility.homepage}`}
 			>
-				Monika Krysiak
+				<svg
+					class="site-logo-icon"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 64 64"
+					aria-hidden="true"
+					focusable="false"
+				>
+					<path
+						class="site-logo-hexagon"
+						d="M32 7 53.5 19.5v25L32 57 10.5 44.5v-25L32 7Z"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+
+					<g
+						class="site-logo-monogram"
+						transform="translate(-1 0)"
+					>
+						<path
+							d="M19 43V23l8.5 8L36 23v20"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="3.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+
+						<path
+							d="M36 33 46 23M36 33l10 10"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="3.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</g>
+				</svg>
+
+				<span>Monika Krysiak</span>
 			</a>
+			{
+				hasNavigation && (
+					<Navigation
+						items={navigationItems}
+						id="primary-navigation"
+						ariaLabel={navigationLabel}
+					/>
+				)
+			}
 
 			<div class="site-controls">
 				<LanguageSwitcher lang={lang} />
-				<ThemeSwitcher />
+				<ThemeSwitcher lang={lang} />
 
 				{
-					isHomepage && (
+					hasNavigation && (
 						<button
 							class="navigation-toggle"
 							type="button"
-							aria-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
+							aria-label={t.accessibility.openMenu}
 							aria-expanded="false"
 							aria-controls="primary-navigation"
 							data-navigation-toggle
-							data-open-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
-							data-close-label={lang === "pl" ? "Zamknij menu" : "Close menu"}
+							data-open-label={t.accessibility.openMenu}
+							data-close-label={t.accessibility.closeMenu}
 						>
 							<ToggleMenuIcon
 								class="navigation-toggle-icon navigation-toggle-icon-menu"
@@ -61,15 +122,6 @@ const isHomepage =
 				}
 			</div>
 		</div>
-
-		{
-			isHomepage && (
-				<Navigation
-					lang={lang}
-					id="primary-navigation"
-				/>
-			)
-		}
 	</div>
 </header>
 
@@ -91,21 +143,44 @@ const isHomepage =
 		);
 	}
 
+	const header = document.querySelector(".site-header");
 	const navigationToggle = document.querySelector(
 		"[data-navigation-toggle]",
 	);
 
-	if (navigationToggle instanceof HTMLButtonElement) {
+	function closeNavigation({
+		restoreFocus = false,
+	}: {
+		restoreFocus?: boolean;
+	} = {}) {
+		if (
+			!(header instanceof HTMLElement) ||
+			!(navigationToggle instanceof HTMLButtonElement)
+		) {
+			return;
+		}
+
+		header.classList.remove("navigation-open");
+		updateNavigationToggle(navigationToggle, false);
+
+		if (restoreFocus) {
+			navigationToggle.focus();
+		}
+	}
+
+	if (
+		header instanceof HTMLElement &&
+		navigationToggle instanceof HTMLButtonElement
+	) {
 		navigationToggle.addEventListener("click", () => {
-			const header = navigationToggle.closest(".site-header");
+			const isOpen = header.classList.toggle(
+				"navigation-open",
+			);
 
-			if (!(header instanceof HTMLElement)) {
-				return;
-			}
-
-			const isOpen = header.classList.toggle("navigation-open");
-
-			updateNavigationToggle(navigationToggle, isOpen);
+			updateNavigationToggle(
+				navigationToggle,
+				isOpen,
+			);
 		});
 	}
 
@@ -115,79 +190,141 @@ const isHomepage =
 
 	navigationLinks.forEach((navigationLink) => {
 		navigationLink.addEventListener("click", () => {
-			const header = navigationLink.closest(".site-header");
-			const navigationToggle = header?.querySelector(
-				"[data-navigation-toggle]",
-			);
-
-			if (
-				!(header instanceof HTMLElement) ||
-				!(navigationToggle instanceof HTMLButtonElement)
-			) {
-				return;
-			}
-
-			header.classList.remove("navigation-open");
-
-			updateNavigationToggle(navigationToggle, false);
+			closeNavigation();
 		});
 	});
-	document.addEventListener("keydown", (event) => {
-		if (event.key !== "Escape") {
-			return;
-		}
 
-		const header = document.querySelector(".site-header");
-		const navigationToggle = document.querySelector(
-			"[data-navigation-toggle]",
-		);
-
-		if (
-			!(header instanceof HTMLElement) ||
-			!(navigationToggle instanceof HTMLButtonElement)
-		) {
-			return;
-		}
-
-		if (!header.classList.contains("navigation-open")) {
-			return;
-		}
-
-		header.classList.remove("navigation-open");
-
-		updateNavigationToggle(navigationToggle, false);
-
-		navigationToggle.focus();
-	});
 	document.addEventListener("click", (event) => {
 		const target = event.target;
 
-		if (!(target instanceof Node)) {
-			return;
-		}
-
-		const header = document.querySelector(".site-header");
-		const navigationToggle = document.querySelector(
-			"[data-navigation-toggle]",
-		);
-
 		if (
+			!(target instanceof Node) ||
 			!(header instanceof HTMLElement) ||
-			!(navigationToggle instanceof HTMLButtonElement)
+			!header.classList.contains("navigation-open") ||
+			header.contains(target)
 		) {
 			return;
 		}
 
-		if (!header.classList.contains("navigation-open")) {
-			return;
-		}
-
-		if (header.contains(target)) {
-			return;
-		}
-
-		header.classList.remove("navigation-open");
-
-		updateNavigationToggle(navigationToggle, false);
+		closeNavigation();
 	});
+
+	document.addEventListener("keydown", (event) => {
+		if (
+			event.key !== "Escape" ||
+			!(header instanceof HTMLElement) ||
+			!header.classList.contains("navigation-open")
+		) {
+			return;
+		}
+
+		closeNavigation({
+			restoreFocus: true,
+		});
+	});
+
+	const sectionLinks =
+		document.querySelectorAll<HTMLAnchorElement>(
+			'#primary-navigation a[href^="#"]',
+		);
+
+	const observedSections = [...sectionLinks]
+		.map((link) => {
+			const href = link.getAttribute("href");
+
+			if (!href) {
+				return null;
+			}
+
+			const section = document.querySelector(href);
+
+			return section instanceof HTMLElement
+				? { link, section }
+				: null;
+		})
+		.filter(
+			(
+				item,
+			): item is {
+				link: HTMLAnchorElement;
+				section: HTMLElement;
+			} => item !== null,
+		);
+
+	function setActiveNavigationLink(
+		activeSectionId: string,
+	) {
+		sectionLinks.forEach((link) => {
+			const isActive =
+				link.getAttribute("href") ===
+				`#${activeSectionId}`;
+
+			if (isActive) {
+				link.setAttribute(
+					"aria-current",
+					"location",
+				);
+			} else {
+				link.removeAttribute("aria-current");
+			}
+		});
+	}
+
+	function updateActiveSection() {
+		if (
+			observedSections.length === 0 ||
+			!(header instanceof HTMLElement)
+		) {
+			return;
+		}
+
+		const activationOffset =
+			header.offsetHeight + 24;
+
+		let activeSection =
+			observedSections[0].section;
+
+		for (const { section } of observedSections) {
+			if (
+				section.getBoundingClientRect().top <=
+				activationOffset
+			) {
+				activeSection = section;
+			} else {
+				break;
+			}
+		}
+
+		setActiveNavigationLink(
+			activeSection.id,
+		);
+	}
+
+	let isScrollUpdatePending = false;
+
+	function requestActiveSectionUpdate() {
+		if (isScrollUpdatePending) {
+			return;
+		}
+
+		isScrollUpdatePending = true;
+
+		requestAnimationFrame(() => {
+			updateActiveSection();
+			isScrollUpdatePending = false;
+		});
+	}
+
+	window.addEventListener(
+		"scroll",
+		requestActiveSectionUpdate,
+		{ passive: true },
+	);
+
+	window.addEventListener(
+		"resize",
+		requestActiveSectionUpdate,
+	);
+
+	updateActiveSection();
 </script>
