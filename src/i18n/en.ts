@@ -50,21 +50,46 @@ export const en = {
 		builtWith: "Built with:",
 		designedWith: "Designed with:",
 	},
-
-		interactiveFigure: {
-		openLargerView: "Open larger view",
-		largerView: "Larger view",
-		closePreview: "Close image preview",
-	},
-
-	themeSwitcher: {
-		switchToLight: "Switch to light theme",
-		switchToDark: "Switch to dark theme",
-	},
 	externalLink: {
 		opensInNewTab: " — opens in a new tab",
 	},
 	skipLink: {
 		skipToMainContent: "Skip to main content",
+	},
+	accessibility: {
+		openMenu: "Open menu",
+		closeMenu: "Close menu",
+
+		switchToLightTheme: "Switch to light theme",
+		switchToDarkTheme: "Switch to dark theme",
+
+		homepage: "homepage",
+
+		opensInNewTab: "opens in a new tab",
+
+		externalProfile: (service: string) =>
+			`${service} profile (opens in a new tab)`,
+
+		externalLink: (label: string) =>
+			`${label} (opens in a new tab)`,
+
+		closeDialog: "Close dialog",
+		skipToMainContent: "Skip to main content",
+
+		openLargerImage: (alt: string) =>
+			`Open larger view: ${alt}`,
+
+		largerImageView: (alt: string) =>
+			`Larger view: ${alt}`,
+
+		closeImagePreview: "Close image preview",
+
+		caseStudyNavigation: "Case study navigation",
+
+		previousCaseStudy: (label: string) =>
+			`Go to previous case study: ${label}`,
+
+		nextCaseStudy: (label: string) =>
+			`Go to next case study: ${label}`,
 	},
 };

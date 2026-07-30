@@ -86,6 +86,7 @@ const seo = getBeyondTestingSeo(language);
 
 		<div class="case-study-main-content">
 			<CaseStudyHeader
+				lang={language}
 				title={formatTypography(
 					beyondTesting.header.title,
 					language,
@@ -196,6 +197,7 @@ const seo = getBeyondTestingSeo(language);
 				/>
 
 				<CaseStudyNavigation
+					lang={language}
 					previous={
 						previous
 							? {

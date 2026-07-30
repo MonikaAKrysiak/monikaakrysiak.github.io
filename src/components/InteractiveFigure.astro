@@ -20,7 +20,7 @@ const {
 	className,
 } = Astro.props;
 
-const labels = getTranslations(lang).interactiveFigure;
+const t = getTranslations(lang);
 
 const dialogId = `figure-dialog-${src.src
 	.replace(/[^a-zA-Z0-9]/g, "-")
@@ -37,7 +37,7 @@ const captionId = `${dialogId}-caption`;
 	<button
 		type="button"
 		class="interactive-figure-button"
-		aria-label={`${labels.openLargerView}: ${alt}`}
+		aria-label={t.accessibility.openLargerImage(alt)}
 		aria-haspopup="dialog"
 		data-dialog-open={dialogId}
 	>
@@ -59,14 +59,14 @@ const captionId = `${dialogId}-caption`;
 <dialog
 	id={dialogId}
 	class="interactive-figure-dialog"
-	aria-label={`${labels.largerView}: ${alt}`}
+	aria-label={t.accessibility.largerImageView(alt)}
 	aria-describedby={caption ? captionId : undefined}
 >
 	<div class="interactive-figure-dialog-content">
 		<button
 			type="button"
 			class="interactive-figure-dialog-close"
-			aria-label={labels.closePreview}
+			aria-label={t.accessibility.closeImagePreview}
 			data-dialog-close
 		>
 			×

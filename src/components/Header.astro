@@ -6,7 +6,10 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
 import ToggleMenuIcon from "../assets/icons/toggle-menu.svg";
 import ToggleCloseIcon from "../assets/icons/toggle-close.svg";
 
-import type { Language } from "../i18n";
+import {
+	getTranslations,
+	type Language,
+} from "../i18n";
 import type { NavigationItem } from "../types/navigation";
 
 interface Props {
@@ -20,6 +23,7 @@ const {
 } = Astro.props;
 
 const hasNavigation = navigationItems.length > 0;
+const t = getTranslations(lang);
 
 const navigationLabel =
 	lang === "pl"
@@ -33,7 +37,7 @@ const navigationLabel =
 			<a
 				class="site-logo"
 				href={`/${lang}/`}
-				aria-label="Monika Krysiak – homepage"
+				aria-label={`Monika Krysiak – ${t.accessibility.homepage}`}
 			>
 				<svg
 					class="site-logo-icon"
@@ -97,12 +101,12 @@ const navigationLabel =
 						<button
 							class="navigation-toggle"
 							type="button"
-							aria-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
+							aria-label={t.accessibility.openMenu}
 							aria-expanded="false"
 							aria-controls="primary-navigation"
 							data-navigation-toggle
-							data-open-label={lang === "pl" ? "Otwórz menu" : "Open menu"}
-							data-close-label={lang === "pl" ? "Zamknij menu" : "Close menu"}
+							data-open-label={t.accessibility.openMenu}
+							data-close-label={t.accessibility.closeMenu}
 						>
 							<ToggleMenuIcon
 								class="navigation-toggle-icon navigation-toggle-icon-menu"

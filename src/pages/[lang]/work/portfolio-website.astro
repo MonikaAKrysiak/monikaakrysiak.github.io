@@ -121,6 +121,7 @@ const seo = getPortfolioWebsiteSeo(language);
 				<div class="case-study-introduction">
 					<div class="case-study-introduction-main">
 						<CaseStudyHeader
+							lang={language}
 							title={formatTypography(
 								portfolioWebsite.header.title,
 								language
@@ -170,6 +171,9 @@ const seo = getPortfolioWebsiteSeo(language);
 									href={portfolioWebsite.header.action.href}
 									target="_blank"
 									rel="noopener noreferrer"
+									aria-label={translations.accessibility.externalLink(
+										portfolioWebsite.header.action.label,
+									)}
 								>
 									{SourceIcon && (
 										<SourceIcon
@@ -178,9 +182,7 @@ const seo = getPortfolioWebsiteSeo(language);
 										/>
 									)}
 
-									<span class="visually-hidden">
-										{translations.externalLink.opensInNewTab}
-									</span>
+									{portfolioWebsite.header.action.label}
 								</a>
 							)}
 						</div>
@@ -269,6 +271,7 @@ const seo = getPortfolioWebsiteSeo(language);
 					))}
 				</CaseStudySection>
 				<CaseStudyNavigation
+					lang={language}
 					previous={
 						previous
 							? {

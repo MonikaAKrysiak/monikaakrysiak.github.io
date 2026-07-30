@@ -52,20 +52,46 @@ export const pl = {
 			builtWith: "Zbudowane przy użyciu:",
 		designedWith: "Zaprojektowane z myślą o:",
 	},
-
-	interactiveFigure: {
-		openLargerView: "Otwórz powiększony obraz",
-		largerView: "Powiększony obraz",
-		closePreview: "Zamknij podgląd obrazu",
-	},
-	themeSwitcher: {
-		switchToLight: "Przełącz na jasny motyw",
-		switchToDark: "Przełącz na ciemny motyw",
-	},
 	externalLink: {
 		opensInNewTab: " — otwiera się w nowej karcie",
 	},
 	skipLink: {
 		skipToMainContent: "Przejdź do głównej treści",
+	},
+	accessibility: {
+		openMenu: "Otwórz menu",
+		closeMenu: "Zamknij menu",
+
+		switchToLightTheme: "Przełącz na jasny motyw",
+		switchToDarkTheme: "Przełącz na ciemny motyw",
+
+		homepage: "strona główna",
+
+		opensInNewTab: "otwiera się w nowej karcie",
+
+		externalProfile: (service: string) =>
+			`Profil ${service} (otwiera się w nowej karcie)`,
+
+		externalLink: (label: string) =>
+			`${label} (otwiera się w nowej karcie)`,
+
+		closeDialog: "Zamknij okno dialogowe",
+		skipToMainContent: "Przejdź do głównej treści",
+
+		openLargerImage: (alt: string) =>
+			`Powiększ obraz: ${alt}`,
+
+		largerImageView: (alt: string) =>
+			`Powiększony obraz: ${alt}`,	
+
+		closeImagePreview: "Zamknij podgląd obrazu",
+
+		caseStudyNavigation: "Nawigacja między case studies",
+
+		previousCaseStudy: (label: string) =>
+			`Przejdź do poprzedniego case study: ${label}`,
+
+		nextCaseStudy: (label: string) =>
+			`Przejdź do następnego case study: ${label}`,
 	},
 };

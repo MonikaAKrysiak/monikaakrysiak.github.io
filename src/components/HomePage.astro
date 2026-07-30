@@ -43,7 +43,11 @@ const t = getTranslations(lang);
 
 			<Image
 				src={portrait}
-				alt="Portrait of Monika Krysiak"
+				alt={
+					lang === "pl"
+						? "Portret Moniki Krysiak"
+						: "Portrait of Monika Krysiak"
+				}
 				class="hero-portrait"
 			/>
 
@@ -53,6 +57,7 @@ const t = getTranslations(lang);
 					href="/cv/monika-krysiak-cv.pdf"
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-label={t.accessibility.externalLink(t.hero.viewCv)}
 				>
 					{t.hero.viewCv}
 				</a>

@@ -1,32 +1,46 @@
 ---
+import {
+	getTranslations,
+	type Language,
+} from "../i18n";
+
 interface NavigationLink {
 	href: string;
 	label: string;
 }
 
 interface Props {
+	lang: Language;
 	previous?: NavigationLink;
 	next?: NavigationLink;
 	allWork: NavigationLink;
 }
 
 const {
+	lang,
 	previous,
 	next,
 	allWork,
 } = Astro.props;
 
-const hasBothDirections = previous && next;
+const t = getTranslations(lang);
+
+const hasBothDirections = Boolean(previous && next);
 ---
-<nav class="case-study-navigation" aria-label="Case study navigation">
+<nav
+	class="case-study-navigation"
+	aria-label={t.accessibility.caseStudyNavigation}
+>
 	<div class="case-study-navigation-links">
 		{previous && (
 			<a
 				class="case-study-navigation-link"
 				href={previous.href}
-				aria-label={`Go to previous case study: ${previous.label}`}
+				aria-label={t.accessibility.previousCaseStudy(previous.label)}
 			>
-				← {previous.label}
+				<span aria-hidden="true">←</span>
+				{" "}
+				{previous.label}
 			</a>
 		)}
 
@@ -34,9 +48,11 @@ const hasBothDirections = previous && next;
 			<a
 				class="case-study-navigation-link case-study-navigation-next"
 				href={next.href}
-				aria-label={`Go to next case study: ${next.label}`}
+				aria-label={t.accessibility.nextCaseStudy(next.label)}
 			>
-				{next.label} →
+				{next.label}
+				{" "}
+				<span aria-hidden="true">→</span>
 			</a>
 		)}
 	</div>

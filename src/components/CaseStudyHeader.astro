@@ -1,5 +1,11 @@
 ---
+import {
+	getTranslations,
+	type Language,
+} from "../i18n";
+
 interface Props {
+	lang: Language;
 	id?: string;
 	title: string;
 	summary: string;
@@ -11,12 +17,15 @@ interface Props {
 }
 
 const {
+	lang,
 	id = "case-study-start",
 	title,
 	summary,
 	focusAreas,
 	action,
 } = Astro.props;
+
+const t = getTranslations(lang);
 ---
 
 <header class="case-study-header">
@@ -46,6 +55,7 @@ const {
 				href={action.href}
 				target="_blank"
 				rel="noopener noreferrer"
+				aria-label={t.accessibility.externalLink(action.label)}
 			>
 				{action.label}
 			</a>

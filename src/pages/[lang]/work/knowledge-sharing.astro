@@ -98,6 +98,7 @@ const seo = getKnowledgeSharingSeo(language);
                 <BackLink lang={language} />
 
                 <CaseStudyHeader
+                    lang={language}
                     title={formatTypography(knowledgeSharing.header.title, language)}
                     summary={formatTypography(knowledgeSharing.header.summary, language)}
                     focusAreas={knowledgeSharing.header.focusAreas}
@@ -278,6 +279,7 @@ const seo = getKnowledgeSharingSeo(language);
                 <SectionDivider />
 
                 <CaseStudyNavigation
+                    lang={language}
                     previous={
                         previous
                             ? {

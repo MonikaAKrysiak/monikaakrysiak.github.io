@@ -85,6 +85,7 @@ const seo = getSecurityKnowledgeBaseSeo(language);
 					<BackLink lang={language} />
 
 					<CaseStudyHeader
+						lang={language}
 						title={formatTypography(
 							securityKnowledgeBase.header.title,
 							language,
@@ -150,6 +151,7 @@ const seo = getSecurityKnowledgeBaseSeo(language);
 				<SectionDivider />
 
 				<CaseStudyNavigation
+					lang={language}
 					previous={
 						previous
 							? {
