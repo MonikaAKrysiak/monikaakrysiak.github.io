@@ -1,36 +1,36 @@
 ---
-import { getTranslations, type Language } from "../i18n";
+import type { NavigationItem } from "../types/navigation";
 
 interface Props {
-	lang: Language;
+	items: NavigationItem[];
 	id?: string;
+	ariaLabel: string;
 }
 
-const { lang, id } = Astro.props;
-
-const t = getTranslations(lang);
+const {
+	items,
+	id,
+	ariaLabel,
+} = Astro.props;
 ---
 
 <nav
 	id={id}
 	class="site-navigation"
-	aria-label="Primary navigation"
+	aria-label={ariaLabel}
 >
-	<ul class="site-navigation-list">
-		<li>
-			<a href="#about">{t.navigation.about}</a>
-		</li>
-
-		<li>
-			<a href="#work">{t.navigation.work}</a>
-		</li>
-
-		<li>
-			<a href="#hobbies">{t.navigation.hobbies}</a>
-		</li>
-
-		<li>
-			<a href="#contact">{t.navigation.contact}</a>
-		</li>
+	<ul
+		class:list={[
+			"site-navigation-list",
+			{ "site-navigation-list-multicolumn": items.length > 3 },
+		]}
+	>
+		{items.map((item) => (
+			<li>
+				<a href={item.href}>
+					{item.label}
+				</a>
+			</li>
+		))}
 	</ul>
 </nav>

@@ -1,13 +1,25 @@
 ---
 import type { GetStaticPaths } from "astro";
-import type { Language } from "../../../i18n";
+import type { NavigationItem } from "../../../types/navigation";
 import { getSecurityKnowledgeBase } from "../../../data/case-studies/security-knowledge-base";
+import { getSecurityKnowledgeBaseSeo } from "../../../data/seo";
+import { getAdjacentWork } from "../../../data/work";
 import { formatTypography } from "../../../utils/typography";
+import {
+	getTranslations,
+	type Language,
+} from "../../../i18n";
 
 import Layout from "../../../layouts/Layout.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
 import CaseStudySection from "../../../components/CaseStudySection.astro";
 import BackLink from "../../../components/BackLink.astro";
+import CaseStudyNavigation from "../../../components/CaseStudyNavigation.astro";
+import KnowledgeEcosystem from "../../../components/KnowledgeEcosystem.astro";
+import ExampleResources from "../../../components/ExampleResources.astro";
+import KnowledgeInPractice from "../../../components/KnowledgeInPractice.astro";
+import SectionDivider from "../../../components/SectionDivider.astro";
+import WhatILearned from "../../../components/WhatILearned.astro";
 
 export const getStaticPaths = (() => {
 	return [
@@ -19,33 +31,156 @@ export const getStaticPaths = (() => {
 const { lang } = Astro.params;
 
 const language = lang as Language;
-
+const translations = getTranslations(language);
 const securityKnowledgeBase = getSecurityKnowledgeBase(language);
+
+const { previous, next } = getAdjacentWork(
+	language,
+	"/work/security-knowledge-base",
+);
+
+const navigationItems: NavigationItem[] = [
+	{
+		label: language === "pl" ? "Start" : "Home",
+		href: "#case-study-start",
+	},
+	{
+		label: language === "pl" ? "Przegląd" : "Overview",
+		href: "#overview",
+	},
+	{
+		label: language === "pl" ? "Ekosystem" : "Ecosystem",
+		href: "#knowledge-ecosystem",
+	},
+	{
+		label: language === "pl" ? "Materiały" : "Resources",
+		href: "#example-resources",
+	},
+	{
+		label: language === "pl" ? "Praktyka" : "In Practice",
+		href: "#knowledge-in-practice",
+	},
+	{
+		label: language === "pl" ? "Wnioski" : "Lessons",
+		href: "#what-i-learned",
+	},
+];
+
+const seo = getSecurityKnowledgeBaseSeo(language);
 ---
 
-<Layout lang={language}>
-	<main>
+<Layout
+	lang={language}
+	navigationItems={navigationItems}
+	seo={seo}
+	articleStructuredData={{
+	type: "TechArticle",
+	keywords: securityKnowledgeBase.header.focusAreas,
+}}
+>
+	<main id="main-content" tabindex="-1">
 		<section class="case-study section">
 			<div class="container">
-				<BackLink lang={language} />
+				<div class="security-knowledge-intro">
+					<BackLink lang={language} />
 
-				<CaseStudyHeader
-					title={formatTypography(securityKnowledgeBase.header.title, language)}
-					summary={formatTypography(securityKnowledgeBase.header.summary, language)}
-					focusAreas={securityKnowledgeBase.header.focusAreas}
+					<CaseStudyHeader
+						lang={language}
+						title={formatTypography(
+							securityKnowledgeBase.header.title,
+							language,
+						)}
+						summary={formatTypography(
+							securityKnowledgeBase.header.summary,
+							language,
+						)}
+						focusAreas={securityKnowledgeBase.header.focusAreas}
+					/>
+
+					<CaseStudySection
+						id="overview"
+						title={formatTypography(
+							securityKnowledgeBase.overview.title,
+							language,
+						)}
+					>
+						{securityKnowledgeBase.overview.paragraphs.map((paragraph) => (
+							<p class="case-study-text">
+								{formatTypography(paragraph, language)}
+							</p>
+						))}
+					</CaseStudySection>
+				</div>
+
+				<SectionDivider />
+
+				<KnowledgeEcosystem
+					title={securityKnowledgeBase.knowledgeEcosystem.title}
+					introduction={securityKnowledgeBase.knowledgeEcosystem.introduction}
+					areas={securityKnowledgeBase.knowledgeEcosystem.areas}
+					cycle={securityKnowledgeBase.knowledgeEcosystem.cycle}
+					lang={language}
 				/>
 
-				<CaseStudySection
-					id="overview"
-					title={formatTypography(securityKnowledgeBase.overview.title, language)}
-				>
-					{securityKnowledgeBase.overview.paragraphs.map((paragraph) => (
-						<p class="case-study-text">
-							{formatTypography(paragraph, language)}
-						</p>
-					))}
-				</CaseStudySection>
+				<SectionDivider />
+
+				<ExampleResources
+					title={securityKnowledgeBase.exampleResources.title}
+					introduction={securityKnowledgeBase.exampleResources.introduction}
+					resources={securityKnowledgeBase.exampleResources.resources}
+					lang={language}
+				/>
+
+				<SectionDivider />
+
+				<KnowledgeInPractice
+					title={securityKnowledgeBase.knowledgeInPractice.title}
+					introduction={securityKnowledgeBase.knowledgeInPractice.introduction}
+					items={securityKnowledgeBase.knowledgeInPractice.items}
+					lang={language}
+				/>
+
+				<SectionDivider />
+
+				<WhatILearned
+					title={securityKnowledgeBase.whatILearned.title}
+					paragraphs={securityKnowledgeBase.whatILearned.paragraphs}
+					lang={language}
+				/>
+
+				<SectionDivider />
+
+				<CaseStudyNavigation
+					lang={language}
+					previous={
+						previous
+							? {
+									href: `/${language}${previous.href}`,
+									label: previous.title,
+								}
+							: undefined
+					}
+					next={
+						next
+							? {
+									href: `/${language}${next.href}`,
+									label: next.title,
+								}
+							: undefined
+					}
+					allWork={{
+						href: `/${language}/#work`,
+						label: translations.caseStudyNavigation.allWork,
+					}}
+				/>
 			</div>
 		</section>
 	</main>
 </Layout>
+
+<style>
+	.security-knowledge-intro {
+		max-width: 52rem;
+		margin-inline: auto;
+	}
+</style>

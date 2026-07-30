@@ -1,55 +1,127 @@
 ---
-import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+import {
+	getTranslations,
+	type Language,
+} from "../i18n";
 
 interface Props {
+	lang: Language;
+	id?: string;
 	title: string;
 	summary: string;
-	focusAreas: string[];
+	focusAreas?: string[];
 	action?: {
 		label: string;
 		href: string;
-		icon?: AstroComponentFactory;
 	};
 }
 
 const {
+	lang,
+	id = "case-study-start",
 	title,
 	summary,
 	focusAreas,
 	action,
 } = Astro.props;
 
-const ActionIcon = action?.icon;
+const t = getTranslations(lang);
 ---
 
 <header class="case-study-header">
-	<h1 class="case-study-title">{title}</h1>
-
-	<p class="case-study-summary">{summary}</p>
-
-	<ul class="case-study-focus-areas">
-		{focusAreas.map((focusArea) => (
-			<li class="case-study-focus-area">
-				{focusArea}
-			</li>
-		))}
-	</ul>
-
-	{action && (
-		<a
-			class="case-study-source"
-			href={action.href}
-			target="_blank"
-			rel="noopener noreferrer"
+	<div class="case-study-header-content">
+		<h1
+			id={id}
+			class="case-study-title"
 		>
-			{ActionIcon && (
-				<ActionIcon
-					class="case-study-source-icon"
-					aria-hidden="true"
-				/>
-			)}
+			{title}
+		</h1>
 
-			<span>{action.label}</span>
-		</a>
-	)}
+		<p class="case-study-summary">{summary}</p>
+
+		{focusAreas && focusAreas.length > 0 && (
+			<ul class="case-study-focus-areas">
+				{focusAreas.map((focusArea) => (
+					<li class="case-study-focus-area">
+						{focusArea}
+					</li>
+				))}
+			</ul>
+		)}
+
+		{action && (
+			<a
+				class="case-study-action"
+				href={action.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label={t.accessibility.externalLink(action.label)}
+			>
+				<span class="case-study-action-label">
+					{action.label}
+				</span>
+			</a>
+		)}
+	</div>
 </header>
+
+<style>
+	.case-study-header {
+		display: grid;
+		gap: var(--space-xl);
+	}
+
+	.case-study-header-content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-lg);
+	}
+
+	.case-study-summary {
+		margin-top: calc(-1 * var(--space-sm));
+	}
+
+	.case-study-action {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-xs);
+		margin-top: var(--space-xs);
+		color: var(--color-secondary);
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.case-study-action::after {
+		content: "↗";
+		font-size: 0.9em;
+	}
+
+	.case-study-action:hover {
+		color: var(--color-primary-hover);
+	}
+
+	.case-study-action:hover .case-study-action-label {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.case-study-focus-areas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-sm) var(--space-xl);
+		width: 100%;
+		max-width: 48rem;
+	}
+
+	.case-study-title {
+		scroll-margin-top: 8rem;
+	}
+
+	@media (min-width: 48rem) {
+		.case-study-focus-areas {
+			display: grid;
+			grid-template-columns: repeat(3, max-content);
+		}
+	}
+</style>

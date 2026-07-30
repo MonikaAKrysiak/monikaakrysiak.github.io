@@ -18,3 +18,26 @@ const workByLanguage: Record<Language, WorkItem[]> = {
 export function getWork(lang: Language): WorkItem[] {
 	return workByLanguage[lang];
 }
+export interface AdjacentWork {
+	previous?: WorkItem;
+	next?: WorkItem;
+}
+
+export function getAdjacentWork(
+	lang: Language,
+	currentHref: string,
+): AdjacentWork {
+	const work = getWork(lang);
+	const currentIndex = work.findIndex(
+		(item) => item.href === currentHref,
+	);
+
+	if (currentIndex === -1) {
+		return {};
+	}
+
+	return {
+		previous: work[currentIndex - 1],
+		next: work[currentIndex + 1],
+	};
+}

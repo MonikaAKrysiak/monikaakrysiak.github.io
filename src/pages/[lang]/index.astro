@@ -2,7 +2,9 @@
 import Layout from "../../layouts/Layout.astro";
 import HomePage from "../../components/HomePage.astro";
 
-import type { Language } from "../../i18n";
+import { getTranslations, type Language } from "../../i18n";
+import { getHomepageSeo } from "../../data/seo";
+import type { NavigationItem } from "../../types/navigation";
 
 export function getStaticPaths() {
 	return [
@@ -22,8 +24,33 @@ interface Props {
 }
 
 const { lang } = Astro.props;
----
+const t = getTranslations(lang);
 
-<Layout lang={lang}>
+const navigationItems: NavigationItem[] = [
+	{
+		label: lang === "pl" ? "Start" : "Home",
+		href: "#hero",
+	},
+	{
+		label: t.navigation.about,
+		href: "#about",
+	},
+	{
+		label: t.navigation.work,
+		href: "#work",
+	},
+	{
+		label: t.navigation.contact,
+		href: "#contact",
+	},
+];
+
+const seo = getHomepageSeo(lang);
+---
+<Layout
+	lang={lang}
+	navigationItems={navigationItems}
+	seo={seo}
+>
 	<HomePage lang={lang} />
 </Layout>

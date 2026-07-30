@@ -1,15 +1,77 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import type { Language } from "../i18n";
+import {
+	getTranslations,
+	type Language,
+} from "../i18n";
+import {
+	getStructuredData,
+	type ArticleStructuredData,
+} from "../data/structured-data";
+import type { NavigationItem } from "../types/navigation";
 
 import "../styles/global.css";
+import manropeRegular from "../assets/fonts/manrope/manrope-regular.woff2";
+import manropeSemiBold from "../assets/fonts/manrope/manrope-semibold.woff2";
+import manropeBold from "../assets/fonts/manrope/manrope-bold.woff2";
+
+interface SeoMetadata {
+	title?: string;
+	description?: string;
+	canonical?: string;
+	image?: string;
+	robots?: string;
+}
 
 interface Props {
 	lang: Language;
+	navigationItems?: NavigationItem[];
+	seo?: SeoMetadata;
+	articleStructuredData?: ArticleStructuredData;
 }
 
-const { lang } = Astro.props;
+const {
+	lang,
+	navigationItems = [],
+	seo = {},
+	articleStructuredData,
+} = Astro.props;
+
+const t = getTranslations(lang);
+
+const site = {
+	name: "Monika Krysiak",
+	url: "https://monikaakrysiak.github.io",
+	author: "Monika Krysiak",
+};
+
+const defaultSeo: Required<Omit<SeoMetadata, "canonical">> = {
+	title: "Monika Krysiak | QA Engineer focused on Application Security",
+	description:
+		"Portfolio of Monika Krysiak, QA Engineer focused on Application Security, quality engineering, accessibility and modern frontend development.",
+	robots: "index, follow",
+	image: "/og-image.png",
+};
+
+const metadata = {
+	...defaultSeo,
+	...seo,
+};
+
+const canonical =
+	seo.canonical ??
+	new URL(Astro.url.pathname, site.url).toString();
+
+const socialImage = new URL(metadata.image, site.url).toString();
+
+const structuredData = getStructuredData(
+	lang,
+	metadata.title,
+	metadata.description,
+	canonical,
+	articleStructuredData,
+);
 ---
 
 <!doctype html>
@@ -17,6 +79,29 @@ const { lang } = Astro.props;
 	<head>
 		<meta charset="utf-8" />
 		<meta name="theme-color" content="#1E2320" />
+		<link
+			rel="preload"
+			href={manropeRegular}
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+
+		<link
+			rel="preload"
+			href={manropeSemiBold}
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+
+		<link
+			rel="preload"
+			href={manropeBold}
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
 
 		<script is:inline>
 			const savedTheme = localStorage.getItem("theme");
@@ -29,15 +114,60 @@ const { lang } = Astro.props;
 		</script>
 
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.svg?v=1" type="image/svg+xml" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Monika Krysiak</title>
+		<title>{metadata.title}</title>
+		<meta
+			name="description"
+			content={metadata.description}
+		/>
+
+		<meta
+			name="author"
+			content={site.author}
+		/>
+
+		<meta
+			name="robots"
+			content={metadata.robots}
+		/>
+		<link
+			rel="canonical"
+			href={canonical}
+		/>
+		<meta property="og:title" content={metadata.title} />
+		<meta property="og:description" content={metadata.description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={socialImage} />
+		<meta property="og:site_name" content={site.name} />
+		<meta property="og:locale" content={lang === "pl" ? "pl_PL" : "en_US"} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={metadata.title} />
+		<meta name="twitter:description" content={metadata.description} />
+		<meta name="twitter:image" content={socialImage} />
+
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(structuredData)}
+		></script>
 	</head>
 
 	<body>
-		<Header lang={lang} />
+		<a
+			class="skip-link"
+			href="#main-content"
+		>
+			{t.skipLink.skipToMainContent}
+		</a>
+
+		<Header
+			lang={lang}
+			navigationItems={navigationItems}
+		/>
 
 		<slot />
+
 		<Footer lang={lang} />
 	</body>
 </html>

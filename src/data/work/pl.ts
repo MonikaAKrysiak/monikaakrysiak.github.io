@@ -8,14 +8,14 @@ export const work: WorkItem[] = [
 		focusAreas: [
 			"Bezpieczeństwo aplikacji",
 			"OWASP ASVS",
-			"Bezpieczny SDLC",
+			"Secure SDLC",
 		],
 		href: "/work/security-knowledge-base",
 	},
 	{
 		title: "Więcej niż testowanie",
 		summary:
-			"Pomaganie zespołom w\u00A0tworzeniu lepszych produktów poprzez analizę, myślenie produktowe oraz współpracę.",
+			"Pomaganie zespołom w tworzeniu lepszych produktów poprzez analizę, myślenie produktowe oraz współpracę.",
 		focusAreas: [
 			"Inżynieria jakości",
 			"Analiza biznesowa",
@@ -24,9 +24,9 @@ export const work: WorkItem[] = [
 		href: "/work/beyond-testing",
 	},
 	{
-		title: "Dzielenie się wiedzą\ni nauczanie",
+		title: "Dzielenie się wiedzą i mentoring",
 		summary:
-			"Pomaganie innym w rozwoju poprzez dokumentację, szkolenia oraz wystąpienia publiczne.",
+			"Pomaganie innym w rozwoju poprzez tworzenie dokumentacji, szkolenia, mentoring i wystąpienia publiczne.",
 		focusAreas: [
 			"Szkolenia",
 			"Dokumentacja",
@@ -37,7 +37,7 @@ export const work: WorkItem[] = [
 	{
 		title: "Budowanie tego portfolio",
 		summary:
-			"Nauka nowoczesnego frontendu poprzez świadomy, iteracyjny rozwój.",
+			"Projekt edukacyjny rozwijany iteracyjnie, pozwalający poznawać nowoczesny frontend w praktyce.",
 		focusAreas: [
 			"Astro",
 			"HTML",

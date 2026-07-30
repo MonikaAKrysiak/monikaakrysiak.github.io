@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import type { Language } from "../i18n";
+import { getTranslations, type Language } from "../i18n";
 
 import FlagEn from "../assets/icons/flag-en.svg";
 import FlagPl from "../assets/icons/flag-pl.svg";
@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+const t = getTranslations(lang);
 
 const currentPath = Astro.url.pathname;
 const pathWithoutLanguage = currentPath.replace(/^\/(en|pl)/, "");
@@ -18,7 +19,7 @@ const enHref = `/en${pathWithoutLanguage}`;
 const plHref = `/pl${pathWithoutLanguage}`;
 ---
 
-<nav class="language-switcher" aria-label="Language">
+<nav class="language-switcher" aria-label={t.accessibility.languageSwitcher}>
 	<a
 		class:list={[
 			"language-option",
