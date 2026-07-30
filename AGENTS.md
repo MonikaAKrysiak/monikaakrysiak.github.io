@@ -1,22 +1,103 @@
-## Development
+# Project Guidelines
 
-When starting the dev server, use background mode:
+This repository contains the source code for my personal portfolio website.
 
-```
-astro dev --background
-```
+The project is intentionally developed in small, well-documented iterations with a strong focus on engineering quality, accessibility, security, and long-term maintainability.
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+---
+
+## Development Principles
+
+Follow these principles when proposing changes:
+
+- Prefer small, incremental changes.
+- Explain architectural decisions before implementation.
+- Avoid unnecessary complexity (YAGNI).
+- Prioritize readability and maintainability.
+- Reuse existing components whenever possible.
+- Preserve backward compatibility unless explicitly requested.
+
+---
+
+## Accessibility
+
+Accessibility is a core project requirement.
+
+Always prefer:
+
+- semantic HTML,
+- keyboard accessibility,
+- visible focus indicators,
+- reduced motion support,
+- native browser behaviour over custom JavaScript,
+- minimal and meaningful ARIA.
+
+---
+
+## Styling
+
+The design system is based on reusable design tokens.
+
+When modifying styles:
+
+- use existing CSS variables,
+- avoid hardcoded colors and spacing,
+- keep shared rules in the global stylesheet,
+- keep component-specific styles close to the component.
+
+---
+
+## Internationalization
+
+The portfolio supports English and Polish.
+
+Rules:
+
+- UI translations belong in `src/i18n/`.
+- Localized content belongs in `src/data/`.
+- Components should remain presentation-only whenever possible.
+
+---
+
+## Architecture
+
+Before introducing new components:
+
+- check whether an existing component can be extended,
+- keep component APIs small and focused,
+- favour composition over duplication.
+
+---
 
 ## Documentation
 
-Full documentation: https://docs.astro.build
+Significant changes should be documented.
 
-Consult these guides before working on related tasks:
+Depending on the scope, update:
 
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+- Architecture Decision Records (`docs/adr/`)
+- Session Logs (`docs/sessions/`)
+- Project Overview (`docs/PROJECT_OVERVIEW.md`)
+
+---
+
+## Project Philosophy
+
+This project follows:
+
+- Learn by Understanding
+- Security by Default
+- Accessibility First
+- Small Iterations
+- Quality over Speed
+
+---
+
+## Workflow
+
+When implementing changes:
+
+- work in small, reviewable steps,
+- modify as few files as necessary,
+- explain the reasoning before introducing architectural changes,
+- keep documentation in sync with implementation.
