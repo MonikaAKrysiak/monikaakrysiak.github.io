@@ -101,4 +101,8 @@ export const pl = {
 		nextCaseStudy: (label: string) =>
 			`Przejdź do następnego case study: ${label}`,
 	},
+	backLink: {
+		toSelectedWork: "Wróć do projektów",
+		toHobbies: "Wróć do hobby",
+	},
 };

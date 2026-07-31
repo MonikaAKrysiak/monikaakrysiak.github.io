@@ -1,0 +1,27 @@
+---
+import Layout from "./Layout.astro";
+
+import type { Language } from "../i18n";
+import type { NavigationItem } from "../types/navigation";
+
+interface Props {
+	lang: Language;
+	navigationItems?: NavigationItem[];
+}
+
+const {
+	lang,
+	navigationItems = [],
+} = Astro.props;
+---
+
+<Layout
+	lang={lang}
+	navigationItems={navigationItems}
+>
+	<main class="content-page" id="main-content">
+		<div class="container">
+			<slot />
+		</div>
+	</main>
+</Layout>

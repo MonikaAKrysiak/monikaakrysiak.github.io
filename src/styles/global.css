@@ -64,7 +64,7 @@ html[data-theme="light"] {
 	--color-text: #1E2320;
 	--color-text-muted: #525A52;
 
-	--color-primary: #5F7F5A;
+	--color-primary: #567451;
 	--color-secondary: #8A6F2E;
 	--color-accent-travel: var(--color-primary);
 	--color-accent-diy: #9A762F;
@@ -1486,7 +1486,8 @@ body {
 	color: var(--color-text);
 
 	font: inherit;
-	font-size: 1.5rem;
+	font-size: 1.75rem;
+	font-weight: 300;
 	line-height: 1;
 
 	cursor: pointer;
@@ -1599,4 +1600,9 @@ body {
 	.interactive-figure-button:hover .interactive-figure-image {
 		transform: none;
 	}
+}
+
+/* Hobbies */
+.content-page {
+	padding-top: var(--space-xl);
 }

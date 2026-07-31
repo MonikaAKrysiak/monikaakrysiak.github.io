@@ -1,0 +1,45 @@
+---
+interface Props {
+	id?: string;
+	title: string;
+	introduction: string[];
+}
+
+const {
+	id,
+	title,
+	introduction,
+} = Astro.props;
+---
+
+<header
+	id={id}
+	class="hobby-page-header"
+>
+	<h1 class="hobby-page-title">
+		{title}
+	</h1>
+
+	<div class="hobby-page-introduction">
+		{
+			introduction.map((paragraph) => (
+				<p>{paragraph}</p>
+			))
+		}
+	</div>
+</header>
+<style>
+	.hobby-page-header {
+		scroll-margin-top: calc(
+			var(--header-height) + var(--space-md)
+		);
+
+		padding-bottom: var(--space-2xl);
+		margin-bottom: var(--space-2xl);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hobby-page-title {
+		margin: 0 0 var(--space-lg);
+	}
+</style>

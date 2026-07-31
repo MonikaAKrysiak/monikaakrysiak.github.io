@@ -1,0 +1,73 @@
+---
+import type { GetStaticPaths } from "astro";
+
+import SubpageLayout from "../../../layouts/SubpageLayout.astro";
+import BackLink from "../../../components/BackLink.astro";
+import HobbyPageHeader from "../../../components/HobbyPageHeader.astro";
+import HobbyGallery from "../../../components/HobbyGallery.astro";
+
+import InstagramIcon from "../../../assets/icons/instagram.svg";
+
+import { photographyImages } from "../../../data/hobby-pages/photography/images";
+import {
+	en,
+	pl,
+	getPhotographyNavigation,
+} from "../../../data/hobby-pages/photography";
+import type { Language } from "../../../i18n";
+
+export const getStaticPaths: GetStaticPaths = () => {
+	return [
+		{
+			params: { lang: "en" },
+		},
+		{
+			params: { lang: "pl" },
+		},
+	];
+};
+
+const { lang } = Astro.params as {
+	lang: Language;
+};
+
+const photography =
+	lang === "pl"
+		? pl
+		: en;
+
+const navigationItems =
+	getPhotographyNavigation(lang);
+---
+
+<SubpageLayout
+	lang={lang}
+	navigationItems={navigationItems}
+>
+	<BackLink
+		lang={lang}
+		href={`/${lang}/#hobbies`}
+	/>
+
+	<HobbyPageHeader
+        id="photography-about"
+        title={photography.title}
+        introduction={photography.introduction}
+    />
+
+	<HobbyGallery
+        id="photography-gallery"
+        externalId="photography-external"
+        lang={lang}
+		title={
+			lang === "pl"
+				? "Wybrane fotografie"
+				: "Selected photographs"
+		}
+		images={photographyImages}
+		externalLink={photography.externalLink}
+	>
+		<InstagramIcon slot="icon" />
+	</HobbyGallery>
+</SubpageLayout>
+
