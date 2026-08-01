@@ -1,6 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
+  pull_request:
+    branches:
+      - main
+
   push:
     branches:
       - main
@@ -28,6 +32,8 @@ jobs:
         uses: withastro/action@v6
 
   deploy:
+    if: github.event_name == 'push'
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
