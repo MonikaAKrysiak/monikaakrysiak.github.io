@@ -47,13 +47,14 @@ const titleId = id
 
 	<ul class="hobby-gallery-grid">
 		{
-			images.map((item) => (
+			images.map((item, index) => (
 				<li class="hobby-gallery-item">
 					<InteractiveFigure
 						lang={lang}
 						src={item.image}
 						alt={item.alt[lang]}
 						caption={item.caption?.[lang]}
+						priority={index === 0}
 					/>
 				</li>
 			))
