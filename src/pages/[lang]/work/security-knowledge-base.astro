@@ -10,7 +10,7 @@ import {
 	type Language,
 } from "../../../i18n";
 
-import Layout from "../../../layouts/Layout.astro";
+import SubpageLayout from "../../../layouts/SubpageLayout.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
 import CaseStudySection from "../../../components/CaseStudySection.astro";
 import BackLink from "../../../components/BackLink.astro";
@@ -69,114 +69,109 @@ const navigationItems: NavigationItem[] = [
 const seo = getSecurityKnowledgeBaseSeo(language);
 ---
 
-<Layout
+<SubpageLayout
 	lang={language}
 	navigationItems={navigationItems}
 	seo={seo}
 	articleStructuredData={{
-	type: "TechArticle",
-	keywords: securityKnowledgeBase.header.focusAreas,
-}}
+		type: "TechArticle",
+		keywords: securityKnowledgeBase.header.focusAreas,
+	}}
+	className="case-study section"
 >
-	<main id="main-content" tabindex="-1">
-		<section class="case-study section">
-			<div class="container">
-				<div class="security-knowledge-intro">
-					<BackLink lang={language} />
+	<div class="security-knowledge-intro">
+		<BackLink lang={language} />
 
-					<CaseStudyHeader
-						lang={language}
-						title={formatTypography(
-							securityKnowledgeBase.header.title,
-							language,
-						)}
-						summary={formatTypography(
-							securityKnowledgeBase.header.summary,
-							language,
-						)}
-						focusAreas={securityKnowledgeBase.header.focusAreas}
-					/>
+		<CaseStudyHeader
+			lang={language}
+			title={formatTypography(
+				securityKnowledgeBase.header.title,
+				language,
+			)}
+			summary={formatTypography(
+				securityKnowledgeBase.header.summary,
+				language,
+			)}
+			focusAreas={securityKnowledgeBase.header.focusAreas}
+		/>
 
-					<CaseStudySection
-						id="overview"
-						title={formatTypography(
-							securityKnowledgeBase.overview.title,
-							language,
-						)}
-					>
-						{securityKnowledgeBase.overview.paragraphs.map((paragraph) => (
-							<p class="case-study-text">
-								{formatTypography(paragraph, language)}
-							</p>
-						))}
-					</CaseStudySection>
-				</div>
+		<CaseStudySection
+			id="overview"
+			title={formatTypography(
+				securityKnowledgeBase.overview.title,
+				language,
+			)}
+		>
+			{securityKnowledgeBase.overview.paragraphs.map((paragraph) => (
+				<p class="case-study-text">
+					{formatTypography(paragraph, language)}
+				</p>
+			))}
+		</CaseStudySection>
+	</div>
 
-				<SectionDivider />
+	<SectionDivider />
 
-				<KnowledgeEcosystem
-					title={securityKnowledgeBase.knowledgeEcosystem.title}
-					introduction={securityKnowledgeBase.knowledgeEcosystem.introduction}
-					areas={securityKnowledgeBase.knowledgeEcosystem.areas}
-					cycle={securityKnowledgeBase.knowledgeEcosystem.cycle}
-					lang={language}
-				/>
+	<KnowledgeEcosystem
+		title={securityKnowledgeBase.knowledgeEcosystem.title}
+		introduction={securityKnowledgeBase.knowledgeEcosystem.introduction}
+		areas={securityKnowledgeBase.knowledgeEcosystem.areas}
+		cycle={securityKnowledgeBase.knowledgeEcosystem.cycle}
+		lang={language}
+	/>
 
-				<SectionDivider />
+	<SectionDivider />
 
-				<ExampleResources
-					title={securityKnowledgeBase.exampleResources.title}
-					introduction={securityKnowledgeBase.exampleResources.introduction}
-					resources={securityKnowledgeBase.exampleResources.resources}
-					lang={language}
-				/>
+	<ExampleResources
+		title={securityKnowledgeBase.exampleResources.title}
+		introduction={securityKnowledgeBase.exampleResources.introduction}
+		resources={securityKnowledgeBase.exampleResources.resources}
+		lang={language}
+	/>
 
-				<SectionDivider />
+	<SectionDivider />
 
-				<KnowledgeInPractice
-					title={securityKnowledgeBase.knowledgeInPractice.title}
-					introduction={securityKnowledgeBase.knowledgeInPractice.introduction}
-					items={securityKnowledgeBase.knowledgeInPractice.items}
-					lang={language}
-				/>
+	<KnowledgeInPractice
+		title={securityKnowledgeBase.knowledgeInPractice.title}
+		introduction={securityKnowledgeBase.knowledgeInPractice.introduction}
+		items={securityKnowledgeBase.knowledgeInPractice.items}
+		lang={language}
+	/>
 
-				<SectionDivider />
+	<SectionDivider />
 
-				<WhatILearned
-					title={securityKnowledgeBase.whatILearned.title}
-					paragraphs={securityKnowledgeBase.whatILearned.paragraphs}
-					lang={language}
-				/>
+	<WhatILearned
+		title={securityKnowledgeBase.whatILearned.title}
+		paragraphs={securityKnowledgeBase.whatILearned.paragraphs}
+		lang={language}
+	/>
 
-				<SectionDivider />
+		<SectionDivider />
 
-				<CaseStudyNavigation
-					lang={language}
-					previous={
-						previous
-							? {
-									href: `/${language}${previous.href}`,
-									label: previous.title,
-								}
-							: undefined
+	<CaseStudyNavigation
+		lang={language}
+		previous={
+			previous
+				? {
+						href: `/${language}${previous.href}`,
+						label: previous.title,
 					}
-					next={
-						next
-							? {
-									href: `/${language}${next.href}`,
-									label: next.title,
-								}
-							: undefined
+				: undefined
+		}
+		next={
+			next
+				? {
+						href: `/${language}${next.href}`,
+						label: next.title,
 					}
-					allWork={{
-						href: `/${language}/#work`,
-						label: translations.caseStudyNavigation.allWork,
-					}}
-				/>
-			</div>
-		</section>
-	</main>
-</Layout>
+				: undefined
+		}
+		allWork={{
+			href: `/${language}/#work`,
+			label: translations.caseStudyNavigation.allWork,
+		}}
+	/>
+</SubpageLayout>
 
 <style>
 	.security-knowledge-intro {

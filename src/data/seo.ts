@@ -1,5 +1,13 @@
 import type { Language } from "../i18n";
 
+export interface SeoMetadata {
+	title?: string;
+	description?: string;
+	canonical?: string;
+	image?: string;
+	robots?: string;
+}
+
 export interface SeoData {
 	title: string;
 	description: string;

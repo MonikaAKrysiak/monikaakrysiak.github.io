@@ -10,8 +10,7 @@ import {
 	type Language,
 } from "../../../i18n";
 
-
-import Layout from "../../../layouts/Layout.astro";
+import SubpageLayout from "../../../layouts/SubpageLayout.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
 import CaseStudySection from "../../../components/CaseStudySection.astro";
 import ImpactStoryCard from "../../../components/ImpactStoryCard.astro";
@@ -70,131 +69,129 @@ const beyondTestingNavigationItems: NavigationItem[] = [
 const seo = getBeyondTestingSeo(language);
 ---
 
-<Layout
+<SubpageLayout
 	lang={language}
 	navigationItems={beyondTestingNavigationItems}
 	seo={seo}
 	articleStructuredData={{
-	type: "TechArticle",
-	keywords: beyondTesting.header.focusAreas,
-}}
+		type: "TechArticle",
+		keywords: beyondTesting.header.focusAreas,
+	}}
+	className="case-study section"
 >
-	<main id="main-content" tabindex="-1">
-<section class="case-study section">
-	<div class="container">
-		<BackLink lang={language} />
+	<BackLink lang={language} />
 
-		<div class="case-study-main-content">
-			<CaseStudyHeader
+	<div class="case-study-main-content">
+		<CaseStudyHeader
+			lang={language}
+			title={formatTypography(
+				beyondTesting.header.title,
+				language,
+			)}
+			summary={formatTypography(
+				beyondTesting.header.summary,
+				language,
+			)}
+		/>
+
+		<ul class="case-study-focus-areas">
+			{beyondTesting.header.focusAreas.map((focusArea) => (
+				<li class="case-study-focus-area">
+					{focusArea}
+				</li>
+			))}
+		</ul>
+	</div>
+
+	<CaseStudySection
+		id="overview"
+				title={formatTypography(
+					beyondTesting.overview.title,
+					language,
+				)}
+			>
+				{beyondTesting.overview.paragraphs.map((paragraph) => (
+					<p class="case-study-text">
+						{formatTypography(paragraph, language)}
+					</p>
+				))}
+			</CaseStudySection>
+
+			<SectionDivider />
+
+			<CaseStudySection
+				id="impact-stories"
+				title={formatTypography(
+					beyondTesting.impactStories.title,
+					language,
+				)}
+			>
+				<div class="impact-stories">
+					{beyondTesting.impactStories.items.map((story, index) => (
+						<ImpactStoryCard
+							number={String(index + 1).padStart(2, "0")}
+							title={formatTypography(
+								story.title,
+								language,
+							)}
+							description={formatTypography(
+								story.description,
+								language,
+							)}
+							outcome={formatTypography(
+								story.outcome,
+								language,
+							)}
+							focusAreasTitle={
+								language === "pl"
+									? "Kluczowe obszary"
+									: "Key Areas"
+							}
+							focusAreas={story.focusAreas}
+						/>
+					))}
+				</div>
+			</CaseStudySection>
+
+			<DocumentationShowcase
+				id="visual-documentation"
 				lang={language}
 				title={formatTypography(
-					beyondTesting.header.title,
+					beyondTesting.visualDocumentation.title,
 					language,
 				)}
-				summary={formatTypography(
-					beyondTesting.header.summary,
+				paragraphs={beyondTesting.visualDocumentation.paragraphs.map(
+					(paragraph) =>
+						formatTypography(paragraph, language),
+				)}
+				includesTitle={
+					beyondTesting.visualDocumentation.includesTitle
+				}
+				includes={
+					beyondTesting.visualDocumentation.includes
+				}
+				focusAreasTitle={
+					language === "pl"
+						? "Kluczowe obszary"
+						: "Focus Areas"
+				}
+				focusAreas={
+					beyondTesting.visualDocumentation.focusAreas
+				}
+				impactTitle={
+					beyondTesting.visualDocumentation.impactTitle
+				}
+				outcome={formatTypography(
+					beyondTesting.visualDocumentation.outcome,
 					language,
 				)}
+				image={beyondTestingProcessDiagram}
+				imageAlt={
+					language === "pl"
+						? "Zanonimizowany diagram przedstawiający złożony proces biznesowy, jego wyjątki oraz integracje z zewnętrznymi systemami."
+						: "An anonymised diagram showing a complex business process, its exceptions and integrations with external systems."
+				}
 			/>
-
-			<ul class="case-study-focus-areas">
-				{beyondTesting.header.focusAreas.map((focusArea) => (
-					<li class="case-study-focus-area">
-						{focusArea}
-					</li>
-				))}
-			</ul>
-		</div>
-
-		<CaseStudySection
-			id="overview"
-					title={formatTypography(
-						beyondTesting.overview.title,
-						language,
-					)}
-				>
-					{beyondTesting.overview.paragraphs.map((paragraph) => (
-						<p class="case-study-text">
-							{formatTypography(paragraph, language)}
-						</p>
-					))}
-				</CaseStudySection>
-
-				<SectionDivider />
-
-				<CaseStudySection
-					id="impact-stories"
-					title={formatTypography(
-						beyondTesting.impactStories.title,
-						language,
-					)}
-				>
-					<div class="impact-stories">
-						{beyondTesting.impactStories.items.map((story, index) => (
-							<ImpactStoryCard
-								number={String(index + 1).padStart(2, "0")}
-								title={formatTypography(
-									story.title,
-									language,
-								)}
-								description={formatTypography(
-									story.description,
-									language,
-								)}
-								outcome={formatTypography(
-									story.outcome,
-									language,
-								)}
-								focusAreasTitle={
-									language === "pl"
-										? "Kluczowe obszary"
-										: "Key Areas"
-								}
-								focusAreas={story.focusAreas}
-							/>
-						))}
-					</div>
-				</CaseStudySection>
-
-				<DocumentationShowcase
-					id="visual-documentation"
-					lang={language}
-					title={formatTypography(
-						beyondTesting.visualDocumentation.title,
-						language,
-					)}
-					paragraphs={beyondTesting.visualDocumentation.paragraphs.map(
-						(paragraph) =>
-							formatTypography(paragraph, language),
-					)}
-					includesTitle={
-						beyondTesting.visualDocumentation.includesTitle
-					}
-					includes={
-						beyondTesting.visualDocumentation.includes
-					}
-					focusAreasTitle={
-						language === "pl"
-							? "Kluczowe obszary"
-							: "Focus Areas"
-					}
-					focusAreas={
-						beyondTesting.visualDocumentation.focusAreas
-					}
-					impactTitle={
-						beyondTesting.visualDocumentation.impactTitle
-					}
-					outcome={formatTypography(
-						beyondTesting.visualDocumentation.outcome,
-						language,
-					)}
-					image={beyondTestingProcessDiagram}
-					imageAlt={
-						language === "pl"
-							? "Zanonimizowany diagram przedstawiający złożony proces biznesowy, jego wyjątki oraz integracje z zewnętrznymi systemami."
-							: "An anonymised diagram showing a complex business process, its exceptions and integrations with external systems."
-					}
-				/>
 
 				<CaseStudyNavigation
 					lang={language}
@@ -215,11 +212,8 @@ const seo = getBeyondTestingSeo(language);
 							: undefined
 					}
 					allWork={{
-                        href: `/${language}/#work`,
-                        label: translations.caseStudyNavigation.allWork,
-                    }}
+						href: `/${language}/#work`,
+						label: translations.caseStudyNavigation.allWork,
+					}}
 				/>
-			</div>
-		</section>
-	</main>
-</Layout>
+			</SubpageLayout>
