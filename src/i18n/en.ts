@@ -99,8 +99,8 @@ export const en = {
 		nextCaseStudy: (label: string) =>
 			`Go to next case study: ${label}`,
 	},
-	backLink: {
+		backLink: {
 		toSelectedWork: "Back to Selected Work",
-		toHobbies: "Back to hobbies",
+		toHobbies: "Back to Hobbies",
 	},
 };

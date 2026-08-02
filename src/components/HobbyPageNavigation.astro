@@ -1,0 +1,36 @@
+---
+import CaseStudyNavigation from "./CaseStudyNavigation.astro";
+
+import type { Language } from "../i18n";
+
+interface NavigationTarget {
+	label: string;
+	href: string;
+}
+
+interface Props {
+	lang: Language;
+	previous?: NavigationTarget;
+	next?: NavigationTarget;
+	allHobbiesHref: string;
+	allHobbiesLabel: string;
+}
+
+const {
+	lang,
+	previous,
+	next,
+	allHobbiesHref,
+	allHobbiesLabel,
+} = Astro.props;
+---
+
+<CaseStudyNavigation
+	lang={lang}
+	previous={previous}
+	next={next}
+	allWork={{
+		label: allHobbiesLabel,
+		href: allHobbiesHref,
+	}}
+/>

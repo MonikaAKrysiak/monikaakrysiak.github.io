@@ -5,6 +5,7 @@ import SubpageLayout from "../../../layouts/SubpageLayout.astro";
 import BackLink from "../../../components/BackLink.astro";
 import HobbyPageHeader from "../../../components/HobbyPageHeader.astro";
 import HobbyGallery from "../../../components/HobbyGallery.astro";
+import HobbyPageNavigation from "../../../components/HobbyPageNavigation.astro";
 
 import InstagramIcon from "../../../assets/icons/instagram.svg";
 
@@ -55,10 +56,10 @@ const navigationItems =
         introduction={photography.introduction}
     />
 
-	<HobbyGallery
-        id="photography-gallery"
-        externalId="photography-external"
-        lang={lang}
+		<HobbyGallery
+		id="photography-gallery"
+		externalId="photography-external"
+		lang={lang}
 		title={
 			lang === "pl"
 				? "Wybrane fotografie"
@@ -69,5 +70,21 @@ const navigationItems =
 	>
 		<InstagramIcon slot="icon" />
 	</HobbyGallery>
-</SubpageLayout>
 
+	<HobbyPageNavigation
+		lang={lang}
+		previous={{
+			label:
+				lang === "pl"
+					? "Gry stołowe"
+					: "Tabletop Games",
+			href: `/${lang}/hobbies/tabletop-games`,
+		}}
+		allHobbiesHref={`/${lang}/#hobbies`}
+		allHobbiesLabel={
+			lang === "pl"
+				? "Zobacz wszystkie zainteresowania"
+				: "View all hobbies"
+		}
+	/>
+</SubpageLayout>

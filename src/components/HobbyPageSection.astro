@@ -1,0 +1,94 @@
+---
+interface Story {
+	title: string;
+	paragraphs: string[];
+}
+
+interface Props {
+	id?: string;
+	title: string;
+	paragraphs?: string[];
+	stories?: Story[];
+}
+
+const {
+	id,
+	title,
+	paragraphs = [],
+	stories = [],
+} = Astro.props;
+---
+<section
+	id={id}
+	class="hobby-page-section"
+>
+	<h2 class="hobby-page-section-title">
+		{title}
+	</h2>
+
+	{
+		paragraphs.length > 0 && (
+			<div class="hobby-page-section-content">
+				{
+					paragraphs.map((paragraph) => (
+						<p>{paragraph}</p>
+					))
+				}
+			</div>
+		)
+	}
+
+	{
+		stories.length > 0 && (
+			<div class="hobby-page-stories">
+				{
+					stories.map((story) => (
+						<article class="hobby-page-story">
+							<h3 class="hobby-page-story-title">
+								{story.title}
+							</h3>
+
+							<div class="hobby-page-story-content">
+								{
+									story.paragraphs.map((paragraph) => (
+										<p>{paragraph}</p>
+									))
+								}
+							</div>
+						</article>
+					))
+				}
+			</div>
+		)
+	}
+</section>
+<style>
+	.hobby-page-section {
+		margin-top: var(--space-xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+		scroll-margin-top: 3rem;
+	}
+
+	.hobby-page-section-title {
+		margin-bottom: var(--space-8);
+	}
+
+	.hobby-page-section-content {
+		display: grid;
+		gap: var(--space-6);
+	}
+    .hobby-page-stories {
+        display: grid;
+        gap: var(--space-12);
+    }
+
+    .hobby-page-story-title {
+        margin-bottom: var(--space-6);
+    }
+
+    .hobby-page-story-content {
+        display: grid;
+        gap: var(--space-6);
+    }
+</style>

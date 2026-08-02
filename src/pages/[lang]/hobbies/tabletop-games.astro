@@ -1,0 +1,83 @@
+---
+import type { GetStaticPaths } from "astro";
+
+import SubpageLayout from "../../../layouts/SubpageLayout.astro";
+import BackLink from "../../../components/BackLink.astro";
+import HobbyPageHeader from "../../../components/HobbyPageHeader.astro";
+import HobbyPageSection from "../../../components/HobbyPageSection.astro";
+import HobbyPageNavigation from "../../../components/HobbyPageNavigation.astro";
+
+import {
+	getGames,
+	getTabletopGamesNavigation,
+} from "../../../data/hobby-pages/tabletop-games";
+import type { Language } from "../../../i18n";
+
+export const getStaticPaths: GetStaticPaths = () => {
+	return [
+		{
+			params: { lang: "en" },
+		},
+		{
+			params: { lang: "pl" },
+		},
+	];
+};
+
+const lang = Astro.params.lang as Language;
+const games = getGames(lang);
+const navigationItems = getTabletopGamesNavigation(lang);
+---
+<SubpageLayout
+	lang={lang}
+	navigationItems={navigationItems}
+>
+	<BackLink
+		lang={lang}
+		href={`/${lang}/#hobbies`}
+		label={
+			lang === "pl"
+				? "Wróć do zainteresowań"
+				: "Back to Hobbies"
+		}
+	/>
+
+	<HobbyPageHeader
+		id="tabletop-games-about"
+		title={games.title}
+		introduction={games.introduction}
+	/>
+
+	<HobbyPageSection
+		id="tabletop-games-beyond-playing"
+		title={games.beyondPlayingTitle}
+		paragraphs={games.beyondPlaying}
+	/>
+
+	<HobbyPageSection
+		id="tabletop-games-stories"
+		title={games.storiesTitle}
+		stories={games.stories}
+	/>
+
+	<HobbyPageNavigation
+		lang={lang}
+		previous={{
+			label: "DIY",
+			href: `/${lang}/hobbies/diy`,
+		}}
+		next={{
+			label:
+				lang === "pl"
+					? "Fotografia"
+					: "Photography",
+			href: `/${lang}/hobbies/photography`,
+		}}
+		allHobbiesHref={`/${lang}/#hobbies`}
+		allHobbiesLabel={
+			lang === "pl"
+				? "Zobacz wszystkie zainteresowania"
+				: "View all hobbies"
+		}
+	/>
+</SubpageLayout>

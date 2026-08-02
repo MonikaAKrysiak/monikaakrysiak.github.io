@@ -1602,8 +1602,3 @@ body {
 		transform: none;
 	}
 }
-
-/* Hobbies */
-.content-page {
-	padding-top: var(--space-xl);
-}
