@@ -22,16 +22,16 @@ export const getTabletopGamesNavigation = (
 		{
 			label:
 				lang === "pl"
-					? "Nie tylko granie"
-					: "Beyond playing",
-			href: "#tabletop-games-beyond-playing",
+					? "Historie z sesji"
+					: "Stories from the table",
+			href: "#tabletop-games-stories",
 		},
 		{
 			label:
 				lang === "pl"
-					? "Historie z sesji"
-					: "Stories from the table",
-			href: "#tabletop-games-stories",
+					? "Nie tylko granie"
+					: "Beyond playing",
+			href: "#tabletop-games-beyond-playing",
 		},
 	];
 };

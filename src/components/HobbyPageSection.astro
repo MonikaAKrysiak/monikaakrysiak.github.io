@@ -7,6 +7,7 @@ interface Story {
 interface Props {
 	id?: string;
 	title: string;
+	introduction?: string;
 	paragraphs?: string[];
 	stories?: Story[];
 }
@@ -14,18 +15,26 @@ interface Props {
 const {
 	id,
 	title,
+	introduction,
 	paragraphs = [],
 	stories = [],
 } = Astro.props;
 ---
-<section
-	id={id}
-	class="hobby-page-section"
->
-	<h2 class="hobby-page-section-title">
+<section class="hobby-page-section">
+	<h2
+		id={id}
+		class="hobby-page-section-title"
+	>
 		{title}
 	</h2>
 
+	{
+		introduction && (
+			<p class="hobby-page-section-introduction">
+				{introduction}
+			</p>
+		)
+	}
 	{
 		paragraphs.length > 0 && (
 			<div class="hobby-page-section-content">
@@ -38,57 +47,74 @@ const {
 		)
 	}
 
-	{
-		stories.length > 0 && (
-			<div class="hobby-page-stories">
-				{
-					stories.map((story) => (
-						<article class="hobby-page-story">
-							<h3 class="hobby-page-story-title">
-								{story.title}
-							</h3>
+		{
+			stories.length > 0 && (
+				<div class="hobby-page-stories">
+					{
+						stories.map((story) => (
+							<article class="hobby-page-story">
+								<h3 class="hobby-page-story-title">
+									{story.title}
+								</h3>
 
-							<div class="hobby-page-story-content">
-								{
-									story.paragraphs.map((paragraph) => (
-										<p>{paragraph}</p>
-									))
-								}
-							</div>
-						</article>
-					))
-				}
-			</div>
-		)
-	}
+								<div class="hobby-page-story-content">
+									{
+										story.paragraphs.map((paragraph) => (
+											<p>{paragraph}</p>
+										))
+									}
+								</div>
+							</article>
+						))
+					}
+				</div>
+			)
+		}
+
+	<slot />
 </section>
 <style>
 	.hobby-page-section {
 		margin-top: var(--space-xl);
 		padding-top: var(--space-xl);
 		border-top: 1px solid var(--color-border);
-		scroll-margin-top: 3rem;
 	}
 
 	.hobby-page-section-title {
-		margin-bottom: var(--space-8);
+		margin-bottom: var(--space-xl);
+
+		font-size: var(--font-size-heading);
+		line-height: var(--line-height-body);
+
+		scroll-margin-top: calc(
+			var(--header-height) + var(--space-lg)
+		);
 	}
 
 	.hobby-page-section-content {
 		display: grid;
-		gap: var(--space-6);
+		gap: var(--space-md);
 	}
-    .hobby-page-stories {
-        display: grid;
-        gap: var(--space-12);
-    }
 
-    .hobby-page-story-title {
-        margin-bottom: var(--space-6);
-    }
+	.hobby-page-stories {
+		display: grid;
+		gap: var(--space-2xl);
+	}
 
-    .hobby-page-story-content {
-        display: grid;
-        gap: var(--space-6);
-    }
+	.hobby-page-story-title {
+		margin-bottom: var(--space-md);
+	}
+
+	.hobby-page-story-content {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	.hobby-page-section-introduction {
+		margin-bottom: var(--space-xl);
+
+		font-size: var(--font-size-body-large);
+		line-height: var(--line-height-body);
+		color: var(--color-text-muted);
+	}
 </style>

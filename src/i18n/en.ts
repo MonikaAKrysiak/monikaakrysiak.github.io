@@ -8,7 +8,7 @@ export const en = {
 
 	hero: {
 		role: "QA Engineer focused on Application Security.",
-		statementFirstLine: "For me, good software isn’t just functional.",
+		statementFirstLine: "For me, good software isn't just functional.",
 		statementSecondLine: "It should also be secure.",
 		viewCv: "View CV (PDF)",
 		contact: "Contact",
@@ -34,18 +34,19 @@ export const en = {
 		introSecondLine: "Feel free to get in touch.",
 	},
 
-	selectedWork: {
+		selectedWork: {
 		readCaseStudy: "Read case study",
 	},
 
 	backLink: {
 		toSelectedWork: "Back to Selected Work",
+		toHobbies: "Back to Hobbies",
 	},
 
 	caseStudyNavigation: {
 		allWork: "View all selected work",
 	},
-	
+
 	footer: {
 		statement: "Let’s build software that is functional, reliable and secure.",
 		builtWith: "Built with:",
@@ -54,6 +55,8 @@ export const en = {
 
 	hobbies: {
 		readMore: "Read more",
+		readFullStory: "Read the full story",
+		hideStory: "Hide story",
 	},
 
 	externalLink: {
@@ -63,7 +66,7 @@ export const en = {
 	skipLink: {
 		skipToMainContent: "Skip to main content",
 	},
-	
+
 	accessibility: {
 		openMenu: "Open menu",
 		closeMenu: "Close menu",
@@ -98,9 +101,5 @@ export const en = {
 
 		nextCaseStudy: (label: string) =>
 			`Go to next case study: ${label}`,
-	},
-		backLink: {
-		toSelectedWork: "Back to Selected Work",
-		toHobbies: "Back to Hobbies",
 	},
 };

@@ -15,7 +15,10 @@ import {
 	pl,
 	getPhotographyNavigation,
 } from "../../../data/hobby-pages/photography";
-import type { Language } from "../../../i18n";
+import {
+	getTranslations,
+	type Language,
+} from "../../../i18n";
 
 export const getStaticPaths: GetStaticPaths = () => {
 	return [
@@ -37,8 +40,8 @@ const photography =
 		? pl
 		: en;
 
-const navigationItems =
-	getPhotographyNavigation(lang);
+const navigationItems = getPhotographyNavigation(lang);
+const t = getTranslations(lang);
 ---
 
 <SubpageLayout
@@ -48,6 +51,7 @@ const navigationItems =
 	<BackLink
 		lang={lang}
 		href={`/${lang}/#hobbies`}
+		label={t.backLink.toHobbies}
 	/>
 
 	<HobbyPageHeader
@@ -56,7 +60,7 @@ const navigationItems =
         introduction={photography.introduction}
     />
 
-		<HobbyGallery
+	<HobbyGallery
 		id="photography-gallery"
 		externalId="photography-external"
 		lang={lang}

@@ -1,0 +1,67 @@
+---
+import EngineeringPrincipleCard from "./EngineeringPrincipleCard.astro";
+
+interface HighlightItem {
+	title: string;
+	description: string;
+	icon: any;
+}
+
+interface Props {
+	title: string;
+	items: HighlightItem[];
+}
+
+const {
+	title,
+	items,
+} = Astro.props;
+---
+
+<section class="hobby-highlights">
+	<h2 class="hobby-highlights-title">
+		{title}
+	</h2>
+
+	<div class="hobby-highlights-grid">
+		{
+			items.map(({ title, description, icon }) => (
+				<EngineeringPrincipleCard
+					title={title}
+					icon={icon}
+				>
+					<p class="hobby-highlight-description">
+						{description}
+					</p>
+				</EngineeringPrincipleCard>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.hobby-highlights {
+		margin-top: var(--space-3xl);
+		scroll-margin-top: var(--header-offset);
+	}
+
+	.hobby-highlights-title {
+		margin-bottom: var(--space-lg);
+	}
+
+	.hobby-highlights-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-lg);
+	}
+
+	.hobby-highlight-description {
+		margin: 0;
+	}
+
+	@media (min-width: 48rem) {
+		.hobby-highlights-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+</style>

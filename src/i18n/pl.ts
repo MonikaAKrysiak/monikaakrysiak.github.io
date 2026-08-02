@@ -35,12 +35,13 @@ export const pl = {
 		introSecondLine: "Zapraszam do kontaktu.",
 	},
 
-	selectedWork: {
+		selectedWork: {
 		readCaseStudy: "Czytaj case study",
 	},
 
 	backLink: {
-		toSelectedWork: "Wróć do projektów",
+		toSelectedWork: "Wróć do wybranych projektów",
+		toHobbies: "Wróć do zainteresowań",
 	},
 
 	caseStudyNavigation: {
@@ -49,13 +50,15 @@ export const pl = {
 
 	footer: {
 		statement:
-		"Tworzę rozwiązania, które\u00A0są\u00A0funkcjonalne, niezawodne\u00A0i\u00A0bezpieczne.",
-			builtWith: "Zbudowane przy użyciu:",
+			"Tworzę rozwiązania, które są funkcjonalne, niezawodne i bezpieczne.",
+		builtWith: "Zbudowane przy użyciu:",
 		designedWith: "Zaprojektowane z myślą o:",
 	},
 
 	hobbies: {
 		readMore: "Czytaj więcej",
+		readFullStory: "Przeczytaj całą historię",
+		hideStory: "Ukryj historię",
 	},
 
 	externalLink: {
@@ -65,7 +68,7 @@ export const pl = {
 	skipLink: {
 		skipToMainContent: "Przejdź do głównej treści",
 	},
-	
+
 	accessibility: {
 		openMenu: "Otwórz menu",
 		closeMenu: "Zamknij menu",
@@ -89,7 +92,7 @@ export const pl = {
 			`Powiększ obraz: ${alt}`,
 
 		largerImageView: (alt: string) =>
-			`Powiększony obraz: ${alt}`,	
+			`Powiększony obraz: ${alt}`,
 
 		closeImagePreview: "Zamknij podgląd obrazu",
 
@@ -100,9 +103,5 @@ export const pl = {
 
 		nextCaseStudy: (label: string) =>
 			`Przejdź do następnego case study: ${label}`,
-	},
-	backLink: {
-		toSelectedWork: "Wróć do wybranych projektów",
-		toHobbies: "Wróć do zainteresowań",
 	},
 };

@@ -6,12 +6,26 @@ import BackLink from "../../../components/BackLink.astro";
 import HobbyPageHeader from "../../../components/HobbyPageHeader.astro";
 import HobbyPageSection from "../../../components/HobbyPageSection.astro";
 import HobbyPageNavigation from "../../../components/HobbyPageNavigation.astro";
+import HobbyHighlights from "../../../components/HobbyHighlights.astro";
+import HobbyStoryCard from "../../../components/HobbyStoryCard.astro";
+import HobbyQuote from "../../../components/HobbyQuote.astro";
+import InteractiveFigure from "../../../components/InteractiveFigure.astro";
 
 import {
 	getGames,
 	getTabletopGamesNavigation,
 } from "../../../data/hobby-pages/tabletop-games";
-import type { Language } from "../../../i18n";
+import {
+	getTranslations,
+	type Language,
+} from "../../../i18n";
+
+import BookIcon from "../../../assets/icons/book.svg";
+import PuzzleIcon from "../../../assets/icons/puzzle.svg";
+import UsersIcon from "../../../assets/icons/users.svg";
+import RpgDiceImage from "../../../assets/hobbies/photography/tabletop-games-rpg-dice.jpg";
+import ZombieMiniaturesImage from "../../../assets/hobbies/photography/tabletop-games-painted-miniatures.jpg";
+import LegoKingfisherImage from "../../../assets/hobbies/photography/tabletop-games-lego-kingfisher.jpg";
 
 export const getStaticPaths: GetStaticPaths = () => {
 	return [
@@ -27,6 +41,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 const lang = Astro.params.lang as Language;
 const games = getGames(lang);
 const navigationItems = getTabletopGamesNavigation(lang);
+const t = getTranslations(lang);
 ---
 <SubpageLayout
 	lang={lang}
@@ -35,11 +50,7 @@ const navigationItems = getTabletopGamesNavigation(lang);
 	<BackLink
 		lang={lang}
 		href={`/${lang}/#hobbies`}
-		label={
-			lang === "pl"
-				? "Wróć do zainteresowań"
-				: "Back to Hobbies"
-		}
+		label={t.backLink.toHobbies}
 	/>
 
 	<HobbyPageHeader
@@ -48,17 +59,95 @@ const navigationItems = getTabletopGamesNavigation(lang);
 		introduction={games.introduction}
 	/>
 
-	<HobbyPageSection
-		id="tabletop-games-beyond-playing"
-		title={games.beyondPlayingTitle}
-		paragraphs={games.beyondPlaying}
+	<HobbyHighlights
+		title={games.highlightsTitle}
+		items={[
+			{
+				...games.highlights[0],
+				icon: BookIcon,
+			},
+			{
+				...games.highlights[1],
+				icon: PuzzleIcon,
+			},
+			{
+				...games.highlights[2],
+				icon: UsersIcon,
+			},
+		]}
+	/>
+
+	<HobbyQuote
+		title={games.whyRpgTitle}
+		quote={games.whyRpg}
 	/>
 
 	<HobbyPageSection
 		id="tabletop-games-stories"
 		title={games.storiesTitle}
-		stories={games.stories}
-	/>
+		introduction={games.storiesIntroduction}
+	>
+		<div class="tabletop-game-stories">
+			{
+				games.stories.map((story, index) => (
+					<HobbyStoryCard
+						title={story.title}
+						summary={story.summary}
+						paragraphs={story.paragraphs}
+						image={
+							index === 1
+								? ZombieMiniaturesImage
+								: RpgDiceImage
+						}
+						imageAlt=""
+						imagePosition={
+							index === 0
+								? "center 35%"
+								: "center"
+						}
+						readLabel={t.hobbies.readFullStory}
+						hideLabel={t.hobbies.hideStory}
+					/>
+				))
+			}
+		</div>
+	</HobbyPageSection>
+
+	<HobbyPageSection
+		id="tabletop-games-beyond-playing"
+		title={games.beyondPlayingTitle}
+	>
+		<div class="beyond-playing-grid">
+			{
+				games.beyondPlaying.map((item, index) => (
+					<article class="beyond-playing-card">
+						<div class="beyond-playing-card-image-wrapper">
+							<InteractiveFigure
+								lang={lang}
+								src={
+									index === 0
+										? ZombieMiniaturesImage
+										: LegoKingfisherImage
+								}
+								alt={item.title}
+								className="beyond-playing-card-figure"
+							/>
+						</div>
+
+						<div class="beyond-playing-card-content">
+							<h3 class="beyond-playing-card-title">
+								{item.title}
+							</h3>
+
+							<p class="beyond-playing-card-description">
+								{item.description}
+							</p>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</HobbyPageSection>
 
 	<HobbyPageNavigation
 		lang={lang}
@@ -81,3 +170,89 @@ const navigationItems = getTabletopGamesNavigation(lang);
 		}
 	/>
 </SubpageLayout>
+
+<style>
+	.tabletop-game-stories {
+		display: grid;
+		gap: var(--space-xl);
+	}
+
+	.beyond-playing-grid {
+		display: grid;
+		gap: var(--space-xl);
+	}
+
+	.beyond-playing-card {
+		display: flex;
+		flex-direction: column;
+
+		padding: var(--space-lg);
+
+		background-color: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--space-sm);
+	}
+
+	.beyond-playing-card-image-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		overflow: hidden;
+		height: 14rem;
+
+		margin-bottom: var(--space-lg);
+	}
+
+	.beyond-playing-card-image-wrapper :global(.interactive-figure) {
+		height: 100%;
+		margin: 0;
+	}
+
+	.beyond-playing-card-image-wrapper :global(.interactive-figure-button) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 100%;
+		height: 100%;
+	}
+
+	.beyond-playing-card-image-wrapper :global(.interactive-figure-image) {
+		width: auto;
+		max-width: 100%;
+
+		height: 100%;
+
+		object-fit: contain;
+
+		border: none;
+		border-radius: 0;
+	}
+
+	.beyond-playing-card-content {
+		padding: 0;
+	}
+
+	.beyond-playing-card-title {
+		margin: 0 0 var(--space-sm);
+	}
+
+	.beyond-playing-card-description {
+		margin: 0;
+		color: var(--color-text-muted);
+		line-height: var(--line-height-body);
+	}
+
+	@media (min-width: 48rem) {
+		.beyond-playing-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.beyond-playing-card-image-wrapper :global(.interactive-figure-image) {
+			width: 95%;
+			height: auto;
+			max-height: 100%;
+		}
+	}
+</style>
