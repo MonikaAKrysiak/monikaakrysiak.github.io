@@ -1,4 +1,4 @@
-# Session – Travel hobby page finished
+# Session 52 – Travel hobby page finished
 
 ## Goal
 Complete the Travel hobby page and bring it to the same quality level as the remaining hobby pages.

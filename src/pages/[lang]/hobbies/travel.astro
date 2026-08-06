@@ -22,12 +22,12 @@ import {
 import TravelIcon from "../../../assets/icons/hobby-travel.svg";
 import InstagramIcon from "../../../assets/icons/instagram.svg";
 import StravaIcon from "../../../assets/icons/strava.svg";
-import TravelHorsesImage from "../../../assets/hobbies/photography/travel-horses.jpg";
-import TravelNiedzicaLakeImage from "../../../assets/hobbies/photography/travel-niedzica-lake-view.jpg";
-import TravelOgrodzieniecCastleImage from "../../../assets/hobbies/photography/travel-ogrodzieniec-castle-view.jpg";
-import TravelPieskowaSkalaImage from "../../../assets/hobbies/photography/travel-pieskowa-skala-view.jpg";
-import TravelRanchEveningImage from "../../../assets/hobbies/photography/travel-ranch-evening.jpg";
-import TravelTrzyKoronyImage from "../../../assets/hobbies/photography/travel-trzy-korony-panorama.jpg";
+import TravelHorsesImage from "../../../assets/hobbies/travel/travel-horses.jpg";
+import TravelNiedzicaLakeImage from "../../../assets/hobbies/travel/travel-niedzica-lake-view.jpg";
+import TravelOgrodzieniecCastleImage from "../../../assets/hobbies/travel/travel-ogrodzieniec-castle-view.jpg";
+import TravelPieskowaSkalaImage from "../../../assets/hobbies/travel/travel-pieskowa-skala-view.jpg";
+import TravelRanchEveningImage from "../../../assets/hobbies/travel/travel-ranch-evening.jpg";
+import TravelTrzyKoronyImage from "../../../assets/hobbies/travel/travel-trzy-korony-panorama.jpg";
 
 export const getStaticPaths: GetStaticPaths = () => {
 	return [
@@ -309,6 +309,19 @@ const travelGalleryImages = [
 		background-color: var(--color-surface);
 		border: 1px solid var(--color-border);
 		border-radius: var(--space-sm);
+
+		transition:
+			border-color 0.2s ease,
+			background-color 0.2s ease;
+	}
+
+	.travel-story:hover {
+		border-color: var(--color-accent-travel);
+	}
+
+	.travel-story:has(.travel-story-details[open]) {
+		background-color: var(--color-surface-hover);
+		border-color: var(--color-accent-travel);
 	}
 
 	.travel-story-heading {
@@ -318,7 +331,7 @@ const travelGalleryImages = [
 	.travel-story-year {
 		margin: 0 0 var(--space-xs);
 
-		color: var(--color-accent);
+		color: var(--color-accent-travel);
 		font-weight: 700;
 	}
 
@@ -340,7 +353,7 @@ const travelGalleryImages = [
 	.travel-story-toggle {
 		padding: var(--space-md) var(--space-lg);
 
-		color: var(--color-accent);
+		color: var(--color-accent-travel);
 		font-weight: 700;
 
 		cursor: pointer;
@@ -352,7 +365,7 @@ const travelGalleryImages = [
 	}
 
 	.travel-story-toggle:focus-visible {
-		outline: 2px solid var(--color-accent);
+		outline: 2px solid var(--color-accent-travel);
 		outline-offset: -0.35rem;
 	}
 
@@ -382,6 +395,12 @@ const travelGalleryImages = [
 		background-color: var(--color-surface);
 		border: 1px solid var(--color-border);
 		border-radius: var(--space-sm);
+
+		transition: border-color 0.2s ease;
+	}
+
+	.travel-plan:hover {
+		border-color: var(--color-accent-travel);
 	}
 
 	.travel-plan h3 {
@@ -420,7 +439,20 @@ const travelGalleryImages = [
 
 		object-fit: cover;
 
+		border: 1px solid transparent;
 		border-radius: var(--space-sm);
+
+		transition: border-color 0.2s ease;
+	}
+
+	.travel-gallery
+		:global(.interactive-figure-button:hover .interactive-figure-image) {
+		border-color: var(--color-accent-travel);
+	}
+
+	.travel-gallery
+		:global(.interactive-figure-button:focus-visible .interactive-figure-image) {
+		border-color: var(--color-accent-travel);
 	}
 
 	.travel-external {
@@ -448,7 +480,7 @@ const travelGalleryImages = [
 
 		width: fit-content;
 
-		color: var(--color-primary);
+		color: var(--color-accent-travel);
 		font-weight: 600;
 		line-height: var(--line-height-body);
 		text-decoration: none;
@@ -459,13 +491,23 @@ const travelGalleryImages = [
 	}
 
 	.travel-external-link:hover {
-		color: var(--color-primary-hover);
+		color:
+			color-mix(
+				in srgb,
+				var(--color-accent-travel) 80%,
+				var(--color-text)
+			);
 		text-decoration: underline;
 		text-underline-offset: 0.2em;
 	}
 
 	.travel-external-link:focus-visible {
-		color: var(--color-primary-hover);
+		color:
+			color-mix(
+				in srgb,
+				var(--color-accent-travel) 80%,
+				var(--color-text)
+			);
 	}
 
 	.travel-external-link :global(svg) {
@@ -493,20 +535,27 @@ const travelGalleryImages = [
 				color-mix(
 					in srgb,
 					var(--color-surface) 88%,
-					var(--color-accent)
+					var(--color-accent-travel)
 				)
 			);
 
-		border: 1px dashed var(--color-border);
+		border: 1px dashed
+			color-mix(
+				in srgb,
+				var(--color-border) 75%,
+				var(--color-accent-travel)
+			);
 		border-radius: var(--space-sm);
 
 		box-sizing: border-box;
 	}
 
 	.travel-gallery-coming-soon-content {
+		min-width: 0;
 		display: grid;
 		gap: var(--space-sm);
 
+		width: 100%;
 		max-width: 18rem;
 
 		text-align: center;
@@ -515,7 +564,7 @@ const travelGalleryImages = [
 	.travel-gallery-coming-soon-country {
 		margin: 0;
 
-		color: var(--color-accent);
+		color: var(--color-accent-travel);
 		font-size: var(--font-size-body-small);
 		font-weight: 700;
 		line-height: 1.3;
@@ -523,11 +572,6 @@ const travelGalleryImages = [
 		text-transform: uppercase;
 
 		overflow-wrap: anywhere;
-	}
-
-	.travel-gallery-coming-soon-content {
-		min-width: 0;
-		width: 100%;
 	}
 
 	.travel-gallery-coming-soon h3 {
@@ -561,6 +605,7 @@ const travelGalleryImages = [
 			column-gap: var(--space-2xl);
 			row-gap: var(--space-sm);
 		}
+
 		.travel-gallery-coming-soon-country {
 			letter-spacing: 0.08em;
 		}
