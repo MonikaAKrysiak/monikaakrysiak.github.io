@@ -48,9 +48,12 @@ export const en = {
 	},
 
 	footer: {
-		statement: "Let’s build software that is functional, reliable and secure.",
+		statement:
+			"I build software that is functional, reliable and secure.",
 		builtWith: "Built with:",
 		designedWith: "Designed with:",
+		designPrinciples:
+			"Accessibility • Security by Default",
 	},
 
 	hobbies: {

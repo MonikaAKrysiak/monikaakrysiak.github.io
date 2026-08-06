@@ -53,6 +53,8 @@ export const pl = {
 			"Tworzę rozwiązania, które są funkcjonalne, niezawodne i bezpieczne.",
 		builtWith: "Zbudowane przy użyciu:",
 		designedWith: "Zaprojektowane z myślą o:",
+		designPrinciples:
+			"Dostępności • Bezpieczeństwie",
 	},
 
 	hobbies: {
@@ -103,5 +105,6 @@ export const pl = {
 
 		nextCaseStudy: (label: string) =>
 			`Przejdź do następnego case study: ${label}`,
+		
 	},
 };

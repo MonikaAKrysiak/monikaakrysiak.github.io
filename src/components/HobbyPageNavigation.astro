@@ -25,15 +25,17 @@ const {
 } = Astro.props;
 ---
 
-<CaseStudyNavigation
-	lang={lang}
-	previous={previous}
-	next={next}
-	allWork={{
-		label: allHobbiesLabel,
-		href: allHobbiesHref,
-	}}
-/>
+<div class="hobby-page-navigation">
+	<CaseStudyNavigation
+		lang={lang}
+		previous={previous}
+		next={next}
+		allWork={{
+			label: allHobbiesLabel,
+			href: allHobbiesHref,
+		}}
+	/>
+</div>
 
 <style>
 	.hobby-page-navigation {

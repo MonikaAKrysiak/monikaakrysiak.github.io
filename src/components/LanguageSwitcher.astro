@@ -129,7 +129,11 @@ const plHref = `/pl${pathWithoutLanguage}`;
 
 				sessionStorage.setItem(focusStorageKey, "true");
 
-				const section = getCurrentSection();
+				const currentHash =
+					window.location.hash.replace("#", "");
+
+				const section =
+					currentHash || getCurrentSection();
 
 				if (!section) return;
 

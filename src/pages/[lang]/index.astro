@@ -28,7 +28,10 @@ const t = getTranslations(lang);
 
 const navigationItems: NavigationItem[] = [
 	{
-		label: lang === "pl" ? "Start" : "Home",
+		label:
+			lang === "pl"
+				? "Start"
+				: "Home",
 		href: "#hero",
 	},
 	{
@@ -38,6 +41,10 @@ const navigationItems: NavigationItem[] = [
 	{
 		label: t.navigation.work,
 		href: "#work",
+	},
+	{
+		label: t.navigation.hobbies,
+		href: "#hobbies",
 	},
 	{
 		label: t.navigation.contact,
