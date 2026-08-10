@@ -9,6 +9,7 @@ import HobbyPageNavigation from "../../../components/HobbyPageNavigation.astro";
 
 import InstagramIcon from "../../../assets/icons/instagram.svg";
 
+import { formatTypography } from "../../../utils/typography";
 import { photographyImages } from "../../../data/hobby-pages/photography/images";
 import {
 	en,
@@ -55,22 +56,35 @@ const t = getTranslations(lang);
 	/>
 
 	<HobbyPageHeader
-        id="photography-about"
-        title={photography.title}
-        introduction={photography.introduction}
-    />
+		id="photography-about"
+		title={formatTypography(photography.title, lang)}
+		introduction={photography.introduction.map((paragraph) =>
+			formatTypography(paragraph, lang)
+		)}
+	/>
 
 	<HobbyGallery
 		id="photography-gallery"
 		externalId="photography-external"
 		lang={lang}
-		title={
+		title={formatTypography(
 			lang === "pl"
 				? "Wybrane fotografie"
-				: "Selected photographs"
-		}
+				: "Selected photographs",
+			lang
+		)}
 		images={photographyImages}
-		externalLink={photography.externalLink}
+		externalLink={{
+			...photography.externalLink,
+			description: formatTypography(
+				photography.externalLink.description,
+				lang
+			),
+			label: formatTypography(
+				photography.externalLink.label,
+				lang
+			),
+		}}
 	>
 		<InstagramIcon slot="icon" />
 	</HobbyGallery>

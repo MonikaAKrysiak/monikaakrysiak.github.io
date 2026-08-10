@@ -54,7 +54,7 @@ export const pl: TravelPageContent = {
 				"Nasza dziesiąta rocznica ślubu stała się początkiem nowej tradycji.",
 
 			paragraphs: [
-				"Naszą dziesiątą rocznicę ślubu chcieliśmy uczcić w wyjątkowy sposób. Zamiast wyjechać do hotelu czy polecieć za granicę, postanowiliśmy wyruszyć na pierwszą wspólną wyprawę bikepackingową. Wybraliśmy trasę stosunkowo blisko domu — na wypadek, gdyby okazało się, że przeceniliśmy swoje możliwości.",
+				"Naszą dziesiątą rocznicę ślubu chcieliśmy uczcić w wyjątkowy sposób. Zamiast wyjechać do hotelu czy polecieć za granicę, postanowiliśmy wyruszyć na pierwszą wspólną wyprawę bikepackingową. Wybraliśmy trasę stosunkowo blisko domu - na wypadek, gdyby okazało się, że przeceniliśmy swoje możliwości.",
 
 				"Nie wiedzieliśmy jeszcze, czego się spodziewać. Nawet czterdzieści kilometrów dziennie wydawało się sporym wyzwaniem, zwłaszcza z bagażem i planem zwiedzania po drodze. Pierwszego dnia wyruszyliśmy później, ponieważ mój mąż musiał zostać dłużej w pracy, dlatego dołączyliśmy do właściwego szlaku dopiero w okolicach Żarek.",
 

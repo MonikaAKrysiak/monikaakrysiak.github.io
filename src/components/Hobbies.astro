@@ -10,6 +10,7 @@ import HobbyPhotography from "../assets/icons/hobby-photography.svg";
 
 import { getTranslations, type Language } from "../i18n";
 import { getHobbies, type HobbySlug } from "../data/hobbies";
+import { formatTypography } from "../utils/typography";
 
 const hobbyIcons: Record<HobbySlug, AstroComponentFactory> = {
 	travel: HobbyTravel,
@@ -51,8 +52,8 @@ const hobbies = getHobbies(lang);
 					<HobbyCard
 						icon={hobbyIcons[hobby.slug]}
 						accent={hobbyAccents[hobby.slug]}
-						title={hobby.title}
-						summary={hobby.summary}
+						title={formatTypography(hobby.title, lang)}
+						summary={formatTypography(hobby.summary, lang)}
 						href={`/${lang}${hobby.href}`}
 						linkLabel={t.hobbies.readMore}
 						linkAriaLabel={`${t.hobbies.readMore}: ${hobby.title}`}

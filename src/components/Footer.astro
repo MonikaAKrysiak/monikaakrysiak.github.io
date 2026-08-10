@@ -2,6 +2,7 @@
 import ContactLinks from "./ContactLinks.astro";
 
 import { getTranslations, type Language } from "../i18n";
+import { formatTypography } from "../utils/typography";
 
 interface Props {
 	lang: Language;
@@ -58,7 +59,7 @@ const currentYear = new Date().getFullYear();
                     role="tooltip"
                     hidden
                 >
-                    {t.footer.aiDisclosureText}
+                    {formatTypography(t.footer.aiDisclosureText, lang)}
                 </div>
             </div>
         </div>

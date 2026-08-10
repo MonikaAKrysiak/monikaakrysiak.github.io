@@ -27,6 +27,7 @@ import WireWrappedPendantImage from "../../../assets/hobbies/diy/wire-wrapped-pe
 import WoodenSwingImage from "../../../assets/hobbies/diy/wooden-swing.jpg";
 import DiamondPaintingImage from "../../../assets/hobbies/diy/diamond-painting.jpg";
 
+import { formatTypography } from "../../../utils/typography";
 import {
 	getDiy,
 	getDiyNavigation,
@@ -163,8 +164,10 @@ const diyGalleryImages = [
 
 	<HobbyPageHeader
 		id="diy-about"
-		title={diy.title}
-		introduction={diy.introduction}
+		title={formatTypography(diy.title, lang)}
+		introduction={diy.introduction.map((paragraph) =>
+			formatTypography(paragraph, lang)
+		)}
 	/>
 
 	<section
@@ -172,7 +175,7 @@ const diyGalleryImages = [
 		aria-labelledby="diy-highlights-title"
 	>
 		<h2 id="diy-highlights-title">
-			{diy.highlightsTitle}
+			{formatTypography(diy.highlightsTitle, lang)}
 		</h2>
 
 		<div class="diy-highlights-grid">
@@ -185,10 +188,10 @@ const diyGalleryImages = [
 							<div class="diy-highlight-title">
 								<HighlightIcon aria-hidden="true" />
 
-								<h3>{highlight.title}</h3>
+								<h3>{formatTypography(highlight.title, lang)}</h3>
 							</div>
 
-							<p>{highlight.description}</p>
+							<p>{formatTypography(highlight.description, lang)}</p>
 						</article>
 					);
 				})
@@ -196,11 +199,13 @@ const diyGalleryImages = [
 		</div>
 	</section>
 
-	<HobbyPageSection title={diy.originTitle}>
+	<HobbyPageSection
+		title={formatTypography(diy.originTitle, lang)}
+	>
 		<div class="diy-origin">
 			{
 				diy.originParagraphs.map((paragraph) => (
-					<p>{paragraph}</p>
+					<p>{formatTypography(paragraph, lang)}</p>
 				))
 			}
 		</div>
@@ -208,8 +213,8 @@ const diyGalleryImages = [
 
 	<HobbyPageSection
 		id="diy-stories"
-		title={diy.storiesTitle}
-		introduction={diy.storiesIntroduction}
+		title={formatTypography(diy.storiesTitle, lang)}
+		introduction={formatTypography(diy.storiesIntroduction, lang)}
 	>
 		<div class="diy-stories">
 			{
@@ -228,15 +233,15 @@ const diyGalleryImages = [
 
 							<div class="diy-story-heading">
 								<p class="diy-story-label">
-									{story.label}
+									{formatTypography(story.label, lang)}
 								</p>
 
 								<h3 class="diy-story-title">
-									{story.title}
+									{formatTypography(story.title, lang)}
 								</h3>
 
 								<p class="diy-story-summary">
-									{story.summary}
+									{formatTypography(story.summary, lang)}
 								</p>
 							</div>
 
@@ -255,7 +260,7 @@ const diyGalleryImages = [
 								<div class="diy-story-content">
 									{
 										story.paragraphs.map((paragraph) => (
-											<p>{paragraph}</p>
+											<p>{formatTypography(paragraph, lang)}</p>
 										))
 									}
 								</div>
@@ -267,18 +272,18 @@ const diyGalleryImages = [
 		</div>
 	</HobbyPageSection>
 
-	<HobbyQuote quote={diy.quote} />
+	<HobbyQuote quote={formatTypography(diy.quote, lang)} />
 
 	<HobbyPageSection
-		title={diy.lookingAheadTitle}
-		introduction={diy.lookingAheadIntroduction}
+		title={formatTypography(diy.lookingAheadTitle, lang)}
+		introduction={formatTypography(diy.lookingAheadIntroduction, lang)}
 	>
 		<div class="diy-plans">
 			{
 				diy.lookingAhead.map((item) => (
 					<article class="diy-plan">
-						<h3>{item.title}</h3>
-						<p>{item.description}</p>
+						<h3>{formatTypography(item.title, lang)}</h3>
+						<p>{formatTypography(item.description, lang)}</p>
 					</article>
 				))
 			}
@@ -287,8 +292,8 @@ const diyGalleryImages = [
 
 	<HobbyPageSection
 		id="diy-gallery"
-		title={diy.galleryTitle}
-		introduction={diy.galleryIntroduction}
+		title={formatTypography(diy.galleryTitle, lang)}
+		introduction={formatTypography(diy.galleryIntroduction, lang)}
 	>
 		<div
 			class="diy-gallery"

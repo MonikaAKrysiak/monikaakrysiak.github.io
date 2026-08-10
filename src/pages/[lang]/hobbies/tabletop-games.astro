@@ -11,6 +11,7 @@ import HobbyStoryCard from "../../../components/HobbyStoryCard.astro";
 import HobbyQuote from "../../../components/HobbyQuote.astro";
 import InteractiveFigure from "../../../components/InteractiveFigure.astro";
 
+import { formatTypography } from "../../../utils/typography";
 import {
 	getGames,
 	getTabletopGamesNavigation,
@@ -57,45 +58,55 @@ const t = getTranslations(lang);
 
 	<HobbyPageHeader
 		id="tabletop-games-about"
-		title={games.title}
-		introduction={games.introduction}
+		title={formatTypography(games.title, lang)}
+		introduction={games.introduction.map((paragraph) =>
+			formatTypography(paragraph, lang)
+		)}
 	/>
 
 	<HobbyHighlights
-		title={games.highlightsTitle}
+		title={formatTypography(games.highlightsTitle, lang)}
 		items={[
 			{
 				...games.highlights[0],
+				title: formatTypography(games.highlights[0].title, lang),
+				description: formatTypography(games.highlights[0].description, lang),
 				icon: BookIcon,
 			},
 			{
 				...games.highlights[1],
+				title: formatTypography(games.highlights[1].title, lang),
+				description: formatTypography(games.highlights[1].description, lang),
 				icon: PuzzleIcon,
 			},
 			{
 				...games.highlights[2],
+				title: formatTypography(games.highlights[2].title, lang),
+				description: formatTypography(games.highlights[2].description, lang),
 				icon: UsersIcon,
 			},
 		]}
 	/>
 
 	<HobbyQuote
-		title={games.whyRpgTitle}
-		quote={games.whyRpg}
+		title={formatTypography(games.whyRpgTitle, lang)}
+		quote={formatTypography(games.whyRpg, lang)}
 	/>
 
 	<HobbyPageSection
 		id="tabletop-games-stories"
-		title={games.storiesTitle}
-		introduction={games.storiesIntroduction}
+		title={formatTypography(games.storiesTitle, lang)}
+		introduction={formatTypography(games.storiesIntroduction, lang)}
 	>
 		<div class="tabletop-game-stories">
 			{
 				games.stories.map((story, index) => (
 					<HobbyStoryCard
-						title={story.title}
-						summary={story.summary}
-						paragraphs={story.paragraphs}
+						title={formatTypography(story.title, lang)}
+						summary={formatTypography(story.summary, lang)}
+						paragraphs={story.paragraphs.map((paragraph) =>
+							formatTypography(paragraph, lang)
+						)}
 						image={
 							index === 0
 								? RpgDiceImage
@@ -132,7 +143,7 @@ const t = getTranslations(lang);
 
 	<HobbyPageSection
 		id="tabletop-games-beyond-playing"
-		title={games.beyondPlayingTitle}
+		title={formatTypography(games.beyondPlayingTitle, lang)}
 	>
 		<div class="beyond-playing-grid">
 			{
@@ -153,11 +164,11 @@ const t = getTranslations(lang);
 
 						<div class="beyond-playing-card-content">
 							<h3 class="beyond-playing-card-title">
-								{item.title}
+								{formatTypography(item.title, lang)}
 							</h3>
 
 							<p class="beyond-playing-card-description">
-								{item.description}
+								{formatTypography(item.description, lang)}
 							</p>
 						</div>
 					</article>

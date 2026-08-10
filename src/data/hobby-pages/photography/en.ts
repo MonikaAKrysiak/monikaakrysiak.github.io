@@ -6,9 +6,9 @@ export const photography = {
 
 		"When my children were born, photography became my window to the outside world. I had a Samsung Galaxy Zoom, which meant I always had a camera close at hand and could take macro photographs whenever an interesting moment appeared.",
 
-		"Macro photography is still my favourite, although I also enjoy landscapes and architecture. I rarely photograph people — I prefer to leave that to the professionals.",
+		"Macro photography is still my favourite, although I also enjoy landscapes and architecture. I rarely photograph people - I prefer to leave that to the professionals.",
 
-		"Instagram became a small escape during long evenings spent rocking babies to sleep. Today I am slowly returning to photography and sharing images again. The best photographs usually come from an unplanned moment — or from a visit to the zoo.",
+		"Instagram became a small escape during long evenings spent rocking babies to sleep. Today I am slowly returning to photography and sharing images again. The best photographs usually come from an unplanned moment - or from a visit to the zoo.",
 	],
 
 	externalLink: {

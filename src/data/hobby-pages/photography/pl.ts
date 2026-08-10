@@ -6,9 +6,9 @@ export const photography = {
 
 		"Kiedy urodziły się moje dzieci, fotografia stała się moim oknem na świat. Miałam telefon Samsung Galaxy Zoom, dzięki któremu aparat był zawsze pod ręką i mogłam robić zdjęcia makro, gdy tylko pojawiał się ciekawy moment.",
 
-		"Makrofotografia nadal jest moją ulubioną dziedziną, ale lubię również fotografować krajobrazy i architekturę. Rzadko robię zdjęcia ludziom — wolę zostawić to profesjonalistom.",
+		"Makrofotografia nadal jest moją ulubioną dziedziną, ale lubię również fotografować krajobrazy i architekturę. Rzadko robię zdjęcia ludziom - wolę zostawić to profesjonalistom.",
 
-		"Instagram był dla mnie małą odskocznią podczas długich wieczorów spędzanych na kołysaniu niemowląt do snu. Dziś powoli wracam do fotografowania i publikowania zdjęć. Najlepsze kadry zwykle powstają przypadkiem — albo podczas wizyty w zoo.",
+		"Instagram był dla mnie małą odskocznią podczas długich wieczorów spędzanych na kołysaniu niemowląt do snu. Dziś powoli wracam do fotografowania i publikowania zdjęć. Najlepsze kadry zwykle powstają przypadkiem - albo podczas wizyty w zoo.",
 	],
 
 	externalLink: {

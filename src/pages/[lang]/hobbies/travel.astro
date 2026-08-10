@@ -10,6 +10,7 @@ import HobbyHighlights from "../../../components/HobbyHighlights.astro";
 import HobbyQuote from "../../../components/HobbyQuote.astro";
 import InteractiveFigure from "../../../components/InteractiveFigure.astro";
 
+import { formatTypography } from "../../../utils/typography";
 import {
 	getTravel,
 	getTravelNavigation,
@@ -86,24 +87,28 @@ const travelGalleryImages = [
 
 	<HobbyPageHeader
 		id="travel-about"
-		title={travel.title}
-		introduction={travel.introduction}
+		title={formatTypography(travel.title, lang)}
+		introduction={travel.introduction.map((paragraph) =>
+			formatTypography(paragraph, lang)
+		)}
 	/>
 
 	<HobbyHighlights
-		title={travel.highlightsTitle}
+		title={formatTypography(travel.highlightsTitle, lang)}
 		items={travel.highlights.map((highlight) => ({
 			...highlight,
+			title: formatTypography(highlight.title, lang),
+			description: formatTypography(highlight.description, lang),
 			icon: TravelIcon,
 		}))}
 	/>
 
-	<HobbyPageSection title={travel.originTitle}>
+	<HobbyPageSection title={formatTypography(travel.originTitle, lang)}>
 		<div class="travel-origin">
 			<div class="travel-origin-content">
 				{
 					travel.originParagraphs.map((paragraph) => (
-						<p>{paragraph}</p>
+						<p>{formatTypography(paragraph, lang)}</p>
 					))
 				}
 			</div>
@@ -119,8 +124,8 @@ const travelGalleryImages = [
 
 	<HobbyPageSection
 		id="travel-stories"
-		title={travel.storiesTitle}
-		introduction={travel.storiesIntroduction}
+		title={formatTypography(travel.storiesTitle, lang)}
+		introduction={formatTypography(travel.storiesIntroduction, lang)}
 	>
 		<div class="travel-stories">
 			{
@@ -132,11 +137,11 @@ const travelGalleryImages = [
 							</p>
 
 							<h3 class="travel-story-title">
-								{story.title}
+								{formatTypography(story.title, lang)}
 							</h3>
 
 							<p class="travel-story-summary">
-								{story.summary}
+								{formatTypography(story.summary, lang)}
 							</p>
 						</div>
 
@@ -148,7 +153,7 @@ const travelGalleryImages = [
 							<div class="travel-story-content">
 								{
 									story.paragraphs.map((paragraph) => (
-										<p>{paragraph}</p>
+										<p>{formatTypography(paragraph, lang)}</p>
 									))
 								}
 							</div>
@@ -159,15 +164,17 @@ const travelGalleryImages = [
 		</div>
 	</HobbyPageSection>
 
-	<HobbyQuote quote={travel.quote} />
+	<HobbyQuote quote={formatTypography(travel.quote, lang)} />
 
-	<HobbyPageSection title={travel.lookingAheadTitle}>
+	<HobbyPageSection
+		title={formatTypography(travel.lookingAheadTitle, lang)}
+	>
 		<div class="travel-plans">
 			{
 				travel.lookingAhead.map((item) => (
 					<article class="travel-plan">
-						<h3>{item.title}</h3>
-						<p>{item.description}</p>
+						<h3>{formatTypography(item.title, lang)}</h3>
+						<p>{formatTypography(item.description, lang)}</p>
 					</article>
 				))
 			}
@@ -176,8 +183,8 @@ const travelGalleryImages = [
 
 	<HobbyPageSection
 		id="travel-gallery"
-		title={travel.galleryTitle}
-		introduction={travel.galleryIntroduction}
+		title={formatTypography(travel.galleryTitle, lang)}
+		introduction={formatTypography(travel.galleryIntroduction, lang)}
 	>
 		<div
 			class="travel-gallery"
@@ -244,11 +251,12 @@ const travelGalleryImages = [
 
 		<div class="travel-external">
 			<p class="travel-external-description">
-				{
+				{formatTypography(
 					lang === "pl"
 						? "Więcej tras i zdjęć z naszych podróży publikuję na Stravie i Instagramie."
-						: "I share more routes and photographs from our travels on Strava and Instagram."
-				}
+						: "I share more routes and photographs from our travels on Strava and Instagram.",
+					lang
+				)}
 			</p>
 
 			<div class="travel-external-links">

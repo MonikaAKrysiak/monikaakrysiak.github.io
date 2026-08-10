@@ -66,7 +66,7 @@ export const en = {
 	},
 
 	externalLink: {
-		opensInNewTab: " — opens in a new tab",
+		opensInNewTab: " - opens in a new tab",
 	},
 
 	skipLink: {

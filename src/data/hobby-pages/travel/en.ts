@@ -54,11 +54,11 @@ export const en: TravelPageContent = {
 				"Our tenth wedding anniversary became the beginning of a new tradition.",
 
 			paragraphs: [
-				"We wanted to celebrate our tenth wedding anniversary in a special way. Instead of booking a hotel or flying abroad, we decided to set off on our first bikepacking trip together. We chose a route relatively close to home — just in case we discovered we'd overestimated our abilities.",
+				"We wanted to celebrate our tenth wedding anniversary in a special way. Instead of booking a hotel or flying abroad, we decided to set off on our first bikepacking trip together. We chose a route relatively close to home - just in case we discovered we'd overestimated our abilities.",
 
 				"We didn't really know what to expect. Even forty kilometres a day seemed like quite a challenge, especially with luggage and sightseeing planned along the way. We set off later than expected on the first day because my husband had to stay longer at work, so we didn't join the actual trail until we reached the area around Żarki.",
 
-				"We quickly discovered that bikepacking isn't about covering as many kilometres as possible. It's about being able to stop whenever something catches your attention. Pilcza Castle in Smoleń — the castle we'd seen recommended least often — turned out to be our favourite, while the Kraków Valleys and the area around Ojców completely won us over.",
+				"We quickly discovered that bikepacking isn't about covering as many kilometres as possible. It's about being able to stop whenever something catches your attention. Pilcza Castle in Smoleń - the castle we'd seen recommended least often - turned out to be our favourite, while the Kraków Valleys and the area around Ojców completely won us over.",
 
 				"A punctured inner tube in the middle of a cornfield and temperatures approaching forty degrees while cycling past fields of sunflowers also became part of the memories. By the time we came home, we were no longer wondering whether we could do it. We were already planning the next anniversary trip.",
 			],
@@ -70,7 +70,7 @@ export const en: TravelPageContent = {
 				"An unforgettable route that was worth every stressful moment.",
 
 			paragraphs: [
-				"We'd heard that Velo Czorsztyn and Velo Dunajec were among the most beautiful cycling routes in Poland. Having ridden them ourselves, we wholeheartedly agree — with all four limbs.",
+				"We'd heard that Velo Czorsztyn and Velo Dunajec were among the most beautiful cycling routes in Poland. Having ridden them ourselves, we wholeheartedly agree - with all four limbs.",
 
 				"The trip almost ended before it even began. Despite buying our tickets a month in advance, it initially seemed there was no room for our bikes on the delayed overnight train. After a stressful conversation with the conductor, we discovered there were empty bike hooks on the other side of the carriage. My husband ended up carrying both fully loaded bikes over the passengers' heads.",
 

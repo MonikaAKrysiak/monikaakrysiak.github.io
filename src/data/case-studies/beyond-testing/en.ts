@@ -3,7 +3,7 @@ export const beyondTesting = {
 		title: "Beyond Testing",
 
 		summary:
-			"Quality improves when testers understand products, people and processes—not just requirements.",
+			"Quality improves when testers understand products, people and processes-not just requirements.",
 
 		focusAreas: [
 			"Quality Engineering",
