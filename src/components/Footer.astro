@@ -35,9 +35,86 @@ const currentYear = new Date().getFullYear();
             variant="footer"
         />
 
-        <p class="footer-copyright">
-            &copy; {currentYear}
-            <span class="footer-name">Monika Krysiak</span>
-        </p>
+        <div class="footer-meta">
+            <p class="footer-copyright">
+                &copy; {currentYear}
+                <span class="footer-name">Monika Krysiak</span>
+            </p>
+
+            <div class="ai-disclosure">
+                <button
+                    class="ai-disclosure-trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="ai-disclosure-content"
+                >
+                    {t.footer.aiDisclosure}
+                    <span aria-hidden="true">ⓘ</span>
+                </button>
+
+                <div
+                    id="ai-disclosure-content"
+                    class="ai-disclosure-content"
+                    role="tooltip"
+                    hidden
+                >
+                    {t.footer.aiDisclosureText}
+                </div>
+            </div>
+        </div>
 	</div>
 </footer>
+
+<script>
+    const disclosure = document.querySelector(".ai-disclosure");
+
+    if (disclosure) {
+        const trigger = disclosure.querySelector<HTMLButtonElement>(
+            ".ai-disclosure-trigger"
+        );
+
+        const content = disclosure.querySelector<HTMLElement>(
+            ".ai-disclosure-content"
+        );
+
+        if (trigger && content) {
+            const open = () => {
+                content.hidden = false;
+                trigger.setAttribute("aria-expanded", "true");
+            };
+
+            const close = () => {
+                content.hidden = true;
+                trigger.setAttribute("aria-expanded", "false");
+            };
+
+            trigger.addEventListener("mouseenter", open);
+            trigger.addEventListener("focus", open);
+
+            disclosure.addEventListener("mouseleave", close);
+
+            trigger.addEventListener("click", () => {
+                if (content.hidden) {
+                    open();
+                } else {
+                    close();
+                }
+            });
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    close();
+                }
+            });
+
+            document.addEventListener("click", (event) => {
+                if (
+                    event.target instanceof Node &&
+                    !disclosure.contains(event.target)
+                ) {
+                    close();
+                }
+            });
+        }
+    }
+</script>

@@ -55,6 +55,9 @@ export const pl = {
 		designedWith: "Zaprojektowane z myślą o:",
 		designPrinciples:
 			"Dostępności • Bezpieczeństwie",
+		aiDisclosure: "Wykorzystanie AI",
+		aiDisclosureText:
+			"AI wykorzystuję jako narzędzie wspierające przy tworzeniu wybranych ilustracji oraz anonimizacji materiałów prezentowanych w case studies. Opisane w portfolio doświadczenie, projekty i praca odzwierciedlają moje rzeczywiste działania.",
 	},
 
 	hobbies: {

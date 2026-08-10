@@ -54,6 +54,9 @@ export const en = {
 		designedWith: "Designed with:",
 		designPrinciples:
 			"Accessibility • Security by Default",
+		aiDisclosure: "AI disclosure",
+		aiDisclosureText:
+			"Generative AI is used as a supporting tool for selected illustrations and for anonymising materials presented in case studies. My experience, projects and work described in this portfolio reflect my actual activities.",
 	},
 
 	hobbies: {
