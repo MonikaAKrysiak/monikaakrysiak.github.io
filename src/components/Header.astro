@@ -298,6 +298,16 @@ const navigationLabel =
 		setActiveNavigationLink(
 			activeSection.id,
 		);
+
+		const activeHash = `#${activeSection.id}`;
+
+		if (window.location.hash !== activeHash) {
+			window.history.replaceState(
+				null,
+				"",
+				`${window.location.pathname}${window.location.search}${activeHash}`,
+			);
+		}
 	}
 
 	let isScrollUpdatePending = false;
@@ -326,5 +336,15 @@ const navigationLabel =
 		requestActiveSectionUpdate,
 	);
 
-	updateActiveSection();
+	const initialSectionId = window.location.hash.slice(1);
+
+	const hasInitialSection = observedSections.some(
+		({ section }) => section.id === initialSectionId,
+	);
+
+	if (hasInitialSection) {
+		setActiveNavigationLink(initialSectionId);
+	} else {
+		updateActiveSection();
+	}
 </script>

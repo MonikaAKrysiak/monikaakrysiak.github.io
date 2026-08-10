@@ -20,6 +20,10 @@ export type TravelPlan = {
 	description: string;
 };
 
+export type TravelImage = {
+	alt: string;
+};
+
 export type TravelPageContent = {
 	title: string;
 	introduction: string[];
@@ -29,6 +33,7 @@ export type TravelPageContent = {
 
 	originTitle: string;
 	originParagraphs: string[];
+	originImage: TravelImage;
 
 	storiesTitle: string;
 	storiesIntroduction: string;
@@ -41,7 +46,7 @@ export type TravelPageContent = {
 
 	galleryTitle: string;
 	galleryIntroduction: string;
-	galleryImages: TravelGalleryImage[];
+	galleryImages: TravelImage[];
 
 	stravaLabel: string;
 	instagramLabel: string;
@@ -72,8 +77,4 @@ export const getTravelNavigation = (lang: Language) => {
 			href: "#travel-gallery",
 		},
 	];
-};
-
-export type TravelGalleryImage = {
-	alt: string;
 };

@@ -11,6 +11,7 @@ interface Props {
 	readLabel: string;
 	hideLabel: string;
 	imagePosition?: string;
+	imageFit?: "cover" | "contain";
 }
 
 const {
@@ -22,17 +23,19 @@ const {
 	readLabel,
 	hideLabel,
 	imagePosition = "center",
+	imageFit = "cover",
 } = Astro.props;
 ---
 
 <article class="hobby-story-card">
 	<Image
-		class="hobby-story-card-image"
 		src={image}
 		alt={imageAlt}
-		width={320}
-		height={220}
-		style={`object-position: ${imagePosition};`}
+		class="hobby-story-card-image"
+		style={`
+			object-position: ${imagePosition};
+			object-fit: ${imageFit};
+		`}
 	/>
 
 	<div class="hobby-story-card-body">

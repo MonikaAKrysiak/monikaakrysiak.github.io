@@ -28,6 +28,7 @@ import TravelOgrodzieniecCastleImage from "../../../assets/hobbies/travel/travel
 import TravelPieskowaSkalaImage from "../../../assets/hobbies/travel/travel-pieskowa-skala-view.jpg";
 import TravelRanchEveningImage from "../../../assets/hobbies/travel/travel-ranch-evening.jpg";
 import TravelTrzyKoronyImage from "../../../assets/hobbies/travel/travel-trzy-korony-panorama.jpg";
+import TravelKowalNaKoleMedals from "../../../assets/hobbies/travel/travel-kowal-na-kole-medals.jpg";
 
 export const getStaticPaths: GetStaticPaths = () => {
 	return [
@@ -99,11 +100,20 @@ const travelGalleryImages = [
 
 	<HobbyPageSection title={travel.originTitle}>
 		<div class="travel-origin">
-			{
-				travel.originParagraphs.map((paragraph) => (
-					<p>{paragraph}</p>
-				))
-			}
+			<div class="travel-origin-content">
+				{
+					travel.originParagraphs.map((paragraph) => (
+						<p>{paragraph}</p>
+					))
+				}
+			</div>
+
+			<InteractiveFigure
+				lang={lang}
+				src={TravelKowalNaKoleMedals}
+				alt={travel.originImage.alt}
+				className="travel-origin-figure"
+			/>
 		</div>
 	</HobbyPageSection>
 
@@ -216,7 +226,7 @@ const travelGalleryImages = [
 					<h3>
 						{
 							lang === "pl"
-								? "Nowe wspomnienia"
+								? "Nowe historie"
 								: "New memories"
 						}
 					</h3>
@@ -290,12 +300,30 @@ const travelGalleryImages = [
 <style>
 	.travel-origin {
 		display: grid;
+		gap: var(--space-xl);
+	}
+
+	.travel-origin-content {
+		display: grid;
 		gap: var(--space-md);
 	}
 
-	.travel-origin p {
+	.travel-origin-content p {
 		margin: 0;
 		line-height: var(--line-height-body);
+	}
+
+	.travel-origin :global(.interactive-figure) {
+		margin: 0;
+	}
+
+	.travel-origin :global(.interactive-figure-image) {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+
+		object-fit: cover;
+
+		border-radius: var(--space-sm);
 	}
 
 	.travel-stories {
@@ -523,8 +551,8 @@ const travelGalleryImages = [
 		align-items: center;
 		justify-content: center;
 
-		aspect-ratio: 4 / 3;
 		width: 100%;
+		min-height: 100%;
 
 		padding: var(--space-xl);
 
@@ -586,6 +614,18 @@ const travelGalleryImages = [
 	}
 
 	@media (min-width: 48rem) {
+		.travel-origin {
+			grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.85fr);
+			gap: var(--space-2xl);
+			align-items: center;
+		}
+
+		.travel-origin :global(.interactive-figure) {
+			width: 100%;
+			max-width: 26rem;
+			justify-self: center;
+		}
+
 		.travel-stories {
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 			align-items: start;

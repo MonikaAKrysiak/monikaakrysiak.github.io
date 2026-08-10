@@ -26,6 +26,8 @@ import UsersIcon from "../../../assets/icons/users.svg";
 import RpgDiceImage from "../../../assets/hobbies/tabletop-games/tabletop-games-rpg-dice.jpg";
 import ZombieMiniaturesImage from "../../../assets/hobbies/tabletop-games/tabletop-games-painted-miniatures.jpg";
 import LegoKingfisherImage from "../../../assets/hobbies/tabletop-games/tabletop-games-lego-kingfisher.jpg";
+import ValentiaImage from "../../../assets/hobbies/tabletop-games/tabletop-games-Valentia.png";
+import SophieChoicesImage from "../../../assets/hobbies/tabletop-games/tabletop-games-sophie-choices.png";
 
 export const getStaticPaths: GetStaticPaths = () => {
 	return [
@@ -95,16 +97,31 @@ const t = getTranslations(lang);
 						summary={story.summary}
 						paragraphs={story.paragraphs}
 						image={
-							index === 1
-								? ZombieMiniaturesImage
-								: RpgDiceImage
+							index === 0
+								? RpgDiceImage
+								: index === 1
+									? ValentiaImage
+									: SophieChoicesImage
 						}
-						imageAlt=""
+						imageAlt={
+							index === 0
+								? lang === "pl"
+									? "Kości do papierowych gier RPG"
+									: "Dice used for tabletop role-playing games"
+								: index === 1
+									? lang === "pl"
+										? "Herb nowego rodu Valentia stworzonego przez Sophie"
+										: "Coat of arms of the new House of Valentia founded by Sophie"
+									: lang === "pl"
+										? "Sophie stojąca przed dwiema prowadzącymi w różne strony drogami"
+										: "Sophie standing before two paths leading in different directions"
+						}
 						imagePosition={
 							index === 0
 								? "center 35%"
 								: "center"
 						}
+						imageFit={index === 1 ? "contain" : "cover"}
 						readLabel={t.hobbies.readFullStory}
 						hideLabel={t.hobbies.hideStory}
 					/>

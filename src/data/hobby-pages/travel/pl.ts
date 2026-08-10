@@ -4,9 +4,9 @@ export const pl: TravelPageContent = {
 	title: "Podróże",
 
 	introduction: [
-		"Uwielbiam odkrywać Polskę aktywnie — na rowerze, kajaku i pieszo. Podróżowanie nie polega dla mnie na kolekcjonowaniu odwiedzonych krajów. Wolę poznawać piękne miejsca we własnym tempie i wracać z historiami, które zostają na długo.",
+		"Uwielbiam odkrywać Polskę aktywnie - na rowerze, kajaku i pieszo. Podróżowanie nie polega dla mnie na kolekcjonowaniu odwiedzonych krajów. Wolę poznawać piękne miejsca we własnym tempie i wracać z historiami, które zostają z nami na długo.",
 
-		"Każdego roku z mężem świętujemy rocznicę ślubu podczas wspólnej podróży. To, co zaczęło się od bikepackingowego eksperymentu, stopniowo stało się jedną z naszych ulubionych tradycji.",
+		"Już czwarty rok z rzędu wraz z mężem świętujemy rocznicę ślubu wspólną podróżą. To, co zaczęło się od bikepackingowego eksperymentu, stopniowo stało się jedną z naszych ulubionych tradycji.",
 	],
 
 	highlightsTitle: "Jak podróżujemy",
@@ -15,7 +15,7 @@ export const pl: TravelPageContent = {
 		{
 			title: "Bikepacking",
 			description:
-				"Rower daje nam swobodę zatrzymania się wszędzie tam, gdzie coś przyciągnie naszą uwagę — przy zamku, rzece czy niewielkiej miejscowości z dala od głównych dróg.",
+				"Rower daje nam swobodę zatrzymania się wszędzie tam, gdzie coś przyciągnie naszą uwagę - przy zamku, nad rzeką czy w niewielkiej miejscowości z dala od głównych dróg.",
 		},
 		{
 			title: "Aktywnie",
@@ -32,10 +32,14 @@ export const pl: TravelPageContent = {
 	originTitle: "Od wyścigów do bikepackingu",
 
 	originParagraphs: [
-		"Do jazdy na rowerze wróciłam po rozpoczęciu pracy w firmie, w której wiele osób dzieliło tę samą pasję. Przyjazne rankingi przejechanych kilometrów zachęciły mnie do częstszej jazdy, a niedługo później zaczęłam brać udział w wyścigach na dystansie około pięćdziesięciu kilometrów.",
+		"Do jazdy na rowerze wróciłam po rozpoczęciu pracy w firmie, w której wiele osób dzieliło tę samą pasję. Rankingi przejechanych kilometrów zachęciły mnie do częstszej jazdy, a niedługo później zaczęłam brać udział w wyścigach organizowanych przez Kowala Na Kole. Trasy miały około pięćdziesięciu kilometrów, a za udział i zmieszczenie się w wyznaczonym czasie można było zdobyć wykute przez niego medale. W pierwszym roku zdobyłam jeden, a w kolejnym już trzy.",
 
-		"To podsunęło nam pewien pomysł: skoro jesteśmy w stanie przejechać taki dystans w ciągu jednego dnia, być może możemy zamienić go w dłuższą podróż. W 2023 roku, z okazji dziesiątej rocznicy ślubu, postanowiliśmy to sprawdzić.",
+		"To podsunęło mi pewien pomysł: skoro jestem w stanie przejechać taki dystans w ciągu kilku godzin, może da się zamienić go w dłuższą podróż? W 2023 roku, z okazji dziesiątej rocznicy ślubu, postanowiliśmy to sprawdzić.",
 	],
+
+	originImage: {
+		alt: "Medale wykute przez Kowala Na Kole za ukończenie wyścigów rowerowych",
+	},
 
 	storiesTitle: "Nasza rocznicowa tradycja",
 
@@ -52,7 +56,7 @@ export const pl: TravelPageContent = {
 			paragraphs: [
 				"Naszą dziesiątą rocznicę ślubu chcieliśmy uczcić w wyjątkowy sposób. Zamiast wyjechać do hotelu czy polecieć za granicę, postanowiliśmy wyruszyć na pierwszą wspólną wyprawę bikepackingową. Wybraliśmy trasę stosunkowo blisko domu — na wypadek, gdyby okazało się, że przeceniliśmy swoje możliwości.",
 
-				"Nie wiedzieliśmy jeszcze, czego się spodziewać. Nawet czterdzieści kilometrów dziennie wydawało się sporym wyzwaniem, zwłaszcza z bagażem i planem zwiedzania po drodze. Pierwszego dnia wyruszyliśmy później, ponieważ mój mąż musiał zostać dłużej w pracy, dlatego dołączyliśmy do szlaku dopiero w okolicach Żarek.",
+				"Nie wiedzieliśmy jeszcze, czego się spodziewać. Nawet czterdzieści kilometrów dziennie wydawało się sporym wyzwaniem, zwłaszcza z bagażem i planem zwiedzania po drodze. Pierwszego dnia wyruszyliśmy później, ponieważ mój mąż musiał zostać dłużej w pracy, dlatego dołączyliśmy do właściwego szlaku dopiero w okolicach Żarek.",
 
 				"Szybko odkryliśmy, że bikepacking nie polega na pokonywaniu jak największej liczby kilometrów. Chodzi o możliwość zatrzymania się wszędzie tam, gdzie coś przyciągnie naszą uwagę. Najrzadziej polecany zamek Pilcza w Smoleniu okazał się naszym ulubionym, a Dolinki Krakowskie i okolice Ojcowa całkowicie nas zachwyciły.",
 
@@ -70,9 +74,9 @@ export const pl: TravelPageContent = {
 
 				"Wyprawa niemal zakończyła się, zanim zdążyła się rozpocząć. Mimo biletów kupionych z miesięcznym wyprzedzeniem w opóźnionym nocnym pociągu pozornie zabrakło miejsca na nasze rowery. Po stresującej rozmowie z konduktorką okazało się, że po drugiej stronie wagonu znajdują się puste haki. Mąż przenosił oba obciążone rowery nad głowami pasażerów.",
 
-				"Początkowo planowałam jechać zgodnie z przebiegiem Velo Dunajec w kierunku Tarnowa. Ostatecznie zmieniłam zakończenie trasy na Kraków, ponieważ pociągi z Tarnowa jeździły zbyt rzadko i nie mieliśmy pewności, czy znajdzie się dla nas miejsce. Z Krakowa kolejne połączenia odjeżdżały średnio co godzinę lub półtorej.",
+				"Początkowo planowałam jechać zgodnie z przebiegiem Velo Dunajec w kierunku Tarnowa. Ostatecznie zmieniłam zakończenie trasy na Kraków, ponieważ pociągi z Tarnowa jeździły zbyt rzadko i nie mieliśmy pewności, czy znajdzie się dla nas miejsce.",
 
-				"Po przyjeździe do Zakopanego najpierw zwiedziliśmy miasto, a dopiero później rozpoczęliśmy właściwą wyprawę. Tatry, zamek w Czorsztynie, Trzy Korony i widoki po drodze wynagrodziły całe planowanie i wcześniejszy stres. Do dziś pamiętamy również lody podane w croissancie, znalezione w niewielkiej przydrożnej budce.",
+				"Po przyjeździe do Zakopanego najpierw zwiedziliśmy miasto, a dopiero później rozpoczęliśmy właściwą wyprawę. Tatry, zamek w Czorsztynie, Trzy Korony i widoki po drodze wynagrodziły całe planowanie i wcześniejszy stres. Do dziś pamiętamy też lody podane w croissancie, znalezione w niewielkiej przydrożnej budce. Mieliśmy iść na obiad, ale jedyna restauracja we wsi była zamknięta, więc skończyło się na lodach i hot dogu ze stacji benzynowej. 😉",
 			],
 		},
 		{
@@ -82,19 +86,18 @@ export const pl: TravelPageContent = {
 				"Spokojniejsza wyprawa, która przypomniała nam, dlaczego wspólnie spędzony czas jest najważniejszy.",
 
 			paragraphs: [
-				"Tym razem mieliśmy niewiele urlopu, dlatego postanowiliśmy maksymalnie wykorzystać dostępny czas. Zrezygnowaliśmy z pociągów i ruszyliśmy bezpośrednio z domu, planując trasę, która również na rowerach miała doprowadzić nas z powrotem.",
+				"Tym razem mieliśmy niewiele urlopu, dlatego postanowiliśmy maksymalnie wykorzystać dostępny czas. Zrezygnowaliśmy z pociągów i ruszyliśmy bezpośrednio z domu, planując pętlę, która miała doprowadzić nas z powrotem na rowerach.",
 
 				"Choć jechaliśmy Szlakiem Liswarty, samej rzeki widzieliśmy zaskakująco niewiele. Trasa była mniej widowiskowa, niż oczekiwaliśmy, ale zaoferowała nam coś innego: puste wiejskie drogi, lasy, pola i małe miejscowości, przez które często przejeżdżaliśmy zupełnie sami.",
 
-				"Po dniu, podczas którego przejechaliśmy siedemdziesiąt siedem kilometrów, zaplanowaliśmy spokojniejszy etap, żeby dać sobie czas na odpoczynek. Nocowaliśmy przy stadninie koni, a później w pobliżu pałacu w Nieznanicach. Pokój w cichym budynku niemal w lesie okazał się nawet wygodniejszy niż nocleg w samym pałacu.",
+				"Po dniu, podczas którego przejechaliśmy siedemdziesiąt siedem kilometrów, zaplanowaliśmy spokojniejszy etap, żeby dać sobie czas na odpoczynek. Nocowaliśmy przy stadninie koni, a później w pobliżu pałacu w Nieznanicach. Pokój w cichym budynku niemal w środku lasu okazał się nawet wygodniejszy niż nocleg w samym pałacu.",
 
 				"Ta podróż przypomniała nam, że trasa nie musi oferować słynnych atrakcji ani spektakularnych widoków, żeby była ważna. Czasem największym luksusem są cisza, bliskość i kilka nieprzerwanych dni spędzonych razem.",
 			],
 		},
 	],
 
-	quote:
-		"Cel zmienia się każdego roku. Tradycja pozostaje ta sama.",
+	quote: "Cel zmienia się każdego roku. Tradycja pozostaje ta sama.",
 
 	lookingAheadTitle: "Co dalej?",
 

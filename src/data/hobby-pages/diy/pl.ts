@@ -4,9 +4,9 @@ export const pl: DiyPageContent = {
 	title: "Tworzenie z serca",
 
 	introduction: [
-		"Najbardziej lubię tworzyć rzeczy z myślą o konkretnych osobach. Własnoręcznie wykonany prezent to dla mnie coś więcej niż kolejny przedmiot — to czas, uwaga i serce, które ktoś postanowił komuś podarować.",
+		"Najbardziej lubię tworzyć rzeczy z myślą o konkretnych osobach. Własnoręcznie wykonany prezent to dla mnie coś więcej niż kolejny przedmiot - to czas, uwaga i serce, które ktoś postanowił podarować drugiej osobie.",
 
-		"Lubię, kiedy moje projekty są nie tylko ładne, ale też znajdują swoje miejsce w codziennym życiu: na drzwiach dziecięcych pokoi, na ścianie, w pudełku z pamiątkami albo jako praktyczny element wystroju.",
+		"Lubię, kiedy moje projekty są nie tylko ładne, ale też znajdują swoje miejsce w codziennym życiu: na drzwiach dziecięcych pokoi, na ścianie, jako pudełko z pamiątkami albo jako praktyczny element wystroju.",
 	],
 
 	highlightsTitle: "Co lubię najbardziej",
@@ -20,12 +20,12 @@ export const pl: DiyPageContent = {
 		{
 			title: "Różne techniki",
 			description:
-				"Haft, włóczka, koraliki, malowanie figurek, diamond painting czy scrapbooking — lubię próbować różnych sposobów tworzenia.",
+				"Haft, włóczka, koraliki, malowanie figurek, diamond painting czy scrapbooking - lubię próbować różnych sposobów tworzenia.",
 		},
 		{
 			title: "Praktyczne zastosowanie",
 			description:
-				"Najbardziej cieszą mnie projekty, które nie kończą jako przypadkowe ozdoby, ale naprawdę stają się częścią czyjegoś domu.",
+				"Najbardziej cieszą mnie projekty, które nie zostają tylko ozdobami, ale naprawdę stają się częścią czyjegoś domu.",
 		},
 		{
 			title: "Pomysły tu i teraz",
@@ -47,7 +47,7 @@ export const pl: DiyPageContent = {
 	storiesTitle: "Historie moich projektów",
 
 	storiesIntroduction:
-		"Niektóre projekty pamiętam ze względu na ich skalę, inne przez osoby, dla których powstały. Każdy z nich opowiada trochę inną historię.",
+		"Niektóre projekty pamiętam ze względu na ich skalę, inne ze względu na osoby, dla których powstały. Każdy z nich opowiada trochę inną historię.",
 
 	stories: [
 		{
@@ -59,7 +59,7 @@ export const pl: DiyPageContent = {
 			paragraphs: [
 				"Pod koniec gimnazjum chciałam zrobić coś naprawdę ciekawego i wybrałam haft przedstawiający „Stańczyka” Jana Matejki. Wydawał mi się idealnym wyzwaniem: efektownym, szczegółowym i zupełnie innym od prostszych projektów, które wykonywałam wcześniej.",
 
-				"Szybko okazało się, że trochę mnie przerósł. Projekt był bardzo czasochłonny i wymagał znacznie więcej cierpliwości, niż początkowo zakładałam. Nie porzuciłam go jednak całkowicie — wracałam do niego i kończyłam już w czasie liceum.",
+				"Szybko okazało się, że trochę mnie przerósł. Projekt był bardzo czasochłonny i wymagał znacznie więcej cierpliwości, niż początkowo zakładałam. Nie porzuciłam go jednak całkowicie - wracałam do niego co jakiś czas i skończyłam dopiero w liceum.",
 
 				"Do dziś jest to jeden z najbardziej efektownych projektów, jakie zrobiłam, ale też najlepsze przypomnienie, że entuzjazm na początku nie zawsze oznacza szybki finał.",
 			],
@@ -71,11 +71,11 @@ export const pl: DiyPageContent = {
 				"Haftowane powłoczki z żyrafą i zebrą stały się początkiem dwóch dziecięcych motywów.",
 
 			paragraphs: [
-				"Kiedy byłam w ciąży, wyhaftowałam dla córek powłoczki na poduszki. Dla Zosi wybrałam zebrę — litera „Z” od razu podsunęła mi ten pomysł. Dla Ani nie chciałam wybierać aligatora, więc pojawiła się żyrafa.",
+				"Kiedy byłam w ciąży, wyhaftowałam dla córek powłoczki na poduszki. Dla Zosi wybrałam zebrę - litera „Z” od razu podsunęła mi ten pomysł. Przy Ani naturalnym skojarzeniem z literą „A” był aligator, ale ten pomysł zupełnie mi nie pasował, więc ostatecznie pojawiła się żyrafa.",
 
-				"Z czasem te dwa zwierzęta zaczęły pomagać nam rozróżniać przestrzenie bliźniaczek. Motyw zebry i żyrafy pojawiał się później również na grzechotkach, pluszakach i innych rzeczach.",
+				"Z czasem te dwa zwierzęta zaczęły pomagać nam rozróżniać przestrzenie bliźniaczek. Motyw zebry i żyrafy pojawiał się później również na grzechotkach, pluszakach i innych przedmiotach.",
 
-				"Same poduszki były więc czymś więcej niż dekoracją. Stały się częścią opowieści o pierwszych miesiącach córek i małym systemem, który tworzyliśmy dla nich jeszcze przed narodzinami.",
+				"Same poduszki były więc czymś więcej niż dekoracją. Stały się częścią opowieści o pierwszych miesiącach córek i częścią małego systemu, który tworzyliśmy dla nich jeszcze przed narodzinami.",
 			],
 		},
 		{
@@ -89,7 +89,7 @@ export const pl: DiyPageContent = {
 
 				"Wiedziałam jednak, że lubi mroczne klimaty, więc zrobiłam mu z włóczki małego diabełka. Miał trochę „uprzytulnić” jego pokój, a jednocześnie pasować do rzeczy, które naprawdę lubił.",
 
-				"Bardzo się ucieszył. Diabełek nadal istnieje — dziś leży w pudełku z pamiątkami na strychu. To chyba najlepszy dowód na to, że czasem najprostszy własnoręczny prezent zostaje z kimś znacznie dłużej niż coś kupionego.",
+				"Bardzo się ucieszył. Diabełek nadal istnieje - dziś leży w pudełku z pamiątkami na strychu. To chyba najlepszy dowód na to, że czasem najprostszy własnoręcznie wykonany prezent zostaje z kimś znacznie dłużej niż coś kupionego.",
 			],
 		},
 	],
@@ -100,11 +100,11 @@ export const pl: DiyPageContent = {
 	lookingAheadTitle: "Co chcę zrobić w przyszłości?",
 
 	lookingAheadIntroduction:
-		"Najbardziej kusi mnie odkrywanie kolejnych technik, choć nie każda z nich od razu wydaje się oswojona.",
+		"Najbardziej kusi mnie odkrywanie kolejnych technik, choć niektóre z nich wciąż trochę mnie onieśmielają.",
 
 	lookingAhead: [
 		{
-			title: "Spróbować robienia dywanów",
+			title: "Tufting - technika tworzenia dywanów",
 			description:
 				"To technika, która od pewnego czasu najbardziej mnie ciekawi. Chciałabym sprawdzić, czy uda mi się stworzyć własny wzór od początku do końca.",
 		},
@@ -116,7 +116,7 @@ export const pl: DiyPageContent = {
 		{
 			title: "Oswoić nowe narzędzia",
 			description:
-				"Maszyna do szycia nadal mnie przeraża, choć moje córki zaczęły szyć samodzielnie już jako dziewięciolatki. Może kiedyś zamienimy się rolami i to one nauczą mnie.",
+				"Maszyna do szycia nadal mnie przeraża, choć moje córki zaczęły szyć samodzielnie już jako dziewięciolatki. Może kiedyś zamienimy się rolami i to one nauczą mnie szyć...",
 		},
 	],
 
