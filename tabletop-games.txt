@@ -45,18 +45,6 @@ const lang = Astro.params.lang as Language;
 const games = getGames(lang);
 const navigationItems = getTabletopGamesNavigation(lang);
 const t = getTranslations(lang);
-
-const tabletopHighlightIcons = {
-    books: BookIcon,
-    puzzles: PuzzleIcon,
-    community: UsersIcon,
-};
-
-const storyImages = {
-    rpgDice: RpgDiceImage,
-    valentia: ValentiaImage,
-    sophieChoices: SophieChoicesImage,
-};
 ---
 <SubpageLayout
 	lang={lang}
@@ -78,20 +66,26 @@ const storyImages = {
 
 	<HobbyHighlights
 		title={formatTypography(games.highlightsTitle, lang)}
-		items={games.highlights.map((highlight) => {
-    		const HighlightIcon = tabletopHighlightIcons[highlight.icon];
-
-			if (!HighlightIcon) {
-				return null;
-			}
-
-			return {
-				...highlight,
-				title: formatTypography(highlight.title, lang),
-				description: formatTypography(highlight.description, lang),
-				icon: HighlightIcon,
-			};
-		}).filter(Boolean)}
+		items={[
+			{
+				...games.highlights[0],
+				title: formatTypography(games.highlights[0].title, lang),
+				description: formatTypography(games.highlights[0].description, lang),
+				icon: BookIcon,
+			},
+			{
+				...games.highlights[1],
+				title: formatTypography(games.highlights[1].title, lang),
+				description: formatTypography(games.highlights[1].description, lang),
+				icon: PuzzleIcon,
+			},
+			{
+				...games.highlights[2],
+				title: formatTypography(games.highlights[2].title, lang),
+				description: formatTypography(games.highlights[2].description, lang),
+				icon: UsersIcon,
+			},
+		]}
 	/>
 
 	<HobbyQuote
@@ -106,21 +100,42 @@ const storyImages = {
 	>
 		<div class="tabletop-game-stories">
 			{
-				games.stories.map((story) => (
+				games.stories.map((story, index) => (
 					<HobbyStoryCard
 						title={formatTypography(story.title, lang)}
 						summary={formatTypography(story.summary, lang)}
 						paragraphs={story.paragraphs.map((paragraph) =>
 							formatTypography(paragraph, lang)
 						)}
-						image={storyImages[story.imageKey]}
-						imageAlt={story.imageAlt}
-						imagePosition={story.imagePosition}
-						imageFit={story.imageFit}
-							readLabel={t.hobbies.readFullStory}
-							hideLabel={t.hobbies.hideStory}
-							detailsGroupName="tabletop-stories"
-							/>
+						image={
+							index === 0
+								? RpgDiceImage
+								: index === 1
+									? ValentiaImage
+									: SophieChoicesImage
+						}
+						imageAlt={
+							index === 0
+								? lang === "pl"
+									? "Kości do papierowych gier RPG"
+									: "Dice used for tabletop role-playing games"
+								: index === 1
+									? lang === "pl"
+										? "Herb nowego rodu Valentia stworzonego przez Sophie"
+										: "Coat of arms of the new House of Valentia founded by Sophie"
+									: lang === "pl"
+										? "Sophie stojąca przed dwiema prowadzącymi w różne strony drogami"
+										: "Sophie standing before two paths leading in different directions"
+						}
+						imagePosition={
+							index === 0
+								? "center 35%"
+								: "center"
+						}
+						imageFit={index === 1 ? "contain" : "cover"}
+						readLabel={t.hobbies.readFullStory}
+						hideLabel={t.hobbies.hideStory}
+					/>
 				))
 			}
 		</div>
@@ -136,7 +151,6 @@ const storyImages = {
 					<article class="beyond-playing-card">
 						<div class="beyond-playing-card-image-wrapper">
 							<InteractiveFigure
-								id={`tabletop-beyond-${index}`}
 								lang={lang}
 								src={
 									index === 0
@@ -170,11 +184,18 @@ const storyImages = {
 			href: `/${lang}/hobbies/diy`,
 		}}
 		next={{
-			label: t.hobbies.photography,
+			label:
+				lang === "pl"
+					? "Fotografia"
+					: "Photography",
 			href: `/${lang}/hobbies/photography`,
 		}}
 		allHobbiesHref={`/${lang}/#hobbies`}
-		allHobbiesLabel={t.hobbies.viewAll}
+		allHobbiesLabel={
+			lang === "pl"
+				? "Zobacz wszystkie zainteresowania"
+				: "View all hobbies"
+		}
 	/>
 </SubpageLayout>
 

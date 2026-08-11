@@ -68,13 +68,11 @@ const t = getTranslations(lang);
 		externalId="photography-external"
 		lang={lang}
 		title={formatTypography(
-			lang === "pl"
-				? "Wybrane fotografie"
-				: "Selected photographs",
+			t.hobbies.selectedPhotographs,
 			lang
 		)}
 		images={photographyImages}
-		externalLink={{
+		externalLink={photography.externalLink && {
 			...photography.externalLink,
 			description: formatTypography(
 				photography.externalLink.description,
@@ -92,24 +90,14 @@ const t = getTranslations(lang);
 	<HobbyPageNavigation
 		lang={lang}
 		previous={{
-			label:
-				lang === "pl"
-					? "Gry stołowe"
-					: "Tabletop Games",
+			label: t.hobbies.tabletopGames,
 			href: `/${lang}/hobbies/tabletop-games`,
 		}}
 		next={{
-			label:
-				lang === "pl"
-					? "Podróże"
-					: "Travel",
+			label: t.hobbies.travel,
 			href: `/${lang}/hobbies/travel`,
 		}}
 		allHobbiesHref={`/${lang}/#hobbies`}
-		allHobbiesLabel={
-			lang === "pl"
-				? "Zobacz wszystkie zainteresowania"
-				: "View all hobbies"
-		}
+		allHobbiesLabel={t.hobbies.viewAll}
 	/>
 </SubpageLayout>

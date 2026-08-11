@@ -1,10 +1,12 @@
 ---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
 import EngineeringPrincipleCard from "./EngineeringPrincipleCard.astro";
 
 interface HighlightItem {
-	title: string;
-	description: string;
-	icon: any;
+    title: string;
+    description: string;
+    icon: AstroComponentFactory;
 }
 
 interface Props {

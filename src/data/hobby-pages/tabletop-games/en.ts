@@ -23,16 +23,19 @@ export const en = {
 
 	highlights: [
 		{
+			icon: "books",
 			title: "Stories",
 			description:
 				"Every game creates its own story. Some are full of tension, others are completely absurd, but the best ones are the stories we still talk about long after the game is over.",
 		},
 		{
+			icon: "puzzles",
 			title: "Problem-solving",
 			description:
 				"I enjoy situations that require planning together, making decisions and improvising when the original plan stops working. Finding a creative solution is often more satisfying to me than simply winning.",
 		},
 		{
+			icon: "community",
 			title: "Sharing the hobby",
 			description:
 				"Games have a way of bringing people together. Some of my favourite memories are simply the hours spent around a table with family and friends.",
@@ -51,6 +54,11 @@ export const en = {
 
 	stories: [
 		{
+			imageKey: "rpgDice",
+			imageAlt: "Dice used for tabletop role-playing games",
+			imagePosition: "center 35%",
+			imageFit: "cover",
+
 			title: "The auction that got out of hand",
 
 			summary:
@@ -66,6 +74,12 @@ export const en = {
 		},
 
 		{
+			imageKey: "valentia",
+			imageAlt:
+				"Coat of arms of the new House of Valentia founded by Sophie",
+			imagePosition: "center",
+			imageFit: "contain",
+
 			title: "Almost twenty years with one character",
 
 			summary:
@@ -89,6 +103,12 @@ export const en = {
 		},
 
 		{
+			imageKey: "sophieChoices",
+			imageAlt:
+				"Sophie standing before two paths leading in different directions",
+			imagePosition: "center",
+			imageFit: "cover",
+
 			title: "Impossible decisions",
 
 			summary:

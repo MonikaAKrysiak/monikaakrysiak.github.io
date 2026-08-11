@@ -103,7 +103,10 @@ const travelGalleryImages = [
 		}))}
 	/>
 
-	<HobbyPageSection title={formatTypography(travel.originTitle, lang)}>
+	<HobbyPageSection
+		title={formatTypography(travel.originTitle, lang)}
+		className="travel-origin-section"
+	>
 		<div class="travel-origin">
 			<div class="travel-origin-content">
 				{
@@ -191,8 +194,9 @@ const travelGalleryImages = [
 			aria-label={travel.galleryTitle}
 		>
 			{
-				travelGalleryImages.map((item) => (
+				travelGalleryImages.map((item, index) => (
 					<InteractiveFigure
+						id={`travel-gallery-${index}`}
 						lang={lang}
 						src={item.src}
 						alt={item.alt}
@@ -208,19 +212,11 @@ const travelGalleryImages = [
 					</p>
 
 					<h3>
-						{
-							lang === "pl"
-								? "Już wkrótce"
-								: "Coming soon"
-						}
+						{t.hobbies.comingSoon}
 					</h3>
 
 					<p>
-						{
-							lang === "pl"
-								? "Nasza pierwsza zagraniczna wyprawa."
-								: "Our first adventure outside Poland."
-						}
+						{t.hobbies.firstAdventureAbroad}
 					</p>
 				</div>
 			</article>
@@ -231,19 +227,11 @@ const travelGalleryImages = [
 					</p>
 
 					<h3>
-						{
-							lang === "pl"
-								? "Nowe historie"
-								: "New memories"
-						}
+						{t.hobbies.newMemories}
 					</h3>
 
 					<p>
-						{
-							lang === "pl"
-								? "To miejsce czeka na zdjęcia z Rumunii."
-								: "This spot is waiting for photographs from Romania."
-						}
+						{t.hobbies.romaniaPhotosPlaceholder}
 					</p>
 				</div>
 			</article>
@@ -252,9 +240,7 @@ const travelGalleryImages = [
 		<div class="travel-external">
 			<p class="travel-external-description">
 				{formatTypography(
-					lang === "pl"
-						? "Więcej tras i zdjęć z naszych podróży publikuję na Stravie i Instagramie."
-						: "I share more routes and photographs from our travels on Strava and Instagram.",
+					t.hobbies.travelExternalDescription,
 					lang
 				)}
 			</p>
@@ -286,10 +272,7 @@ const travelGalleryImages = [
 	<HobbyPageNavigation
 		lang={lang}
 		previous={{
-			label:
-				lang === "pl"
-					? "Fotografia"
-					: "Photography",
+			label: t.hobbies.photography,
 			href: `/${lang}/hobbies/photography`,
 		}}
 		next={{
@@ -297,11 +280,7 @@ const travelGalleryImages = [
 			href: `/${lang}/hobbies/diy`,
 		}}
 		allHobbiesHref={`/${lang}/#hobbies`}
-		allHobbiesLabel={
-			lang === "pl"
-				? "Zobacz wszystkie zainteresowania"
-				: "View all hobbies"
-		}
+		allHobbiesLabel={t.hobbies.viewAll}
 	/>
 </SubpageLayout>
 
@@ -330,8 +309,13 @@ const travelGalleryImages = [
 		aspect-ratio: 4 / 3;
 
 		object-fit: cover;
+		object-position: center 35%;
 
 		border-radius: var(--space-sm);
+	}
+
+	.travel-origin-section :global(.hobby-page-section-title) {
+		margin-bottom: var(--space-sm);
 	}
 
 	.travel-stories {
@@ -625,7 +609,7 @@ const travelGalleryImages = [
 		.travel-origin {
 			grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.85fr);
 			gap: var(--space-2xl);
-			align-items: center;
+			align-items: start;
 		}
 
 		.travel-origin :global(.interactive-figure) {

@@ -13,21 +13,26 @@ import GrowIcon from "../assets/case-studies/security-grow.svg";
 import InfinityIcon from "../assets/case-studies/security-infinity.svg";
 
 interface Area {
-	title: string;
-	summary: string;
-	description: string;
-	highlights: string[];
+    icon: keyof typeof icons;
+    title: string;
+    summary: string;
+    description: string;
+    highlights: string[];
 }
 
 interface Props {
 	title: string;
 	introduction: string;
+	centerLabel: string;
 	areas: Area[];
 
 	cycle: {
 		title: string;
 		description: string;
-		steps: string[];
+		steps: {
+			icon: keyof typeof cycleIcons;
+			label: string;
+		}[];
 	};
 
 	lang: Language;
@@ -38,22 +43,23 @@ const {
 	introduction,
 	areas,
 	cycle,
+	centerLabel,
 	lang,
 } = Astro.props;
 
-const icons = [
-	ShieldIcon,
-	SearchIcon,
-	GraduationCapIcon,
-	UsersIcon,
-];
+const icons = {
+    asvs: ShieldIcon,
+    testing: SearchIcon,
+    learning: GraduationCapIcon,
+    awareness: UsersIcon,
+};
 
-const cycleIcons = [
-	GraduationCapIcon,
-	ApplyIcon,
-	ShareIcon,
-	GrowIcon,
-];
+const cycleIcons = {
+    learn: GraduationCapIcon,
+    apply: ApplyIcon,
+    share: ShareIcon,
+    grow: GrowIcon,
+};
 ---
 
 <section
@@ -79,9 +85,7 @@ const cycleIcons = [
 			/>
 
 			<span class="knowledge-center-label">
-				{lang === "pl"
-					? "Wiedza o bezpieczeństwie"
-					: "Security Knowledge"}
+				{centerLabel}
 			</span>
 
 			<span
@@ -103,8 +107,8 @@ const cycleIcons = [
 		</div>
 
 		<div class="knowledge-nodes">
-			{areas.map((area, index) => {
-				const Icon = icons[index];
+			{areas.map((area) => {
+    			const Icon = icons[area.icon];
 
 				return (
 					<div class="knowledge-node">
@@ -134,8 +138,8 @@ const cycleIcons = [
 	</div>
 
 	<div class="knowledge-cards">
-		{areas.map((area, index) => {
-			const Icon = icons[index];
+		{areas.map((area) => {
+    		const Icon = icons[area.icon];
 
 			return (
 				<article class="knowledge-card">
@@ -182,8 +186,8 @@ const cycleIcons = [
             />
 
             <div class="knowledge-cycle-steps">
-                {cycle.steps.map((step, index) => {
-                    const Icon = cycleIcons[index];
+                {cycle.steps.map((step) => {
+   					const Icon = cycleIcons[step.icon];
 
                     return (
                         <div class="knowledge-cycle-step">
@@ -193,7 +197,7 @@ const cycleIcons = [
                             />
 
                             <span class="knowledge-cycle-label">
-                                {formatTypography(step, lang)}
+                                {formatTypography(step.label, lang)}
                             </span>
                         </div>
                     );
@@ -472,6 +476,7 @@ const cycleIcons = [
         .knowledge-cycle-label {
             font-size: 1rem;
         }
+	}
 
 	@media (min-width: 64rem) {
 		.knowledge-center {

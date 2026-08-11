@@ -1,7 +1,7 @@
 ---
 interface Props {
-	title: string;
-	quote: string;
+    title?: string;
+    quote: string;
 }
 
 const {
@@ -18,9 +18,11 @@ const {
 		❝
 	</span>
 
-	<h2 class="hobby-quote-title">
-		{title}
-	</h2>
+	{title && (
+    <h2 class="hobby-quote-title">
+        {title}
+    </h2>
+)}
 
 	<p class="hobby-quote-text">
 		{quote}

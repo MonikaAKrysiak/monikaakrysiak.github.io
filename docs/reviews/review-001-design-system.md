@@ -1,4 +1,4 @@
-# CSS Refactoring Review — review-003-css
+# CSS Refactoring Review
 
 **Date:** 2026-07-27  
 **Branch:** `feature/portfolio-case-study`  

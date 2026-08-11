@@ -10,6 +10,7 @@ interface Props {
 	introduction?: string;
 	paragraphs?: string[];
 	stories?: Story[];
+	className?: string;
 }
 
 const {
@@ -18,9 +19,10 @@ const {
 	introduction,
 	paragraphs = [],
 	stories = [],
+	className,
 } = Astro.props;
 ---
-<section class="hobby-page-section">
+<section class:list={["hobby-page-section", className]}>
 	<h2
 		id={id}
 		class="hobby-page-section-title"

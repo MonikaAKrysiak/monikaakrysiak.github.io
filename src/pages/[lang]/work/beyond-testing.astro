@@ -39,31 +39,22 @@ const { previous, next } = getAdjacentWork(
 );
 
 const beyondTestingNavigationItems: NavigationItem[] = [
-	{
-		label: language === "pl" ? "Start" : "Home",
-		href: "#case-study-start",
-	},
-	{
-		label:
-			language === "pl"
-				? "Moje podejście"
-				: "My Approach",
-		href: "#overview",
-	},
-	{
-		label:
-			language === "pl"
-				? "Historie z praktyki"
-				: "Stories from Practice",
-		href: "#impact-stories",
-	},
-	{
-		label:
-			language === "pl"
-				? "Dokumentacja wizualna"
-				: "Visual Documentation",
-		href: "#visual-documentation",
-	},
+    {
+        label: translations.navigation.home,
+        href: "#case-study-start",
+    },
+    {
+        label: beyondTesting.navigation.approach,
+        href: "#overview",
+    },
+    {
+        label: beyondTesting.navigation.stories,
+        href: "#impact-stories",
+    },
+    {
+        label: beyondTesting.navigation.visualDocumentation,
+        href: "#visual-documentation",
+    },
 ];
 
 const seo = getBeyondTestingSeo(language);
@@ -142,11 +133,7 @@ const seo = getBeyondTestingSeo(language);
 								story.outcome,
 								language,
 							)}
-							focusAreasTitle={
-								language === "pl"
-									? "Kluczowe obszary"
-									: "Key Areas"
-							}
+							focusAreasTitle={translations.caseStudyNavigation.focusAreasTitle}
 							focusAreas={story.focusAreas}
 						/>
 					))}
@@ -171,9 +158,7 @@ const seo = getBeyondTestingSeo(language);
 					beyondTesting.visualDocumentation.includes
 				}
 				focusAreasTitle={
-					language === "pl"
-						? "Kluczowe obszary"
-						: "Focus Areas"
+					translations.caseStudyNavigation.documentationFocusAreasTitle
 				}
 				focusAreas={
 					beyondTesting.visualDocumentation.focusAreas
@@ -186,11 +171,7 @@ const seo = getBeyondTestingSeo(language);
 					language,
 				)}
 				image={beyondTestingProcessDiagram}
-				imageAlt={
-					language === "pl"
-						? "Zanonimizowany diagram przedstawiający złożony proces biznesowy, jego wyjątki oraz integracje z zewnętrznymi systemami."
-						: "An anonymised diagram showing a complex business process, its exceptions and integrations with external systems."
-				}
+				imageAlt={beyondTesting.visualDocumentation.imageAlt}
 			/>
 
 				<CaseStudyNavigation

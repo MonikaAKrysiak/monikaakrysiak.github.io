@@ -1,5 +1,6 @@
 export const pl = {
 	navigation: {
+		home: "Start",
 		about: "O mnie",
 		work: "Wybrane projekty",
 		hobbies: "Zainteresowania",
@@ -12,7 +13,7 @@ export const pl = {
 		viewCv: "Zobacz CV (PDF)",
 		contact: "Kontakt",
 	},
-	
+
 	about: {
 		title: "O mnie",
 
@@ -35,7 +36,7 @@ export const pl = {
 		introSecondLine: "Zapraszam do kontaktu.",
 	},
 
-		selectedWork: {
+	selectedWork: {
 		readCaseStudy: "Czytaj case study",
 	},
 
@@ -46,6 +47,8 @@ export const pl = {
 
 	caseStudyNavigation: {
 		allWork: "Zobacz wszystkie projekty",
+		focusAreasTitle: "Kluczowe obszary",
+		documentationFocusAreasTitle: "Kluczowe obszary",
 	},
 
 	footer: {
@@ -64,6 +67,32 @@ export const pl = {
 		readMore: "Czytaj więcej",
 		readFullStory: "Przeczytaj całą historię",
 		hideStory: "Ukryj historię",
+		viewAll: "Zobacz wszystkie zainteresowania",
+		photography: "Fotografia",
+		tabletopGames: "Gry stołowe",
+		travel: "Podróże",
+		selectedPhotographs: "Wybrane fotografie",
+		comingSoon: "Już wkrótce",
+		firstAdventureAbroad: "Nasza pierwsza zagraniczna wyprawa.",
+		newMemories: "Nowe historie",
+		romaniaPhotosPlaceholder: "To miejsce czeka na zdjęcia z Rumunii.",
+		travelExternalDescription:
+			"Więcej tras i zdjęć z naszych podróży publikuję na Stravie i Instagramie.",
+
+		diyAlt: {
+			stanczyk: "Haft przedstawiający Stańczyka według obrazu Jana Matejki",
+			pillows: "Haftowane poduszki z motywami zebry i żyrafy dla bliźniaczek",
+			devil: "Diabełek wykonany z włóczki jako własnoręczny prezent",
+			crossStitchMiniatures: "Małe hafty krzyżykowe z kurczakami i świąteczną gwiazdką",
+			kanzashiStar: "Biała dekoracja wykonana ze wstążek techniką kanzashi",
+			woodenSwing: "Własnoręcznie wykonana drewniana huśtawka",
+			diamondPainting: "Dwie duże prace diamond painting przedstawiające pandę czerwoną i podwodny świat",
+			gingerbreadHearts: "Ręcznie dekorowane pierniki w kształcie serc",
+			wireWrappedPendant: "Zielony wisior opleciony miedzianym drutem",
+			paperFlowers: "Fioletowe papierowe kwiaty złożone ręcznie",
+			decoupageDanseMacabre: "Dekorowana skrzyneczka z motywem danse macabre wykonana techniką decoupage",
+			glassPainting: "Kolorowa postać namalowana na szkle",
+		},
 	},
 
 	externalLink: {
@@ -75,6 +104,7 @@ export const pl = {
 	},
 
 	accessibility: {
+		languageSwitcher: "Przełącznik języka",
 		openMenu: "Otwórz menu",
 		closeMenu: "Zamknij menu",
 
@@ -108,6 +138,5 @@ export const pl = {
 
 		nextCaseStudy: (label: string) =>
 			`Przejdź do następnego case study: ${label}`,
-		
 	},
 };

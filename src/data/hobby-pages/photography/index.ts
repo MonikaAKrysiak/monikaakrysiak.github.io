@@ -1,6 +1,16 @@
 import type { Language } from "../../../i18n";
 import type { NavigationItem } from "../../../types/navigation";
 
+export interface PhotographyPage {
+    title: string;
+    introduction: string[];
+    externalLink: {
+        description: string;
+        label: string;
+        href: string;
+    };
+}
+
 import { photography as en } from "./en";
 import { photography as pl } from "./pl";
 

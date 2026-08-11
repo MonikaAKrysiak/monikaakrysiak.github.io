@@ -1,5 +1,7 @@
-export const photography = {
-	title: "Fotografia",
+import type { PhotographyPage } from "./index";
+
+export const photography: PhotographyPage = {
+    title: "Fotografia",
 
 	introduction: [
 		"Fotografia interesowała mnie od zawsze. Jako dziecko często chodziłam z tatą na spacery, fotografując przyrodę, architekturę i drobne szczegóły, które przyciągały moją uwagę.",

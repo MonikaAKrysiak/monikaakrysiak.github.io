@@ -5,28 +5,30 @@ import type { Language } from "../i18n";
 import { getTranslations } from "../i18n";
 
 interface Props {
-	lang: Language;
-	src: ImageMetadata;
-	alt: string;
-	caption?: string;
-	className?: string;
-	priority?: boolean;
+    lang: Language;
+    src: ImageMetadata;
+    alt: string;
+    caption?: string;
+    className?: string;
+    priority?: boolean;
+    id?: string;
 }
 
 const {
-	src,
-	alt,
-	caption,
-	lang,
-	className,
-	priority = false,
+    src,
+    alt,
+    caption,
+    lang,
+    className,
+    priority = false,
+    id,
 } = Astro.props;
 
 const t = getTranslations(lang);
 
-const dialogId = `figure-dialog-${src.src
-	.replace(/[^a-zA-Z0-9]/g, "-")
-	.replace(/-+/g, "-")}`;
+const dialogId = `figure-dialog-${id ?? src.src
+    .replace(/[^a-zA-Z0-9]/g, "-")
+    .replace(/-+/g, "-")}`;
 
 const captionId = `${dialogId}-caption`;
 ---

@@ -8,8 +8,9 @@ import knowledgeBaseQuiz from "../assets/case-studies/knowledge-base-quiz.png";
 import InteractiveFigure from "./InteractiveFigure.astro";
 
 interface Resource {
-	title: string;
-	description: string;
+    image: keyof typeof resourceImages;
+    title: string;
+    description: string;
 }
 
 interface Props {
@@ -19,11 +20,11 @@ interface Props {
 	lang: Language;
 }
 
-const resourceImages = [
-	knowledgeBaseAsvsChecklist,
-	knowledgeBasePortswiggerLab,
-	knowledgeBaseQuiz,
-];
+const resourceImages = {
+    asvsChecklist: knowledgeBaseAsvsChecklist,
+    portswiggerLab: knowledgeBasePortswiggerLab,
+    quiz: knowledgeBaseQuiz,
+};
 
 const {
 	title,
@@ -50,12 +51,13 @@ const {
 
 	<div class="example-resources-grid">
         {resources.map((resource, index) => {
-            const image = resourceImages[index];
+            const image = resourceImages[resource.image];
 
             return (
                 <article class="example-resource">
                     {image && (
                         <InteractiveFigure
+                            id={`example-resource-${index}`}
                             src={image}
                             alt={resource.title}
                             caption={resource.title}

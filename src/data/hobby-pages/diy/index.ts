@@ -13,10 +13,6 @@ export type DiyStory = {
 	title: string;
 	summary: string;
 	paragraphs: string[];
-
-	image: ImageMetadata;
-	imageAlt: string;
-	imagePosition?: string;
 };
 
 export type DiyPlan = {

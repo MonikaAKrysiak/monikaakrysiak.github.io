@@ -1,4 +1,6 @@
-export const photography = {
+import type { PhotographyPage } from "./index";
+
+export const photography: PhotographyPage = {
 	title: "Photography",
 
 	introduction: [

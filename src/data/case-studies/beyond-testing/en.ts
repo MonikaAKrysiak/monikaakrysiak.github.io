@@ -13,6 +13,12 @@ export const beyondTesting = {
 		],
 	},
 
+	navigation: {
+		approach: "My Approach",
+		stories: "Stories from Practice",
+		visualDocumentation: "Visual Documentation",
+	},
+
 	overview: {
 		title: "My Approach",
 
@@ -107,6 +113,8 @@ export const beyondTesting = {
 
 	visualDocumentation: {
 		title: "Making Complex Systems Understandable",
+		imageAlt:
+			"An anonymised diagram showing a complex business process, its exceptions and integrations with external systems.",
 
 		paragraphs: [
 			"During a period of frequent changes in the team, I created visual process documentation to help new team members understand complex business workflows more quickly.",

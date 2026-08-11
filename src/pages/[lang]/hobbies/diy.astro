@@ -63,92 +63,57 @@ const diyHighlightIcons = [
 ];
 
 const diyStoryImages = [
-	{
-		src: DiyStanczykImage,
-		alt:
-			lang === "pl"
-				? "Haft przedstawiający Stańczyka według obrazu Jana Matejki"
-				: "Embroidery based on Jan Matejko's painting Stańczyk",
-	},
-	{
-		src: DiyPillowsImage,
-		alt:
-			lang === "pl"
-				? "Haftowane poduszki z motywami zebry i żyrafy dla bliźniaczek"
-				: "Embroidered pillows with zebra and giraffe motifs for twin girls",
-	},
-	{
-		src: DiyDevilImage,
-		alt:
-			lang === "pl"
-				? "Diabełek wykonany z włóczki jako własnoręczny prezent"
-				: "A yarn devil made as a handmade gift",
-	},
+    {
+        src: DiyStanczykImage,
+        alt: t.hobbies.diyAlt.stanczyk,
+    },
+    {
+        src: DiyPillowsImage,
+        alt: t.hobbies.diyAlt.pillows,
+    },
+    {
+        src: DiyDevilImage,
+        alt: t.hobbies.diyAlt.devil,
+    },
 ];
+
 const diyGalleryImages = [
-	{
-		src: CrossStitchMiniaturesImage,
-		alt:
-			lang === "pl"
-				? "Małe hafty krzyżykowe z kurczakami i świąteczną gwiazdką"
-				: "Small cross-stitch pieces with chicks and a Christmas star",
-	},
-	{
-		src: KanzashiStarImage,
-		alt:
-			lang === "pl"
-				? "Biała dekoracja wykonana ze wstążek techniką kanzashi"
-				: "White ribbon decoration made using the kanzashi technique",
-	},
-	{
-		src: WoodenSwingImage,
-		alt:
-			lang === "pl"
-				? "Własnoręcznie wykonana drewniana huśtawka"
-				: "Handmade wooden swing",
-	},
-	{
-		src: DiamondPaintingImage,
-		alt:
-			lang === "pl"
-				? "Dwie duże prace diamond painting przedstawiające pandę czerwoną i podwodny świat"
-				: "Two large diamond paintings showing a red panda and an underwater scene",
-	},
-	{
-		src: GingerbreadHeartsImage,
-		alt:
-			lang === "pl"
-				? "Ręcznie dekorowane pierniki w kształcie serc"
-				: "Hand-decorated heart-shaped gingerbread cookies",
-	},
-	{
-		src: WireWrappedPendantImage,
-		alt:
-			lang === "pl"
-				? "Zielony wisior opleciony miedzianym drutem"
-				: "Green pendant wrapped in copper wire",
-	},
-	{
-		src: PaperFlowersImage,
-		alt:
-			lang === "pl"
-				? "Fioletowe papierowe kwiaty złożone ręcznie"
-				: "Hand-folded purple paper flowers",
-	},
-	{
-		src: DecoupageDanseMacabreImage,
-		alt:
-			lang === "pl"
-				? "Dekorowana skrzyneczka z motywem danse macabre wykonana techniką decoupage"
-				: "Decorated box with a danse macabre motif made using decoupage",
-	},
-	{
-		src: GlassPaintingImage,
-		alt:
-			lang === "pl"
-				? "Kolorowa postać namalowana na szkle"
-				: "Colourful character painted on glass",
-	},
+    {
+        src: CrossStitchMiniaturesImage,
+        alt: t.hobbies.diyAlt.crossStitchMiniatures,
+    },
+    {
+        src: KanzashiStarImage,
+        alt: t.hobbies.diyAlt.kanzashiStar,
+    },
+    {
+        src: WoodenSwingImage,
+        alt: t.hobbies.diyAlt.woodenSwing,
+    },
+    {
+        src: DiamondPaintingImage,
+        alt: t.hobbies.diyAlt.diamondPainting,
+    },
+    {
+        src: GingerbreadHeartsImage,
+        alt: t.hobbies.diyAlt.gingerbreadHearts,
+    },
+    {
+        src: WireWrappedPendantImage,
+        alt: t.hobbies.diyAlt.wireWrappedPendant,
+    },
+    {
+        src: PaperFlowersImage,
+        alt: t.hobbies.diyAlt.paperFlowers,
+    },
+    {
+        src: DecoupageDanseMacabreImage,
+        alt: t.hobbies.diyAlt.decoupageDanseMacabre,
+    },
+    {
+        src: GlassPaintingImage,
+        alt: t.hobbies.diyAlt.glassPainting,
+    },
 ];
 ---
 
@@ -182,6 +147,10 @@ const diyGalleryImages = [
 			{
 				diy.highlights.map((highlight, index) => {
 					const HighlightIcon = diyHighlightIcons[index];
+
+					if (!HighlightIcon) {
+						return null;
+					}
 
 					return (
 						<article class="diy-highlight">
@@ -221,10 +190,15 @@ const diyGalleryImages = [
 				diy.stories.map((story, index) => {
 					const storyImage = diyStoryImages[index];
 
+					if (!storyImage) {
+						return null;
+					}
+
 					return (
 						<article class="diy-story">
 							<div class="diy-story-image">
 								<InteractiveFigure
+									id={`diy-story-${index}`}
 									lang={lang}
 									src={storyImage.src}
 									alt={storyImage.alt}
@@ -300,8 +274,9 @@ const diyGalleryImages = [
 			aria-label={diy.galleryTitle}
 		>
 			{
-				diyGalleryImages.map((image) => (
+				diyGalleryImages.map((image, index) => (
 					<InteractiveFigure
+						id={`diy-gallery-${index}`}
 						lang={lang}
 						src={image.src}
 						alt={image.alt}
@@ -315,25 +290,15 @@ const diyGalleryImages = [
 	<HobbyPageNavigation
 		lang={lang}
 		previous={{
-			label:
-				lang === "pl"
-					? "Podróże"
-					: "Travel",
+			label: t.hobbies.travel,
 			href: `/${lang}/hobbies/travel`,
 		}}
 		next={{
-			label:
-				lang === "pl"
-					? "Gry stołowe"
-					: "Tabletop Games",
+			label: t.hobbies.tabletopGames,
 			href: `/${lang}/hobbies/tabletop-games`,
 		}}
 		allHobbiesHref={`/${lang}/#hobbies`}
-		allHobbiesLabel={
-			lang === "pl"
-				? "Zobacz wszystkie zainteresowania"
-				: "View all hobbies"
-		}
+		allHobbiesLabel={t.hobbies.viewAll}
 	/>
 </SubpageLayout>
 

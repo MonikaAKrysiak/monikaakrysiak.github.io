@@ -23,16 +23,19 @@ export const pl = {
 
 	highlights: [
 		{
+			icon: "books",
 			title: "Historie",
 			description:
 				"Każda rozgrywka tworzy własną historię. Jedne są pełne emocji, inne kompletnie absurdalne, ale najlepsze są te, do których wracamy jeszcze długo po zakończeniu gry.",
 		},
 		{
+			icon: "puzzles",
 			title: "Rozwiązywanie problemów",
 			description:
 				"Lubię sytuacje, które wymagają wspólnego planowania, podejmowania decyzji i improwizacji, kiedy pierwotny plan przestaje działać. Znalezienie kreatywnego rozwiązania daje mi często większą satysfakcję niż samo zwycięstwo.",
 		},
 		{
+			icon: "community",
 			title: "Dzielenie się hobby",
 			description:
 				"Gry potrafią łączyć ludzi. Do moich ulubionych wspomnień należą chwile spędzone przy stole z rodziną i znajomymi.",
@@ -51,6 +54,11 @@ export const pl = {
 
 	stories: [
 		{
+			imageKey: "rpgDice",
+			imageAlt: "Kości do papierowych gier RPG",
+			imagePosition: "center 35%",
+			imageFit: "cover",
+
 			title: "Licytacja, która wymknęła się spod kontroli",
 
 			summary:
@@ -66,6 +74,11 @@ export const pl = {
 		},
 
 		{
+			imageKey: "valentia",
+			imageAlt: "Herb nowego rodu Valentia stworzonego przez Sophie",
+			imagePosition: "center",
+			imageFit: "contain",
+
 			title: "Prawie dwadzieścia lat z jedną postacią",
 
 			summary:
@@ -89,6 +102,12 @@ export const pl = {
 		},
 
 		{
+			imageKey: "sophieChoices",
+			imageAlt:
+				"Sophie stojąca przed dwiema prowadzącymi w różne strony drogami",
+			imagePosition: "center",
+			imageFit: "cover",
+
 			title: "Niemożliwe decyzje",
 
 			summary:

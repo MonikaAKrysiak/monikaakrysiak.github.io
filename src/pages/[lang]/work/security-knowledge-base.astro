@@ -40,30 +40,30 @@ const { previous, next } = getAdjacentWork(
 );
 
 const navigationItems: NavigationItem[] = [
-	{
-		label: language === "pl" ? "Start" : "Home",
-		href: "#case-study-start",
-	},
-	{
-		label: language === "pl" ? "Przegląd" : "Overview",
-		href: "#overview",
-	},
-	{
-		label: language === "pl" ? "Ekosystem" : "Ecosystem",
-		href: "#knowledge-ecosystem",
-	},
-	{
-		label: language === "pl" ? "Materiały" : "Resources",
-		href: "#example-resources",
-	},
-	{
-		label: language === "pl" ? "Praktyka" : "In Practice",
-		href: "#knowledge-in-practice",
-	},
-	{
-		label: language === "pl" ? "Wnioski" : "Lessons",
-		href: "#what-i-learned",
-	},
+    {
+        label: translations.navigation.home,
+        href: "#case-study-start",
+    },
+    {
+        label: securityKnowledgeBase.navigation.overview,
+        href: "#overview",
+    },
+    {
+        label: securityKnowledgeBase.navigation.ecosystem,
+        href: "#knowledge-ecosystem",
+    },
+    {
+        label: securityKnowledgeBase.navigation.resources,
+        href: "#example-resources",
+    },
+    {
+        label: securityKnowledgeBase.navigation.inPractice,
+        href: "#knowledge-in-practice",
+    },
+    {
+        label: securityKnowledgeBase.navigation.lessons,
+        href: "#what-i-learned",
+    },
 ];
 
 const seo = getSecurityKnowledgeBaseSeo(language);
@@ -117,6 +117,7 @@ const seo = getSecurityKnowledgeBaseSeo(language);
 		introduction={securityKnowledgeBase.knowledgeEcosystem.introduction}
 		areas={securityKnowledgeBase.knowledgeEcosystem.areas}
 		cycle={securityKnowledgeBase.knowledgeEcosystem.cycle}
+		centerLabel={securityKnowledgeBase.knowledgeEcosystem.centerLabel}
 		lang={language}
 	/>
 

@@ -50,6 +50,7 @@ const titleId = id
 			images.map((item, index) => (
 				<li class="hobby-gallery-item">
 					<InteractiveFigure
+						id={`hobby-gallery-${index}`}
 						lang={lang}
 						src={item.image}
 						alt={item.alt[lang]}
