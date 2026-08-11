@@ -14,6 +14,14 @@ export const securityKnowledgeBase = {
 		],
 	},
 
+	navigation: {
+		overview: "Overview",
+		ecosystem: "Ecosystem",
+		resources: "Resources",
+		inPractice: "In Practice",
+		lessons: "Lessons",
+	},
+
 	overview: {
 		title: "Overview",
 
@@ -27,6 +35,7 @@ export const securityKnowledgeBase = {
 	},
 
 	knowledgeEcosystem: {
+		centerLabel: "Security Knowledge",
 		title: "Building the Knowledge Ecosystem",
 
 		introduction:
@@ -34,8 +43,10 @@ export const securityKnowledgeBase = {
 
 		areas: [
 			{
+				icon: "asvs",
 				title: "Making ASVS Practical",
-                summary: "Making a complex standard practical and accessible for QA teams.",
+				summary:
+					"Making a complex standard practical and accessible for QA teams.",
 
 				description:
 					"Together with teammates, we transformed OWASP ASVS into a lightweight review process that QA engineers could realistically use during everyday testing.",
@@ -49,8 +60,10 @@ export const securityKnowledgeBase = {
 			},
 
 			{
+				icon: "testing",
 				title: "Everyday Security Testing",
-                summary: "Step-by-step guides for testing common security mechanisms.",
+				summary:
+					"Step-by-step guides for testing common security mechanisms.",
 
 				description:
 					"The guides explained how to verify common security mechanisms step by step and highlighted useful practices for incorporating security into everyday QA work.",
@@ -65,8 +78,10 @@ export const securityKnowledgeBase = {
 			},
 
 			{
+				icon: "learning",
 				title: "Learning by Doing",
-                summary: "Learning through hands-on labs, notes and explanations of the reasoning behind each solution.",
+				summary:
+					"Learning through hands-on labs, notes and explanations of the reasoning behind each solution.",
 
 				description:
 					"A dedicated Confluence space documented selected PortSwigger Academy labs, covering both the vulnerability and the reasoning behind each solution rather than simply presenting the answer.",
@@ -80,8 +95,10 @@ export const securityKnowledgeBase = {
 			},
 
 			{
+				icon: "awareness",
 				title: "Security Beyond Development",
-                summary: "Practical resources designed to build security awareness across the company.",
+				summary:
+					"Practical resources designed to build security awareness across the company.",
 
 				description:
 					"The resources extended beyond software development, helping people across the company build safer everyday habits.",
@@ -94,6 +111,7 @@ export const securityKnowledgeBase = {
 				],
 			},
 		],
+
 		cycle: {
 			title: "Security Knowledge Lifecycle",
 
@@ -101,13 +119,26 @@ export const securityKnowledgeBase = {
 				"A continuous cycle of learning, applying and sharing knowledge across teams.",
 
 			steps: [
-				"Learn",
-				"Apply",
-				"Share",
-				"Grow",
+				{
+					icon: "learn",
+					label: "Learn",
+				},
+				{
+					icon: "apply",
+					label: "Apply",
+				},
+				{
+					icon: "share",
+					label: "Share",
+				},
+				{
+					icon: "grow",
+					label: "Grow",
+				},
 			],
 		},
 	},
+
 	exampleResources: {
 		title: "Example Resources",
 
@@ -116,18 +147,21 @@ export const securityKnowledgeBase = {
 
 		resources: [
 			{
+				image: "asvsChecklist",
 				title: "Simplified ASVS checklist",
 
 				description:
 					"A simplified checklist for tracking review progress, recording notes and preparing reusable security reports.",
 			},
 			{
+				image: "portswiggerLab",
 				title: "PortSwigger lab write-up",
 
 				description:
 					"Selected lab write-ups combining vulnerability overviews, learning notes and step-by-step walkthroughs.",
 			},
 			{
+				image: "quiz",
 				title: "Internal security quiz",
 
 				description:
@@ -135,6 +169,7 @@ export const securityKnowledgeBase = {
 			},
 		],
 	},
+
 	knowledgeInPractice: {
 		title: "Knowledge in Practice",
 
@@ -159,6 +194,7 @@ export const securityKnowledgeBase = {
 			},
 		],
 	},
+
 	whatILearned: {
 		title: "What I Learned",
 

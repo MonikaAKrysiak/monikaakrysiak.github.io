@@ -10,19 +10,12 @@ import {
 	type ArticleStructuredData,
 } from "../data/structured-data";
 import type { NavigationItem } from "../types/navigation";
+import type { SeoMetadata } from "../data/seo";
 
 import "../styles/global.css";
 import manropeRegular from "../assets/fonts/manrope/manrope-regular.woff2";
 import manropeSemiBold from "../assets/fonts/manrope/manrope-semibold.woff2";
 import manropeBold from "../assets/fonts/manrope/manrope-bold.woff2";
-
-interface SeoMetadata {
-	title?: string;
-	description?: string;
-	canonical?: string;
-	image?: string;
-	robots?: string;
-}
 
 interface Props {
 	lang: Language;

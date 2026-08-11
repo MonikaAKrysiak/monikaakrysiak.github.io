@@ -1,0 +1,166 @@
+---
+import InteractiveFigure from "./InteractiveFigure.astro";
+
+import type { Language } from "../i18n";
+import type { HobbyGalleryImage } from "../data/hobby-pages";
+
+interface Props {
+	id?: string;
+	externalId?: string;
+
+	lang: Language;
+	title: string;
+	images: HobbyGalleryImage[];
+
+	externalLink?: {
+		description: string;
+		label: string;
+		href: string;
+	};
+}
+
+const {
+	id,
+	externalId,
+	lang,
+	title,
+	images,
+	externalLink,
+} = Astro.props;
+
+const titleId = id
+	? `${id}-title`
+	: "hobby-gallery-title";
+---
+
+<section
+	id={id}
+	class="hobby-gallery"
+	aria-labelledby={titleId}
+>
+	<h2
+		id={titleId}
+		class="hobby-gallery-title"
+	>
+		{title}
+	</h2>
+
+	<ul class="hobby-gallery-grid">
+		{
+			images.map((item, index) => (
+				<li class="hobby-gallery-item">
+					<InteractiveFigure
+						id={`hobby-gallery-${index}`}
+						lang={lang}
+						src={item.image}
+						alt={item.alt[lang]}
+						caption={item.caption?.[lang]}
+						priority={index === 0}
+					/>
+				</li>
+			))
+		}
+	</ul>
+
+	{
+        externalLink && (
+            <div
+                id={externalId}
+                class="hobby-gallery-external"
+            >
+                <p class="hobby-gallery-external-description">
+                    {externalLink.description}
+                </p>
+
+                <a
+                    class="hobby-gallery-external-link"
+                    href={externalLink.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <slot name="icon" />
+                    <span>{externalLink.label}</span>
+                </a>
+            </div>
+        )
+    }
+</section>
+<style>
+    .hobby-gallery-external {
+        margin-top: var(--space-2xl);
+        scroll-margin-top: calc(
+            var(--header-height) + var(--space-md)
+        );
+    }
+
+    .hobby-gallery-external-description {
+        margin: 0;
+        color: var(--color-text-muted);
+    }
+
+    .hobby-gallery-external-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+
+        margin-top: var(--space-sm);
+
+        color: var(--color-primary);
+        font-weight: 600;
+        text-decoration: none;
+
+        transition:
+            color 0.2s ease,
+            text-decoration-color 0.2s ease;
+    }
+
+    .hobby-gallery-external-link:hover {
+        color: var(--color-primary-hover);
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    .hobby-gallery-external-link:focus-visible {
+        color: var(--color-primary-hover);
+    }
+
+    .hobby-gallery-external-link :global(svg) {
+        width: 1.25rem;
+        height: 1.25rem;
+        flex-shrink: 0;
+    }
+
+	.hobby-gallery {
+        margin-top: var(--space-2xl);
+        scroll-margin-top: calc(
+            var(--header-height) + var(--space-md)
+        );
+    }
+
+	.hobby-gallery-title {
+		margin-bottom: var(--space-lg);
+	}
+
+	.hobby-gallery-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-lg);
+
+		margin: 0;
+		padding: 0;
+
+		list-style: none;
+	}
+
+	@media (min-width: 40rem) {
+		.hobby-gallery-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.hobby-gallery-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+</style>

@@ -3,6 +3,7 @@ import WorkCard from "./WorkCard.astro";
 
 import { getTranslations, type Language } from "../i18n";
 import { getWork } from "../data/work";
+import { formatTypography } from "../utils/typography";
 
 interface Props {
 	lang: Language;
@@ -32,8 +33,8 @@ const work = getWork(lang);
 			{work.map((workItem) => (
 				<li>
 					<WorkCard
-						title={workItem.title}
-						summary={workItem.summary}
+						title={formatTypography(workItem.title, lang)}
+						summary={formatTypography(workItem.summary, lang)}
 						focusAreas={workItem.focusAreas}
 						href={`/${lang}${workItem.href}`}
 						linkLabel={t.selectedWork.readCaseStudy}

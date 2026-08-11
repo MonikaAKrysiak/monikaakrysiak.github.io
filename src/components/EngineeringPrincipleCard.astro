@@ -1,9 +1,7 @@
 ---
-import type { AstroComponentFactory } from "astro/runtime/server";
-
 interface Props {
 	title: string;
-	icon?: AstroComponentFactory;
+	icon?: any;
 }
 
 const {
@@ -14,17 +12,19 @@ const {
 
 <article class="engineering-principle-card">
 	<div class="engineering-principle-card-heading">
-        {Icon && (
-            <Icon
-                class="engineering-principle-card-icon"
-                aria-hidden="true"
-            />
-        )}
+		{
+			Icon && (
+				<Icon
+					class="engineering-principle-card-icon"
+					aria-hidden="true"
+				/>
+			)
+		}
 
-        <h3 class="engineering-principle-card-title">
-            {title}
-        </h3>
-    </div>
+		<h3 class="engineering-principle-card-title">
+			{title}
+		</h3>
+	</div>
 
 	<div class="engineering-principle-card-content">
 		<slot />
@@ -33,31 +33,31 @@ const {
 
 <style>
 	.engineering-principle-card {
-        padding: var(--space-xl);
-        margin-top: var(--space-lg);
+		padding: var(--space-xl);
+		margin-top: var(--space-lg);
 
-        background-color: var(--color-surface-hover);
-        border: 1px solid var(--color-border);
-        border-radius: var(--space-sm);
-    }
+		background-color: var(--color-surface-hover);
+		border: 1px solid var(--color-border);
+		border-radius: var(--space-sm);
+	}
 
 	.engineering-principle-card-heading {
-        display: flex;
-        align-items: center;
-        gap: var(--space-sm);
-        margin-bottom: var(--space-md);
-    }
+		display: flex;
+		align-items: center;
+		gap: var(--space-sm);
+		margin-bottom: var(--space-md);
+	}
 
-    .engineering-principle-card-icon {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 1.5rem;
-        color: var(--color-secondary);
-    }
+	.engineering-principle-card-icon {
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 1.5rem;
+		color: var(--color-secondary);
+	}
 
-    .engineering-principle-card-title {
-        margin: 0;
-    }
+	.engineering-principle-card-title {
+		margin: 0;
+	}
 
 	.engineering-principle-card-content :global(.case-study-text) {
 		margin: 0;

@@ -15,6 +15,14 @@ export const securityKnowledgeBase = {
 		],
 	},
 
+	navigation: {
+		overview: "Przegląd",
+		ecosystem: "Ekosystem",
+		resources: "Materiały",
+		inPractice: "Praktyka",
+		lessons: "Wnioski",
+	},
+
 	overview: {
 		title: "Przegląd",
 
@@ -28,6 +36,7 @@ export const securityKnowledgeBase = {
 	},
 
 	knowledgeEcosystem: {
+		centerLabel: "Wiedza o bezpieczeństwie",
 		title: "Budowanie ekosystemu wiedzy",
 
 		introduction:
@@ -35,8 +44,10 @@ export const securityKnowledgeBase = {
 
 		areas: [
 			{
+				icon: "asvs",
 				title: "Praktyczne wykorzystanie ASVS",
-				summary: "Przekształcenie złożonego standardu w proces przydatny w codziennej pracy QA.",
+				summary:
+					"Przekształcenie złożonego standardu w proces przydatny w codziennej pracy QA.",
 
 				description:
 					"Wspólnie z zespołem uprościliśmy OWASP ASVS do\u00A0procesu, który zespół QA mógł wykorzystywać podczas codziennych testów bezpieczeństwa.",
@@ -50,8 +61,10 @@ export const securityKnowledgeBase = {
 			},
 
 			{
+				icon: "testing",
 				title: "Codzienne testowanie bezpieczeństwa",
-				summary: "Przewodniki krok po kroku wspierające praktyczne testowanie mechanizmów bezpieczeństwa.",
+				summary:
+					"Przewodniki krok po kroku wspierające praktyczne testowanie mechanizmów bezpieczeństwa.",
 
 				description:
 					"Praktyczne przewodniki krok po kroku pokazywały, jak weryfikować najczęściej spotykane mechanizmy bezpieczeństwa oraz dobre praktyki testowania.",
@@ -66,8 +79,10 @@ export const securityKnowledgeBase = {
 			},
 
 			{
+				icon: "learning",
 				title: "Nauka przez praktykę",
-				summary: "Nauka poprzez laboratoria, notatki i wyjaśnianie sposobu dochodzenia do rozwiązania.",
+				summary:
+					"Nauka poprzez laboratoria, notatki i wyjaśnianie sposobu dochodzenia do rozwiązania.",
 
 				description:
 					"Dedykowana przestrzeń w Confluence zawierała opracowania wybranych laboratoriów PortSwigger Academy, tłumacząc zarówno podatności, jak i sposób dochodzenia do rozwiązania.",
@@ -81,8 +96,10 @@ export const securityKnowledgeBase = {
 			},
 
 			{
+				icon: "awareness",
 				title: "Bezpieczeństwo poza developmentem",
-				summary: "Praktyczne materiały budujące świadomość bezpieczeństwa w całej firmie.",
+				summary:
+					"Praktyczne materiały budujące świadomość bezpieczeństwa w całej firmie.",
 
 				description:
 					"Materiały dotyczące bezpieczeństwa wykraczały poza tworzenie oprogramowania i pomagały budować dobre nawyki w codziennej pracy całej firmy.",
@@ -95,6 +112,7 @@ export const securityKnowledgeBase = {
 				],
 			},
 		],
+
 		cycle: {
 			title: "Cykl rozwoju wiedzy o bezpieczeństwie",
 
@@ -102,13 +120,26 @@ export const securityKnowledgeBase = {
 				"Ciągły cykl, który rozwija wiedzę o bezpieczeństwie w zespołach.",
 
 			steps: [
-				"Ucz się",
-				"Wdrażaj",
-				"Dziel się",
-				"Rozwijaj",
+				{
+					icon: "learn",
+					label: "Ucz się",
+				},
+				{
+					icon: "apply",
+					label: "Wdrażaj",
+				},
+				{
+					icon: "share",
+					label: "Dziel się",
+				},
+				{
+					icon: "grow",
+					label: "Rozwijaj",
+				},
 			],
 		},
 	},
+
 	exampleResources: {
 		title: "Przykładowe materiały",
 
@@ -117,18 +148,21 @@ export const securityKnowledgeBase = {
 
 		resources: [
 			{
+				image: "asvsChecklist",
 				title: "Uproszczona checklista ASVS",
 
 				description:
 					"Praktyczna checklista ze statusem przeglądu, notatkami i szablon raportu do wielokrotnego wykorzystania",
 			},
 			{
+				image: "portswiggerLab",
 				title: "Opracowanie laboratorium PortSwigger",
 
 				description:
 					"Opis podatności, notatki z nauki i rozwiązanie krok po kroku dla wybranych laboratoriów.",
 			},
 			{
+				image: "quiz",
 				title: "Wewnętrzny quiz bezpieczeństwa",
 
 				description:
@@ -136,6 +170,7 @@ export const securityKnowledgeBase = {
 			},
 		],
 	},
+
 	knowledgeInPractice: {
 		title: "Wiedza w praktyce",
 
@@ -159,7 +194,8 @@ export const securityKnowledgeBase = {
 					"Sesje w ramach Security Month, quizy i rozmowy w zespole pomagały utrzymywać temat bezpieczeństwa na co dzień oraz wspierały ciągłe uczenie się.",
 			},
 		],
-	},	
+	},
+
 	whatILearned: {
 		title: "Czego się nauczyłam",
 

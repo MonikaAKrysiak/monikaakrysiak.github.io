@@ -11,7 +11,13 @@ export const beyondTesting = {
 			"Myślenie produktowe",
 			"Współpraca",
 		],
-},
+	},
+	
+	navigation: {
+		approach: "Moje podejście",
+		stories: "Historie z praktyki",
+		visualDocumentation: "Dokumentacja wizualna",
+	},
 
 	overview: {
 		title: "Moje podejście",
@@ -112,6 +118,8 @@ export const beyondTesting = {
 
 		visualDocumentation: {
 			title: "Przekładanie złożonych systemów na zrozumiałe procesy",
+			imageAlt:
+    			"Zanonimizowany diagram przedstawiający złożony proces biznesowy, jego wyjątki oraz integracje z zewnętrznymi systemami.",
 
 			paragraphs: [
 				"W okresie częstych zmian w składzie zespołu przygotowałam wizualną dokumentację, aby złożone procesy biznesowe były zrozumiałe również dla osób, które dopiero dołączały do projektu.",

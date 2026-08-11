@@ -1,0 +1,645 @@
+---
+import type { GetStaticPaths } from "astro";
+
+import SubpageLayout from "../../../layouts/SubpageLayout.astro";
+import BackLink from "../../../components/BackLink.astro";
+import HobbyPageHeader from "../../../components/HobbyPageHeader.astro";
+import HobbyPageSection from "../../../components/HobbyPageSection.astro";
+import HobbyPageNavigation from "../../../components/HobbyPageNavigation.astro";
+import HobbyHighlights from "../../../components/HobbyHighlights.astro";
+import HobbyQuote from "../../../components/HobbyQuote.astro";
+import InteractiveFigure from "../../../components/InteractiveFigure.astro";
+
+import { formatTypography } from "../../../utils/typography";
+import {
+	getTravel,
+	getTravelNavigation,
+} from "../../../data/hobby-pages/travel";
+import {
+	getTranslations,
+	type Language,
+} from "../../../i18n";
+
+import TravelIcon from "../../../assets/icons/hobby-travel.svg";
+import InstagramIcon from "../../../assets/icons/instagram.svg";
+import StravaIcon from "../../../assets/icons/strava.svg";
+import TravelHorsesImage from "../../../assets/hobbies/travel/travel-horses.jpg";
+import TravelNiedzicaLakeImage from "../../../assets/hobbies/travel/travel-niedzica-lake-view.jpg";
+import TravelOgrodzieniecCastleImage from "../../../assets/hobbies/travel/travel-ogrodzieniec-castle-view.jpg";
+import TravelPieskowaSkalaImage from "../../../assets/hobbies/travel/travel-pieskowa-skala-view.jpg";
+import TravelRanchEveningImage from "../../../assets/hobbies/travel/travel-ranch-evening.jpg";
+import TravelTrzyKoronyImage from "../../../assets/hobbies/travel/travel-trzy-korony-panorama.jpg";
+import TravelKowalNaKoleMedals from "../../../assets/hobbies/travel/travel-kowal-na-kole-medals.jpg";
+
+export const getStaticPaths: GetStaticPaths = () => {
+	return [
+		{
+			params: { lang: "en" },
+		},
+		{
+			params: { lang: "pl" },
+		},
+	];
+};
+
+const lang = Astro.params.lang as Language;
+const travel = getTravel(lang);
+const navigationItems = getTravelNavigation(lang);
+const t = getTranslations(lang);
+
+const travelGalleryImages = [
+	{
+		src: TravelOgrodzieniecCastleImage,
+		...travel.galleryImages[0],
+	},
+	{
+		src: TravelPieskowaSkalaImage,
+		...travel.galleryImages[1],
+	},
+	{
+		src: TravelNiedzicaLakeImage,
+		...travel.galleryImages[2],
+	},
+	{
+		src: TravelTrzyKoronyImage,
+		...travel.galleryImages[3],
+	},
+	{
+		src: TravelRanchEveningImage,
+		...travel.galleryImages[4],
+	},
+	{
+		src: TravelHorsesImage,
+		...travel.galleryImages[5],
+	},
+];
+---
+
+<SubpageLayout
+	lang={lang}
+	navigationItems={navigationItems}
+>
+	<BackLink
+		lang={lang}
+		href={`/${lang}/#hobbies`}
+		label={t.backLink.toHobbies}
+	/>
+
+	<HobbyPageHeader
+		id="travel-about"
+		title={formatTypography(travel.title, lang)}
+		introduction={travel.introduction.map((paragraph) =>
+			formatTypography(paragraph, lang)
+		)}
+	/>
+
+	<HobbyHighlights
+		title={formatTypography(travel.highlightsTitle, lang)}
+		items={travel.highlights.map((highlight) => ({
+			...highlight,
+			title: formatTypography(highlight.title, lang),
+			description: formatTypography(highlight.description, lang),
+			icon: TravelIcon,
+		}))}
+	/>
+
+	<HobbyPageSection
+		title={formatTypography(travel.originTitle, lang)}
+		className="travel-origin-section"
+	>
+		<div class="travel-origin">
+			<div class="travel-origin-content">
+				{
+					travel.originParagraphs.map((paragraph) => (
+						<p>{formatTypography(paragraph, lang)}</p>
+					))
+				}
+			</div>
+
+			<InteractiveFigure
+				lang={lang}
+				src={TravelKowalNaKoleMedals}
+				alt={travel.originImage.alt}
+				className="travel-origin-figure"
+			/>
+		</div>
+	</HobbyPageSection>
+
+	<HobbyPageSection
+		id="travel-stories"
+		title={formatTypography(travel.storiesTitle, lang)}
+		introduction={formatTypography(travel.storiesIntroduction, lang)}
+	>
+		<div class="travel-stories">
+			{
+				travel.stories.map((story) => (
+					<article class="travel-story">
+						<div class="travel-story-heading">
+							<p class="travel-story-year">
+								{story.year}
+							</p>
+
+							<h3 class="travel-story-title">
+								{formatTypography(story.title, lang)}
+							</h3>
+
+							<p class="travel-story-summary">
+								{formatTypography(story.summary, lang)}
+							</p>
+						</div>
+
+						<details class="travel-story-details">
+							<summary class="travel-story-toggle">
+								{t.hobbies.readFullStory}
+							</summary>
+
+							<div class="travel-story-content">
+								{
+									story.paragraphs.map((paragraph) => (
+										<p>{formatTypography(paragraph, lang)}</p>
+									))
+								}
+							</div>
+						</details>
+					</article>
+				))
+			}
+		</div>
+	</HobbyPageSection>
+
+	<HobbyQuote quote={formatTypography(travel.quote, lang)} />
+
+	<HobbyPageSection
+		title={formatTypography(travel.lookingAheadTitle, lang)}
+	>
+		<div class="travel-plans">
+			{
+				travel.lookingAhead.map((item) => (
+					<article class="travel-plan">
+						<h3>{formatTypography(item.title, lang)}</h3>
+						<p>{formatTypography(item.description, lang)}</p>
+					</article>
+				))
+			}
+		</div>
+	</HobbyPageSection>
+
+	<HobbyPageSection
+		id="travel-gallery"
+		title={formatTypography(travel.galleryTitle, lang)}
+		introduction={formatTypography(travel.galleryIntroduction, lang)}
+	>
+		<div
+			class="travel-gallery"
+			aria-label={travel.galleryTitle}
+		>
+			{
+				travelGalleryImages.map((item, index) => (
+					<InteractiveFigure
+						id={`travel-gallery-${index}`}
+						lang={lang}
+						src={item.src}
+						alt={item.alt}
+						className="travel-gallery-figure"
+					/>
+				))
+			}
+
+			<article class="travel-gallery-coming-soon">
+				<div class="travel-gallery-coming-soon-content">
+					<p class="travel-gallery-coming-soon-country">
+						🇷🇴 Romania
+					</p>
+
+					<h3>
+						{t.hobbies.comingSoon}
+					</h3>
+
+					<p>
+						{t.hobbies.firstAdventureAbroad}
+					</p>
+				</div>
+			</article>
+
+			<article class="travel-gallery-coming-soon">
+				<div class="travel-gallery-coming-soon-content">
+					<p class="travel-gallery-coming-soon-country">
+					</p>
+
+					<h3>
+						{t.hobbies.newMemories}
+					</h3>
+
+					<p>
+						{t.hobbies.romaniaPhotosPlaceholder}
+					</p>
+				</div>
+			</article>
+		</div>
+
+		<div class="travel-external">
+			<p class="travel-external-description">
+				{formatTypography(
+					t.hobbies.travelExternalDescription,
+					lang
+				)}
+			</p>
+
+			<div class="travel-external-links">
+				<a
+					class="travel-external-link"
+					href="https://strava.app.link/wX5FIEE4n5b"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<StravaIcon aria-hidden="true" />
+					<span>{travel.stravaLabel}</span>
+				</a>
+
+				<a
+					class="travel-external-link"
+					href="https://www.instagram.com/monika.a.krysiak?ighd=MW92bXF1eTEzZ3lmYw%3D%3D"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<InstagramIcon aria-hidden="true" />
+					<span>{travel.instagramLabel}</span>
+				</a>
+			</div>
+		</div>
+	</HobbyPageSection>
+
+	<HobbyPageNavigation
+		lang={lang}
+		previous={{
+			label: t.hobbies.photography,
+			href: `/${lang}/hobbies/photography`,
+		}}
+		next={{
+			label: "DIY",
+			href: `/${lang}/hobbies/diy`,
+		}}
+		allHobbiesHref={`/${lang}/#hobbies`}
+		allHobbiesLabel={t.hobbies.viewAll}
+	/>
+</SubpageLayout>
+
+<style>
+	.travel-origin {
+		display: grid;
+		gap: var(--space-xl);
+	}
+
+	.travel-origin-content {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	.travel-origin-content p {
+		margin: 0;
+		line-height: var(--line-height-body);
+	}
+
+	.travel-origin :global(.interactive-figure) {
+		margin: 0;
+	}
+
+	.travel-origin :global(.interactive-figure-image) {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+
+		object-fit: cover;
+		object-position: center 35%;
+
+		border-radius: var(--space-sm);
+	}
+
+	.travel-origin-section :global(.hobby-page-section-title) {
+		margin-bottom: var(--space-sm);
+	}
+
+	.travel-stories {
+		display: grid;
+		gap: var(--space-xl);
+	}
+
+	.travel-story {
+		overflow: hidden;
+
+		background-color: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--space-sm);
+
+		transition:
+			border-color 0.2s ease,
+			background-color 0.2s ease;
+	}
+
+	.travel-story:hover {
+		border-color: var(--color-accent-travel);
+	}
+
+	.travel-story:has(.travel-story-details[open]) {
+		background-color: var(--color-surface-hover);
+		border-color: var(--color-accent-travel);
+	}
+
+	.travel-story-heading {
+		padding: var(--space-lg);
+	}
+
+	.travel-story-year {
+		margin: 0 0 var(--space-xs);
+
+		color: var(--color-accent-travel);
+		font-weight: 700;
+	}
+
+	.travel-story-title {
+		margin: 0 0 var(--space-sm);
+	}
+
+	.travel-story-summary {
+		margin: 0;
+
+		color: var(--color-text-muted);
+		line-height: var(--line-height-body);
+	}
+
+	.travel-story-details {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.travel-story-toggle {
+		padding: var(--space-md) var(--space-lg);
+
+		color: var(--color-accent-travel);
+		font-weight: 700;
+
+		cursor: pointer;
+	}
+
+	.travel-story-toggle:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.2rem;
+	}
+
+	.travel-story-toggle:focus-visible {
+		outline: 2px solid var(--color-accent-travel);
+		outline-offset: -0.35rem;
+	}
+
+	.travel-story-content {
+		display: grid;
+		gap: var(--space-md);
+
+		padding:
+			0
+			var(--space-lg)
+			var(--space-lg);
+	}
+
+	.travel-story-content p {
+		margin: 0;
+		line-height: var(--line-height-body);
+	}
+
+	.travel-plans {
+		display: grid;
+		gap: var(--space-lg);
+	}
+
+	.travel-plan {
+		padding: var(--space-lg);
+
+		background-color: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--space-sm);
+
+		transition: border-color 0.2s ease;
+	}
+
+	.travel-plan:hover {
+		border-color: var(--color-accent-travel);
+	}
+
+	.travel-plan h3 {
+		margin: 0 0 var(--space-sm);
+	}
+
+	.travel-plan p {
+		margin: 0;
+
+		color: var(--color-text-muted);
+		line-height: var(--line-height-body);
+	}
+
+	.travel-gallery {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--space-sm);
+	}
+
+	.travel-gallery :global(.interactive-figure) {
+		height: 100%;
+		margin: 0;
+	}
+
+	.travel-gallery :global(.interactive-figure-button) {
+		display: block;
+
+		width: 100%;
+		height: 100%;
+	}
+
+	.travel-gallery :global(.interactive-figure-image) {
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 4 / 3;
+
+		object-fit: cover;
+
+		border: 1px solid transparent;
+		border-radius: var(--space-sm);
+
+		transition: border-color 0.2s ease;
+	}
+
+	.travel-gallery
+		:global(.interactive-figure-button:hover .interactive-figure-image) {
+		border-color: var(--color-accent-travel);
+	}
+
+	.travel-gallery
+		:global(.interactive-figure-button:focus-visible .interactive-figure-image) {
+		border-color: var(--color-accent-travel);
+	}
+
+	.travel-external {
+		margin-top: var(--space-2xl);
+	}
+
+	.travel-external-description {
+		margin: 0;
+
+		color: var(--color-text-muted);
+		line-height: var(--line-height-body);
+	}
+
+	.travel-external-links {
+		display: grid;
+		gap: var(--space-sm);
+
+		margin-top: var(--space-sm);
+	}
+
+	.travel-external-link {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-sm);
+
+		width: fit-content;
+
+		color: var(--color-accent-travel);
+		font-weight: 600;
+		line-height: var(--line-height-body);
+		text-decoration: none;
+
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
+	}
+
+	.travel-external-link:hover {
+		color:
+			color-mix(
+				in srgb,
+				var(--color-accent-travel) 80%,
+				var(--color-text)
+			);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.travel-external-link:focus-visible {
+		color:
+			color-mix(
+				in srgb,
+				var(--color-accent-travel) 80%,
+				var(--color-text)
+			);
+	}
+
+	.travel-external-link :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
+		flex-shrink: 0;
+	}
+
+	.travel-gallery-coming-soon {
+		min-width: 0;
+		min-height: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 100%;
+		min-height: 100%;
+
+		padding: var(--space-xl);
+
+		background:
+			linear-gradient(
+				135deg,
+				var(--color-surface),
+				color-mix(
+					in srgb,
+					var(--color-surface) 88%,
+					var(--color-accent-travel)
+				)
+			);
+
+		border: 1px dashed
+			color-mix(
+				in srgb,
+				var(--color-border) 75%,
+				var(--color-accent-travel)
+			);
+		border-radius: var(--space-sm);
+
+		box-sizing: border-box;
+	}
+
+	.travel-gallery-coming-soon-content {
+		min-width: 0;
+		display: grid;
+		gap: var(--space-sm);
+
+		width: 100%;
+		max-width: 18rem;
+
+		text-align: center;
+	}
+
+	.travel-gallery-coming-soon-country {
+		margin: 0;
+
+		color: var(--color-accent-travel);
+		font-size: var(--font-size-body-small);
+		font-weight: 700;
+		line-height: 1.3;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+
+		overflow-wrap: anywhere;
+	}
+
+	.travel-gallery-coming-soon h3 {
+		margin: 0;
+	}
+
+	.travel-gallery-coming-soon p:last-child {
+		margin: 0;
+
+		color: var(--color-text-muted);
+		line-height: var(--line-height-body);
+	}
+
+	@media (min-width: 48rem) {
+		.travel-origin {
+			grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.85fr);
+			gap: var(--space-2xl);
+			align-items: start;
+		}
+
+		.travel-origin :global(.interactive-figure) {
+			width: 100%;
+			max-width: 26rem;
+			justify-self: center;
+		}
+
+		.travel-stories {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			align-items: start;
+		}
+
+		.travel-plans {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		.travel-gallery {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		.travel-external-links {
+			grid-template-columns: repeat(2, max-content);
+			align-items: center;
+			column-gap: var(--space-2xl);
+			row-gap: var(--space-sm);
+		}
+
+		.travel-gallery-coming-soon-country {
+			letter-spacing: 0.08em;
+		}
+	}
+</style>

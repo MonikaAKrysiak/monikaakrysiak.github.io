@@ -10,8 +10,7 @@ import {
 	type Language,
 } from "../../../i18n";
 
-import Layout from "../../../layouts/Layout.astro";
-
+import SubpageLayout from "../../../layouts/SubpageLayout.astro";
 import BackLink from "../../../components/BackLink.astro";
 import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
 import CaseStudySection from "../../../components/CaseStudySection.astro";
@@ -102,7 +101,7 @@ const portfolioNavigationItems: NavigationItem[] = [
 const seo = getPortfolioWebsiteSeo(language);
 ---
 
-<Layout
+<SubpageLayout
 	lang={language}
 	navigationItems={portfolioNavigationItems}
 	seo={seo}
@@ -110,193 +109,186 @@ const seo = getPortfolioWebsiteSeo(language);
 		type: "TechArticle",
 		keywords: portfolioWebsite.header.focusAreas,
 	}}
+	className="case-study case-study-page section"
 >
-	<main id="main-content" tabindex="-1">
-		<section
-			class="case-study case-study-page section"
-		>
-			<div class="container">
-				<BackLink lang={language} />
+	<BackLink lang={language} />
 
-				<div class="case-study-introduction">
-					<div class="case-study-introduction-main">
-						<CaseStudyHeader
-							lang={language}
-							title={formatTypography(
-								portfolioWebsite.header.title,
-								language
-							)}
-							summary={formatTypography(
-								portfolioWebsite.header.summary,
-								language
-							)}
-							focusAreas={[]}
-						/>
+	<div class="case-study-introduction">
+		<div class="case-study-introduction-main">
+			<CaseStudyHeader
+				lang={language}
+				title={formatTypography(
+					portfolioWebsite.header.title,
+					language
+				)}
+				summary={formatTypography(
+					portfolioWebsite.header.summary,
+					language
+				)}
+				focusAreas={[]}
+			/>
 
-						<CaseStudySection
-							id="overview"
-							title={formatTypography(
-								portfolioWebsite.overview.title,
-								language
-							)}
-						>
-							{portfolioWebsite.overview.paragraphs.map((paragraph) => (
-								<p class="case-study-text">
-									{formatTypography(paragraph, language)}
-								</p>
-							))}
-						</CaseStudySection>
-					</div>
-
-					<div class="case-study-introduction-aside">
-						<InteractiveFigure
-							lang={language}
-							src={portfolioHomepage}
-							alt={portfolioWebsite.figures.homepage.alt}
-							caption={portfolioWebsite.figures.homepage.caption}
-						/>
-
-						<div class="case-study-project-meta">
-							<ul class="case-study-focus-areas">
-								{portfolioWebsite.header.focusAreas.map((focusArea) => (
-									<li class="case-study-focus-area">
-										{focusArea}
-									</li>
-								))}
-							</ul>
-
-							{portfolioWebsite.header.action && (
-								<a
-									class="case-study-source"
-									href={portfolioWebsite.header.action.href}
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label={translations.accessibility.externalLink(
-										portfolioWebsite.header.action.label,
-									)}
-								>
-									{SourceIcon && (
-										<SourceIcon
-											class="case-study-source-icon"
-											aria-hidden="true"
-										/>
-									)}
-
-									{portfolioWebsite.header.action.label}
-								</a>
-							)}
-						</div>
-					</div>
-				</div>
-				<hr class="case-study-divider" />
-				<CaseStudySection
-					id="engineering-principles"
-					title={formatTypography(
-						portfolioWebsite.engineeringPrinciples.title,
-						language
-					)}
-				>
+			<CaseStudySection
+				id="overview"
+				title={formatTypography(
+					portfolioWebsite.overview.title,
+					language
+				)}
+			>
+				{portfolioWebsite.overview.paragraphs.map((paragraph) => (
 					<p class="case-study-text">
-						{formatTypography(
-							portfolioWebsite.engineeringPrinciples.introduction,
-							language
-						)}
+						{formatTypography(paragraph, language)}
 					</p>
+				))}
+			</CaseStudySection>
+		</div>
 
-					<div class="engineering-principles-grid">
-						{portfolioWebsite.engineeringPrinciples.items.map((item, index) => (
-							<EngineeringPrincipleCard
-								title={formatTypography(item.title, language)}
-								icon={engineeringPrincipleIcons[index]}
-							>
-								{item.paragraphs.map((paragraph) => (
-									<p class="case-study-text">
-										{formatTypography(paragraph, language)}
-									</p>
-								))}
-							</EngineeringPrincipleCard>
+		<div class="case-study-introduction-aside">
+			<InteractiveFigure
+				lang={language}
+				src={portfolioHomepage}
+				alt={portfolioWebsite.figures.homepage.alt}
+				caption={portfolioWebsite.figures.homepage.caption}
+			/>
+
+			<div class="case-study-project-meta">
+				<ul class="case-study-focus-areas">
+					{portfolioWebsite.header.focusAreas.map((focusArea) => (
+						<li class="case-study-focus-area">
+							{focusArea}
+						</li>
+					))}
+				</ul>
+
+				{portfolioWebsite.header.action && (
+					<a
+						class="case-study-source"
+						href={portfolioWebsite.header.action.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={translations.accessibility.externalLink(
+							portfolioWebsite.header.action.label,
+						)}
+					>
+						{SourceIcon && (
+							<SourceIcon
+								class="case-study-source-icon"
+								aria-hidden="true"
+							/>
+						)}
+
+						{portfolioWebsite.header.action.label}
+					</a>
+				)}
+			</div>
+		</div>
+	</div>
+	<hr class="case-study-divider" />
+	<CaseStudySection
+		id="engineering-principles"
+		title={formatTypography(
+			portfolioWebsite.engineeringPrinciples.title,
+			language
+		)}
+	>
+		<p class="case-study-text">
+			{formatTypography(
+				portfolioWebsite.engineeringPrinciples.introduction,
+				language
+			)}
+		</p>
+
+		<div class="engineering-principles-grid">
+			{portfolioWebsite.engineeringPrinciples.items.map((item, index) => (
+				<EngineeringPrincipleCard
+					title={formatTypography(item.title, language)}
+					icon={engineeringPrincipleIcons[index]}
+				>
+					{item.paragraphs.map((paragraph) => (
+						<p class="case-study-text">
+							{formatTypography(paragraph, language)}
+						</p>
+					))}
+				</EngineeringPrincipleCard>
+			))}
+		</div>
+	</CaseStudySection>
+	
+	<hr class="case-study-divider" />
+
+	<CaseStudySection
+		id="design-decisions"
+		title={formatTypography(
+			portfolioWebsite.designDecisions.title,
+			language
+		)}
+	>
+		<p class="case-study-text">
+			{formatTypography(
+				portfolioWebsite.designDecisions.introduction,
+				language
+			)}
+		</p>
+
+		{portfolioWebsite.designDecisions.items.map((item) => (
+			<DesignDecisionCard
+				title={formatTypography(item.title, language)}
+				evidenceTitle={formatTypography(
+					portfolioWebsite.designDecisions.evidenceTitle,
+					language
+				)}
+			>
+				{item.paragraphs.map((paragraph) => (
+					<p class="case-study-text">
+						{formatTypography(paragraph, language)}
+					</p>
+				))}
+
+				<ul class="case-study-implemented-items">
+					{item.implementedItems.map((implementedItem) => (
+						<li>{formatTypography(implementedItem, language)}</li>
+					))}
+				</ul>
+
+				<CaseStudyEvidence slot="evidence">
+					<div class="case-study-evidence-gallery">
+						{item.evidence.map((evidence, index) => (
+							<EvidenceFigure
+								lang={language}
+								src={designDecisionEvidenceImages[item.id][index]}
+								alt={formatTypography(evidence.alt, language)}
+								caption={formatTypography(evidence.caption, language)}
+							/>
 						))}
 					</div>
-				</CaseStudySection>
-				
-				<hr class="case-study-divider" />
-
-				<CaseStudySection
-					id="design-decisions"
-					title={formatTypography(
-						portfolioWebsite.designDecisions.title,
-						language
-					)}
-				>
-					<p class="case-study-text">
-						{formatTypography(
-							portfolioWebsite.designDecisions.introduction,
-							language
-						)}
-					</p>
-
-					{portfolioWebsite.designDecisions.items.map((item) => (
-						<DesignDecisionCard
-							title={formatTypography(item.title, language)}
-							evidenceTitle={formatTypography(
-								portfolioWebsite.designDecisions.evidenceTitle,
-								language
-							)}
-						>
-							{item.paragraphs.map((paragraph) => (
-								<p class="case-study-text">
-									{formatTypography(paragraph, language)}
-								</p>
-							))}
-
-							<ul class="case-study-implemented-items">
-								{item.implementedItems.map((implementedItem) => (
-									<li>{formatTypography(implementedItem, language)}</li>
-								))}
-							</ul>
-
-							<CaseStudyEvidence slot="evidence">
-								<div class="case-study-evidence-gallery">
-									{item.evidence.map((evidence, index) => (
-										<EvidenceFigure
-											lang={language}
-											src={designDecisionEvidenceImages[item.id][index]}
-											alt={formatTypography(evidence.alt, language)}
-											caption={formatTypography(evidence.caption, language)}
-										/>
-									))}
-								</div>
-							</CaseStudyEvidence>
-						</DesignDecisionCard>
-					))}
-				</CaseStudySection>
-				<CaseStudyNavigation
-					lang={language}
-					previous={
-						previous
-							? {
-									href: `/${language}${previous.href}`,
-									label: previous.title,
-								}
-							: undefined
+				</CaseStudyEvidence>
+			</DesignDecisionCard>
+		))}
+	</CaseStudySection>
+	<CaseStudyNavigation
+		lang={language}
+		previous={
+			previous
+				? {
+						href: `/${language}${previous.href}`,
+						label: previous.title,
 					}
-					next={
-						next
-							? {
-									href: `/${language}${next.href}`,
-									label: next.title,
-								}
-							: undefined
+				: undefined
+		}
+		next={
+			next
+				? {
+						href: `/${language}${next.href}`,
+						label: next.title,
 					}
-					allWork={{
-						href: `/${language}/#work`,
-						label: translations.caseStudyNavigation.allWork,
-					}}
-				/>
-			</div>
-		</section>
-	</main>
-</Layout>
+				: undefined
+		}
+		allWork={{
+			href: `/${language}/#work`,
+			label: translations.caseStudyNavigation.allWork,
+		}}
+	/>
+</SubpageLayout>
 
 <style>
 	.case-study-page {

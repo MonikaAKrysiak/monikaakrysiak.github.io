@@ -6,166 +6,140 @@ This repository contains my personal portfolio website.
 
 The project has two equally important goals:
 
-1. Build a professional portfolio presenting my experience as a QA Engineer with a strong focus on Application Security.
-2. Learn modern frontend development by understanding every decision instead of following tutorials blindly.
+1.  Build a professional portfolio presenting my experience as a QA
+    Engineer with a strong focus on Application Security.
+2.  Learn modern frontend development by understanding every decision
+    instead of following tutorials blindly.
 
-This project is intentionally developed in small iterations and is expected to evolve over time.
+The project is intentionally developed in small iterations and is
+expected to evolve over time.
 
----
+## Development approach
 
-# Development approach
+### Learn by understanding
 
-The project follows several principles.
+Every technology, dependency and architectural decision should be
+understood before it is used.
 
-## Learn by understanding
+### Security by default
 
-Every technology, dependency and architectural decision should be understood before it is used.
+Security is considered from the beginning: dependencies are reviewed,
+install scripts are approved consciously, unnecessary libraries are
+avoided, assets are self-hosted where appropriate and dependencies are
+kept up to date.
 
-## Security by default
+### Quality over speed
 
-Security is considered from the very beginning instead of being added later.
+The objective is to understand how and why everything works and to keep
+changes reviewable and maintainable, rather than finish as quickly as
+possible.
 
-Examples include:
+### Small iterations
 
-- reviewing dependencies,
-- approving install scripts consciously,
-- avoiding unnecessary libraries,
-- keeping dependencies up to date.
+Each development session focuses on a small, well-defined topic. Changes
+remain easy to understand, test and document.
 
-## Quality over speed
+### Documentation as part of engineering
 
-The objective is not to finish the website as quickly as possible.
+Architecture decisions, development sessions and focused reviews are
+documented alongside the code so both implementation and reasoning
+remain visible over time.
 
-The objective is to understand how and why everything works.
-
-## Small iterations
-
-Each development session focuses on one small, well-defined topic.
-
-The project grows incrementally while keeping every change easy to understand, review and maintain.
-
----
-
-# Long-term vision
-
-The website should become:
-
-- professional portfolio,
-- engineering showcase,
-- learning journal,
-- long-term project.
-
-Future versions may also include:
-
-- detailed case studies,
-- conference talks,
-- publications,
-- articles,
-- selected community activities.
-
----
-
-# Current architecture
+## Current architecture
 
 The project currently includes:
 
-- Astro
-- Design Tokens (colors, spacing and typography)
-- Reusable layout system
-- Reusable button component
-- Reusable navigation and header components
-- Reusable case study layout
-- Component-scoped styles
-- Custom local font system
-- Responsive typography based on design tokens
-- Light and dark theme support
-- Theme persistence using `localStorage`
-- Automatic system theme detection (`prefers-color-scheme`)
-- CSS variable-based theming using `data-theme`
-- Semantic HTML and accessibility-focused components
-- Reusable interactive image component with native lightbox
+-   Astro with static generation,
+-   TypeScript content models,
+-   semantic design tokens for colour, spacing, typography and focus
+    styles,
+-   reusable layout/container primitives and global header/footer,
+-   contextual navigation for homepage, work case studies and hobby
+    pages,
+-   reusable case-study and hobby-page components,
+-   component-scoped styles for component-specific presentation,
+-   local fonts,
+-   responsive typography and layouts,
+-   light/dark themes with `data-theme`, `localStorage` persistence and
+    `prefers-color-scheme`,
+-   Polish and English localization,
+-   localized SEO metadata and structured data,
+-   semantic HTML and accessibility-focused interaction patterns,
+-   reusable interactive images using native `<dialog>`,
+-   Astro image handling,
+-   ADRs, session logs and focused code reviews.
 
----
+### Design system
 
-## Design system
+Components consume semantic tokens rather than theme-specific values.
+Each hobby can expose its own accent colour while still participating in
+the shared token system.
 
-The website uses Design Tokens to define colors, typography and spacing.
+### Responsive design
 
-Components consume tokens instead of hardcoded values, allowing the entire visual system to evolve from a single source of truth.
+Responsive behaviour uses a small set of established breakpoints and
+reusable layout patterns. Additional breakpoints are introduced only
+when a concrete layout problem requires them.
 
-Theme switching is implemented by changing the `data-theme` attribute on the root `<html>` element. Individual components remain completely independent of the active theme.
+### Component architecture
 
----
+Reusable components encapsulate markup, presentation and narrowly scoped
+behaviour. Shared design rules remain global while component-specific
+styles stay with their components. Page-specific content remains outside
+components whenever practical.
 
-## Responsive typography
+### Accessibility
 
-Typography is controlled through design tokens.
+Accessibility is part of implementation: semantic HTML,
+keyboard-accessible controls, skip links, descriptive ARIA labels,
+`aria-current`, visible tokenized focus states, decorative-icon
+handling, native dialog previews, focus restoration, responsive readable
+layouts and contrast checks across themes.
 
-Responsive font scaling is implemented by updating token values inside media queries instead of modifying individual components.
+### Internationalization
 
-This keeps components independent from viewport-specific styling.
+UI translations live in `src/i18n`; page/case-study content lives in
+`src/data`; components receive localized typed data; routes use
+`[lang]`; language switching preserves relevant context where supported.
 
----
+### Page composition and routing
 
-## Component architecture
+The portfolio is statically generated with language-prefixed routes.
+Homepage, work case studies and hobby pages share the global layout
+while providing context-appropriate navigation. No client-side framework
+or unnecessary runtime state is required.
 
-Reusable components encapsulate both their markup and presentation.
+## Engineering documentation
 
-Shared design rules remain in the global stylesheet, while component-specific styles stay close to the components that own them.
+The repository uses three complementary forms of documentation:
 
-This approach improves maintainability, portability and scalability as the project grows.
+-   **ADRs** for durable architectural choices and consequences,
+-   **session logs** for incremental implementation history and
+    verification,
+-   **focused reviews** for design-system, architecture, CSS and quality
+    assessments.
 
-The project currently includes reusable components for navigation, buttons, language and theme switching, reusable layouts, structured engineering case studies and interactive media presentation.
+An ADR is created only when a durable architectural decision is made.
+Bug fixes, visual polish and restoration of an existing contract belong
+in session/review notes instead.
 
-Each component exposes a small, focused public API while encapsulating its own markup, styling and behaviour.
+## Current project state
 
----
+The portfolio includes completed work case studies and a bilingual hobby
+section with responsive layouts. Recent review work focused on
+maintainability, component reuse, responsive behaviour, theme
+consistency and regression testing. The latest quick regression covered
+desktop/mobile, Polish/English, homepage/subpages and light/dark themes.
+Issues found were corrected and the final production build completed
+successfully.
 
-## Accessibility
+The current implementation is ready for deployment unless a new concrete
+issue is identified.
 
-Accessibility is considered throughout the project rather than being added afterwards.
+## Long-term vision
 
-Current practices include:
-
-- semantic HTML,
-- keyboard-accessible navigation,
-- descriptive ARIA labels,
-- visible focus states,
-- decorative icons hidden from assistive technologies,
-- responsive layouts,
-- reusable accessible UI components.
-
-## Internationalization
-
-The project uses a structured localization approach.
-
-- User interface translations are stored in `src/i18n`.
-- Reusable content (for example work cards and case studies) is stored in `src/data`.
-- Components remain presentation-only and receive localized content through typed data objects.
-
-This separation keeps presentation, content and translations independent while making future languages easy to add.
-
-## Page composition and routing.
-
-This architecture makes adding new languages and new case studies straightforward while keeping components reusable.
-
-### Design Decisions completed
-
-The Portfolio Website case study now includes four engineering decision cards supported by localized technical evidence and screenshots.
-
-The implementation keeps content, presentation and assets clearly separated while allowing additional evidence to be added without changing the page structure.
-
-
-## Reusable UI components
-
-The project includes reusable UI components designed to remain independent from specific pages.
-
-Current examples include:
-
-- WorkCard
-- HobbyCard
-- InteractiveFigure
-- LanguageSwitcher
-- ThemeSwitcher
-
-Each component exposes a focused public API and can be reused across different sections of the website while remaining independent from page-specific implementations.
+The website should remain a professional portfolio, engineering
+showcase, learning journal and long-term project that can evolve without
+requiring a rewrite. Future additions may include new case studies,
+conference talks, publications, articles and selected community
+activities when there is meaningful content to present.

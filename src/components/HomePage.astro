@@ -1,8 +1,10 @@
 ---
 import { Image } from "astro:assets";
+import { formatTypography } from "../utils/typography";
 
 import SelectedWork from "./SelectedWork.astro";
 import Contact from "./Contact.astro";
+import Hobbies from "./Hobbies.astro";
 
 import portrait from "../assets/monika-krysiak-portrait.png";
 
@@ -26,16 +28,16 @@ const t = getTranslations(lang);
 				<h1 class="hero-title">Monika Krysiak</h1>
 
 				<p class="hero-role">
-					{t.hero.role}
+					{formatTypography(t.hero.role, lang)}
 				</p>
 
 				<p class="hero-statement">
-					{t.hero.statementFirstLine}
+					{formatTypography(t.hero.statementFirstLine, lang)}
 
 					{"statementSecondLine" in t.hero && (
 						<>
 							<br />
-							{t.hero.statementSecondLine}
+							{formatTypography(t.hero.statementSecondLine, lang)}
 						</>
 					)}
 				</p>
@@ -83,7 +85,7 @@ const t = getTranslations(lang);
 
 				{t.about.paragraphs.map((paragraph) => (
 					<p class="section-text">
-						{paragraph}
+						{formatTypography(paragraph, lang)}
 					</p>
 				))}
 			</div>
@@ -91,5 +93,8 @@ const t = getTranslations(lang);
 	</section>
 
 	<SelectedWork lang={lang} />
+
+	<Hobbies lang={lang} />
+
 	<Contact lang={lang} />
 </main>

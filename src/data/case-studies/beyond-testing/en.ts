@@ -3,7 +3,7 @@ export const beyondTesting = {
 		title: "Beyond Testing",
 
 		summary:
-			"Quality improves when testers understand products, people and processes—not just requirements.",
+			"Quality improves when testers understand products, people and processes-not just requirements.",
 
 		focusAreas: [
 			"Quality Engineering",
@@ -11,6 +11,12 @@ export const beyondTesting = {
 			"Product Thinking",
 			"Collaboration",
 		],
+	},
+
+	navigation: {
+		approach: "My Approach",
+		stories: "Stories from Practice",
+		visualDocumentation: "Visual Documentation",
 	},
 
 	overview: {
@@ -107,6 +113,8 @@ export const beyondTesting = {
 
 	visualDocumentation: {
 		title: "Making Complex Systems Understandable",
+		imageAlt:
+			"An anonymised diagram showing a complex business process, its exceptions and integrations with external systems.",
 
 		paragraphs: [
 			"During a period of frequent changes in the team, I created visual process documentation to help new team members understand complex business workflows more quickly.",

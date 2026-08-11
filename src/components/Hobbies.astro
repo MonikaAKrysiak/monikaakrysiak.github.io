@@ -1,0 +1,87 @@
+---
+import type { AstroComponentFactory } from "astro/runtime/server";
+
+import HobbyCard from "./HobbyCard.astro";
+
+import HobbyTravel from "../assets/icons/hobby-travel.svg";
+import HobbyDiy from "../assets/icons/hobby-diy.svg";
+import HobbyGames from "../assets/icons/hobby-games.svg";
+import HobbyPhotography from "../assets/icons/hobby-photography.svg";
+
+import { getTranslations, type Language } from "../i18n";
+import { getHobbies, type HobbySlug } from "../data/hobbies";
+import { formatTypography } from "../utils/typography";
+
+const hobbyIcons: Record<HobbySlug, AstroComponentFactory> = {
+	travel: HobbyTravel,
+	diy: HobbyDiy,
+	"tabletop-games": HobbyGames,
+	photography: HobbyPhotography,
+};
+
+const hobbyAccents: Record<HobbySlug, string> = {
+	travel: "var(--color-accent-travel)",
+	diy: "var(--color-accent-diy)",
+	"tabletop-games": "var(--color-accent-games)",
+	photography: "var(--color-accent-photography)",
+};
+
+interface Props {
+	lang: Language;
+}
+
+const { lang }: Props = Astro.props;
+
+const t = getTranslations(lang);
+const hobbies = getHobbies(lang);
+---
+
+<section
+	id="hobbies"
+	class="section"
+	data-language-section
+>
+	<div class="container">
+		<h2 class="section-heading">
+			{t.navigation.hobbies}
+		</h2>
+
+		<ul class="hobby-list">
+			{hobbies.map((hobby) => (
+				<li>
+					<HobbyCard
+						icon={hobbyIcons[hobby.slug]}
+						accent={hobbyAccents[hobby.slug]}
+						title={formatTypography(hobby.title, lang)}
+						summary={formatTypography(hobby.summary, lang)}
+						href={`/${lang}${hobby.href}`}
+						linkLabel={t.hobbies.readMore}
+						linkAriaLabel={`${t.hobbies.readMore}: ${hobby.title}`}
+					/>
+				</li>
+			))}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.hobby-list {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-lg);
+
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.hobby-list > li {
+		display: flex;
+	}
+
+	@media (min-width: 640px) {
+		.hobby-list {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

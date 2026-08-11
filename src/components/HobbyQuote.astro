@@ -1,0 +1,67 @@
+---
+interface Props {
+    title?: string;
+    quote: string;
+}
+
+const {
+	title,
+	quote,
+} = Astro.props;
+---
+
+<section class="hobby-quote">
+	<span
+		class="hobby-quote-icon"
+		aria-hidden="true"
+	>
+		❝
+	</span>
+
+	{title && (
+    <h2 class="hobby-quote-title">
+        {title}
+    </h2>
+)}
+
+	<p class="hobby-quote-text">
+		{quote}
+	</p>
+</section>
+
+<style>
+	.hobby-quote {
+        margin: var(--space-2xl) 0;
+        padding: var(--space-xl) 0;
+
+        border-top: 1px solid var(--color-border);
+
+        text-align: center;
+    }
+
+    .hobby-quote-icon {
+        display: block;
+
+        margin-bottom: var(--space-md);
+
+        font-size: 3rem;
+        line-height: 1;
+
+        color: var(--color-secondary);
+    }
+
+   .hobby-quote-title {
+        margin-bottom: var(--space-sm);
+
+        font-size: var(--font-size-heading);
+        line-height: var(--line-height-body);
+    }
+
+    .hobby-quote-text {
+        max-width: 40rem;
+        margin: 0 auto;
+
+        font-size: var(--font-size-body-large);
+        color: var(--color-text-muted);
+    }
+</style>

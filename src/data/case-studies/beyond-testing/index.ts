@@ -1,13 +1,7 @@
-import type { Language } from "../../../i18n";
+import { createCaseStudyGetter } from "..";
 
 import { beyondTesting as en } from "./en";
 import { beyondTesting as pl } from "./pl";
 
-const beyondTestingByLanguage: Record<Language, typeof en> = {
-	en,
-	pl,
-};
 
-export function getBeyondTesting(lang: Language) {
-	return beyondTestingByLanguage[lang];
-}
+export const getBeyondTesting = createCaseStudyGetter(en, pl);

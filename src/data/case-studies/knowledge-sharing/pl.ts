@@ -255,7 +255,7 @@ export const knowledgeSharing = {
 
 			"Z czasem zrozumiałam, że dobra komunikacja techniczna nie polega na pokazywaniu swojej wiedzy. Jej celem jest zrozumienie odbiorców, usuwanie niepotrzebnej złożoności i pomaganie innym w podejmowaniu lepszych decyzji.",
 
-			"To podejście wykorzystuję również w codziennej pracy — podczas analizy wymagań, rozmów o bezpieczeństwie, tworzenia dokumentacji i współpracy z zespołami projektowymi.",
+			"To podejście wykorzystuję również w codziennej pracy - podczas analizy wymagań, rozmów o bezpieczeństwie, tworzenia dokumentacji i współpracy z zespołami projektowymi.",
 		],
 	},
 };

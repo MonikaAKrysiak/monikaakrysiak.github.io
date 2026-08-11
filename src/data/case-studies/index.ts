@@ -1,5 +1,16 @@
 import type { Language } from "../../i18n";
 
+export function createCaseStudyGetter<T>(
+    en: T,
+    pl: T,
+): (lang: Language) => T {
+    const byLanguage: Record<Language, T> = {
+        en,
+        pl,
+    };
+
+    return (lang) => byLanguage[lang];
+}
 export interface CaseStudy {
 	title: string;
 	summary: string;

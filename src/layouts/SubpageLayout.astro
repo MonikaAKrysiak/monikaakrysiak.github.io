@@ -1,0 +1,47 @@
+---
+import Layout from "./Layout.astro";
+
+import type { Language } from "../i18n";
+import type { ArticleStructuredData } from "../data/structured-data";
+import type { SeoMetadata } from "../data/seo";
+import type { NavigationItem } from "../types/navigation";
+
+interface Props {
+	lang: Language;
+	navigationItems?: NavigationItem[];
+	seo?: SeoMetadata;
+	articleStructuredData?: ArticleStructuredData;
+	className?: string;
+}
+
+const {
+	lang,
+	navigationItems = [],
+	seo,
+	articleStructuredData,
+	className = "content-page",
+} = Astro.props;
+---
+
+<Layout
+	lang={lang}
+	navigationItems={navigationItems}
+	seo={seo}
+	articleStructuredData={articleStructuredData}
+>
+	<main
+		id="main-content"
+		class={className}
+		tabindex="-1"
+	>
+		<div class="container">
+			<slot />
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.content-page {
+		padding-top: var(--space-xl);
+	}
+</style>

@@ -1,0 +1,666 @@
+---
+import type { GetStaticPaths } from "astro";
+
+import SubpageLayout from "../../../layouts/SubpageLayout.astro";
+
+import BackLink from "../../../components/BackLink.astro";
+import HobbyPageHeader from "../../../components/HobbyPageHeader.astro";
+import HobbyPageNavigation from "../../../components/HobbyPageNavigation.astro";
+import HobbyPageSection from "../../../components/HobbyPageSection.astro";
+import HobbyQuote from "../../../components/HobbyQuote.astro";
+import InteractiveFigure from "../../../components/InteractiveFigure.astro";
+
+import HeartHandshakeIcon from "../../../assets/icons/heart-handshake.svg";
+import NeedleThreadIcon from "../../../assets/icons/needle-thread.svg";
+import PackageIcon from "../../../assets/icons/package.svg";
+import PencilStarIcon from "../../../assets/icons/pencil-star.svg";
+import DiyStanczykImage from "../../../assets/hobbies/diy/diy-stanczyk.jpg";
+import DiyPillowsImage from "../../../assets/hobbies/diy/diy-pillows.jpg";
+import DiyDevilImage from "../../../assets/hobbies/diy/diy-devil.jpg";
+import CrossStitchMiniaturesImage from "../../../assets/hobbies/diy/cross-stitch-miniatures.jpg";
+import DecoupageDanseMacabreImage from "../../../assets/hobbies/diy/decoupage-danse-macabre.jpg";
+import GingerbreadHeartsImage from "../../../assets/hobbies/diy/gingerbread-hearts.jpg";
+import GlassPaintingImage from "../../../assets/hobbies/diy/glass-painting.jpg";
+import KanzashiStarImage from "../../../assets/hobbies/diy/kanzashi-star.jpg";
+import PaperFlowersImage from "../../../assets/hobbies/diy/paper-flowers.jpg";
+import WireWrappedPendantImage from "../../../assets/hobbies/diy/wire-wrapped-pendant.jpg";
+import WoodenSwingImage from "../../../assets/hobbies/diy/wooden-swing.jpg";
+import DiamondPaintingImage from "../../../assets/hobbies/diy/diamond-painting.jpg";
+
+import { formatTypography } from "../../../utils/typography";
+import {
+	getDiy,
+	getDiyNavigation,
+} from "../../../data/hobby-pages/diy";
+
+import {
+	getTranslations,
+	type Language,
+} from "../../../i18n";
+
+export const getStaticPaths: GetStaticPaths = () => {
+	return [
+		{
+			params: { lang: "en" },
+		},
+		{
+			params: { lang: "pl" },
+		},
+	];
+};
+
+const lang = Astro.params.lang as Language;
+
+const diy = getDiy(lang);
+const navigationItems = getDiyNavigation(lang);
+const t = getTranslations(lang);
+
+const diyHighlightIcons = [
+	HeartHandshakeIcon,
+	NeedleThreadIcon,
+	PackageIcon,
+	PencilStarIcon,
+];
+
+const diyStoryImages = [
+    {
+        src: DiyStanczykImage,
+        alt: t.hobbies.diyAlt.stanczyk,
+    },
+    {
+        src: DiyPillowsImage,
+        alt: t.hobbies.diyAlt.pillows,
+    },
+    {
+        src: DiyDevilImage,
+        alt: t.hobbies.diyAlt.devil,
+    },
+];
+
+const diyGalleryImages = [
+    {
+        src: CrossStitchMiniaturesImage,
+        alt: t.hobbies.diyAlt.crossStitchMiniatures,
+    },
+    {
+        src: KanzashiStarImage,
+        alt: t.hobbies.diyAlt.kanzashiStar,
+    },
+    {
+        src: WoodenSwingImage,
+        alt: t.hobbies.diyAlt.woodenSwing,
+    },
+    {
+        src: DiamondPaintingImage,
+        alt: t.hobbies.diyAlt.diamondPainting,
+    },
+    {
+        src: GingerbreadHeartsImage,
+        alt: t.hobbies.diyAlt.gingerbreadHearts,
+    },
+    {
+        src: WireWrappedPendantImage,
+        alt: t.hobbies.diyAlt.wireWrappedPendant,
+    },
+    {
+        src: PaperFlowersImage,
+        alt: t.hobbies.diyAlt.paperFlowers,
+    },
+    {
+        src: DecoupageDanseMacabreImage,
+        alt: t.hobbies.diyAlt.decoupageDanseMacabre,
+    },
+    {
+        src: GlassPaintingImage,
+        alt: t.hobbies.diyAlt.glassPainting,
+    },
+];
+---
+
+<SubpageLayout
+	lang={lang}
+	navigationItems={navigationItems}
+>
+	<BackLink
+		lang={lang}
+		href={`/${lang}/#hobbies`}
+		label={t.backLink.toHobbies}
+	/>
+
+	<HobbyPageHeader
+		id="diy-about"
+		title={formatTypography(diy.title, lang)}
+		introduction={diy.introduction.map((paragraph) =>
+			formatTypography(paragraph, lang)
+		)}
+	/>
+
+	<section
+		class="diy-highlights"
+		aria-labelledby="diy-highlights-title"
+	>
+		<h2 id="diy-highlights-title">
+			{formatTypography(diy.highlightsTitle, lang)}
+		</h2>
+
+		<div class="diy-highlights-grid">
+			{
+				diy.highlights.map((highlight, index) => {
+					const HighlightIcon = diyHighlightIcons[index];
+
+					if (!HighlightIcon) {
+						return null;
+					}
+
+					return (
+						<article class="diy-highlight">
+							<div class="diy-highlight-title">
+								<HighlightIcon aria-hidden="true" />
+
+								<h3>{formatTypography(highlight.title, lang)}</h3>
+							</div>
+
+							<p>{formatTypography(highlight.description, lang)}</p>
+						</article>
+					);
+				})
+			}
+		</div>
+	</section>
+
+	<HobbyPageSection
+		title={formatTypography(diy.originTitle, lang)}
+	>
+		<div class="diy-origin">
+			{
+				diy.originParagraphs.map((paragraph) => (
+					<p>{formatTypography(paragraph, lang)}</p>
+				))
+			}
+		</div>
+	</HobbyPageSection>
+
+	<HobbyPageSection
+		id="diy-stories"
+		title={formatTypography(diy.storiesTitle, lang)}
+		introduction={formatTypography(diy.storiesIntroduction, lang)}
+	>
+		<div class="diy-stories">
+			{
+				diy.stories.map((story, index) => {
+					const storyImage = diyStoryImages[index];
+
+					if (!storyImage) {
+						return null;
+					}
+
+					return (
+						<article class="diy-story">
+							<div class="diy-story-image">
+								<InteractiveFigure
+									id={`diy-story-${index}`}
+									lang={lang}
+									src={storyImage.src}
+									alt={storyImage.alt}
+								/>
+							</div>
+
+							<div class="diy-story-heading">
+								<p class="diy-story-label">
+									{formatTypography(story.label, lang)}
+								</p>
+
+								<h3 class="diy-story-title">
+									{formatTypography(story.title, lang)}
+								</h3>
+
+								<p class="diy-story-summary">
+									{formatTypography(story.summary, lang)}
+								</p>
+							</div>
+
+							<details class="diy-story-details">
+								<summary class="diy-story-toggle">
+									<span>{t.hobbies.readFullStory}</span>
+
+									<span
+										class="diy-story-toggle-arrow"
+										aria-hidden="true"
+									>
+										↓
+									</span>
+								</summary>
+
+								<div class="diy-story-content">
+									{
+										story.paragraphs.map((paragraph) => (
+											<p>{formatTypography(paragraph, lang)}</p>
+										))
+									}
+								</div>
+							</details>
+						</article>
+					);
+				})
+			}
+		</div>
+	</HobbyPageSection>
+
+	<HobbyQuote quote={formatTypography(diy.quote, lang)} />
+
+	<HobbyPageSection
+		title={formatTypography(diy.lookingAheadTitle, lang)}
+		introduction={formatTypography(diy.lookingAheadIntroduction, lang)}
+	>
+		<div class="diy-plans">
+			{
+				diy.lookingAhead.map((item) => (
+					<article class="diy-plan">
+						<h3>{formatTypography(item.title, lang)}</h3>
+						<p>{formatTypography(item.description, lang)}</p>
+					</article>
+				))
+			}
+		</div>
+	</HobbyPageSection>
+
+	<HobbyPageSection
+		id="diy-gallery"
+		title={formatTypography(diy.galleryTitle, lang)}
+		introduction={formatTypography(diy.galleryIntroduction, lang)}
+	>
+		<div
+			class="diy-gallery"
+			aria-label={diy.galleryTitle}
+		>
+			{
+				diyGalleryImages.map((image, index) => (
+					<InteractiveFigure
+						id={`diy-gallery-${index}`}
+						lang={lang}
+						src={image.src}
+						alt={image.alt}
+						className="diy-gallery-figure"
+					/>
+				))
+			}
+		</div>
+	</HobbyPageSection>
+
+	<HobbyPageNavigation
+		lang={lang}
+		previous={{
+			label: t.hobbies.travel,
+			href: `/${lang}/hobbies/travel`,
+		}}
+		next={{
+			label: t.hobbies.tabletopGames,
+			href: `/${lang}/hobbies/tabletop-games`,
+		}}
+		allHobbiesHref={`/${lang}/#hobbies`}
+		allHobbiesLabel={t.hobbies.viewAll}
+	/>
+</SubpageLayout>
+
+<style>
+	.diy-highlights {
+		padding-block: var(--space-2xl);
+	}
+
+	.diy-highlights h2 {
+		margin: 0 0 var(--space-xl);
+	}
+
+	.diy-highlights-grid {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	.diy-highlight {
+		position: relative;
+		overflow: hidden;
+
+		padding: var(--space-lg);
+
+		background:
+			linear-gradient(
+				145deg,
+				color-mix(
+					in srgb,
+					var(--color-surface) 82%,
+					var(--color-accent-diy)
+				),
+				var(--color-surface)
+			);
+
+		border: 1px solid
+			color-mix(
+				in srgb,
+				var(--color-border) 70%,
+				var(--color-accent-diy)
+			);
+		border-radius: var(--space-sm);
+	}
+
+	.diy-highlight::after {
+		content: "";
+
+		position: absolute;
+		inset: auto 0 0 auto;
+
+		width: 5rem;
+		aspect-ratio: 1;
+
+		background-color:
+			color-mix(
+				in srgb,
+				var(--color-accent-diy) 12%,
+				transparent
+			);
+
+		border-radius: 100% 0 0 0;
+	}
+
+	.diy-highlight-title {
+		position: relative;
+		z-index: 1;
+
+		display: flex;
+		align-items: center;
+		gap: var(--space-sm);
+
+		margin-bottom: var(--space-sm);
+	}
+
+	.diy-highlight-title :global(svg) {
+		width: 1.75rem;
+		height: 1.75rem;
+		flex-shrink: 0;
+
+		color: var(--color-accent-diy);
+	}
+
+	.diy-highlight-title h3 {
+		margin: 0;
+	}
+
+	.diy-highlight p {
+		position: relative;
+		z-index: 1;
+
+		margin: 0;
+
+		color: var(--color-text-muted);
+		line-height: var(--line-height-body);
+	}
+
+	.diy-origin {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	.diy-origin p {
+		margin: 0;
+		line-height: var(--line-height-body);
+	}
+
+	.diy-stories {
+		display: grid;
+		gap: var(--space-xl);
+	}
+
+	.diy-story {
+		overflow: hidden;
+
+		background-color: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--space-sm);
+
+		transition:
+			border-color 0.2s ease,
+			background-color 0.2s ease;
+	}
+
+	.diy-story:hover {
+		border-color: var(--color-accent-diy);
+	}
+
+	.diy-story:has(.diy-story-details[open]) {
+		background-color: var(--color-surface-hover);
+		border-color: var(--color-accent-diy);
+	}
+	.diy-story-image {
+		overflow: hidden;
+
+		height: 18rem;
+
+		background-color: var(--color-surface);
+
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.diy-story-image :global(.interactive-figure) {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+	}
+
+	.diy-story-image :global(.interactive-figure-button) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 100%;
+		height: 100%;
+		padding: 0;
+
+		background: none;
+		border: 0;
+
+		cursor: zoom-in;
+	}
+
+	.diy-story-image :global(.interactive-figure-image) {
+		display: block;
+
+		width: 100%;
+		height: 100%;
+
+		object-fit: contain;
+	}
+	.diy-story-heading {
+		padding: var(--space-lg);
+	}
+
+	.diy-story-label {
+		margin: 0 0 var(--space-xs);
+
+		color: var(--color-accent-diy-text);
+		font-size: var(--font-size-body-small);
+		font-weight: 700;
+		line-height: 1.3;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.diy-story-title {
+		margin: 0 0 var(--space-sm);
+	}
+
+	.diy-story-summary {
+		margin: 0;
+
+		color: var(--color-text-muted);
+		line-height: var(--line-height-body);
+	}
+
+	.diy-story-details {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.diy-story-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-sm);
+
+		padding: var(--space-md) var(--space-lg);
+
+		color: var(--color-accent-diy-text);
+		font-weight: 700;
+
+		cursor: pointer;
+		user-select: none;
+	}
+
+	.diy-story-toggle::-webkit-details-marker {
+		display: none;
+	}
+
+	.diy-story-toggle::marker {
+		content: "";
+	}
+
+	.diy-story-toggle:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.2rem;
+	}
+
+	.diy-story-toggle:focus-visible {
+		outline: 2px solid var(--color-accent-diy);
+		outline-offset: -0.35rem;
+	}
+
+	.diy-story-toggle-arrow {
+		display: inline-block;
+
+		transition: transform 0.2s ease;
+	}
+
+	.diy-story-details[open] .diy-story-toggle-arrow {
+		transform: rotate(180deg);
+	}
+
+	.diy-story-content {
+		display: grid;
+		gap: var(--space-md);
+
+		padding:
+			0
+			var(--space-lg)
+			var(--space-lg);
+	}
+
+	.diy-story-content p {
+		margin: 0;
+		line-height: var(--line-height-body);
+	}
+
+	.diy-plans {
+		display: grid;
+		gap: var(--space-lg);
+	}
+
+	.diy-plan {
+		padding: var(--space-lg);
+
+		background-color: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--space-sm);
+	}
+
+	.diy-plan h3 {
+		margin: 0 0 var(--space-sm);
+	}
+
+	.diy-plan p {
+		margin: 0;
+
+		color: var(--color-text-muted);
+		line-height: var(--line-height-body);
+	}
+
+	.diy-gallery {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--space-sm);
+	}
+
+	.diy-gallery :global(.diy-gallery-figure) {
+		height: 100%;
+		margin: 0;
+	}
+
+	.diy-gallery :global(.interactive-figure-button) {
+		display: block;
+
+		width: 100%;
+		height: 100%;
+		padding: 0;
+
+		background: none;
+		border: 0;
+
+		cursor: zoom-in;
+	}
+
+	.diy-gallery :global(.interactive-figure-image) {
+		display: block;
+
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 4 / 3;
+
+		object-fit: cover;
+
+		border: 1px solid transparent;
+		border-radius: var(--space-sm);
+
+		transition:
+			border-color 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	.diy-gallery :global(.interactive-figure-button:hover .interactive-figure-image) {
+		border-color: var(--color-accent-diy);
+		transform: translateY(-0.125rem);
+	}
+
+	.diy-gallery :global(.interactive-figure-button:focus-visible .interactive-figure-image) {
+		border-color: var(--color-accent-diy);
+	}
+
+	@media (min-width: 48rem) {
+		.diy-highlights-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.diy-stories {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			align-items: start;
+		}
+
+		.diy-plans {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		.diy-gallery {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 47.999rem) {
+		.diy-story-image {
+			height: auto;
+			max-height: none;
+		}
+
+		.diy-story-image :global(.interactive-figure-image) {
+			width: 100%;
+			height: auto;
+			max-height: 24rem;
+
+			object-fit: contain;
+		}
+	}
+</style>

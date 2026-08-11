@@ -1,7 +1,9 @@
 export const pl = {
 	navigation: {
+		home: "Start",
 		about: "O mnie",
 		work: "Wybrane projekty",
+		hobbies: "Zainteresowania",
 		contact: "Kontakt",
 	},
 
@@ -11,7 +13,7 @@ export const pl = {
 		viewCv: "Zobacz CV (PDF)",
 		contact: "Kontakt",
 	},
-	
+
 	about: {
 		title: "O mnie",
 
@@ -39,26 +41,70 @@ export const pl = {
 	},
 
 	backLink: {
-		toSelectedWork: "Wróć do projektów",
+		toSelectedWork: "Wróć do wybranych projektów",
+		toHobbies: "Wróć do zainteresowań",
 	},
 
 	caseStudyNavigation: {
 		allWork: "Zobacz wszystkie projekty",
+		focusAreasTitle: "Kluczowe obszary",
+		documentationFocusAreasTitle: "Kluczowe obszary",
 	},
 
 	footer: {
 		statement:
-		"Tworzę rozwiązania, które\u00A0są\u00A0funkcjonalne, niezawodne\u00A0i\u00A0bezpieczne.",
-			builtWith: "Zbudowane przy użyciu:",
+			"Tworzę rozwiązania, które są funkcjonalne, niezawodne i bezpieczne.",
+		builtWith: "Zbudowane przy użyciu:",
 		designedWith: "Zaprojektowane z myślą o:",
+		designPrinciples:
+			"Dostępności • Bezpieczeństwie",
+		aiDisclosure: "Wykorzystanie AI",
+		aiDisclosureText:
+			"AI wykorzystuję jako narzędzie wspierające przy tworzeniu wybranych ilustracji oraz anonimizacji materiałów prezentowanych w case studies. Opisane w portfolio doświadczenie, projekty i praca odzwierciedlają moje rzeczywiste działania.",
 	},
+
+	hobbies: {
+		readMore: "Czytaj więcej",
+		readFullStory: "Przeczytaj całą historię",
+		hideStory: "Ukryj historię",
+		viewAll: "Zobacz wszystkie zainteresowania",
+		photography: "Fotografia",
+		tabletopGames: "Gry stołowe",
+		travel: "Podróże",
+		selectedPhotographs: "Wybrane fotografie",
+		comingSoon: "Już wkrótce",
+		firstAdventureAbroad: "Nasza pierwsza zagraniczna wyprawa.",
+		newMemories: "Nowe historie",
+		romaniaPhotosPlaceholder: "To miejsce czeka na zdjęcia z Rumunii.",
+		travelExternalDescription:
+			"Więcej tras i zdjęć z naszych podróży publikuję na Stravie i Instagramie.",
+
+		diyAlt: {
+			stanczyk: "Haft przedstawiający Stańczyka według obrazu Jana Matejki",
+			pillows: "Haftowane poduszki z motywami zebry i żyrafy dla bliźniaczek",
+			devil: "Diabełek wykonany z włóczki jako własnoręczny prezent",
+			crossStitchMiniatures: "Małe hafty krzyżykowe z kurczakami i świąteczną gwiazdką",
+			kanzashiStar: "Biała dekoracja wykonana ze wstążek techniką kanzashi",
+			woodenSwing: "Własnoręcznie wykonana drewniana huśtawka",
+			diamondPainting: "Dwie duże prace diamond painting przedstawiające pandę czerwoną i podwodny świat",
+			gingerbreadHearts: "Ręcznie dekorowane pierniki w kształcie serc",
+			wireWrappedPendant: "Zielony wisior opleciony miedzianym drutem",
+			paperFlowers: "Fioletowe papierowe kwiaty złożone ręcznie",
+			decoupageDanseMacabre: "Dekorowana skrzyneczka z motywem danse macabre wykonana techniką decoupage",
+			glassPainting: "Kolorowa postać namalowana na szkle",
+		},
+	},
+
 	externalLink: {
-		opensInNewTab: " — otwiera się w nowej karcie",
+		opensInNewTab: " - otwiera się w nowej karcie",
 	},
+
 	skipLink: {
 		skipToMainContent: "Przejdź do głównej treści",
 	},
+
 	accessibility: {
+		languageSwitcher: "Przełącznik języka",
 		openMenu: "Otwórz menu",
 		closeMenu: "Zamknij menu",
 
@@ -81,7 +127,7 @@ export const pl = {
 			`Powiększ obraz: ${alt}`,
 
 		largerImageView: (alt: string) =>
-			`Powiększony obraz: ${alt}`,	
+			`Powiększony obraz: ${alt}`,
 
 		closeImagePreview: "Zamknij podgląd obrazu",
 
