@@ -6,7 +6,7 @@ export function formatTypography(
 ): string {
 	if (lang === "pl") {
 		return text.replace(
-			/(?<!\p{L})(a|i|o|u|w|z|do|ku|na|od|po|da|tę|tą|one|on|ona|co|di|dla|jej|już|we|mi|za|ze|gdy|te|to|go|lub|albo|jak|nie|ale|się|ich|że|są|niż|coś|czy)\s/giu,
+			/(?<!\p{L})(a|i|o|u|w|z|do|ku|na|od|po|da|tę|tą|one|ta|on|ona|co|di|dla|jej|już|we|mi|za|ze|gdy|te|to|go|lub|albo|jak|nie|ale|się|ich|że|są|niż|coś|czy)\s/giu,
 			"$1\u00A0"
 		);
 	}
