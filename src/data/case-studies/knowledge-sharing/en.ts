@@ -1,3 +1,6 @@
+import type { KnowledgeSharingPracticalExample } from "./index";
+import { knowledgeSharingEvidence } from "./evidence";
+
 export const knowledgeSharing = {
 	header: {
 		title: "Knowledge Sharing",
@@ -202,10 +205,87 @@ export const knowledgeSharing = {
 							"OWASP Poland Day, OWASP Kraków and Uszanowanko Programowanko",
 					},
 				],
+				evidence: [
+					{
+						title: "OWASP Poland Day 2023",
+						description:
+							"A talk titled “Smuggling Security Into a Software Project. A Guide for Cunning QAs” presented at OWASP Poland Day 2023 in Zabrze.",
+						image: knowledgeSharingEvidence.owaspPolandDay2023.eventImage,
+						alt: "OWASP Poland Day 2023 graphic announcing Monika Krysiak’s talk “Smuggling Security Into a Software Project. A Guide for Cunning QAs”.",
+						secondaryImage:
+							knowledgeSharingEvidence.owaspPolandDay2023.speakerImage,
+						secondaryImageAlt:
+							"OWASP Poland Day 2023 speaker graphic featuring Monika Krysiak and the talk “Smuggling Security Into a Software Project. A Guide for Cunning QAs”.",
+						links: [
+							{
+								label: "Event page",
+								href: knowledgeSharingEvidence.owaspPolandDay2023.links.eventbrite,
+							},
+							{
+								label: "OWASP Poland announcement",
+								href: knowledgeSharingEvidence.owaspPolandDay2023.links.facebook,
+							},
+							{
+								label: "My LinkedIn recap",
+								href: knowledgeSharingEvidence.owaspPolandDay2023.links.linkedin,
+							},
+						],
+					},
+					{
+						title: "Uszanowanko Programowanko",
+						description:
+							"A community talk about bringing application security into the everyday work of QA engineers.",
+						image: knowledgeSharingEvidence.uszanowanko.eventImage,
+						alt: "Uszanowanko Programowanko event graphic about cloud, accessibility and security.",
+						videoSrc: knowledgeSharingEvidence.uszanowanko.videoSrc,
+						links: [
+							{
+								label: "Talk page",
+								href: knowledgeSharingEvidence.uszanowanko.links.eventPage,
+							},
+							{
+								label: "Presentation",
+								href: knowledgeSharingEvidence.uszanowanko.links.slides,
+							},
+							{
+								label: "Event on Meetup",
+								href: knowledgeSharingEvidence.uszanowanko.links.meetup,
+							},
+							{
+								label: "My LinkedIn recap",
+								href: knowledgeSharingEvidence.uszanowanko.links.linkedin,
+							},
+						],
+					},
+					{
+						title: "OWASP Kraków Chapter",
+						description: "A talk titled “Smuggling Security Into a Software Project. A Guide for Cunning QAs” presented at an OWASP Kraków Chapter meeting.",
+						image: knowledgeSharingEvidence.owaspKrakow.eventImage,
+						alt: "OWASP Kraków event graphic focused on security in the software development lifecycle.",
+						secondaryImage: knowledgeSharingEvidence.owaspKrakow.presentationImage,
+						secondaryImageAlt: "Title slide of the presentation “Smuggling Security Into a Software Project. A Guide for Cunning QAs”.",
+						secondaryImageLarge: true,
+						links: [
+							{
+								label: "Event on Meetup",
+								href: knowledgeSharingEvidence.owaspKrakow.links.meetup,
+							},
+							{
+								label: "Event announcement",
+								href: knowledgeSharingEvidence.owaspKrakow.links.linkedinAnnouncement,
+							},
+							{
+								label: "My LinkedIn recap",
+								href: knowledgeSharingEvidence.owaspKrakow.links.linkedinRecap,
+							},
+						],
+					},
+				],
 			},
-		],
+		] satisfies KnowledgeSharingPracticalExample[],
 	},
-		impact: {
+
+	impact: {
 		title: "Knowledge in Practice",
 
 		introduction:
@@ -244,6 +324,7 @@ export const knowledgeSharing = {
 			},
 		],
 	},
+
 	reflection: {
 		title: "What I Learned",
 

@@ -1,3 +1,6 @@
+import type { KnowledgeSharingPracticalExample } from "./index";
+import { knowledgeSharingEvidence } from "./evidence";
+
 export const knowledgeSharing = {
 	header: {
 		title: "Dzielenie się wiedzą",
@@ -10,7 +13,6 @@ export const knowledgeSharing = {
 			"Projektowanie materiałów edukacyjnych",
 			"Dokumentacja",
 			"Komunikacja",
-			
 		],
 
 		action: {
@@ -44,7 +46,7 @@ export const knowledgeSharing = {
 				title: "Nowe osoby w zespole",
 
 				description:
-				"Podczas zmian w zespole tworzyłam materiały onboardingowe, które pomagały zrozumieć systemy, procesy i wyjątki bez konieczności polegania na wiedzy jednej osoby.",
+					"Podczas zmian w zespole tworzyłam materiały onboardingowe, które pomagały zrozumieć systemy, procesy i wyjątki bez konieczności polegania na wiedzy jednej osoby.",
 			},
 			{
 				title: "Studenci",
@@ -205,10 +207,88 @@ export const knowledgeSharing = {
 							"OWASP Poland Day, OWASP Kraków i Uszanowanko Programowanko",
 					},
 				],
+
+				evidence: [
+					{
+						title: "OWASP Poland Day 2023",
+						description:
+							"Wystąpienie „Smuggling Security Into a Software Project. A Guide for Cunning QAs” podczas OWASP Poland Day 2023 w Zabrzu.",
+						image: knowledgeSharingEvidence.owaspPolandDay2023.eventImage,
+						alt: "Grafika OWASP Poland Day 2023 zapowiadająca wystąpienie Moniki Krysiak „Smuggling Security Into a Software Project. A Guide for Cunning QAs”.",
+						secondaryImage:
+							knowledgeSharingEvidence.owaspPolandDay2023.speakerImage,
+						secondaryImageAlt:
+							"Grafika OWASP Poland Day 2023 przedstawiająca Monikę Krysiak jako prelegentkę wystąpienia „Smuggling Security Into a Software Project. A Guide for Cunning QAs”.",
+						links: [
+							{
+								label: "Strona wydarzenia",
+								href: knowledgeSharingEvidence.owaspPolandDay2023.links.eventbrite,
+							},
+							{
+								label: "Zapowiedź OWASP Poland",
+								href: knowledgeSharingEvidence.owaspPolandDay2023.links.facebook,
+							},
+							{
+								label: "Moje podsumowanie na LinkedIn",
+								href: knowledgeSharingEvidence.owaspPolandDay2023.links.linkedin,
+							},
+						],
+					},
+					{
+						title: "Uszanowanko Programowanko",
+						description:
+							"Wystąpienie o bezpieczeństwie aplikacji w codziennej pracy QA, przygotowane dla społeczności Uszanowanko Programowanko.",
+						image: knowledgeSharingEvidence.uszanowanko.eventImage,
+						alt: "Grafika wydarzenia Uszanowanko Programowanko z hasłem o chmurach, dostępności i bezpieczeństwie.",
+						videoSrc: knowledgeSharingEvidence.uszanowanko.videoSrc,
+						links: [
+							{
+								label: "Strona wystąpienia",
+								href: knowledgeSharingEvidence.uszanowanko.links.eventPage,
+							},
+							{
+								label: "Prezentacja",
+								href: knowledgeSharingEvidence.uszanowanko.links.slides,
+							},
+							{
+								label: "Wydarzenie na Meetup",
+								href: knowledgeSharingEvidence.uszanowanko.links.meetup,
+							},
+							{
+								label: "Moje podsumowanie na LinkedIn",
+								href: knowledgeSharingEvidence.uszanowanko.links.linkedin,
+							},
+						],
+					},
+					{
+						title: "OWASP Kraków Chapter",
+						description: "Wystąpienie „Smuggling Security Into a Software Project. A Guide for Cunning QAs” podczas spotkania OWASP Kraków Chapter.",
+						image: knowledgeSharingEvidence.owaspKrakow.eventImage,
+						alt: "Grafika wydarzenia OWASP Kraków poświęconego bezpieczeństwu w cyklu wytwarzania oprogramowania.",
+						secondaryImage: knowledgeSharingEvidence.owaspKrakow.presentationImage,
+						secondaryImageAlt: "Slajd tytułowy prezentacji „Smuggling Security Into a Software Project. A Guide for Cunning QAs”.",
+						secondaryImageLarge: true,
+						links: [
+							{
+								label: "Wydarzenie na Meetup",
+								href: knowledgeSharingEvidence.owaspKrakow.links.meetup,
+							},
+							{
+								label: "Zapowiedź wydarzenia",
+								href: knowledgeSharingEvidence.owaspKrakow.links.linkedinAnnouncement,
+							},
+							{
+								label: "Moje podsumowanie na LinkedIn",
+								href: knowledgeSharingEvidence.owaspKrakow.links.linkedinRecap,
+							},
+						],
+					},
+				],
 			},
-		],
+		] satisfies KnowledgeSharingPracticalExample[],
 	},
-		impact: {
+
+	impact: {
 		title: "Materiały, do których można wracać",
 
 		introduction:
@@ -247,6 +327,7 @@ export const knowledgeSharing = {
 			},
 		],
 	},
+
 	reflection: {
 		title: "Czego się nauczyłam",
 

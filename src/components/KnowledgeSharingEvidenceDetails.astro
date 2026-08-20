@@ -1,0 +1,83 @@
+---
+import { Image } from "astro:assets";
+
+import type { KnowledgeSharingEvidenceItem } from "../data/case-studies/knowledge-sharing";
+
+interface Props {
+    evidence: KnowledgeSharingEvidenceItem[];
+    label: string;
+}
+
+const { evidence, label }: Props = Astro.props;
+---
+
+<details class="knowledge-sharing-evidence-details">
+    <summary class="knowledge-sharing-evidence-summary">
+        {label}
+    </summary>
+
+    <div class="knowledge-sharing-evidence-list">
+        {
+            evidence.map((item) => (
+                <section class="knowledge-sharing-evidence-item">
+                    <h4 class="knowledge-sharing-evidence-title">
+                        {item.title}
+                    </h4>
+
+                    {item.image && item.alt && (
+                        <Image
+                            class="knowledge-sharing-evidence-image"
+                            src={item.image}
+                            alt={item.alt}
+                        />
+                    )}
+
+                    <p class="case-study-text knowledge-sharing-evidence-description">
+                        {item.description}
+                    </p>
+
+                    <div class="knowledge-sharing-evidence-side">
+                        {item.secondaryImage && item.secondaryImageAlt && (
+                            <Image
+                                class:list={[
+                                    "knowledge-sharing-evidence-secondary-image",
+                                    item.secondaryImageLarge &&
+                                        "knowledge-sharing-evidence-secondary-image-large",
+                                ]}
+                                src={item.secondaryImage}
+                                alt={item.secondaryImageAlt}
+                            />
+                        )}
+
+                        {item.videoSrc && (
+                            <video
+                                class="knowledge-sharing-evidence-video"
+                                controls
+                                preload="metadata"
+                                playsinline
+                            >
+                                <source src={item.videoSrc} type="video/mp4" />
+                            </video>
+                        )}
+
+                        {item.links && item.links.length > 0 && (
+                            <ul class="knowledge-sharing-evidence-links">
+                                {item.links.map((link) => (
+                                    <li>
+                                        <a
+                                            href={link.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {link.label}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                </section>
+            ))
+        }
+    </div>
+</details>
