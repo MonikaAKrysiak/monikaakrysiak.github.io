@@ -4,10 +4,15 @@ import type { NavigationItem } from "../../../types/navigation";
 import { en } from "./en";
 import { pl } from "./pl";
 
+const contentByLanguage: Record<Language, TabletopGamesPageContent> = {
+    en,
+    pl,
+};
+
 export const getGames = (
     lang: Language,
 ): TabletopGamesPageContent => {
-	return lang === "pl" ? pl : en;
+    return contentByLanguage[lang];
 };
 
 export interface TabletopGamesPageContent {

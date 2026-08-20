@@ -1,5 +1,3 @@
-import githubIcon from "../../../assets/icons/github.svg";
-
 export const securityKnowledgeBase = {
 	header: {
 		title: "Budowanie wiedzy o bezpieczeństwie",
@@ -44,7 +42,7 @@ export const securityKnowledgeBase = {
 
 		areas: [
 			{
-				icon: "asvs",
+				icon: "asvs" as const,
 				title: "Praktyczne wykorzystanie ASVS",
 				summary:
 					"Przekształcenie złożonego standardu w proces przydatny w codziennej pracy QA.",
@@ -61,7 +59,7 @@ export const securityKnowledgeBase = {
 			},
 
 			{
-				icon: "testing",
+				icon: "testing" as const,
 				title: "Codzienne testowanie bezpieczeństwa",
 				summary:
 					"Przewodniki krok po kroku wspierające praktyczne testowanie mechanizmów bezpieczeństwa.",
@@ -79,7 +77,7 @@ export const securityKnowledgeBase = {
 			},
 
 			{
-				icon: "learning",
+				icon: "learning" as const,
 				title: "Nauka przez praktykę",
 				summary:
 					"Nauka poprzez laboratoria, notatki i wyjaśnianie sposobu dochodzenia do rozwiązania.",
@@ -96,7 +94,7 @@ export const securityKnowledgeBase = {
 			},
 
 			{
-				icon: "awareness",
+				icon: "awareness" as const,
 				title: "Bezpieczeństwo poza developmentem",
 				summary:
 					"Praktyczne materiały budujące świadomość bezpieczeństwa w całej firmie.",
@@ -121,19 +119,19 @@ export const securityKnowledgeBase = {
 
 			steps: [
 				{
-					icon: "learn",
+					icon: "learn" as const,
 					label: "Ucz się",
 				},
 				{
-					icon: "apply",
+					icon: "apply" as const,
 					label: "Wdrażaj",
 				},
 				{
-					icon: "share",
+					icon: "share" as const,
 					label: "Dziel się",
 				},
 				{
-					icon: "grow",
+					icon: "grow" as const,
 					label: "Rozwijaj",
 				},
 			],
@@ -148,21 +146,21 @@ export const securityKnowledgeBase = {
 
 		resources: [
 			{
-				image: "asvsChecklist",
+				image: "asvsChecklist" as const,
 				title: "Uproszczona checklista ASVS",
 
 				description:
 					"Praktyczna checklista ze statusem przeglądu, notatkami i szablon raportu do wielokrotnego wykorzystania",
 			},
 			{
-				image: "portswiggerLab",
+				image: "portswiggerLab" as const,
 				title: "Opracowanie laboratorium PortSwigger",
 
 				description:
 					"Opis podatności, notatki z nauki i rozwiązanie krok po kroku dla wybranych laboratoriów.",
 			},
 			{
-				image: "quiz",
+				image: "quiz" as const,
 				title: "Wewnętrzny quiz bezpieczeństwa",
 
 				description:

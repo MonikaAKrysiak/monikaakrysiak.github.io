@@ -79,6 +79,8 @@ const designDecisionEvidenceImages = {
 	],
 };
 
+type DesignDecisionId = keyof typeof designDecisionEvidenceImages;
+
 const portfolioNavigationItems: NavigationItem[] = [
 	{
 		label: language === "pl" ? "Start" : "Home",
@@ -255,7 +257,11 @@ const seo = getPortfolioWebsiteSeo(language);
 						{item.evidence.map((evidence, index) => (
 							<EvidenceFigure
 								lang={language}
-								src={designDecisionEvidenceImages[item.id][index]}
+								src={
+									designDecisionEvidenceImages[
+										item.id as DesignDecisionId
+									][index]
+								}
 								alt={formatTypography(evidence.alt, language)}
 								caption={formatTypography(evidence.caption, language)}
 							/>

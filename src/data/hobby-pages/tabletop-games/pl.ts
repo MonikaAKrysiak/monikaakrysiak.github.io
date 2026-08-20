@@ -1,5 +1,7 @@
-export const pl = {
-	title: "Planszówki i RPG",
+import type { TabletopGamesPageContent } from ".";
+
+export const pl: TabletopGamesPageContent = {
+    title: "Planszówki i RPG",
 
 	introduction: [
 		"Gry towarzyszą mi praktycznie od zawsze. Jako dziecko uwielbiałam memory i Scrabble, a z czasem odkryłam, że mogą być czymś znacznie więcej niż rzucaniem kostką i przesuwaniem pionka o kilka pól.",
@@ -95,10 +97,6 @@ export const pl = {
 
 				"Granie jedną postacią przez tyle lat zaowocowało niezliczoną liczbą wspomnień, ale pokazało mi też, że najlepszych historii nie da się zaplanować. Powstają z setek małych decyzji podejmowanych podczas kolejnych sesji.",
 			],
-
-			image: {
-				alt: "Herb nowego rodu Valentia stworzonego przez Sophie",
-			},
 		},
 
 		{

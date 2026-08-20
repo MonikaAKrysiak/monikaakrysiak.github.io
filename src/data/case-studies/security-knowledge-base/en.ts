@@ -43,7 +43,7 @@ export const securityKnowledgeBase = {
 
 		areas: [
 			{
-				icon: "asvs",
+				icon: "asvs" as const,
 				title: "Making ASVS Practical",
 				summary:
 					"Making a complex standard practical and accessible for QA teams.",
@@ -60,7 +60,7 @@ export const securityKnowledgeBase = {
 			},
 
 			{
-				icon: "testing",
+				icon: "testing" as const,
 				title: "Everyday Security Testing",
 				summary:
 					"Step-by-step guides for testing common security mechanisms.",
@@ -78,7 +78,7 @@ export const securityKnowledgeBase = {
 			},
 
 			{
-				icon: "learning",
+				icon: "learning" as const,
 				title: "Learning by Doing",
 				summary:
 					"Learning through hands-on labs, notes and explanations of the reasoning behind each solution.",
@@ -95,7 +95,7 @@ export const securityKnowledgeBase = {
 			},
 
 			{
-				icon: "awareness",
+				icon: "awareness" as const,
 				title: "Security Beyond Development",
 				summary:
 					"Practical resources designed to build security awareness across the company.",
@@ -120,19 +120,19 @@ export const securityKnowledgeBase = {
 
 			steps: [
 				{
-					icon: "learn",
+					icon: "learn" as const,
 					label: "Learn",
 				},
 				{
-					icon: "apply",
+					icon: "apply" as const,
 					label: "Apply",
 				},
 				{
-					icon: "share",
+					icon: "share" as const,
 					label: "Share",
 				},
 				{
-					icon: "grow",
+					icon: "grow" as const,
 					label: "Grow",
 				},
 			],
@@ -147,21 +147,21 @@ export const securityKnowledgeBase = {
 
 		resources: [
 			{
-				image: "asvsChecklist",
+				image: "asvsChecklist" as const,
 				title: "Simplified ASVS checklist",
 
 				description:
 					"A simplified checklist for tracking review progress, recording notes and preparing reusable security reports.",
 			},
 			{
-				image: "portswiggerLab",
+				image: "portswiggerLab" as const,
 				title: "PortSwigger lab write-up",
 
 				description:
 					"Selected lab write-ups combining vulnerability overviews, learning notes and step-by-step walkthroughs.",
 			},
 			{
-				image: "quiz",
+				image: "quiz" as const,
 				title: "Internal security quiz",
 
 				description:

@@ -78,20 +78,12 @@ const storyImages = {
 
 	<HobbyHighlights
 		title={formatTypography(games.highlightsTitle, lang)}
-		items={games.highlights.map((highlight) => {
-    		const HighlightIcon = tabletopHighlightIcons[highlight.icon];
-
-			if (!HighlightIcon) {
-				return null;
-			}
-
-			return {
-				...highlight,
-				title: formatTypography(highlight.title, lang),
-				description: formatTypography(highlight.description, lang),
-				icon: HighlightIcon,
-			};
-		}).filter(Boolean)}
+		items={games.highlights.map((highlight) => ({
+			...highlight,
+			title: formatTypography(highlight.title, lang),
+			description: formatTypography(highlight.description, lang),
+			icon: tabletopHighlightIcons[highlight.icon],
+		}))}
 	/>
 
 	<HobbyQuote
