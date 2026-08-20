@@ -1,5 +1,7 @@
-export const en = {
-	title: "Board Games & RPGs",
+import type { TabletopGamesPageContent } from ".";
+
+export const en: TabletopGamesPageContent = {
+    title: "Board Games & RPGs",
 
 	introduction: [
 		"Games have been part of my life for as long as I can remember. As a child, I loved Memory and Scrabble, and over time I discovered that games could be about much more than rolling dice and moving a pawn a few spaces.",
@@ -96,10 +98,6 @@ export const en = {
 
 				"Playing the same character for so many years has created countless memories, but it has also shown me that the best stories cannot be planned. They grow out of hundreds of small decisions made across session after session.",
 			],
-
-			image: {
-				alt: "Coat of arms of the new House of Valentia created by Sophie",
-			},
 		},
 
 		{
