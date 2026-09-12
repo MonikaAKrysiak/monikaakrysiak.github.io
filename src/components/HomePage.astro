@@ -7,6 +7,8 @@ import Contact from "./Contact.astro";
 import Hobbies from "./Hobbies.astro";
 
 import portrait from "../assets/monika-krysiak-portrait.png";
+import gallupEn from "../assets/gallup-cliftonstrengths-en.png";
+import gallupPl from "../assets/gallup-cliftonstrengths-pl.png";
 
 import { getTranslations, type Language } from "../i18n";
 
@@ -16,6 +18,8 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
+const gallupImage = lang === "pl" ? gallupPl : gallupEn;
+
 ---
 
 <main id="main-content" tabindex="-1">
@@ -88,6 +92,28 @@ const t = getTranslations(lang);
 						{formatTypography(paragraph, lang)}
 					</p>
 				))}
+
+				<div class="about-work-style">
+					<div class="about-work-style-copy">
+						<h3>{t.about.workStyleTitle}</h3>
+
+						{t.about.workStyleText.map((paragraph) => (
+							<p class="section-text">
+								{formatTypography(paragraph, lang)}
+							</p>
+						))}
+					</div>
+
+					<Image
+						src={gallupImage}
+						alt={
+							lang === "pl"
+								? "Gallup CliftonStrengths Top 5: Indywidualizacja, Uczenie się, Analityk, Naprawianie i Aktywator"
+								: "Gallup CliftonStrengths Top 5: Individualization, Learner, Analytical, Restorative and Activator"
+						}
+						class="about-work-style-image"
+					/>
+				</div>
 			</div>
 		</div>
 	</section>

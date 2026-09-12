@@ -22,12 +22,22 @@ export const pl = {
 
 			"Wierzę, że bezpieczeństwo powinno być uwzględniane od samego początku procesu tworzenia oprogramowania, a nie dodawane dopiero na końcu.",
 
-			"Lubię rozumieć, jak działają aplikacje, znajdować potencjalne problemy i zadawać pytania, które pomagają zespołom rozwiązywać je, zanim trafią do użytkowników. Chętnie współpracuję z\u00A0programistami, analizuję wymagania i zgłoszenia oraz tworzę dokumentację, która ułatwia codzienną pracę całego zespołu.",
+			"Lubię rozumieć, jak działają aplikacje, znajdować potencjalne problemy i zadawać pytania, które pomagają zespołom rozwiązywać je, zanim trafią do użytkowników. Chętnie współpracuję z programistami, analizuję wymagania i zgłoszenia oraz tworzę dokumentację, która ułatwia codzienną pracę całego zespołu.",
 
 			"Wierzę, że dobre oprogramowanie powinno być funkcjonalne, niezawodne i bezpieczne. To podejście staram się wnosić do każdego projektu, nad którym pracuję.",
 
-			"Po pracy lubię odkrywać nowe miejsca - podczas pieszych wędrówek, na rowerze lub w kajaku. Cenię również gry planszowe, projekty DIY oraz czas spędzany z rodziną.",
+			"Po pracy lubię odkrywać nowe miejsca - podczas pieszych wędrówek, na rowerze lub w kajaku. Cenię również gry planszowe, RPG, projekty DIY oraz czas spędzany z rodziną.",
 		],
+		workStyleTitle: "Jak pracuję",
+
+		workStyleText: [
+			"Mój styl pracy łączy analityczne myślenie, ciągłe uczenie się i silną potrzebę rozwiązywania problemów. Lubię rozumieć, dlaczego coś działa w określony sposób, znajdować obszary do poprawy i przekładać te obserwacje na praktyczne rozwiązania.",
+
+			"Dużą wagę przykładam też do współpracy i dopasowania sposobu komunikacji do osób, z którymi pracuję. Ten sposób pracy dobrze odzwierciedlają moje wyniki Gallup CliftonStrengths — od Indywidualizacji i Uczenia się po Analityka, Naprawianie i Aktywatora.",
+		],
+
+		strengths:
+			"CliftonStrengths: Indywidualizacja · Uczenie się · Analityk · Naprawianie · Aktywator",
 	},
 
 	contact: {
