@@ -5,6 +5,7 @@ import { formatTypography } from "../utils/typography";
 import SelectedWork from "./SelectedWork.astro";
 import Contact from "./Contact.astro";
 import Hobbies from "./Hobbies.astro";
+import InteractiveFigure from "./InteractiveFigure.astro";
 
 import portrait from "../assets/monika-krysiak-portrait.png";
 import gallupEn from "../assets/gallup-cliftonstrengths-en.png";
@@ -104,14 +105,15 @@ const gallupImage = lang === "pl" ? gallupPl : gallupEn;
 						))}
 					</div>
 
-					<Image
+					<InteractiveFigure
+						lang={lang}
 						src={gallupImage}
 						alt={
 							lang === "pl"
 								? "Gallup CliftonStrengths Top 5: Indywidualizacja, Uczenie się, Analityk, Naprawianie i Aktywator"
 								: "Gallup CliftonStrengths Top 5: Individualization, Learner, Analytical, Restorative and Activator"
 						}
-						class="about-work-style-image"
+						className="about-work-style-image"
 					/>
 				</div>
 			</div>
