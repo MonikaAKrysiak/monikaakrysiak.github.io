@@ -25,8 +25,18 @@ export const en = {
 
 			"I believe good software should be functional, reliable and secure. That's the way I try to approach every project.",
 
-			"Outside of work, I enjoy exploring new places, whether it's on a bike, in a kayak or on a hiking trail. I also enjoy board games, DIY projects and spending time with my family.",
+			"Outside of work, I enjoy exploring new places, whether it's on a bike, in a kayak or on a hiking trail. I also enjoy board games, RPG, DIY projects and spending time with my family.",
 		],
+				workStyleTitle: "How I work",
+
+		workStyleText: [
+			"My work style combines analytical thinking, continuous learning and a strong drive to solve problems. I like understanding why something works the way it does, finding what can be improved and turning that understanding into practical solutions.",
+
+			"I also place a strong emphasis on collaboration and adapting how I communicate to the people I work with. My Gallup CliftonStrengths results reflect this way of working — from Individualization and Learner to Analytical, Restorative and Activator.",
+		],
+
+		strengths:
+			"CliftonStrengths: Individualization · Learner · Analytical · Restorative · Activator",
 	},
 
 	contact: {

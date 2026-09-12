@@ -670,6 +670,43 @@ body {
 	margin-top: var(--space-md);
 }
 
+.about-work-style {
+	display: grid;
+	gap: var(--space-xl);
+	align-items: center;
+
+	margin-top: var(--space-2xl);
+}
+
+.about-work-style-copy h3 {
+	margin: 0 0 var(--space-md);
+}
+
+.about-work-style-image {
+	display: block;
+
+	width: min(100%, 24rem);
+	height: auto;
+
+	margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+	.about-work-style {
+		grid-template-columns: minmax(0, 1fr) 24rem;
+		column-gap: var(--space-2xl);
+
+		width: min(
+			calc(100vw - (2 * var(--space-md))),
+			var(--content-max-width)
+		);
+	}
+
+	.about-work-style-image {
+		width: 100%;
+	}
+}
+
 .impact-story-meta-title,
 .documentation-showcase-meta-title,
 .knowledge-sharing-example-label,
